@@ -27,14 +27,14 @@ class CreateCardsTable extends Migration
             The heading must support utf8 (or utf16, but probably not supported by all databases) chars,
             since non-latin languages may be used.
             */
-            $table->text('heading')->charset('utf8')->default('');
+            $table->text('heading')->charset('utf8');
             // phonetic.
             // domain.
             // sub-domain.
             // definition.
             // context.
             // note.
-            $table->unsignedInteger('language_id')->default(0);
+            $table->unsignedInteger('language_id')->default(1);
 
             /*
              Check for correspondig table name
