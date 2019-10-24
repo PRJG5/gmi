@@ -63,6 +63,9 @@ final class Language extends Enum implements LocalizedEnum
     const TUR ='TUR';
     const TUK ='TUK';
     const UKR ='UKR';
+    const LSBF ="LSBF";
+    const LSBN ="LSBN";
+    const SSI ="SSI";
 
 }
 

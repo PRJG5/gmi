@@ -22,7 +22,7 @@ return [
         Language::ZHO => 'Chinois',
         Language::KOR => 'Coréen',
         Language::HRV => 'Croate',
-        Language::Prs => 'Dari',
+        Language::PRS => 'Dari',
         Language::SPA => 'Espagnol',
         Language::FAS => 'Farsi',
         Language::FRA => 'Français',
