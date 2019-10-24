@@ -14,6 +14,7 @@ use App\Definition as Definition;
 class DefinitionTest extends TestCase
 {
     /**
+     * @Test
      * A basic unit test example.
      *
      * @return void
@@ -23,14 +24,9 @@ class DefinitionTest extends TestCase
         $card = new Card();
         $definition = new Definition();
         $definition->definition_content = "hello33";
-        $definition->card = 1;
-        $card->heading = 'My Card';
-        $card->language_id = "1";
-        $card->save();
-        $this->assertDatabaseHas('cards', [
-            'card_id' => "1",
-            'heading' => $card->heading,
-            'language_id' => strval($card->language_id),
+        $definition->save();
+        $this->assertDatabaseHas('definitions', [
+            'definition_content' => $definition->definition_content;
         ]);
     }
 }
