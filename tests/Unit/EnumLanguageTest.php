@@ -34,13 +34,12 @@ class EnumLanguageTest extends TestCase
 
      /**
       * @test 
-      * Check if there is 51 language in the enum
+      * Check if there is 52 language in the enum
       */
       public function TestNumberLanguage()
       {
           $temp = Language::getValues();
           $result = count($temp);
-          $this->assertEquals($result,51);
+          $this->assertEquals($result,56);
       }
-
 }
