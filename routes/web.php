@@ -11,6 +11,8 @@
 |
 */
 
+use App\Http\Controllers\CardController;
+
 Route::get('/', function () {
     return view('welcome');
 });
