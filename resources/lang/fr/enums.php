@@ -62,5 +62,8 @@ return [
         Language::TUR => 'Turc',
         Language::TUK => 'Turkmène',
         Language::UKR => 'Ukrainien',
+        Language::LSBF => 'Langue des signes de belgique francophone',
+        Language::LSBN => 'Langue des signes de belgique néerlandophone',
+        Language::SSI => 'Système des signes international',
         ],
     ];
