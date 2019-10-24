@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Enums\Language;
 
 class RegisterController extends Controller
 {
@@ -79,7 +80,10 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
-        $languages = ['FR', 'EN'];
+        $languages = array();
+        foreach(Language::getKeys() as $key) {
+            $languages[$key] = Language::getKey($key);
+        }
         return view('auth.register', compact('languages'));
     }
 }
