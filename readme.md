@@ -1,3 +1,58 @@
+# PRJG5 - GMI
+
+## Nécessite
+
+* Git 2.17.1
+* PHP 7.3.10
+* Composer 1.9.0
+* Laravel 6.0.4
+* PHPUnit 8
+
+## Installation
+
+1. Clone le repo
+
+```bash
+git clone https://github.com/PRJG5/gmi.git
+```
+
+2. Installer les dépendances
+
+```bash
+composer install
+```
+
+3. Copier les variables d'environnement
+
+```bash
+cp  .env.example .env
+```
+
+Modifier le fichier `.env` pour convenir à ses besoins
+
+4. Générer une clef d'encryption
+
+```bash
+php artisan key:generate
+```
+
+## Nettoyer  le cache
+
+```bash
+php artisan cache:clear
+php artisan route:cache
+php artisan config:clear
+php artisan view:clear
+composer dump-autoload
+```
+
+## Liens utiles
+
+* Trello `https://trello.com/b/jy7V3IfE/gmi`
+* FAQ `https://poesi.esi-bru.be/mod/wiki/view.php?id=1613`
+
+# Laravel
+
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">

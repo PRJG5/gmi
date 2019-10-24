@@ -1,0 +1,58 @@
+/*
+ This file is the default stylesheet for the cards.
+ Can easily be swapped out by changing link in blade file
+ (resources/views/card.blade.php).
+ It allows for multiple color-themes without needing to change the whole css.
+*/
+
+/*
+ Css variables are put in the root element.
+*/
+:root {
+	--card_body:			#F2D85A;
+	--card_header: 			#FFCA00;
+	--card_text_dark:		#262626;
+	--card_text_darkest:	#111111;
+	--card_text_lighter:	#353535;
+}
+
+.cardHeader {
+	background-color: var(--card_header);
+}
+
+.cardBody {
+	background-color: var(--card_body);
+}
+
+.language_id,
+.language_id::placeholder,
+.language_id>option,
+.language_id>option:focus,
+.language_id>option:active {
+	color: var(--card_text_lighter);
+	background-color: inherit;
+}
+
+.heading,
+.heading::placeholder {
+	color: var(--card_text_darkest);
+}
+
+.phonetic,
+.phonetic::placeholder {
+	color: var(--card_text_lighter);
+}
+
+.cardBody>input[type="text"],
+.cardBody>input[type="text"]::placeholder {
+	color: var(--card_text_dark);
+}
+
+/*
+ Input field in the card are darkend when focused
+ since outline is disabled.
+ (Because the default outline is ugly)
+*/
+.card input[type="text"]:focus {
+	background-color: #66666630;
+}

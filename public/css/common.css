@@ -1,0 +1,146 @@
+/*
+ This file is a common stylesheet,
+ It's planned to be used on all the pages
+ and allows for importing custom fonts and much more
+*/
+
+/*
+ Import Roboto font
+ https://fonts.google.com/specimen/Roboto
+ Supports Greek and Cyrilic characters.
+ Caution, this font doesn't support Arabic, Hebrew, etc..
+ // TODO
+ Alternatives:
+ - Open Sans
+ - Lato
+ - Montserrat
+ - Raleway
+ */
+/* Thin */
+@font-face {
+	font-family: "Roboto";
+	src: url("/font/Roboto-Thin.ttf");
+	font-weight: 100;
+	font-style: normal;
+}
+/* Thin italic */
+@font-face {
+	font-family: "Roboto";
+	src: url("/font/Roboto-ThinItalic.ttf");
+	font-weight: 100;
+	font-style: italic;
+}
+/* Light */
+@font-face {
+	font-family: "Roboto";
+	src: url("/font/Roboto-Light.ttf");
+	font-weight: 300;
+	font-style: normal;
+}
+/* Light italic */
+@font-face {
+	font-family: "Roboto";
+	src: url("/font/Roboto-LightItalic.ttf");
+	font-weight: 300;
+	font-style: italic;
+}
+/* Regular */
+@font-face {
+	font-family: "Roboto";
+	src: url("/font/Roboto-Regular.ttf");
+	font-weight: 400;
+	font-style: normal;
+}
+/* Regular italic */
+@font-face {
+	font-family: "Roboto";
+	src: url("/font/Roboto-Italic.ttf");
+	font-weight: 400;
+	font-style: italic;
+}
+/* Medium */
+@font-face {
+	font-family: "Roboto";
+	src: url("/font/Roboto-Medium.ttf");
+	font-weight: 500;
+	font-style: normal;
+}
+/* Medium italic */
+@font-face {
+	font-family: "Roboto";
+	src: url("/font/Roboto-MediumItalic.ttf");
+	font-weight: 500;
+	font-style: italic;
+}
+/* Bolder */
+@font-face {
+	font-family: "Roboto";
+	src: url("/font/Roboto-Bold.ttf");
+	font-weight: 700;
+	font-style: normal;
+}
+/* Bolder italic */
+@font-face {
+	font-family: "Roboto";
+	src: url("/font/Roboto-BoldItalic.ttf");
+	font-weight: 700;
+	font-style: italic;
+}
+/* Bold */
+@font-face {
+	font-family: "Roboto";
+	src: url("/font/Roboto-Black.ttf");
+	font-weight: 900;
+	font-style: normal;
+}
+/* Bold italic */
+@font-face {
+	font-family: "Roboto";
+	src: url("/font/Roboto-BlackItalic.ttf");
+	font-weight: 900;
+	font-style: italic;
+}
+
+* {
+	font-family: "Roboto";
+}
+
+.buttonLike {
+	border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    display: block;
+    font-family: "Roboto";
+    font-size: 12pt;
+	font-weight: 900;
+	line-height: 30px;
+	margin: 10px;
+	max-width: 100%;
+    min-height: 30px;
+    min-width: 150px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: none;
+    user-select: none;
+    width: 150px;
+}
+
+.errorLike {
+	font-size: 14pt;
+	font-weight: 900;
+    border: solid 1px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+select:disabled {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+}
+select:disabled::-ms-expand {
+    display: none;
+}
+
+a {
+	text-decoration: none;
+}
