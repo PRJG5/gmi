@@ -6,6 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Enums\Language;
+use App;
 
 class EnumLanguageTest extends TestCase
 {
@@ -42,4 +43,13 @@ class EnumLanguageTest extends TestCase
           $result = count($temp);
           $this->assertEquals($result,59);
       }
+
+    /**
+     * @test
+     */
+    public function LanguageDescriptionTest()
+    {
+        App::setLocale('fr');
+        $this->assertEquals('Dari', Language::getDescription('PRS'));
+    }
 }
