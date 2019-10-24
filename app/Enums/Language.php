@@ -6,15 +6,15 @@ use BenSampo\Enum\Enum;
 
 final class Language extends Enum
 {
-    const ARC =0;
-    const HYE =1;
-    const BAM =2;
-    const BER =3;
-    const BOS =4;
-    const BUL =5;
-    const ZHO =6;
-    const KOR =7;
-    const HRV =8;
+    const ARC ='ARC';
+    const HYE ='HYE';
+    const BAM ='BAM';
+    const BER ='BER';
+    const BOS ='BOS';
+    const BUL ='BUL';
+    const ZHO ='ZHO';
+    const KOR ='KOR';
+    const HRV ='HRV';
     const PRS =9;
     const SPA =10;
     const FAS =11;
