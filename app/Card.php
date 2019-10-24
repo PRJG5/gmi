@@ -119,4 +119,8 @@ class Card extends Model
         'card_id',
     ];
 */
+
+    public function links(){
+        return $this->hasMany('App\Link');
+    }
 }
