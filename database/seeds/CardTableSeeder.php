@@ -15,6 +15,6 @@ class CardTableSeeder extends Seeder {
      * @author 44422
      */
     public function run() {
-        factory(Card::class, 30)->create();
+        factory(Card::class, 5)->create();
     }
 }
