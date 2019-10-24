@@ -40,6 +40,6 @@ class EnumLanguageTest extends TestCase
       {
           $temp = Language::getValues();
           $result = count($temp);
-          $this->assertEquals($result,56);
+          $this->assertEquals($result,59);
       }
 }
