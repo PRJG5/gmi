@@ -2,7 +2,9 @@
 
 use App\Enums\Language;
 
-//ressources/lang/fr/EnumLanguage.php
+//ressources/lang/en/EnumLanguage.php
+
+//ATTENTION ICI IL FAUT CHANGER LES VALEURS
 
 return [
     Language::class =>[
@@ -12,6 +14,7 @@ return [
         Language::ARA => 'Arabe',
         Language::ARC => 'Araméen',
         Language::HYE => 'Arménien',
+        Language::BAD => 'Badini',
         Language::BAM => 'Bambara',
         Language::BER => 'Berbère',
         Language::BOS => 'Bosniaque',
@@ -19,7 +22,7 @@ return [
         Language::ZHO => 'Chinois',
         Language::KOR => 'Coréen',
         Language::HRV => 'Croate',
-        Language::PRS => 'Dari',
+        Language::Prs => 'Dari',
         Language::SPA => 'Espagnol',
         Language::FAS => 'Farsi',
         Language::FRA => 'Français',
@@ -28,7 +31,7 @@ return [
         Language::GUJ => 'Gujarati',
         Language::HIN => 'Hindi',
         Language::KAZ => 'Kazakh',
-        Language::IT => 'Italien',
+        Language::ITA => 'Italien',
         Language::JPN => 'Japonais',
         Language::KUR => 'Kurde',
         Language::LIN => 'Lingala',
