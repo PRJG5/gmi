@@ -75,6 +75,8 @@ class RegisterController extends Controller
         $speakedLanguage = new SpeakedLanguage();
         $speakedLanguage->user_id = $user->id;
         foreach($data['languages'] as $lang) {
+            $speakedLanguage = new SpeakedLanguage();
+            $speakedLanguage->user_id = $user->id;
             $speakedLanguage->languageISO = $lang;
             $speakedLanguage.save();
         }

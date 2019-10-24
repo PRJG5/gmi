@@ -30,6 +30,6 @@ class CreateSpeakedLanguagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('speakedLanguages');
+        Schema::dropIfExists('speaked_languages');
     }
 }
