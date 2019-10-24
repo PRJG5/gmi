@@ -65,9 +65,9 @@
                             <label for="languages" class="col-md-4 col-form-label text-md-right">{{ __('Langues parlées') }}</label>
 
                             <div class="col-md-6">
-                                <select id="languages" class="form-control @error('languages') is-invalid @enderror" name="languages" required multiple>
+                                <select id="languages" class="form-control @error('languages') is-invalid @enderror" name="languages[]" required multiple>
                                     @foreach ($languages as $language)
-                                        <option value="{{$language}}">{{$language}}</option>
+                                        <option value="{{$language[0]}}">{{$language[1]}}</option>
                                     @endforeach
                                 </select>
 

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Enums\Language;
 use App\SpeakedLanguage;
+use Illuminate\Support\Facades\DB;
 
 class RegisterController extends Controller
 {
@@ -54,15 +55,16 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'languages' => ['required', 'string'],
+            'languages' => ['required'],
         ]);
     }
 
     /**
-     * Create a new user instance after a valid registration.
+     * Create a new user instance after a valid registration. Add speaked languages.
+     * If an error occure, rollback.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return \App\User or nothing if error
      */
     protected function create(array $data)
     {
@@ -72,15 +74,26 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        $speakedLanguage = new SpeakedLanguage();
-        $speakedLanguage->user_id = $user->id;
-        foreach($data['languages'] as $lang) {
-            $speakedLanguage = new SpeakedLanguage();
-            $speakedLanguage->user_id = $user->id;
-            $speakedLanguage->languageISO = $lang;
-            $speakedLanguage.save();
-        }
+        $userDB = User::where('email', $data['email'])->first();
 
+        try {
+            DB::beginTransaction();
+            $cpt = 0;
+            do {
+                $speakedLanguage = new SpeakedLanguage();
+                $speakedLanguage->user_id = $userDB->id;
+                $speakedLanguage->languageISO = $data['languages'][$cpt];
+                $success = $speakedLanguage->save();
+                $cpt++;
+            } while ($success && $cpt < count($data['languages']));
+            if (!$success) {
+                DB::rollback();
+            } else {
+                DB::commit();
+            }
+        } catch (\Exception $e) {
+            DB::rollback();
+        }
         return $user;
     }
 
@@ -92,8 +105,10 @@ class RegisterController extends Controller
     public function showRegistrationForm()
     {
         $languages = array();
+        $cpt = 0;
         foreach(Language::getKeys() as $key) {
-            $languages[$key] = Language::getKey($key);
+            $languages[$cpt] = [$key, Language::getDescription($key)];
+            $cpt++;
         }
         return view('auth.register', compact('languages'));
     }
