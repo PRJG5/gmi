@@ -52,7 +52,7 @@ class NoteTest extends TestCase
         $note->description= "Test to string";
         $note->save();
         $str = $note->__toString();
-        $this->assertTrue($str == $note->id . "Test to string");
+        $this->assertTrue($str == $note->id . " - " . "Test to string");
         $note->delete();
     }
 }
