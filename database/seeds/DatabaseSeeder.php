@@ -13,6 +13,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
         $this->call(ContextSeeder::class);
+        // $this->call(UsersTableSeeder::class);
+        $this->call(CardTableSeeder::class);
+
     }
 }
