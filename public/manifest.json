@@ -1,0 +1,10 @@
+{
+    "name": "Glossaire Multilingue Internationalisé",
+    "short_name": "GMI",
+    "theme_color": "#4cb4df",
+    "background_color": "#e4e4e4",
+    "display": "minimal-ui",
+    "orientation": "portrait",
+    "scope": "/",
+    "start_url": "/"
+  }

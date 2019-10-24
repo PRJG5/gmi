@@ -1,0 +1,16 @@
+:root {
+	--light-blue: #4cb4df;
+	--card_text_darkest: #111111;
+	--error: #DD5347;
+	--errorTransparent: #DD534750
+}
+
+.buttonLike {
+	background-color: var(--light-blue);
+	color: var(--card_text_darkest);
+}
+
+.errorLike {
+	color: var(--error);
+	background-color: var(--errorTransparent);
+}
