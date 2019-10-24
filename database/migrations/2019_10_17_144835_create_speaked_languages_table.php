@@ -13,14 +13,13 @@ class CreateSpeakedLanguagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('speakedLanguages', function (Blueprint $table) {
+        Schema::create('speaked_languages', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('user_id');
-            $table->string('language_id');
-            $table->unique('user_id' , 'language_id');
+            $table->string('languageISO');
+            $table->unique(['user_id' , 'languageISO']);
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('language_id')->references('id')->on('languages');
         });
     }
 

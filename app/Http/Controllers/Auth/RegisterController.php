@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Enums\Language;
+use App\SpeakedLanguage;
 
 class RegisterController extends Controller
 {
@@ -65,12 +66,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        //TODO: add speeked languages 
-        return User::create([
+        $user =  User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        $speakedLanguage = new SpeakedLanguage();
+        $speakedLanguage->user_id = $user->id;
+        foreach($data['languages'] as $lang) {
+            $speakedLanguage->languageISO = $lang;
+            $speakedLanguage.save();
+        }
+
+        return $user;
     }
 
     /**

@@ -5,6 +5,7 @@ namespace Tests\Unit;
 use App\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Database\QueryException;
 
 class UserTest extends TestCase
 {
@@ -35,7 +36,7 @@ class UserTest extends TestCase
         $user->password = 'userPassword';
         $user->save();
 
-        $this->expectException(\Illuminate\Database\QueryException::class);
+        $this->expectException(QueryException::class);
         $user = new User();
         $user->name = 'user2';
         $user->email = 'user@example.com';
