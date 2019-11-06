@@ -12,14 +12,14 @@
         "bensampo/laravel-enum": "^1.26",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.0",
-        "laravel/tinker": "^1.0",
-        "fzaninotto/faker": "^1.4"
+        "laravel/tinker": "^1.0"
     },
     "require-dev": {
         "filp/whoops": "^2.0",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^3.0",
-        "phpunit/phpunit": "^8.0"
+        "phpunit/phpunit": "^8.0",
+        "fzaninotto/faker": "^1.4"
     },
     "config": {
         "optimize-autoloader": true,

@@ -15,7 +15,6 @@
 use App\Http\Controllers\CardController;
 use App\Enums\Language;
 use Illuminate\Support\Facades\Auth;
-use Faker\Factory;
 
 Route::get('/', function () {
     return view('welcome');
@@ -28,7 +27,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/card/create', function () {
     // Use Auth::user() and not facory
     //$user = factory('App\User')->make();
-    $data = ['user' => Auth::user(), 'languages' => Language::getInstances(), 'editable' => True, 'card' => factory('App\Card')->make()];
+    //factory('App\Card')->make() // not work in production
+    $card = array("card_id" => 1,"cardId" =>1, "heading" => "titre", "key" => "FR");
+    $data = ['user' => Auth::user(), 'languages' => Language::getInstances(), 'editable' => True, 'card' => $card];
     return view('card/create',$data);
 });
 
@@ -36,6 +37,7 @@ Route::post('/card/create/submit', 'CardController@store')->name('createCard');
 
 Route::get('/card/{id}/edit', function ($id) {
     //  Use Card::find($id) and not factory when we have finish all test 
-    $data = ['user' => Auth::user(), 'languages' => Language::getInstances(), 'editable' => True, 'card' => factory('App\Card')->make()];
+    $card = array("card_id" => 1,"cardId" =>1, "heading" => "titre", "key" => "FR");
+    $data = ['user' => Auth::user(), 'languages' => Language::getInstances(), 'editable' => True, 'card' => $card];
     return view('card/edit',$data);
 });
