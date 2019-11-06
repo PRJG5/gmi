@@ -19,9 +19,13 @@ class CreateSpeakedLanguagesTable extends Migration
             $table->string('languageISO');
             $table->unique(['user_id' , 'languageISO']);
             $table->timestamps();
+        });
+
+        Schema::table('spoken_languages', function($table) {
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
+
 
     /**
      * Reverse the migrations.
