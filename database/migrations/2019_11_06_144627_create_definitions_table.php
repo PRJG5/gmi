@@ -29,10 +29,6 @@ class CreateDefinitionsTable extends Migration
                 */
                 $table->string('definition_content');
 
-                /*
-                The related card to the definition
-                */
-                $table->integer('card');
             });
         
         
@@ -49,3 +45,4 @@ class CreateDefinitionsTable extends Migration
         Schema::dropIfExists('definitions');
     }
 }
+

@@ -30,20 +30,12 @@ class Definition extends Model
     */
     protected $primaryKey = 'definition_id';
 
+    public $timestamps = false;
+
 
     protected $fillable = [
         'definition_content',
-        'card',
     ];
-
-    /**
-     * Gives the card that the definition belongs to.
-     * @return card
-     * @author 49102
-     */
-    public function card() {
-        return $this->$belongsTo(Card::class);
-    }
 
     /**
      * Returns a string of the definition with his id and content

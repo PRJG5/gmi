@@ -15,18 +15,58 @@ class DefinitionTest extends TestCase
 {
     /**
      * @Test
-     * A basic unit test example.
-     *
-     * @return void
+     * Checks if the definition create has the correct content
      */
-    public function testCreateACardWithDefinition()
+    public function testDefinitionWithContent()
     {
-        $card = new Card();
         $definition = new Definition();
         $definition->definition_content = "hello33";
         $definition->save();
         $this->assertDatabaseHas('definitions', [
-            'definition_content' => $definition->definition_content;
+            'definition_content' => $definition->definition_content,
         ]);
+        $definition->delete();
+    }
+
+    /**
+     * @Test
+     * checks if the ID of the definition is properly set automatically
+     */
+    public function testDefinitionWithId() {
+        $definition = new Definition();
+        $definition->definition_content = "hello33";
+        $definition->save();
+        $this->assertDatabaseHas('definitions', [
+            'definition_id' => $definition->definition_id,
+            'definition_content' => $definition->definition_content,
+        ]);
+        $definition->delete();
+    }
+
+    /**
+     * @Test
+     * Checks if it deletes the definition in the database
+     */
+    public function testDefinitionMissing() {
+        $definition = new Definition();
+        $definition->definition_content = "hello33";
+        $definition->save();
+        $definition->delete();
+        $this->assertDatabaseMissing('definitions', [
+            'definition_id' => $definition->definition_id
+        ]);
+    }
+
+    /**
+     * @Test
+     * Checks if the to string method works properly
+     */
+    public function testDefinitionToString() {
+        $definition = new Definition();
+        $definition->definition_content = "Test to string";
+        $definition->save();
+        $str = $definition->__toString();
+        $this->assertTrue($str == $definition->definition_id . " - " . "Test to string");
+        $definition->delete();
     }
 }
