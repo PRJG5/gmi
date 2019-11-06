@@ -15,7 +15,7 @@
 use App\Http\Controllers\CardController;
 use App\Enums\Language;
 use Illuminate\Support\Facades\Auth;
-
+use Faker\Factory;
 
 Route::get('/', function () {
     return view('welcome');
