@@ -10,6 +10,7 @@ class CreateSpeakedLanguagesTable extends Migration
      * Run the migrations.
      *
      * @return void
+     * fefef
      */
     public function up()
     {
