@@ -28,7 +28,7 @@ Route::get('/card/create', function () {
     // Use Auth::user() and not facory
     //$user = factory('App\User')->make();
     //factory('App\Card')->make() // not work in production
-    $card = array("card_id" => 1,"cardId" =>1, "heading" => "titre", "key" => "FR");
+    $card = (object)array("card_id" => 1,"cardId" =>1, "heading" => "titre", "key" => "FR");
     $data = ['user' => Auth::user(), 'languages' => Language::getInstances(), 'editable' => True, 'card' => $card];
     return view('card/create',$data);
 });
