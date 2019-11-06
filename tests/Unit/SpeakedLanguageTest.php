@@ -4,7 +4,7 @@ namespace Tests\Unit;
 
 use Tests\TestCase;
 use App\User;
-use App\SpeakedLanguage;
+use App\SpokenLanguages;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Database\QueryException;
 
@@ -23,7 +23,7 @@ class SpeakedLanguageTest extends TestCase
 
         $userDB = User::where('email', $user->email)->first();
 
-        $speackedLanguage = new SpeakedLanguage();
+        $speackedLanguage = new SpokenLanguages();
         $speackedLanguage->user_id = $userDB->id;
         $speackedLanguage->languageISO = 'SPA';
         $speackedLanguage->save();
@@ -46,11 +46,11 @@ class SpeakedLanguageTest extends TestCase
 
         $userDB = User::where('email', $user->email)->first();
 
-        $speackedLanguage = new SpeakedLanguage();
+        $speackedLanguage = new SpokenLanguages();
         $speackedLanguage->user_id = $userDB->id;
         $speackedLanguage->languageISO = 'SPA';
         $speackedLanguage->save();
-        $speackedLanguage2 = new SpeakedLanguage();
+        $speackedLanguage2 = new SpokenLanguages();
         $speackedLanguage2->user_id = $userDB->id;
         $speackedLanguage2->languageISO = 'FRA';
         $speackedLanguage2->save();
@@ -82,11 +82,11 @@ class SpeakedLanguageTest extends TestCase
         $userDB = User::where('email', $user->email)->first();
         $userDB2 = User::where('email', $user2->email)->first();
 
-        $speackedLanguage = new SpeakedLanguage();
+        $speackedLanguage = new SpokenLanguages();
         $speackedLanguage->user_id = $userDB->id;
         $speackedLanguage->languageISO = 'SPA';
         $speackedLanguage->save();
-        $speackedLanguage = new SpeakedLanguage();
+        $speackedLanguage = new SpokenLanguages();
         $speackedLanguage->user_id = $userDB2->id;
         $speackedLanguage->languageISO = 'SPA';
         $speackedLanguage->save();
@@ -114,11 +114,11 @@ class SpeakedLanguageTest extends TestCase
         $userDB = User::where('email', $user->email)->first();
 
         $this->expectException(QueryException::class);
-        $speackedLanguage = new SpeakedLanguage();
+        $speackedLanguage = new SpokenLanguages();
         $speackedLanguage->user_id = $userDB->id;
         $speackedLanguage->languageISO = 'SPA';
         $speackedLanguage->save();
-        $speackedLanguage = new SpeakedLanguage();
+        $speackedLanguage = new SpokenLanguages();
         $speackedLanguage->user_id = $userDB->id;
         $speackedLanguage->languageISO = 'SPA';
         $speackedLanguage->save();

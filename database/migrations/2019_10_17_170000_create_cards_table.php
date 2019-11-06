@@ -35,7 +35,13 @@ class CreateCardsTable extends Migration
             // context.
             // note.
             $table->unsignedInteger('language_id')->default(1);
+            $table->unsignedInteger('owner_id');
 
+            /**
+             * LIST OF ALTER TABLE
+             */
+            $table->foreign('owner_id')->references('id')->on('users');
+            
             /*
              Check for correspondig table name
              Need to create the table with all languages and languages id's
