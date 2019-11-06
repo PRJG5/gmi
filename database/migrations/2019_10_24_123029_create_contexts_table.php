@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSubdomainsTable extends Migration
+class CreateContextsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateSubdomainsTable extends Migration
      */
     public function up()
     {
-        Schema::create('subdomains', function (Blueprint $table) {
+        Schema::create('contexts', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('context_to_string');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ class CreateSubdomainsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subdomains');
+        Schema::dropIfExists('contexts');
     }
 }

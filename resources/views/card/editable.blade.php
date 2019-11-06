@@ -30,6 +30,12 @@
 	@enderror
 @show
 
+@section('error_owner_id')
+	@error('owner_id')
+		<p class="errorLike">{{ $message }}</p>
+	@enderror
+@show
+
 @section('edit')
 @endsection
 

@@ -1,0 +1,97 @@
+html {
+    font-family: 'Times New Roman';
+    font-weight: bold;
+    font-size: 18px;  
+}
+
+body{
+    font-family: 'Times New Roman';
+    font-weight: bold;
+
+    background-color: whitesmoke;
+    margin:0px;
+    font-size: 18px;
+}
+
+body > header {
+    background-color: #000000;
+    height: 50px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+footer {
+    background-color: #000000;
+    height : 60px;
+    width : 100%;
+    bottom: 0;
+    position: absolute;
+}
+
+.title {
+    text-align: center;
+    color : #000000;
+    font-size : 35px;
+}
+
+.liste {
+    width: 50%;
+    color:lightblue;
+    font-size: 25px;
+    border: 1px solid white;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.list-group{
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.list-group-item {
+    font-size: 18px;  }
+
+.list-group-item-action {
+    font-size: 18px;  
+}
+
+.btn {
+    font-size: 18px;
+    background-color: #008080;
+    color: #fff;
+}
+
+.btn:hover {
+    background-color: #00a3a3;
+    color: aliceblue;
+}
+
+.btn:active {
+    background-color: darkgray;
+}
+
+.form-group {
+    margin:auto;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.col-form-label {
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+.navbar {
+    background-color: #008080;
+}
+.nav-item.active{
+    color: whitesmoke;
+}
+.navbar-default .navbar-brand {
+    color: #c8cccc;
+}
+
+.navbar-default .navbar-brand:hover {
+    color: whitesmoke;
+}

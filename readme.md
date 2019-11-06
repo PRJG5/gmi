@@ -7,6 +7,7 @@
 * Composer 1.9.0
 * Laravel 6.0.4
 * PHPUnit 8
+* Librairie benSempo/laravels-enum 1.26
 
 ## Installation
 
