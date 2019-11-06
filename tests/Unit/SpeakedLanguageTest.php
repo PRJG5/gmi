@@ -28,7 +28,7 @@ class SpeakedLanguageTest extends TestCase
         $speackedLanguage->languageISO = 'SPA';
         $speackedLanguage->save();
 
-        $this->assertDatabaseHas('speaked_languages', [
+        $this->assertDatabaseHas('spoken_languages', [
             'user_id' => $speackedLanguage->user_id,
             'languageISO' => $speackedLanguage->languageISO
         ]);
@@ -55,11 +55,11 @@ class SpeakedLanguageTest extends TestCase
         $speackedLanguage2->languageISO = 'FRA';
         $speackedLanguage2->save();
 
-        $this->assertDatabaseHas('speaked_languages', [
+        $this->assertDatabaseHas('spoken_languages', [
             'user_id' => $speackedLanguage->user_id,
             'languageISO' => $speackedLanguage->languageISO
         ]);
-        $this->assertDatabaseHas('speaked_languages', [
+        $this->assertDatabaseHas('spoken_languages', [
             'user_id' => $speackedLanguage2->user_id,
             'languageISO' => $speackedLanguage2->languageISO
         ]);
@@ -91,12 +91,12 @@ class SpeakedLanguageTest extends TestCase
         $speackedLanguage->languageISO = 'SPA';
         $speackedLanguage->save();
 
-        $this->assertDatabaseHas('speaked_languages', [
+        $this->assertDatabaseHas('spoken_languages', [
             'user_id' => $userDB->id,
             'languageISO' => $speackedLanguage->languageISO
         ]);
 
-        $this->assertDatabaseHas('speaked_languages', [
+        $this->assertDatabaseHas('spoken_languages', [
             'user_id' => $userDB2->id,
             'languageISO' => $speackedLanguage->languageISO
         ]);
