@@ -28,7 +28,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/card/create', function () {
     // Use Auth::user() and not facory
     $user = factory('App\User')->make();
-    $data = ['user' => $user, 'languages' => Language::getInstances(), 'editable' => True, 'card' => factory('App\Card')->make()];
+    $data = ['user' => Auth::user(), 'languages' => Language::getInstances(), 'editable' => True, 'card' => factory('App\Card')->make()];
     return view('card/create',$data);
 });
 
