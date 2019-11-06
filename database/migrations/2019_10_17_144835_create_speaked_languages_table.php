@@ -21,6 +21,7 @@ class CreateSpeakedLanguagesTable extends Migration
             $table->timestamps();
         });
 
+        // alter table after creat table
         Schema::table('spoken_languages', function($table) {
             $table->foreign('user_id')->references('id')->on('users');
         });
