@@ -15,9 +15,8 @@ class CreatePhoneticsTable extends Migration
     {
         Schema::create('phonetics', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigIncrements('card');
-            $table->foreign('card')->references('card_id')->on('cards')->onDelete('cascade');
             $table->string('textDescription');
+            $table->unique(['card']);
             $table->timestamps();
         });
     }
