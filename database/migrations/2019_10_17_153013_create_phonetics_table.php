@@ -30,3 +30,4 @@ class CreatePhoneticsTable extends Migration
         Schema::dropIfExists('phonetics');
     }
 }
+//
