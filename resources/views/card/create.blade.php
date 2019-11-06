@@ -1,5 +1,5 @@
 @extends('card.editable', [
-	'card' => null,
+	'card' => $card,
 	'languages' => $languages,
-	'action' => '/cards',
+	'action' => route('createCard'),
 ])

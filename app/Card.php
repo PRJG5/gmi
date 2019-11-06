@@ -108,6 +108,7 @@ class Card extends Model
         // context.
         // note.
         'language_id',
+        'owner_id',
     ];
 
     /**

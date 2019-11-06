@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Card;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Handles the different CRUD action about the cards.
@@ -40,9 +41,17 @@ class CardController extends Controller
      */
     public function store(Request $request)
     {
+        $user = factory('App\User')->make();
+        //$request->merge(['owner_id' => 4]);
         $card = Card::create($this->validateData($request));
-        $card->save();
-        return redirect()->action('CardController@show', [$card]);
+        //$card->save();
+        var_dump($card);
+        exit;
+        //$card->save();
+        //var_dump($card);
+        //exit;
+        return redirect('pages/aracislemler');
+        //return redirect()->action('CardController@show', [$card]);
     }
 
     /**
@@ -101,14 +110,15 @@ class CardController extends Controller
     private function validateData(Request $request)
     {
         return $request->validate([
-            'heading'       => 'required',
+            'heading' => 'required',
             // phonetic.
             // domain.
             // sub-domain.
             // definition.
             // context.
             // note.
-            'language_id'   => 'required',
+            'language_id' => 'required',
+            'owner_id' => 'required',
         ]);
     }
 

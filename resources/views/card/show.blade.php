@@ -42,18 +42,18 @@ Next 4 lines must be put in the base Blade tmplate.
 					i.e. in case of linking two cards.
 				--}}
 				@section('cardId')
-				<input name="cardId"		class="id"				type="hidden"	value="{{ isset($card) ? $card->cardId : '' }}">
+				<input name="cardId" class="id" type="hidden" value="{{ isset($card) ? $card->cardId : '' }}">
 				@show
-				<select name="language_id" 	class="language_id" 	type="text" 	placeholder="Language"		value="{{ isset($card) ? $card->language_id : '' }}"	title="Langue"	{{ (isset($editable) && $editable) ? '' : 'disabled' }}	required>
+				<select name="language_id" 	class="language_id" type="text" placeholder="Language"	value="{{ isset($card) ? $card->language_id : '' }}"	title="Langue"	{{ (isset($editable) && $editable) ? '' : 'disabled' }}	required>
 					@forelse ($languages as $lang)
-						<option value="{{ $lang->language_id }}" {{ (isset($card) && ($card->language_id == $lang->language_id)) ? 'selected' : '' }} title="{{ $lang->language_name }}">{{ $lang->language_name }}</option>
+						<option value="{{ $lang->key }}" {{ (isset($card) && ($card->key == $lang->key)) ? 'selected' : '' }} title="{{ $lang->description }}">{{ $lang->description }}</option>
 					@empty
 						<option></option>
 					@endforelse
 				</select>
 				@section('error_language_id')
 				@show
-				<input name="heading" 		class="heading" 		type="text" 	placeholder="Vedette"		value="{{ isset($card) ? $card->heading : '' }}"	 	title="{{ isset($card) ? $card->heading : '' }}"	{{ (isset($editable) && $editable) ? '' : 'disabled' }}	required >
+				<input name="heading" class="heading" type="text" placeholder="Vedette"	value="{{ isset($card) ? $card->heading : '' }}" title="{{ isset($card) ? $card->heading : '' }}" {{ (isset($editable) && $editable) ? '' : 'disabled' }}	required >
 				@section('error_heading')
 				@show
 				{{--
@@ -68,15 +68,19 @@ Next 4 lines must be put in the base Blade tmplate.
 					context
 					note
 				--}}
+				@section('error_owner_id')
+				@show
+				<label>Nom du propriétaire : {{$user->name}}</label>
+				<input type="hidden" name="owner_id" value="{{$user->id}}"/>
 			</div>
 			@section('buttons')
 			@show
 		</form>
 		@section('edit')
-		<a href="/cards/{{ isset($card) ? $card->card_id : '' }}/edit" class="buttonLike"	title="Edit">Edit</a>
+		<a href="{{ isset($card) ? $card->card_id : '' }}/edit" class="buttonLike"	title="Edit">Edit</a>
 		@show
 		@section('delete')
-		<form action="/cards/{{ isset($card) ? $card->card_id : '' }}" method="post">
+		<form action="cards/{{ isset($card) ? $card->card_id : '' }}" method="post">
 			@method('DELETE')
 			@csrf
 			<input type="submit" class="buttonLike" value="Delete"	title="Delete">
