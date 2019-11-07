@@ -28,6 +28,7 @@ class CreateCardsTable extends Migration
             since non-latin languages may be used.
             */
             $table->text('heading')->charset('utf8');
+            $table->text('definition')->charset('utf8');
             // phonetic.
             // domain.
             $table->text('definition')->charset('utf8');
