@@ -35,7 +35,7 @@ class CreateCardsTable extends Migration
             // context.
             // note.
             $table->text('language_id')->charset('utf8');
-            $table->unsignedInteger('owner_id');
+            $table->unsignedBigInteger('owner_id');
 
             /**
              * LIST OF ALTER TABLE
