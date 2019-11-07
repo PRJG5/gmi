@@ -15,8 +15,17 @@ class CreateLinksTable extends Migration
     {
         Schema::create('links', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('cardA');
-            $table->bigInteger('cardB');
+            
+            //Foreign key to a card A
+            $table->bigInteger("cardA");
+            //Foreign key to a card B
+            $table->bigInteger("cardB");
+            
+            ##Their references
+            $table->foreign('cardA')->references('card_id')->on('cards');
+            $table->foreign('cardB')->references('card_id')->on('cards');
+
+            
         });
     }
 
