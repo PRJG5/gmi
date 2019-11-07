@@ -70,4 +70,15 @@ class CardTest extends TestCase
             'language_id' => strval($card->language_id),
         ]);
     }
+
+    public function getLinks()
+    {
+        $cardA = Card::create(['heading'=>'test1', 'definition'=>'blabla2']);
+        $cardB = Card::create(['heading'=>'test2', 'definition'=>'blabla2']);
+        $link = new Link();
+        $link->cardA = $cardA->card_id;
+        $link->cardB = $cardB->card_id;
+        $link->save();
+        $this->assertEquals($cardA->links(), [$cardB]);
+    }
 }

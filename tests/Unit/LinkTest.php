@@ -10,6 +10,8 @@ use App\Card;
 
 class LinkTest extends TestCase
 {
+    use RefreshDatabase;
+
     // /**
     //  * A basic unit test example.
     //  *
@@ -21,13 +23,23 @@ class LinkTest extends TestCase
     // }
     public function testGetA()
     {
-        $cardA = Card::create(['heading'=>'test1']);
-        $cardB = Card::create(['heading'=>'test2']);
+        $cardA = Card::create(['heading'=>'test1', 'definition'=>'blabla2']);
+        $cardB = Card::create(['heading'=>'test2', 'definition'=>'blabla2']);
         $link = new Link();
         $link->cardA = $cardA->card_id;
         $link->cardB = $cardB->card_id;
         $link->save();
         $this->assertEquals($link->getCardA(), $cardA);
+    }
+
+    public function testGetB()
+    {
+        $cardA = Card::create(['heading'=>'test1', 'definition'=>'blabla2']);
+        $cardB = Card::create(['heading'=>'test2', 'definition'=>'blabla2']);
+        $link = new Link();
+        $link->cardA = $cardA->card_id;
+        $link->cardB = $cardB->card_id;
+        $link->save();
         $this->assertEquals($link->getCardB(), $cardB);
     }
 }
