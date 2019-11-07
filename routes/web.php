@@ -19,6 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::post('/mesFiches', 'MyCardController@index')->name('mesFiches')->middleware('auth');
+
 // Cards shouldn't be accessible directly from the web
 // and should only be called trough a view
 // If you still want to access the cards for testing purposes i.e

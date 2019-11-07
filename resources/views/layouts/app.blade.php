@@ -63,6 +63,16 @@
                                         {{ __('Logout') }}
                                     </a>
 
+                                    <a class="dropdown-item" href="{{ route('mesFiches') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('mesFiches-form').submit();">
+                                        {{ __('Mes Fiches') }}
+                                    </a>
+
+                                    <form id="mesFiches-form" action="{{ route('mesFiches') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
