@@ -25,4 +25,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 // then uncomment the next line
 // TODO
 // This should ideally be removed
-//Route::resource('cards', 'CardController');
+Route::resource('cards', 'CardController');
