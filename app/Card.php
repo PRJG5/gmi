@@ -92,7 +92,8 @@ class Card extends Model
         // definition.
         // context.
         // note.
-        'language_id' => 0,
+		'language_id' => 0,
+		'owner_id' => 0,
     ];
 
     /**
