@@ -40,7 +40,7 @@ class CreateCardsTable extends Migration
             /**
              * LIST OF ALTER TABLE
              */
-            //$table->foreign('owner_id')->references('id')->on('users');
+            ///$table->foreign('owner_id')->references('id')->on('users');
         });
     }
 
