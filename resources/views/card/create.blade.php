@@ -1,5 +1,12 @@
 @extends('card.editable', [
+	'action' => '/cards',
 	'card' => null,
 	'languages' => $languages,
-	'action' => '/cards',
+	'user' => null,
 ])
+
+@section('card_id')
+@endsection
+
+@section('owner_id')
+@endsection

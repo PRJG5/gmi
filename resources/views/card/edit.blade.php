@@ -1,7 +1,8 @@
 @extends('card.editable', [
+	'action' => "/cards/{$card->card_id}",
 	'card' => $card,
 	'languages' => $languages,
-	'action' => "/cards/{$card->card_id}",
+	'user' => $user,
 ])
 
 @section('patch')

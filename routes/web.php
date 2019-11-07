@@ -12,5 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+// Cards shouldn't be accessible directly from the web
+// and should only be called trough a view
+// If you still want to access the cards for testing purposes i.e
+// then uncomment the next line
+// TODO
+// This should ideally be removed
+//Route::resource('cards', 'CardController');

@@ -91,10 +91,11 @@ class Card extends Model
         // phonetic.
         // domain.
         // sub-domain.
-        // definition.
+        'definition' => '',
         // context.
         // note.
-        'language_id' => 0,
+		'language_id' => 0,
+		'owner_id' => 0,
     ];
 
     /**
@@ -106,10 +107,11 @@ class Card extends Model
         // phonetic.
         // domain.
         // sub-domain.
-        // definition.
+        'definition',
         // context.
         // note.
         'language_id',
+        'owner_id',
     ];
 
     /**
