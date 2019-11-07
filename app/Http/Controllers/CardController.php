@@ -138,4 +138,8 @@ class CardController extends Controller
             {"language_id":3,"language_name":"Allemand"}
             ]', false);
     }
+
+    public function getCardsByUser($userId) {
+        return Card::where('owner_id', $userId)->get(); //TODO: get only cards from this user
+    }
 }
