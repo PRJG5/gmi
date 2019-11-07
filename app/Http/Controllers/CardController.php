@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Card;
+use App\User;
+use App\Enums\Language;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * Handles the different CRUD action about the cards.
@@ -30,7 +33,9 @@ class CardController extends Controller
      */
     public function create()
     {
-        return view('card.create', ['languages' => $this->getFakeLanguages()]);
+        return view('card.create', [
+			'languages' => Language::getInstances(),
+		]);
     }
 
     /**
@@ -41,17 +46,15 @@ class CardController extends Controller
      */
     public function store(Request $request)
     {
-        $user = factory('App\User')->make();
-        //$request->merge(['owner_id' => 4]);
+		// TODO
+		// retrieve current logged in user
+		$user = factory('App\User')->make();
+		$request->merge(['owner_id' => $user->id]);
+
         $card = Card::create($this->validateData($request));
-        //$card->save();
-        var_dump($card);
-        exit;
-        //$card->save();
-        //var_dump($card);
-        //exit;
-        return redirect('pages/aracislemler');
-        //return redirect()->action('CardController@show', [$card]);
+		$card->save();
+		
+        return redirect()->action('CardController@show', [$card]);
     }
 
     /**
@@ -62,7 +65,10 @@ class CardController extends Controller
      */
     public function show(Card $card)
     {
-        return view('card.show', ['card' => $card, 'languages' => $this->getFakeLanguages()]);
+        return view('card.show', [
+			'card' => $card,
+			'languages' => Language::getInstances()
+		]);
     }
 
     /**
@@ -73,7 +79,11 @@ class CardController extends Controller
      */
     public function edit(Card $card)
     {
-        return view('card.edit', ['card' => $card, 'languages' => $this->getFakeLanguages()]);
+        return view('card.edit', [
+			'card' => $card,
+			'languages' => Language::getInstances(),
+			'user' => DB::table('users')->where('id', $card->owner_id)->first(),
+		]);
     }
 
     /**
@@ -110,6 +120,7 @@ class CardController extends Controller
     private function validateData(Request $request)
     {
         return $request->validate([
+			'card_id' => 'required',
             'heading' => 'required',
             // phonetic.
             // domain.
@@ -120,22 +131,5 @@ class CardController extends Controller
             'language_id' => 'required',
             'owner_id' => 'required',
         ]);
-    }
-
-    /**
-     * This function fakes the languages available.
-     * This is only temporary and will be replaced by the real languages from the database.
-     * // TODO
-     * @return object an array of languages.
-     * @author 44422
-     */
-    private function getFakeLanguages()
-    {
-        return json_decode('[
-            {"language_id":1,"language_name":"Français"},
-            {"language_id":2,"language_name":"Anglais"},
-            {"language_id":3,"language_name":"Néerlandais"},
-            {"language_id":3,"language_name":"Allemand"}
-            ]', false);
     }
 }
