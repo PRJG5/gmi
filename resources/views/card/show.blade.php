@@ -73,6 +73,7 @@ Next 8 HTML lines must be put in the base Blade tmplate.
 				{{--
 					phonetic
 				--}}
+				<input name="phonetic" class="phonetic" type="text" value="{{ isset($phonetic) ? $phonetic->textDescription : '' }}" title="phonetic" {{ (isset($editable) && $editable) ? '' : 'disabled' }}	required />
 			</div>
 			<div class="cardBody">
 				{{--

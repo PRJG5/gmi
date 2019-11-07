@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Card;
 use App\User;
 use App\Enums\Language;
+use App\Phonetic;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -49,8 +50,12 @@ class CardController extends Controller
 		// TODO
 		// retrieve current logged in user
 		$user = factory('App\User')->make();
-		$request->merge(['owner_id' => $user->id]);
-
+        $request->merge(['owner_id' => $user->id]);
+        if(isset($request['phonetic'])){
+            $phonetic = Phonetic::create(['textDescription' => $request['phonetic']]);
+            $phonetic->save();
+            $request->merge(['phonetic_id'=> $phonetic->id]);
+        }
         $card = Card::create($this->validateData($request));
 		$card->save();
 		
@@ -67,7 +72,8 @@ class CardController extends Controller
     {
         return view('card.show', [
 			'card' => $card,
-			'languages' => Language::getInstances()
+            'languages' => Language::getInstances(),
+            'phonetic' => DB::table('phonetics')->where('id', $card->phonetic_id)->first(),
 		]);
     }
 
@@ -122,7 +128,7 @@ class CardController extends Controller
         return $request->validate([
 			'card_id' => 'required',
             'heading' => 'required',
-            // phonetic.
+            // 'phonetic',
             // domain.
             // sub-domain.
             // definition.

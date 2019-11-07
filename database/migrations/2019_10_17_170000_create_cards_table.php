@@ -28,7 +28,7 @@ class CreateCardsTable extends Migration
             since non-latin languages may be used.
             */
             $table->text('heading')->charset('utf8');
-            // phonetic.
+            $table->unsignedBigInteger('phonetic_id');
             // domain.
             // sub-domain.
             // definition.
@@ -41,6 +41,7 @@ class CreateCardsTable extends Migration
              * LIST OF ALTER TABLE
              */
             $table->foreign('owner_id')->references('id')->on('users');
+            $table->foreign('phonetic_id')->references('id')->on('phonetics');
         });
     }
 
