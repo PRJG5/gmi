@@ -10,3 +10,7 @@
 
 @section('owner_id')
 @endsection
+
+@foreach ($errors->all() as $error)
+    <li>{{ $error }}</li>
+@endforeach

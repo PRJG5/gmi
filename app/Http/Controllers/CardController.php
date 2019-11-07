@@ -8,6 +8,7 @@ use App\Enums\Language;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Handles the different CRUD action about the cards.
@@ -48,12 +49,16 @@ class CardController extends Controller
     {
 		// TODO
 		// retrieve current logged in user
-		$user = factory('App\User')->make();
+		//$user = factory('App\User')->make();
+        $user = Auth::user();
 		$request->merge(['owner_id' => $user->id]);
-
-        $card = Card::create($this->validateData($request));
+        $request->validate([
+            'heading' => 'required',
+            'language_id' => 'required',
+            'owner_id' => 'required',
+        ]);
+        $card = Card::create();
 		$card->save();
-		
         return redirect()->action('CardController@show', [$card]);
     }
 
