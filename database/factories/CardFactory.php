@@ -38,7 +38,8 @@ $factory->define(Card::class, function (Faker $faker) {
 
     fwrite(STDOUT, $faker->realText(rand(10,50))  . " ($testLanguages[$pickedLanguage])" . "\n");
     return [
-        'heading' => $faker->realText() . " ($testLanguages[$pickedLanguage])",
+        'heading' => $faker->word(),
+        //'heading' => $faker->realText() . " ($testLanguages[$pickedLanguage])",
         'language_id' => $pickedLanguage,
     ];
 });

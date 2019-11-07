@@ -128,4 +128,11 @@ class CardController extends Controller
             {"language_id":3,"language_name":"Allemand"}
             ]', false);
     }
+
+
+    public function getCardsBasedOnName($name){
+        $cards = Card::where('heading', '=', $name)->get();
+        return view('searchCard', [ 'cards' => $cards]);
+    }
+
 }

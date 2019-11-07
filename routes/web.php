@@ -20,4 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/searchCard', 'HomeController@getSearchView' );
+
+//Route::get('/searchCard/{nameTitle}', 'CardController@getCardsBasedOnName');
+Route::get('/searchCard' , 'HomeController@searchCard');
+//Route::get('/searchCard', 'HomeController@getSearchView' );
