@@ -13,8 +13,8 @@
 @endsection
 
 @section('buttons')
-<input type="submit" 	class="buttonLike"	value="Submit"	title="Submit">
-<input type="reset" 	class="buttonLike"	value="Clear"	title="Clear">
+<input type="submit" name="submitcard"	class="buttonLike"	value="Submit"	title="Submit">
+<input type="reset" name="resetcard"	class="buttonLike"	value="Clear"	title="Clear">
 @endsection
 
 
