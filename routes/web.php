@@ -15,6 +15,7 @@
 use App\Http\Controllers\CardController;
 use App\Enums\Language;
 use Illuminate\Support\Facades\Auth;
+use App\User;
 
 Route::get('/', function () {
     return view('welcome');
@@ -41,3 +42,9 @@ Route::get('/card/{id}/edit', function ($id) {
     $data = ['user' => Auth::user(), 'languages' => Language::getInstances(), 'editable' => True, 'card' => $card];
     return view('card/edit',$data);
 });
+
+
+Route::get('/searchByUser', function () {
+    return view('searchByAuthor', array("authors" => User::all()));
+})->middleware('auth');
+Route::get('api/getAllCardsFromUsers/{id}', 'CardController@getCardsByUser');
