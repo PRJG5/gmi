@@ -139,7 +139,12 @@ class CardController extends Controller
             ]', false);
     }
 
+    /**
+     * Return all cards from an user
+     * @param userId The user id
+     * @return All cards from an user
+     */
     public function getCardsByUser($userId) {
-        return Card::where('owner_id', $userId)->get(); //TODO: get only cards from this user
+        return Card::where('owner_id', $userId)->get();
     }
 }

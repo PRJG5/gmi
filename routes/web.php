@@ -43,8 +43,14 @@ Route::get('/card/{id}/edit', function ($id) {
     return view('card/edit',$data);
 });
 
-
+/**
+ * Route to display a page to search all cards from an user
+ */
 Route::get('/searchByUser', function () {
     return view('searchByAuthor', array("authors" => User::all()));
 })->middleware('auth');
+/**
+ * Route to return all cards from an user in JSON
+ * @param id The user id
+ */
 Route::get('api/getAllCardsFromUsers/{id}', 'CardController@getCardsByUser');
