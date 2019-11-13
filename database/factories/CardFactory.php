@@ -11,8 +11,6 @@ use App\Enums\Language;
 
 $factory->define(Card::class, function (Faker $faker) {
     return [
-		// card_id is the primary key, as auto-increment, and should not be provided
-        'card_id' => $faker->unique()->randomNumber(),
         'heading' => $faker->text(100),
         'language_id' => Language::getRandomValue(),
         'owner_id' => User::all()->random()->id,
