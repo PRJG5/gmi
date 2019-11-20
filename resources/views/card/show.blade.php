@@ -106,15 +106,15 @@ Next 8 HTML lines must be put in the base Blade tmplate.
 		</form>
 
 		@section('edit')
-		<a href="{{ isset($card) ? $card->card_id : '' }}/edit" class="buttonLike"	title="Edit">Edit</a>
+		{{-- <a href="{{ isset($card) ? $card->card_id : '' }}/edit" class="buttonLike"	title="Edit">Edit</a> --}}
 		@show
 		
 		@section('delete')
-		<form action="/cards/{{ isset($card) ? $card->card_id : '' }}" method="post">
+		{{-- <form action="/cards/{{ isset($card) ? $card->card_id : '' }}" method="post">
 			@method('DELETE')
 			@csrf
 			<input type="submit" class="buttonLike" value="Delete"	title="Delete" />
-		</form>
+		</form> --}}
 		@show
 
 	</body>

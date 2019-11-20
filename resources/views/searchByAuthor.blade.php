@@ -35,12 +35,21 @@ function searchCards() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-        document.getElementById("listOfCards").innerHTML = this.responseText;
-        //TODO: need to update the view according to the layout
+        $("#listOfCards").empty(); //Clear to add the new cards
+        var xhttp2 = new XMLHttpRequest();
+        xhttp2.onreadystatechange = function() {
+            $("#listOfCards").append(this.responseText);
+        };
+
+        cards = JSON.parse(this.responseText);
+        cards.forEach(card => {
+            xhttp2.open("GET", "/cards/" + card["card_id"], true);
+            xhttp2.send();
+        });
     }
   };
   let authorEmail = $('#authors').find(":selected").val();
   xhttp.open("GET", "/api/getAllCardsFromUsers/" + authorEmail, true);
   xhttp.send();
-}
+  }
 </script>
