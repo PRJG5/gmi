@@ -47,15 +47,16 @@ class CardController extends Controller
      */
     public function store(Request $request)
     {
-		// TODO
-		// retrieve current logged in user
-        //$user = factory('App\User')->make();
-        $user = Auth::User();
+		$user = Auth::user();
 		$request->merge(['owner_id' => $user->id]);
-
-        $card = Card::create($this->validateData($request));
+        $card = Card::create(
+            $request->validate([
+                'heading' => 'required',
+                'language_id' => 'required',
+                'owner_id' => 'required',
+            ])
+        );
 		$card->save();
-		
         return redirect()->action('CardController@show', [$card]);
     }
 
@@ -69,6 +70,7 @@ class CardController extends Controller
     {
         return view('card.show', [
 			'card' => $card,
+			'user' => User::find($card->owner_id),
 			'languages' => Language::getInstances()
 		]);
     }
@@ -133,5 +135,14 @@ class CardController extends Controller
             'language_id' => 'required',
             'owner_id' => 'required',
         ]);
+    }
+    
+    /**
+     * Return all cards from an user
+     * @param userId The user id
+     * @return All cards from an user
+     */
+    public function getCardsByUser($userId) {
+        return Card::where('owner_id', $userId)->get();
     }
 }
