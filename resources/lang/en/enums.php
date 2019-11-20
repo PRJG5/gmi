@@ -4,12 +4,8 @@ use App\Enums\Language;
 use App\Enums\Domain;
 use App\Enums\Subdomain;
 
-//ressources/lang/en/EnumLanguage.php
-
-//ATTENTION ICI IL FAUT CHANGER LES VALEURS
-
 return [
-    Language::class =>[
+ Language::class =>[
 		Language::ALB => 'Albanian',
 		Language::ARA => 'Arabic',
 		Language::ARC => 'Aramaic',
@@ -70,42 +66,42 @@ return [
 		Language::SFB => 'Langue des signes de Belgique Francophone',
 		Language::VGT => 'Vlaamse Gebarentaal',
 		Language::ILS => 'International Sign',
-        ] ,
+	] ,
 
-        Domain::class=> [
-            Domain::Juridical         => 'Juridique',
-            Domain::Mental_health     => 'Sante mentale',
-            Domain::Somatic_health   => 'Sante somatique',
-            Domain::Technical         => 'Technique',
-            Domain::Scientific      => 'Scientifique',
-            Domain::Economic          => 'Economie',
-            Domain::Other             => 'Autre',
-        ],
-    
-        Subdomain::class=> [
-            Subdomain::Asylum             => 'Asile',
-            Subdomain::Justice           => 'Justice',
-            Subdomain::Police          => 'Policier',
-            Subdomain::Anesthesia        => 'Anesthésie',
-            Subdomain::Cardiology       => 'Cardiologie',
-            Subdomain::Surgery         => 'Chirurgie',
-            Subdomain::Dentistry       => 'Dentisterie',
-            Subdomain::Dermatology      => 'Dermatologie',
-            Subdomain::Diabetology      => 'Diabétologie',
-            Subdomain::Endocrinology    => 'Endocrinologie',
-            Subdomain::Gastro_enterology => 'Gastro entérologie',
-            Subdomain::Gériatric         => 'Gériatrie',
-            Subdomain::Gynecology       => 'Gynécologie',
-            Subdomain::Physiotherapy    => 'Kinésithérapie',
-            Subdomain::Nephrology       => 'Néphrologie ',
-            Subdomain::Neurology        => 'Neurologie',
-            Subdomain::Oncology         => 'Oncologie',
-            Subdomain::ORL               => 'ORL',
-            Subdomain::Orthopédic_Traumatology => 'Orthopédie Traumatologie',
-            Subdomain::Pédiatric         => 'Pédiatrie',
-            Subdomain::Pneumonology       => 'Pneumologie',
-            Subdomain::Radiology        => 'Radiologie',
-            Subdomain::Urology          => 'Urologie',
-            Subdomain::Other             => 'Autre',
-        ],
-    ];
+	Domain::class=> [
+		Domain::Economic 		=> 'Economic',
+		Domain::Legal 			=> 'Legal',
+		Domain::Mental_health 	=> 'Mental Health',
+		Domain::Scientific 		=> 'Scientific',
+		Domain::Somatic_health 	=> 'Somatic Health',
+		Domain::Technical 		=> 'Technical',
+		Domain::Other 			=> 'Other',
+	],
+	
+	Subdomain::class=> [
+		Subdomain::Anesthesia 				=> 'Anesthésie',
+		Subdomain::Asylum 					=> 'Asile',
+		Subdomain::Cardiology 				=> 'Cardiologie',
+		Subdomain::Dentistry 				=> 'Dentisterie',
+		Subdomain::Dermatology 				=> 'Dermatologie',
+		Subdomain::Diabetology 				=> 'Diabétologie',
+		Subdomain::Endocrinology 			=> 'Endocrinologie',
+		Subdomain::Gastro_enterology 		=> 'Gastro entérologie',
+		Subdomain::Gériatric 				=> 'Gériatrie',
+		Subdomain::Gynecology 				=> 'Gynécologie',
+		Subdomain::Justice 					=> 'Justice',
+		Subdomain::Nephrology 				=> 'Néphrologie ',
+		Subdomain::Neurology 				=> 'Neurologie',
+		Subdomain::Oncology 				=> 'Oncologie',
+		Subdomain::ORL 						=> 'ORL',
+		Subdomain::Orthopédic_Traumatology 	=> 'Orthopédie Traumatologie',
+		Subdomain::Pédiatric 				=> 'Pédiatrie',
+		Subdomain::Physiotherapy 			=> 'Kinésithérapie',
+		Subdomain::Pneumonology 			=> 'Pneumologie',
+		Subdomain::Police 					=> 'Policier',
+		Subdomain::Radiology 				=> 'Radiologie',
+		Subdomain::Surgery 					=> 'Chirurgie',
+		Subdomain::Urology 					=> 'Urologie',
+		Subdomain::Other 					=> 'Autre',
+	],
+ ];
