@@ -15,4 +15,13 @@ Route::get('/', function () {
     return view('home');
 });
 */
-Route::get('/test',"CardController@create");
+
+Route::get('/', function () {
+    return view('home');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/test','CardController@show');

@@ -93,9 +93,9 @@ Next 8 HTML lines must be put in the base Blade tmplate.
 				<label for="owner">Nom du propriétaire :</label>
 				<input name="owner"value="{{ isset($user) ? $user->name : '' }}" disabled /> 
 				@show
-				<label> Note: </label>
+				<label for="note"> Note: </label>
 				<input type="text" name="note" placeholder="note"/><br/>
-				<label> Contexte: </label>
+				<label for="context"> Contexte: </label>
 				<textarea name="context" placeholder="context" ></textarea>
 
 			</div>

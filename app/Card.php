@@ -90,8 +90,8 @@ class Card extends Model
         // domain.
         // sub-domain.
         'definition' => '',
-        // context.
-        // note.
+        'context' => '',
+        'note' => '',
 		'language_id' => 0,
 		'owner_id' => 0,
     ];
@@ -106,8 +106,8 @@ class Card extends Model
         // domain.
         // sub-domain.
         'definition',
-        // context.
-        // note.
+        'context',
+        'note',
         'language_id',
         'owner_id',
     ];
