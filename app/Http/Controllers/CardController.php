@@ -52,6 +52,8 @@ class CardController extends Controller
         $card = Card::create(
             $request->validate([
                 'heading' => 'required',
+                'context' => '',
+                'note' => '',
                 'language_id' => 'required',
                 'owner_id' => 'required',
             ])

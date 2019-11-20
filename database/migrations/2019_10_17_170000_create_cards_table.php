@@ -30,10 +30,12 @@ class CreateCardsTable extends Migration
             $table->text('heading')->charset('utf8');
             // phonetic.
             // domain.
-            $table->text('definition')->charset('utf8');
+            $table->text('definition')->charset('utf8')->nullable();
+            $table->text('context')->charset('utf8');
+
             // sub-domain.
             // context.
-            // note.
+            $table->text('note')->charset('utf8');
             $table->text('language_id')->charset('utf8');
             $table->unsignedBigInteger('owner_id');
 

@@ -7,8 +7,8 @@ Next 8 HTML lines must be put in the base Blade tmplate.
 	<head>
 		<meta name="viewport" content="width=device-width">
 		<meta name="description" content="Card">
-		{{--<link rel="stylesheet" type="text/css" href="{{ asset('css/common.css') }}" >
-		<link rel="stylesheet" type="text/css" href="{{ asset('css/themes/default/common.css') }}" > --}}
+		<link rel="stylesheet" type="text/css" href="{{ asset('css/common.css') }}" >
+		<link rel="stylesheet" type="text/css" href="{{ asset('css/themes/default/common.css') }}" >
 		<title>Card {{ isset($card) ? strval($card->cardId) : '' }}</title>
 
 		{{--
@@ -16,8 +16,8 @@ Next 8 HTML lines must be put in the base Blade tmplate.
 		* One for the ganaral layout (css/card.css)
 		* One for the color style, like a theme system (css/card.css)
 		--}}
-		{{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/card.css') }}" >
-		<link rel="stylesheet" type="text/css" href="{{ asset('css/themes/default/card.css') }}" > --}}
+		<link rel="stylesheet" type="text/css" href="{{ asset('css/card.css') }}" >
+		<link rel="stylesheet" type="text/css" href="{{ asset('css/themes/default/card.css') }}" >
 	</head>
 	<body>
 		<form class="card" action="{{ isset($action) ? $action : '' }}" method="post">
