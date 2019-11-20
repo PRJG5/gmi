@@ -26,7 +26,7 @@ final class Subdomain extends Enum implements LocalizedEnum
 	const Neurology					= 'Neurology';
 	const Oncology					= 'Oncology';
 	const Otorhinolaryngology		= 'Otorhinolaryngology';
-	const Orthopedic_Traumatology	= 'Orthopedic Traumatology';
+	const OrthopedicTraumatology	= 'Orthopedic Traumatology';
 	const Pediatric					= 'Pediatric';
 	const Physiotherapy				= 'Physiotherapy';
 	const Pneumonology				= 'Pneumonology';

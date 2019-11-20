@@ -14,9 +14,9 @@ final class Domain extends Enum implements LocalizedEnum
 {
     const Economic          = 'Economic';
     const Legal        		= 'Legal';
-    const Mental_health     = 'Mental Health';
+    const MentalHealth     = 'Mental Health';
     const Scientific        = 'Scientific';
-    const Somatic_health    = 'Somatic Health';
+    const SomaticHealth    = 'Somatic Health';
     const Technical         = 'Technical';
     const Other             = 'Other';
 }
