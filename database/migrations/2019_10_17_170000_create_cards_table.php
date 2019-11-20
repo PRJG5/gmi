@@ -34,6 +34,9 @@ class CreateCardsTable extends Migration
             $table->text('context')->charset('utf8')->nullable();
 
             // sub-domain.
+            $table->unsignedInteger('domain_id');
+            $table->unsignedInteger('subdomain_id');
+            // definition.
             // context.
             $table->text('note')->charset('utf8');
             $table->text('language_id')->charset('utf8');

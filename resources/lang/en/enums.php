@@ -1,6 +1,8 @@
 <?php
 
 use App\Enums\Language;
+use App\Enums\Domain;
+use App\Enums\Subdomain;
 
 //ressources/lang/en/EnumLanguage.php
 
@@ -65,4 +67,41 @@ return [
         Language::TUK => 'Turkmène',
         Language::UKR => 'Ukrainien',
         ] ,
+
+        Domain::class=> [
+            Domain::Juridical         => 'Juridique',
+            Domain::Mental_health     => 'Sante mentale',
+            Domain::Somatic_health   => 'Sante somatique',
+            Domain::Technical         => 'Technique',
+            Domain::Scientific      => 'Scientifique',
+            Domain::Economic          => 'Economie',
+            Domain::Other             => 'Autre',
+        ],
+    
+        Subdomain::class=> [
+            Subdomain::Asylum             => 'Asile',
+            Subdomain::Justice           => 'Justice',
+            Subdomain::Police          => 'Policier',
+            Subdomain::Anesthesia        => 'Anesthésie',
+            Subdomain::Cardiology       => 'Cardiologie',
+            Subdomain::Surgery         => 'Chirurgie',
+            Subdomain::Dentistry       => 'Dentisterie',
+            Subdomain::Dermatology      => 'Dermatologie',
+            Subdomain::Diabetology      => 'Diabétologie',
+            Subdomain::Endocrinology    => 'Endocrinologie',
+            Subdomain::Gastro_enterology => 'Gastro entérologie',
+            Subdomain::Gériatric         => 'Gériatrie',
+            Subdomain::Gynecology       => 'Gynécologie',
+            Subdomain::Physiotherapy    => 'Kinésithérapie',
+            Subdomain::Nephrology       => 'Néphrologie ',
+            Subdomain::Neurology        => 'Neurologie',
+            Subdomain::Oncology         => 'Oncologie',
+            Subdomain::ORL               => 'ORL',
+            Subdomain::Orthopédic_Traumatology => 'Orthopédie Traumatologie',
+            Subdomain::Pédiatric         => 'Pédiatrie',
+            Subdomain::Pneumonology       => 'Pneumologie',
+            Subdomain::Radiology        => 'Radiologie',
+            Subdomain::Urology          => 'Urologie',
+            Subdomain::Other             => 'Autre',
+        ],
     ];
