@@ -44,9 +44,7 @@ class CreateCardsTable extends Migration
             $table->foreign('phonetic_id')->references('id')->on('phonetics');
         });
 
-        DB::table('cards')->insert(['heading' => 'Acathésie' , 'definition' =>'Incapacité de rester assis.' ,'language_id' =>'1' , 'owner_id' =>'1'] );
-        DB::table('cards')->insert(['heading' => 'mal di testa' , 'definition' =>'Douleur de l’extrémité céphalique, qui peut constituer à elle seule la maladie, comme dans la migraine, ou représenter un symptôme d’une affection telle qu’une tumeur cérébrale ou une affection méningée.' ,'language_id' =>'7' , 'owner_id' =>'3'] );
-        DB::table('cards')->insert(['heading' => 'Algostase' , 'definition' =>'Verminderen en soms zelfs volledig afschaffen van het gevoel van pijn.' ,'language_id' =>'2' , 'owner_id' =>'2'] );
+        
     }
 
     /**

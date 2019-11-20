@@ -55,7 +55,7 @@ class CardController extends Controller
             $phonetic->save();
             $request->merge(['phonetic_id'=> $phonetic->id]);
         }
-        $card = Card::create($this->validateData($request));
+        $card = Card::create($this->validateData($request, true));
 		$card->save();
         return redirect()->action('CardController@show', [$card]);
     }
@@ -100,7 +100,7 @@ class CardController extends Controller
      */
     public function update(Request $request, Card $card)
     {
-        $card->update($this->validateData($request));
+        $card->update($this->validateData($request, false));
         return redirect()->action('CardController@show', [$card]);
     }
 
@@ -122,10 +122,9 @@ class CardController extends Controller
      * @return array the validated data in a Card object.
      * @author 44422
      */
-    private function validateData(Request $request)
+    private function validateData(Request $request, bool $creating)
     {
-        return $request->validate([
-			'card_id' => 'required',
+        $tab = [
             'heading' => 'required',
             // 'phonetic',
             // domain.
@@ -135,7 +134,11 @@ class CardController extends Controller
             // note.
             'language_id' => 'required',
             'owner_id' => 'required',
-        ]);
+        ];
+        if(!$creating){
+            array_merge($tab, ['card_id' => 'required']);
+        }
+        return $request->validate($tab);
     }
     
     /**
