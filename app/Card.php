@@ -87,8 +87,8 @@ class Card extends Model
     protected $attributes = [
         'heading' => '',
         // phonetic.
-        // domain.
-        // sub-domain.
+        'domain_id' => 0,
+        'subdomain_id' => 0,
         'definition' => '',
         // context.
         // note.
@@ -103,8 +103,8 @@ class Card extends Model
     protected $fillable = [
         'heading',
         // phonetic.
-        // domain.
-        // sub-domain.
+        'domain',
+        'subdomain',
         'definition',
         // context.
         // note.

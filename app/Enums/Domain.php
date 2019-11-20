@@ -12,11 +12,11 @@ use BenSampo\Enum\Contracts\LocalizedEnum;
 
 final class Domain extends Enum implements LocalizedEnum
 {
-    const Juridique         = 0;
-    const Sante_mentale     = 1;
-    const Sante_somatique   = 2;
-    const Technique         = 3;
-    const Scientifique      = 4;
-    const Economie          = 5;
-    const Autre             = 6;
+    const Juridical         = 'Juridical';
+    const Mental_health     = 'Mental_health';
+    const Somatic_health    = 'Somatic_health';
+    const Technical         = 'Technical';
+    const Scientific        = 'Scientific';
+    const Economic          = 'Economic';
+    const Other             = 'Other';
 }

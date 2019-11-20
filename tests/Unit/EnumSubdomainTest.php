@@ -25,7 +25,7 @@ class EnumSubdomainTest extends TestCase
      */
     public function testGetKEYOne()
     {
-        $this->assertTrue(Subdomain::getKey(1) == 'Justice');
+        $this->assertTrue(Subdomain::getKey('Justice') == 'Justice');
     }
 
     /**
@@ -38,7 +38,7 @@ class EnumSubdomainTest extends TestCase
 
     public function testGetDescription()
     {
-        App::SetLocale('fr');
-        $this->assertEquals(Subdomain::getDescription(Subdomain::Asile) , 'Asile');
+        App::setLocale('fr');
+        $this->assertEquals('Asile',Subdomain::getDescription('Asylum') );
     }
 }

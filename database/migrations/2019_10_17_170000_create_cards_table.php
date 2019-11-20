@@ -29,8 +29,8 @@ class CreateCardsTable extends Migration
             */
             $table->text('heading')->charset('utf8');
             // phonetic.
-            // domain.
-            // sub-domain.
+            $table->unsignedInteger('domain_id');
+            $table->unsignedInteger('subdomain_id');
             // definition.
             // context.
             // note.

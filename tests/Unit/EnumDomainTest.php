@@ -26,7 +26,7 @@ class EnumDomainTest extends TestCase
      */
     public function testGetKEYOne()
     {
-        $this->assertEquals(Domain::getKey(1) , 'Sante_mentale');
+        $this->assertEquals(Domain::getKey('Mental_health') , 'Mental_health');
     }
 
     /**
@@ -34,13 +34,13 @@ class EnumDomainTest extends TestCase
      */
     public function testGetKeyTwo()
     {
-        $this->assertEquals(Domain::getKey(Domain::Sante_mentale) , 'Sante_mentale');
+        $this->assertEquals(Domain::getKey(Domain::Mental_health) , 'Mental_health');
     }
 
     public function testGetDescription()
     {
-        App::SetLocale('fr');
-        $this->assertEquals(Domain::getDescription(Domain::Sante_mentale) , 'Sante mentale');
+        App::setlocale('fr');
+        $this->assertEquals('Juridique', Domain::getDescription('Juridical') );
     }
 
 }

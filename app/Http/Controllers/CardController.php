@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Card;
+use App\Enums\Domain;
 use App\User;
 use App\Enums\Language;
+use App\Enums\Subdomain;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -34,7 +36,9 @@ class CardController extends Controller
     public function create()
     {
         return view('card.create', [
-			'languages' => Language::getInstances(),
+            'languages' => Language::getInstances(),
+            'domain' => Domain::getInstances(),
+            'subdomain' => Subdomain::getInstances(),
 		]);
     }
 
