@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
+use App\Link;
 
 /**
  * Represents a Card (usually reffered as "Fiche")
@@ -121,4 +123,10 @@ class Card extends Model
         'card_id',
     ];
 */
+
+    // Return all the links refered to this card in an array.
+    public function links(){
+        //TODO: Trouver le fonctionnement du hasManyThrough ----> return $this->hasManyThrough('\App\Card','App\Link');
+        return DB::table('links')->select('*')->where('cardA','=',$this->card_id,'or','cardB','=',$this->card_id)->get();
+    }
 }

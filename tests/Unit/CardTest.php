@@ -82,4 +82,16 @@ class CardTest extends TestCase
             'owner_id' => strval($card->owner_id),
         ]);
     }
+
+    public function getLinks()
+    {
+        $user = User::create(["name"=>"Tester","email"=>"tester@test.com","password"=>"tested"]);
+        $cardA = Card::create(['heading'=>'test1', 'definition'=>'blabla2','owner_id'=>$user->id]);
+        $cardB = Card::create(['heading'=>'test2', 'definition'=>'blabla2','owner_id'=>$user->id]);
+        $link = new Link();
+        $link->cardA = $cardA->card_id;
+        $link->cardB = $cardB->card_id;
+        $link->save();
+        $this->assertEquals($cardA->links(), [$cardB]);
+    }
 }
