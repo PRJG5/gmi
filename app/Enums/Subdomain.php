@@ -11,29 +11,29 @@ use BenSampo\Enum\Contracts\LocalizedEnum;
  */
 final class Subdomain extends Enum implements LocalizedEnum
 {
-    const Asylum            = 'Asylum';
-    const Justice           = 'Justice';
-    const Police            = 'Police';
-    const Anesthesia        = 'Anesthesia';
-    const Cardiology        = 'Cardiology';
-    const Surgery           = 'Surgery';
-    const Dentistry         = 'Dentistry';
-    const Dermatology       = 'Dermatology';
-    const Diabetology       = 'Diabetology';
-    const Endocrinology     = 'Endocrinology';
-    const Gastro_enterology = 'Gastro_enterology';
-    const Gériatric         = 'Gériatric';
-    const Gynecology        = 'Gynecology';
-    const Physiotherapy     = 'Physiotherapy';
-    const Nephrology        = 'Nephrology';
-    const Neurology         = 'Neurology';
-    const Oncology          = 'Oncology';
-    const ORL               = 'ORL';
-    const Orthopédic_Traumatology = 'Orthopédic_Traumatology';
-    const Pédiatric         = 'Pédiatric';
-    const Pneumonology       = 'Pneumonology';
-    const Radiology         = 'Radiology';
-    const Urology           = 'Urology';
-    const Other             = 'Other';
+	const Anesthesia				= 'Anesthesia';
+	const Asylum					= 'Asylum';
+	const Cardiology				= 'Cardiology';
+	const Dentistry					= 'Dentistry';
+	const Dermatology				= 'Dermatology';
+	const Diabetology				= 'Diabetology';
+	const Endocrinology				= 'Endocrinology';
+	const Gastro_enterology			= 'Gastro_enterology';
+	const Gériatric					= 'Gériatric';
+	const Gynecology				= 'Gynecology';
+	const Justice					= 'Justice';
+	const Nephrology				= 'Nephrology';
+	const Neurology					= 'Neurology';
+	const Oncology					= 'Oncology';
+	const ORL						= 'ORL';
+	const Orthopédic_Traumatology	= 'Orthopédic_Traumatology';
+	const Pédiatric					= 'Pédiatric';
+	const Physiotherapy				= 'Physiotherapy';
+	const Pneumonology				= 'Pneumonology';
+	const Police					= 'Police';
+	const Radiology					= 'Radiology';
+	const Surgery					= 'Surgery';
+	const Urology					= 'Urology';
+	const Other						= 'Other';
 
 }

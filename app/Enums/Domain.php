@@ -13,7 +13,7 @@ use BenSampo\Enum\Contracts\LocalizedEnum;
 final class Domain extends Enum implements LocalizedEnum
 {
     const Economic          = 'Economic';
-    const Legal         	= 'Legal';
+    const Legal        		= 'Legal';
     const Mental_health     = 'Mental Health';
     const Scientific        = 'Scientific';
     const Somatic_health    = 'Somatic Health';

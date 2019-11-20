@@ -55,7 +55,7 @@ Next 8 HTML lines must be put in the base Blade tmplate.
 				--}}
 				
 				@if (!isset($card) || in_array($card->language_id, $languages))
-				<select name="language_id" 	class="language_id" type="text" placeholder="Language"	value="{{ isset($card) ? $card->language_id : '' }}"	title="Langue"	{{ (isset($editable) && $editable) ? '' : 'disabled' }}	required>
+				<select name="language_id"	class="language_id" type="text" placeholder="Language"	value="{{ isset($card) ? $card->language_id : '' }}"	title="Langue"	{{ (isset($editable) && $editable) ? '' : 'disabled' }}	required>
 					@foreach  ($languages as $lang)
 					<option value="{{ $lang->key }}" {{ (isset($card) && ($card->language_id == $lang->key)) ? 'selected' : '' }} title="{{ $lang->description }}">{{ $lang->description }}</option>
 					@endforeach

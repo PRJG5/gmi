@@ -75,12 +75,12 @@ return [
 
 	Domain::class=> [
 		Domain::Economic		=> 'Économique',
-		Domain::Legal		 	=> 'Juridique',
-		Domain::Mental_health 	=> 'Santé mentale',
-		Domain::Scientific	 	=> 'Scientifique',
-		Domain::Somatic_health 	=> 'Santé somatique',
-		Domain::Technical	 	=> 'Technique',
-		Domain::Other		 	=> 'Autre',
+		Domain::Legal			=> 'Juridique',
+		Domain::Mental_health	=> 'Santé mentale',
+		Domain::Scientific		=> 'Scientifique',
+		Domain::Somatic_health	=> 'Santé somatique',
+		Domain::Technical		=> 'Technique',
+		Domain::Other			=> 'Autre',
 	],
 
 	Subdomain::class=> [
