@@ -24,7 +24,7 @@
       "id": "0acd3362-e466-42df-9935-d459dee975f7",
       "comment": "",
       "command": "click",
-      "target": "css=.top-right > a:nth-child(2)",
+      "target": "xpath=//a[contains(text(),'Register')]",
       "targets": [
         ["css=.top-right > a:nth-child(2)", "css:finder"],
         ["xpath=//a[contains(text(),'Register')]", "xpath:link"],
@@ -217,7 +217,7 @@
       "id": "2461dff7-3ac2-44eb-b998-870472a216da",
       "comment": "",
       "command": "click",
-      "target": "css=.top-right",
+      "target": "xpath=//div/div",
       "targets": [
         ["css=.top-right", "css:finder"],
         ["xpath=//div/div", "xpath:position"]
@@ -227,7 +227,7 @@
       "id": "31333718-adc9-4946-829b-50b9efddab43",
       "comment": "",
       "command": "click",
-      "target": "css=.top-right > a:nth-child(2)",
+      "target": "xpath=//a[contains(text(),'Register')]",
       "targets": [
         ["css=.top-right > a:nth-child(2)", "css:finder"],
         ["xpath=//a[contains(text(),'Register')]", "xpath:link"],
@@ -322,7 +322,7 @@
       "id": "b29f8a27-1ef2-4e7f-9a69-06808dee4839",
       "comment": "",
       "command": "verifyElementPresent",
-      "target": "css=.justify-content-center",
+      "target": "xpath=//div[@id='app']/main/div/div",
       "targets": [
         ["css=.justify-content-center", "css:finder"],
         ["xpath=//div[@id='app']/main/div/div", "xpath:idRelative"],
@@ -351,7 +351,7 @@
       "id": "f057fd8d-7bf5-462e-8c5a-a0b04290ba10",
       "comment": "",
       "command": "click",
-      "target": "css=.top-right > a:nth-child(1)",
+      "target": "xpath=//a[contains(text(),'Login')]",
       "targets": [
         ["css=.top-right > a:nth-child(1)", "css:finder"],
         ["xpath=//a[contains(text(),'Login')]", "xpath:link"],
@@ -499,14 +499,14 @@
       "id": "901083c3-94f1-476c-9ba5-0d4a8a8f7274",
       "comment": "",
       "command": "verifyText",
-      "target": "css=.top-right > a:nth-child(1)",
+      "target": "xpath=//a[contains(text(),'Login')]",
       "targets": [
         ["css=.top-right > a:nth-child(1)", "css:finder"],
         ["xpath=//a[contains(text(),'Login')]", "xpath:link"],
         ["xpath=//a[@href='http://boiling-harbor-91880.herokuapp.com/login']", "xpath:href"],
         ["xpath=//a", "xpath:position"]
       ],
-      "value": "LOGIN"
+      "value": "Login"
     }]
   }],
   "suites": [{
