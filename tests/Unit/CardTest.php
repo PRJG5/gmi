@@ -24,11 +24,15 @@ class CardTest extends TestCase
         $card = new Card();
         $card->heading = 'My Card';
         $card->language_id = "1";
+        $card->definition= 'this is the definition test';
+        $card->owner_id="5";
         $card->save();
         $this->assertDatabaseHas('cards', [
-            'card_id' => "1",
+            'card_id' => $card->card_id,
             'heading' => $card->heading,
             'language_id' => strval($card->language_id),
+            'definition' => $card->definition,
+            'owner_id' => strval($card->owner_id),
         ]);
     }
 
@@ -44,11 +48,15 @@ class CardTest extends TestCase
         $card->language_id = "1";
         $card->save();
         $card->heading = 'My New Card';
+        $card->definition= 'this is the definition test';
+        $card->owner_id="5";
         $card->update();
         $this->assertDatabaseHas('cards', [
-            'card_id' => "1",
+            'card_id' => $card->card_id,
             'heading' => $card->heading,
             'language_id' => strval($card->language_id),
+            'definition' => $card->definition,
+            'owner_id' => strval($card->owner_id),
         ]);
     }
 
@@ -62,12 +70,16 @@ class CardTest extends TestCase
         $card = new Card();
         $card->heading = 'My Card';
         $card->language_id = "1";
+        $card->definition= 'this is the definition test';
+        $card->owner_id="5";
         $card->save();
         $card->delete();
         $this->assertDatabaseMissing('cards', [
-            'card_id' => "1",
+            'card_id' => $card->card_id,
             'heading' => $card->heading,
             'language_id' => strval($card->language_id),
+            'definition' => $card->definition,
+            'owner_id' => strval($card->owner_id),
         ]);
     }
 }
