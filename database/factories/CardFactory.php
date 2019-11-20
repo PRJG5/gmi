@@ -5,6 +5,7 @@
  */
 
 use App\Card;
+use App\Enums\Language;
 use Faker\Generator as Faker;
 
 $factory->define(Card::class, function (Faker $faker) {
@@ -35,11 +36,11 @@ $factory->define(Card::class, function (Faker $faker) {
 
     //$faker->locale = $testLanguages[$pickedLanguage];
     $faker = \Faker\Factory::create($testLanguages[$pickedLanguage]);
-
+    $randmIndex = array_rand(Language::getValues());
     fwrite(STDOUT, $faker->realText(rand(10,50))  . " ($testLanguages[$pickedLanguage])" . "\n");
     return [
         'heading' => $faker->word(),
         //'heading' => $faker->realText() . " ($testLanguages[$pickedLanguage])",
-        'language_id' => $pickedLanguage,
+        'language_id' =>array_rand(Language::getValues()),
     ];
 });

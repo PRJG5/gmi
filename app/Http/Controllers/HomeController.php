@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Card;
+use App\Enums\Language;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -36,12 +37,13 @@ class HomeController extends Controller
     public function searchCard(Request $request)
     {
         $search = $request->get('search');
+        $language = $request->get('languages');
         $cards = null;
         if ($search == "") {
             $cards = Card::all();
         } else {
             $cards = Card::where('heading', '=', $search)->get();
         }
-        return view('searchCard', ['cards' => $cards]);
+        return view('searchCard', ['cards' => $cards, 'languages' => Language::getKeys()]);
     }
 }

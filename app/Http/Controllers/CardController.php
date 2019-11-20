@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Card;
+use App\Enums\Language;
 use Illuminate\Http\Request;
 
 /**
@@ -130,9 +131,15 @@ class CardController extends Controller
     }
 
 
-    public function getCardsBasedOnName($name){
-        $cards = Card::where('heading', '=', $name)->get();
+   // public function getCardsBasedOnName($name){
+   //     $cards = Card::where('heading', '=', $name)->get();
+   //     return view('searchCard', [ 'cards' => $cards]);
+   // }
+
+    public function getCardsBasedOnName($name, $language){
+        $cards = Card::where('heading', '=', $name)->where('language_id', '=', Language::getKey($language))->get();
         return view('searchCard', [ 'cards' => $cards]);
     }
+   // public function getCardsBasedOnLanguage($name, $listLanguage)
 
 }

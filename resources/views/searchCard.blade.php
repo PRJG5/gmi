@@ -6,11 +6,17 @@
 <form action="/searchCard" method="get">
     <div class="input-group">
         <input type="search" name="search" class="form-control">
+        <SELECT name="languages" size="1">
+        @foreach($languages as $language)
+        <OPTION>{{$language}}
+        @endforeach
+        </SELECT>
         <span class="input-group-prepend">
             <button type="submit" class="btn btn-primary">Search</button>
         </span>
     </div>
 </form>
+
 
 <table>
     <tr>
@@ -20,6 +26,7 @@
         <th>Sub-Domaine</th> -->
         <th>Language</th>
         <!--  <th>User</th> -->
+       <!-- <th></th> -->
     </tr>
     @foreach($cards as $card)
         <tr>
@@ -29,7 +36,7 @@
             <!-- <td>{{$card->domain}}</td>
         <td>{{$card->sub_domain}}</td>
         -->
-            <td>{{$card->language_id}}</td>
+            <td>{{$card->language_id}}</td> 
 
             <!--   <td>{{$card->definition}}</td>
             <td>{{$card->user}}</td> -->
