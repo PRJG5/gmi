@@ -24,11 +24,13 @@ class CardTest extends TestCase
         $card = new Card();
         $card->heading = 'My Card';
         $card->language_id = "1";
+        $card->phonetic_id = 5;
         $card->save();
         $this->assertDatabaseHas('cards', [
             'card_id' => "1",
             'heading' => $card->heading,
             'language_id' => strval($card->language_id),
+            'phonetic_id'=> 5,
         ]);
     }
 
@@ -42,6 +44,7 @@ class CardTest extends TestCase
         $card = new Card();
         $card->heading = 'My Card';
         $card->language_id = "1";
+        $card->phonetic_id = 5;
         $card->save();
         $card->heading = 'My New Card';
         $card->update();
@@ -49,6 +52,7 @@ class CardTest extends TestCase
             'card_id' => "1",
             'heading' => $card->heading,
             'language_id' => strval($card->language_id),
+            'phonetic_id'=> 5,
         ]);
     }
 

@@ -102,7 +102,7 @@ class Card extends Model
      */
     protected $fillable = [
         'heading',
-        // phonetic.
+        'phonetic_id',
         // domain.
         // sub-domain.
         'definition',

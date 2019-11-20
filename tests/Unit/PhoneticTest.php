@@ -42,4 +42,16 @@ class PhoneticTest extends TestCase
         $tempPho->delete();
     }
     
+    public function testDeleteDb(){
+        $tempPho = new Phonetic();
+        $str = "fdeəi:ɒaʊaɪʊəʤʧŋɜ:";
+        $tempPho->textDescription = $str;
+        $tempPho->save();
+        $verif = DB::table('phonetics')->where('textDescription', $str)->select("*")->get();
+        $this->assertEquals($verif[0]->textDescription, $tempPho->textDescription);
+        $tempPho->delete();
+        $this->assertDatabaseMissing('phonetics', [
+            'textDescription' => $str,
+        ]);
+    }
 }

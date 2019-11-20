@@ -9,6 +9,7 @@ use App\Phonetic;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Handles the different CRUD action about the cards.
@@ -47,9 +48,7 @@ class CardController extends Controller
      */
     public function store(Request $request)
     {
-		// TODO
-		// retrieve current logged in user
-		$user = factory('App\User')->make();
+        $user = Auth::user();
         $request->merge(['owner_id' => $user->id]);
         if(isset($request['phonetic'])){
             $phonetic = Phonetic::create(['textDescription' => $request['phonetic']]);
@@ -58,7 +57,6 @@ class CardController extends Controller
         }
         $card = Card::create($this->validateData($request));
 		$card->save();
-		
         return redirect()->action('CardController@show', [$card]);
     }
 
@@ -72,8 +70,9 @@ class CardController extends Controller
     {
         return view('card.show', [
 			'card' => $card,
-            'languages' => Language::getInstances(),
             'phonetic' => DB::table('phonetics')->where('id', $card->phonetic_id)->first(),
+			'user' => User::find($card->owner_id),
+			'languages' => Language::getInstances()
 		]);
     }
 
@@ -137,5 +136,14 @@ class CardController extends Controller
             'language_id' => 'required',
             'owner_id' => 'required',
         ]);
+    }
+    
+    /**
+     * Return all cards from an user
+     * @param userId The user id
+     * @return All cards from an user
+     */
+    public function getCardsByUser($userId) {
+        return Card::where('owner_id', $userId)->get();
     }
 }
