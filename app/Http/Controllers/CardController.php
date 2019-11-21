@@ -130,10 +130,6 @@ class CardController extends Controller
     public function update(Request $request, Card $card)
     {
 		$card->update($this->validateData($request, false));
-		// Mettre à jour objet Phonétique
-		// Mettre à jour objet Note
-		// Mettre à jour objet Contexte
-		// Mettre à jour objet Définition
         return redirect()->action('CardController@show', [$card]);
     }
 
