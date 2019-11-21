@@ -70,6 +70,8 @@
                                         {{ __('Mes Fiches') }}
                                     </a>
 
+                                    <a class="dropdown-item" href="/addLanguage">Importer des langues</a>
+
                                     <form id="mesFiches-form" action="{{ route('mesFiches') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>

@@ -35,4 +35,7 @@ Route::get('/searchByUser', function () {
  * @param id The user id
  */
 Route::get('api/getAllCardsFromUsers/{id}', 'CardController@getCardsByUser');
+
+Route::get('/addLanguage','LanguageController@importView');
+Route::post('/import','LanguageController@import')->name('importLanguage');
 ?>

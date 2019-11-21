@@ -35,7 +35,7 @@ class CardController extends Controller
     public function create()
     {
         return view('card.create', [
-			'languages' => Language::getInstances(),
+			'languages' => Language::getInstances(), //Language::all()
 		]);
     }
 
@@ -71,7 +71,7 @@ class CardController extends Controller
         return view('card.show', [
 			'card' => $card,
 			'user' => User::find($card->owner_id),
-			'languages' => Language::getInstances()
+			'languages' => Language::getInstances() //Language::all() 
 		]);
     }
 
@@ -85,7 +85,7 @@ class CardController extends Controller
     {
         return view('card.edit', [
 			'card' => $card,
-			'languages' => Language::getInstances(),
+			'languages' => Language::getInstances(), //Language::all()
 			'user' => DB::table('users')->where('id', $card->owner_id)->first(),
 		]);
     }
