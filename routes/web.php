@@ -10,29 +10,40 @@
 |
 */
 use App\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('home');
+    return redirect('/home');
 });
+
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::post('/mesFiches', 'MyCardController@index')->name('mesFiches')->middleware('auth');
-// Cards shouldn't be accessible directly from the web
-// and should only be called trough a view
-// If you still want to access the cards for testing purposes i.e
-// then uncomment the next line
-// TODO
-// This should ideally be removed
+
+
+/**
+ * Cards shouldn't be accessible directly from the web
+ * and should only be called trough a view
+ * If you still want to access the cards for testing purposes i.e
+ * then uncomment the next line
+ * // TODO
+ * This should ideally be removed
+ * @author 44422
+ */
 Route::resource('cards', 'CardController');
+
 /**
  * Route to display a page to search all cards from an user
  */
 Route::get('/searchByUser', function () {
     return view('searchByAuthor', array("authors" => User::all()));
 })->middleware('auth');
+
 /**
  * Route to return all cards from an user in JSON
  * @param id The user id
  */
 Route::get('api/getAllCardsFromUsers/{id}', 'CardController@getCardsByUser');
-?>
+

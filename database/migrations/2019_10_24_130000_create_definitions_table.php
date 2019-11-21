@@ -22,7 +22,7 @@ class CreateDefinitionsTable extends Migration
     {
         
             Schema::create('definitions', function (Blueprint $table) {
-                $table->bigIncrements('definition_id');
+                $table->bigIncrements('id');
 
                 /*
                 The content of the definition
@@ -45,4 +45,3 @@ class CreateDefinitionsTable extends Migration
         Schema::dropIfExists('definitions');
     }
 }
-

@@ -20,7 +20,7 @@ class CreateCardsTable extends Migration
     public function up()
     {
         Schema::create('cards', function (Blueprint $table) {
-            $table->bigIncrements('card_id');
+            $table->bigIncrements('id');
 
             /*
             Also know as "vedette" of the card.
@@ -29,24 +29,27 @@ class CreateCardsTable extends Migration
             
             */
             $table->text('heading')->charset('utf8');
-            $table->unsignedBigInteger('phonetic_id')->nullable();
-            // domain.
-            $table->text('definition')->charset('utf8');
-            // sub-domain.
-            // context.
-            // note.
-            $table->text('language_id')->charset('utf8');
             $table->unsignedBigInteger('owner_id');
+			$table->text('language_id')->charset('utf8');
+			
+            $table->text('domain_id')->charset('utf8')->nullable();
+			$table->text('subdomain_id')->charset('utf8')->nullable();
+			
+            $table->unsignedBigInteger('context_id')->nullable();
+            $table->unsignedBigInteger('definition_id')->nullable();
+            $table->unsignedBigInteger('note_id')->nullable();
+			$table->unsignedBigInteger('phonetic_id')->nullable();
 
             /**
              * LIST OF ALTER TABLE
              */
             $table->foreign('owner_id')->references('id')->on('users');
+            $table->foreign('context_id')->references('id')->on('contexts');
+            $table->foreign('definition_id')->references('id')->on('definitions');
+            $table->foreign('note_id')->references('id')->on('notes');
             $table->foreign('phonetic_id')->references('id')->on('phonetics');
         });
-
-        
-    }
+ }
 
     /**
      * Deletes the "Cards" table and all its entries.

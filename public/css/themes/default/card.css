@@ -10,7 +10,7 @@
 */
 :root {
 	--card_body:			#F2D85A;
-	--card_header: 			#FFCA00;
+	--card_header:			#FFCA00;
 	--card_text_dark:		#262626;
 	--card_text_darkest:	#111111;
 	--card_text_lighter:	#353535;
@@ -24,11 +24,11 @@
 	background-color: var(--card_body);
 }
 
-.language_id,
-.language_id::placeholder,
-.language_id>option,
-.language_id>option:focus,
-.language_id>option:active {
+select,
+select::placeholder,
+select>option,
+select>option:focus,
+select>option:active {
 	color: var(--card_text_lighter);
 	background-color: inherit;
 }
@@ -44,15 +44,21 @@
 }
 
 .cardBody>input[type="text"],
-.cardBody>input[type="text"]::placeholder {
+.cardBody>textarea,
+.cardBody>input[type="text"]::placeholder,
+.cardBody>textarea::placeholder {
 	color: var(--card_text_dark);
 }
 
 /*
- Input field in the card are darkend when focused
+ Input field in the card are darkened when focused
  since outline is disabled.
  (Because the default outline is ugly)
 */
-.card input[type="text"]:focus {
+.card input[type="text"]:focus,
+.card textarea:focus,
+.card input[type="text"]:not(:disabled),
+.card textarea:not(:disabled),
+.card select:not(:disabled) {
 	background-color: #66666630;
 }

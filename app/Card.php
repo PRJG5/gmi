@@ -3,9 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 /**
- * Represents a Card (usually reffered as "Fiche")
+ * Represents a Card (usually referred as "Fiche")
  * Each Card only has one and only one "idea",
  * meaning that two words with the same "Vedette" (spelling) will be represented by two different cards.
  *
@@ -31,11 +32,11 @@ class Card extends Model
      * This variable is overriding the default primary key name.
      * @see https://laravel.com/docs/6.x/eloquent#defining-models section "Primary keys"
     */
-    protected $primaryKey = 'card_id';
+    protected $primaryKey = 'id';
 
 
     /**
-     * @var bool If the primary key "card_id" is auto-incrementing or not.
+     * @var bool If the primary key "id" is auto-incrementing or not.
      * This variable can be set to "false" disable the auto-increment inside the SQL table for the primary key.
      * By default, this variable is set to "true".
      * @see https://laravel.com/docs/6.x/eloquent#defining-models section "Primary keys"
@@ -85,29 +86,29 @@ class Card extends Model
      * @see https://laravel.com/docs/6.x/eloquent#default-attribute-values
      */
     protected $attributes = [
-        'heading' => '',
-        'phonetic_id' => NULL,
-        // domain.
-        // sub-domain.
-        'definition' => '',
-        // context.
-        // note.
-		'language_id' => '',
-		'owner_id' => 0,
+        'heading'		=> '',
+        'phonetic_id'	=> NULL,
+        'domain_id'		=> '',
+        'subdomain_id'	=> '',
+        'definition_id'	=> NULL,
+        'context_id'	=> NULL,
+        'note_id'		=> NULL,
+		'language_id'	=> '',
+		'owner_id'		=> 1,
     ];
 
     /**
-     * @var array The fields thet can be mass edited.abs
+     * @var array The fields that can be mass edited.abs
      * @see https://laravel.com/docs/6.x/eloquent#mass-assignment
      */
     protected $fillable = [
         'heading',
         'phonetic_id',
-        // domain.
-        // sub-domain.
-        'definition',
-        // context.
-        // note.
+        'domain_id',
+        'subdomain_id',
+        'definition_id',
+        'context_id',
+        'note_id',
         'language_id',
         'owner_id',
     ];
@@ -116,9 +117,36 @@ class Card extends Model
      * @var array The fields that cannot be mass edited.
      * @see https://laravel.com/docs/5.8/eloquent#mass-assignment
      */
-/*
     protected $guarded = [
-        'card_id',
-    ];
-*/
+        'id',
+	];
+	
+	/**
+	 * Returns a string describing the card
+	 * @return string a string describing the card
+	 */
+	public function __toString() {
+		return
+		"{ Card\n" .
+			"\tid: "			. $this->id				. "\n" .
+			"\theading:"		. $this->heading		. "\n" .
+			"\tphonetic_id: "	. $this->phonetic_id	. "\n" .
+			"\tdomain_id:"		. $this->domain_id		. "\n" .
+			"\tdefinition_id: "	. $this->definition_id	. "\n" .
+			"\tcontext_id: "	. $this->context_id		. "\n" .
+			"\tnote_id: "		. $this->note_id		. "\n" .
+			"\tlanguage_id: "	. $this->language_id	. "\n" .
+			"\towner_id: "		. $this->owner_id		. "\n" .
+		"}";
+    }
+
+
+	/*
+	 * Returns all links referring to this card in an array.
+	 * @author 49222
+	 */
+    public function links() {
+        //TODO: Trouver le fonctionnement du hasManyThrough ----> return $this->hasManyThrough('\App\Card','App\Link');
+        return DB::table('links')->select('*')->where(['cardA', '=', $this->id])->orWhere(['cardB', '=', $this->id])->get();
+    }
 }

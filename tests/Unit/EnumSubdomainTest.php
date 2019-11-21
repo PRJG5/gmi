@@ -2,11 +2,9 @@
 
 namespace Tests\Unit;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Tests\TestCase;
 use App\Enums\Subdomain;
-use App;
+use Illuminate\Support\Facades\App;
+use Tests\TestCase;
 
 class EnumSubdomainTest extends TestCase
 {
@@ -25,7 +23,7 @@ class EnumSubdomainTest extends TestCase
      */
     public function testGetKEYOne()
     {
-        $this->assertTrue(Subdomain::getKey(1) == 'Justice');
+        $this->assertTrue(Subdomain::getKey('Justice') == 'Justice');
     }
 
     /**
@@ -38,7 +36,7 @@ class EnumSubdomainTest extends TestCase
 
     public function testGetDescription()
     {
-        App::SetLocale('fr');
-        $this->assertEquals(Subdomain::getDescription(Subdomain::Asile) , 'Asile');
+        App::setlocale('fr');
+        $this->assertEquals('Asile',Subdomain::getDescription('Asylum'));
     }
 }
