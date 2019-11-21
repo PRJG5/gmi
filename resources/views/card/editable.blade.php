@@ -1,9 +1,11 @@
 @extends('card.show', [
 	'action' => $action,
 	'card' => $card,
+	'domain' => $domain,
 	'editable' => true,
 	'languages' => $languages,
-	'user' => $user,
+	'subdomain' => $subdomain,
+	'owner' => $owner,
 ])
 
 @section('csrf')

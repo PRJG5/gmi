@@ -75,6 +75,7 @@ class CardController extends Controller
         return view('card.show', [
 			'card' 		=> $card,
 			'domain' 	=> Domain::getInstances(),
+			'editable'	=> false,
 			'languages' => Language::getInstances(),
 			'subdomain' => Subdomain::getInstances(),
 			'owner' 	=> User::find($card->owner_id),
@@ -137,17 +138,17 @@ class CardController extends Controller
     private function validateData(Request $request, bool $creating) {
 		$tab = [
             'heading'		=> 'required',
-            'phonetic_id'	=> '',
+            'language_id'	=> 'required',
+            'phonetic'		=> '',
             'domain_id'		=> '',
             'subdomain_id'	=> '',
             'definition'	=> '',
             'context'		=> '',
             'note'			=> '',
-            'language_id'	=> 'required',
 		];
 		if(!$creating) {
 			array_merge($tab, [
-				'id'		=> 'required',
+				'card_id'	=> 'required',
 				'owner_id'	=> 'required',
 			]);
 		}
