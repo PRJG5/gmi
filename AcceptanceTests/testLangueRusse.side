@@ -1,0 +1,165 @@
+{
+  "id": "a6f6a80a-1449-438d-b41f-c9d7851a8533",
+  "version": "2.0",
+  "name": "testLangueRusse1",
+  "url": "http://localhost/gmi/public/cards/1",
+  "tests": [{
+    "id": "5673af52-3705-4433-b98b-75de7614666f",
+    "name": "Untitled",
+    "commands": []
+  }, {
+    "id": "1b39ba4c-f9df-4195-80ce-55f455b2716f",
+    "name": "test01",
+    "commands": [{
+      "id": "59941d5a-519c-482c-85cb-8eb8c8e33512",
+      "comment": "",
+      "command": "open",
+      "target": "/gmi/public/cards/1",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f4dbfd2f-d7b4-4b65-8269-575ea6ebb221",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1050x718",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ed5ea19e-bd21-42b6-a29f-a667e88ee7d2",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Edit",
+      "targets": [
+        ["linkText=Edit", "linkText"],
+        ["css=.buttonLike:nth-child(2)", "css:finder"],
+        ["xpath=//a[contains(text(),'Edit')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '1/edit')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Edit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d3a294cb-7540-42b0-ac8b-b058114b4820",
+      "comment": "",
+      "command": "click",
+      "target": "css=.cardHeader",
+      "targets": [
+        ["css=.cardHeader", "css:finder"],
+        ["xpath=//div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0e77b28f-ecf7-4c7e-bb83-045ded5e0fd7",
+      "comment": "",
+      "command": "click",
+      "target": "css=html",
+      "targets": [
+        ["css=html", "css:finder"],
+        ["xpath=//html", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "532fda73-7ea4-4239-85fa-747415fe4a8c",
+      "comment": "",
+      "command": "type",
+      "target": "name=heading",
+      "targets": [
+        ["name=heading", "name"],
+        ["css=.heading", "css:finder"],
+        ["xpath=//input[@name='heading']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "пворцлугтфыи"
+    }, {
+      "id": "6d13d930-b11d-4e74-beba-133d34d04f2e",
+      "comment": "",
+      "command": "click",
+      "target": "name=heading",
+      "targets": [
+        ["name=heading", "name"],
+        ["css=.heading", "css:finder"],
+        ["xpath=//input[@name='heading']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "b8956f66-ea71-4032-b57d-cdc071f87e09",
+    "name": "test02",
+    "commands": [{
+      "id": "f092298b-7bf7-4887-a9bc-542fd83d9f78",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/gmi/public/cards/1",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a52bce81-ddbb-4941-ab15-074dde883084",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1050x718",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fa1b9d79-6ad2-4c15-9c4e-1241f55a5c14",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Edit",
+      "targets": [
+        ["linkText=Edit", "linkText"],
+        ["css=.buttonLike:nth-child(2)", "css:finder"],
+        ["xpath=//a[contains(text(),'Edit')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '1/edit')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Edit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "66459f5b-f091-4f86-906f-f17b74f566ee",
+      "comment": "",
+      "command": "click",
+      "target": "name=heading",
+      "targets": [
+        ["name=heading", "name"],
+        ["css=.heading", "css:finder"],
+        ["xpath=//input[@name='heading']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "688a793c-4467-4747-91aa-89db5782d12c",
+      "comment": "",
+      "command": "click",
+      "target": "name=heading",
+      "targets": [
+        ["name=heading", "name"],
+        ["css=.heading", "css:finder"],
+        ["xpath=//input[@name='heading']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c5fea24e-4e3f-4bf0-841f-580b8a3051d1",
+      "comment": "",
+      "command": "type",
+      "target": "name=heading",
+      "targets": [
+        ["name=heading", "name"],
+        ["css=.heading", "css:finder"],
+        ["xpath=//input[@name='heading']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "кушфьчидыз"
+    }]
+  }],
+  "suites": [{
+    "id": "66c6a4a2-0316-44fd-a9fb-a1ad8801aecb",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["5673af52-3705-4433-b98b-75de7614666f"]
+  }],
+  "urls": ["http://localhost/", "http://localhost/gmi/public/cards/1"],
+  "plugins": []
+}
