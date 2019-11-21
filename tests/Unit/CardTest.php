@@ -530,31 +530,50 @@ class CardTest extends TestCase
     }
 
 	/**
-	 * @author 49222
+	 * @author 49102 43121
      * @test
-     * TODO: fix and add more. Linking two users ? Maybe two cards. @43121 49102 JLC
-	 */
-    // public function getLinks()
-    // {
-    //     $user = new User([
-	// 		'name'		=> 'Tester',
-	// 		'email'		=> 'tester@test.com',
-	// 		'password'	=> 'tested',
-	// 	]);
-    //     $cardA =  new User([
-	// 		'heading'		=> 'test1',
-	// 		'definition'	=> 'blabla2',
-	// 		'owner_id'		=> $user->id
-	// 	]);
-    //     $cardB =  new User([
-	// 		'heading'		=> 'test2',
-	// 		'definition'	=> 'blabla2',
-	// 		'owner_id'		=> $user->id
-	// 	]);
-    //     $link = new Link();
-    //     $link->cardA = $cardA->id;
-    //     $link->cardB = $cardB->id;
-    //     $link->save();
-    //     $this->assertEquals($cardA->links(), [$cardB]);
-    // }
+     *  Link two cards ok
+     */
+    public function linksCardsOkTest()
+    {
+        $user = new User([
+			'name'		=> 'Tester',
+			'email'		=> 'tester@test.com',
+			'password'	=> 'tested',
+        ]);
+        $user->save();
+
+        $card = new Card();
+		$card->heading = 'My Card';
+		$card->phonetic_id = NULL;
+		$card->domain_id = 'Legal';
+		$card->subdomain_id = 'Justice';
+        $card->definition_id = NULL;
+        $card->context_id = NULL;
+        $card->note_id = NULL;
+        $card->language_id = 'ARA';
+        $card->owner_id = User::where('email', $user->email)->first()->id;
+        $card->save();
+        $card = new Card();
+		$card->heading = 'My second card';
+		$card->phonetic_id = NULL;
+		$card->domain_id = 'Legal';
+		$card->subdomain_id = 'Justice';
+        $card->definition_id = NULL;
+        $card->context_id = NULL;
+        $card->note_id = NULL;
+        $card->language_id = 'ARA';
+        $card->save();
+    
+        $link = new Link();
+        $link->cardA = Card::where('heading', 'My Card')->first()->id;
+        $link->cardB = Card::where('heading', 'My second card')->first()->id;
+        $link->save();
+        
+		$this->assertDatabaseHas('links', [
+            'id'            => $link->id,
+            'cardA'			=> $link->cardA,
+            'cardB'		    => $link->cardB,
+        ]);
+    }
 }
