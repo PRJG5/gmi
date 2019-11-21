@@ -20,7 +20,7 @@ class CreateCardsTable extends Migration
     public function up()
     {
         Schema::create('cards', function (Blueprint $table) {
-            $table->bigIncrements('card_id');
+            $table->bigIncrements('id');
 
             /*
             Also know as "vedette" of the card.
@@ -28,25 +28,27 @@ class CreateCardsTable extends Migration
             since non-latin languages may be used.
             */
             $table->text('heading')->charset('utf8');
-            // phonetic.
-            // domain.
-            $table->text('definition')->charset('utf8');
-            // sub-domain.
-            // context.
-            // note.
-            $table->text('language_id')->charset('utf8');
             $table->unsignedBigInteger('owner_id');
+			$table->text('language_id')->charset('utf8');
+			
+            $table->text('domain_id')->charset('utf8')->nullable();
+			$table->text('subdomain_id')->charset('utf8')->nullable();
+			
+            $table->unsignedBigInteger('context_id')->nullable();
+            $table->unsignedBigInteger('definition_id')->nullable();
+            $table->unsignedBigInteger('note_id')->nullable();
+			$table->unsignedBigInteger('phonetic_id')->nullable();
 
             /**
              * LIST OF ALTER TABLE
              */
-            ///$table->foreign('owner_id')->references('id')->on('users');
+            $table->foreign('owner_id')->references('id')->on('users');
+            $table->foreign('context_id')->references('id')->on('contexts');
+            $table->foreign('definition_id')->references('id')->on('definitions');
+            $table->foreign('note_id')->references('id')->on('notes');
+            $table->foreign('phonetic_id')->references('id')->on('phonetics');
         });
-
-        DB::table('cards')->insert(['heading' => 'Acathésie' , 'definition' =>'Incapacité de rester assis.' ,'language_id' =>'1' , 'owner_id' =>'1'] );
-        DB::table('cards')->insert(['heading' => 'mal di testa' , 'definition' =>'Douleur de l’extrémité céphalique, qui peut constituer à elle seule la maladie, comme dans la migraine, ou représenter un symptôme d’une affection telle qu’une tumeur cérébrale ou une affection méningée.' ,'language_id' =>'7' , 'owner_id' =>'3'] );
-        DB::table('cards')->insert(['heading' => 'Algostase' , 'definition' =>'Verminderen en soms zelfs volledig afschaffen van het gevoel van pijn.' ,'language_id' =>'2' , 'owner_id' =>'2'] );
-    }
+ }
 
     /**
      * Deletes the "Cards" table and all its entries.

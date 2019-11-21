@@ -6,12 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class SpokenLanguages extends Model
 {
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+
+	protected $table = 'spoken_languages';
+	protected $primaryKey = 'id';
+	public $incrementing = true;
+	protected $keyType = 'bigIncrements';
+	public $timestamps = false;
+	protected $attributes = [
+		'user_id' => NULL,
+		'languageISO' => '',
+	];
     protected $fillable = [
-        'user_id', 'languageISO',
-    ];
+		'user_id',
+		'languageISO',
+	];
+	protected $guarded = [
+        'id',
+	];
 }
