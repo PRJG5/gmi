@@ -8,7 +8,7 @@ use App\SpokenLanguages;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Database\QueryException;
 
-class SpeakedLanguageTest extends TestCase
+class SpokenLanguageTest extends TestCase
 {
     use DatabaseTransactions; //Resetting The Database After Each Test
 
@@ -23,14 +23,14 @@ class SpeakedLanguageTest extends TestCase
 
         $userDB = User::where('email', $user->email)->first();
 
-        $speackedLanguage = new SpokenLanguages();
-        $speackedLanguage->user_id = $userDB->id;
-        $speackedLanguage->languageISO = 'SPA';
-        $speackedLanguage->save();
+        $spokenLanguage = new SpokenLanguages();
+        $spokenLanguage->user_id = $userDB->id;
+        $spokenLanguage->languageISO = 'SPA';
+        $spokenLanguage->save();
 
         $this->assertDatabaseHas('spoken_languages', [
-            'user_id' => $speackedLanguage->user_id,
-            'languageISO' => $speackedLanguage->languageISO
+            'user_id' => $spokenLanguage->user_id,
+            'languageISO' => $spokenLanguage->languageISO
         ]);
     }
 
@@ -46,22 +46,22 @@ class SpeakedLanguageTest extends TestCase
 
         $userDB = User::where('email', $user->email)->first();
 
-        $speackedLanguage = new SpokenLanguages();
-        $speackedLanguage->user_id = $userDB->id;
-        $speackedLanguage->languageISO = 'SPA';
-        $speackedLanguage->save();
-        $speackedLanguage2 = new SpokenLanguages();
-        $speackedLanguage2->user_id = $userDB->id;
-        $speackedLanguage2->languageISO = 'FRA';
-        $speackedLanguage2->save();
+        $spokenLanguage = new SpokenLanguages();
+        $spokenLanguage->user_id = $userDB->id;
+        $spokenLanguage->languageISO = 'SPA';
+        $spokenLanguage->save();
+        $spokenLanguage2 = new SpokenLanguages();
+        $spokenLanguage2->user_id = $userDB->id;
+        $spokenLanguage2->languageISO = 'FRA';
+        $spokenLanguage2->save();
 
         $this->assertDatabaseHas('spoken_languages', [
-            'user_id' => $speackedLanguage->user_id,
-            'languageISO' => $speackedLanguage->languageISO
+            'user_id' => $spokenLanguage->user_id,
+            'languageISO' => $spokenLanguage->languageISO
         ]);
         $this->assertDatabaseHas('spoken_languages', [
-            'user_id' => $speackedLanguage2->user_id,
-            'languageISO' => $speackedLanguage2->languageISO
+            'user_id' => $spokenLanguage2->user_id,
+            'languageISO' => $spokenLanguage2->languageISO
         ]);
     }
 
@@ -82,23 +82,23 @@ class SpeakedLanguageTest extends TestCase
         $userDB = User::where('email', $user->email)->first();
         $userDB2 = User::where('email', $user2->email)->first();
 
-        $speackedLanguage = new SpokenLanguages();
-        $speackedLanguage->user_id = $userDB->id;
-        $speackedLanguage->languageISO = 'SPA';
-        $speackedLanguage->save();
-        $speackedLanguage = new SpokenLanguages();
-        $speackedLanguage->user_id = $userDB2->id;
-        $speackedLanguage->languageISO = 'SPA';
-        $speackedLanguage->save();
+        $spokenLanguage = new SpokenLanguages();
+        $spokenLanguage->user_id = $userDB->id;
+        $spokenLanguage->languageISO = 'SPA';
+        $spokenLanguage->save();
+        $spokenLanguage = new SpokenLanguages();
+        $spokenLanguage->user_id = $userDB2->id;
+        $spokenLanguage->languageISO = 'SPA';
+        $spokenLanguage->save();
 
         $this->assertDatabaseHas('spoken_languages', [
             'user_id' => $userDB->id,
-            'languageISO' => $speackedLanguage->languageISO
+            'languageISO' => $spokenLanguage->languageISO
         ]);
 
         $this->assertDatabaseHas('spoken_languages', [
             'user_id' => $userDB2->id,
-            'languageISO' => $speackedLanguage->languageISO
+            'languageISO' => $spokenLanguage->languageISO
         ]);
        
     }
@@ -114,13 +114,13 @@ class SpeakedLanguageTest extends TestCase
         $userDB = User::where('email', $user->email)->first();
 
         $this->expectException(QueryException::class);
-        $speackedLanguage = new SpokenLanguages();
-        $speackedLanguage->user_id = $userDB->id;
-        $speackedLanguage->languageISO = 'SPA';
-        $speackedLanguage->save();
-        $speackedLanguage = new SpokenLanguages();
-        $speackedLanguage->user_id = $userDB->id;
-        $speackedLanguage->languageISO = 'SPA';
-        $speackedLanguage->save();
+        $spokenLanguage = new SpokenLanguages();
+        $spokenLanguage->user_id = $userDB->id;
+        $spokenLanguage->languageISO = 'SPA';
+        $spokenLanguage->save();
+        $spokenLanguage = new SpokenLanguages();
+        $spokenLanguage->user_id = $userDB->id;
+        $spokenLanguage->languageISO = 'SPA';
+        $spokenLanguage->save();
     }
 }
