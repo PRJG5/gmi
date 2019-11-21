@@ -168,8 +168,8 @@ class CardController extends Controller
             'domain_id'		=> '',
             'subdomain_id'	=> '',
             'definition'	=> '',
-            //'context_id'	=> '',
-            //'note_id'		=> '',
+            'context_id'	=> '',
+            'note_id'		=> '',
 		];
 		if(!$creating) {
 			array_merge($tab, [

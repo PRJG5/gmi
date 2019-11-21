@@ -1,38 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta name="viewport" content="width=device-width">
-		<meta name="description" content="Card">
-		<link rel="stylesheet" type="text/css" href="{{ asset('css/common.css') }}" >
-		<link rel="stylesheet" type="text/css" href="{{ asset('css/themes/default/common.css') }}" >
-		<title>Card {{ isset($card) ? strval($card->cardId) : '' }}</title>
-		
-	<div class="cardBody">
+@extends('layouts.card')
 
-		@section('error_owner_id')
-			@show
+@section('card-header')
 
-			@section('owner')
-			<label for="owner">Owner:</label>
-			<input name="owner" value="{{ isset($owner) ? $owner->name : '' }}" disabled />
-		@show
+	Card
+    
+@endsection
 
-		{{--
-		definition
-		--}}
+@section('card-body')
 
+<label class="col-md-6 col-form-label text-md-right"> Vedette : </label>
+<label>{{$card->heading}}</label> 
 
+<label  class="col-md-6 col-form-label text-md-right"> Langue : </label>
+<label>{{$card->language_id}}</label> 
 
-		@section('edit')
-		<a href="{{ isset($card) ? $card->card_id : '' }}/edit" class="buttonLike"	title="Edit">Edit</a>
-		@show
-		
-		@section('delete')
-		<form action="/cards/{{ isset($card) ? $card->card_id : '' }}" method="post">
-			@method('DELETE')
-			@csrf
-			<input type="submit" class="buttonLike" value="Delete"	title="Delete" />
-		</form>
-		@show
-	</body>
-</html>
+@if (!isset($card->phonetic_id))
+<label  class="col-md-6 col-form-label text-md-right"> Phonetique : </label>
+<label>{{$card->phonetic_id}}</label> 
+@endif
+
+@if (!isset($card->domain_id))
+<label  class="col-md-6 col-form-label text-md-right"> Domaine : </label>
+<label>{{$card->domain_id}}</label> 
+@endif
+
+@if (!isset($card->subdomain_id))
+<label  class="col-md-6 col-form-label text-md-right"> Sous-Domaine : </label>
+<label>{{$card->subdomain_id}}</label> 
+@endif
+
+@if (!isset($card->definition_id))
+<label  class="col-md-6 col-form-label text-md-right"> Definition : </label>
+<label>{{$card->definition_id}}</label> 
+@endif
+
+@if (!isset($card->context_id))
+<label  class="col-md-6 col-form-label text-md-right"> Contexte : </label>
+<label>{{$card->context_id}}</label> 
+@endif
+
+@if (!isset($card->note_id))
+<label  class="col-md-6 col-form-label text-md-right"> Note : </label>
+<label>{{$card->note_id}}</label>
+@endif
+
+<form action='/cards/{{$card->id}}/edit' method="get">
+    @csrf
+    <button type="submit" class="btn btn-primary">Edit</button>
+</form>
+
+@endsection
