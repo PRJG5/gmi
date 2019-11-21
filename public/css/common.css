@@ -19,90 +19,90 @@
 /* Thin */
 @font-face {
 	font-family: "Roboto";
-	src: url("/font/Roboto-Thin.ttf");
+	src: url("/font/Roboto/Roboto-Thin.ttf");
 	font-weight: 100;
 	font-style: normal;
 }
 /* Thin italic */
 @font-face {
 	font-family: "Roboto";
-	src: url("/font/Roboto-ThinItalic.ttf");
+	src: url("/font/Roboto/Roboto-ThinItalic.ttf");
 	font-weight: 100;
 	font-style: italic;
 }
 /* Light */
 @font-face {
 	font-family: "Roboto";
-	src: url("/font/Roboto-Light.ttf");
+	src: url("/font/Roboto/Roboto-Light.ttf");
 	font-weight: 300;
 	font-style: normal;
 }
 /* Light italic */
 @font-face {
 	font-family: "Roboto";
-	src: url("/font/Roboto-LightItalic.ttf");
+	src: url("/font/Roboto/Roboto-LightItalic.ttf");
 	font-weight: 300;
 	font-style: italic;
 }
 /* Regular */
 @font-face {
 	font-family: "Roboto";
-	src: url("/font/Roboto-Regular.ttf");
+	src: url("/font/Roboto/Roboto-Regular.ttf");
 	font-weight: 400;
 	font-style: normal;
 }
 /* Regular italic */
 @font-face {
 	font-family: "Roboto";
-	src: url("/font/Roboto-Italic.ttf");
+	src: url("/font/Roboto/Roboto-Italic.ttf");
 	font-weight: 400;
 	font-style: italic;
 }
 /* Medium */
 @font-face {
 	font-family: "Roboto";
-	src: url("/font/Roboto-Medium.ttf");
+	src: url("/font/Roboto/Roboto-Medium.ttf");
 	font-weight: 500;
 	font-style: normal;
 }
 /* Medium italic */
 @font-face {
 	font-family: "Roboto";
-	src: url("/font/Roboto-MediumItalic.ttf");
+	src: url("/font/Roboto/Roboto-MediumItalic.ttf");
 	font-weight: 500;
 	font-style: italic;
 }
 /* Bolder */
 @font-face {
 	font-family: "Roboto";
-	src: url("/font/Roboto-Bold.ttf");
+	src: url("/font/Roboto/Roboto-Bold.ttf");
 	font-weight: 700;
 	font-style: normal;
 }
 /* Bolder italic */
 @font-face {
 	font-family: "Roboto";
-	src: url("/font/Roboto-BoldItalic.ttf");
+	src: url("/font/Roboto/Roboto-BoldItalic.ttf");
 	font-weight: 700;
 	font-style: italic;
 }
 /* Bold */
 @font-face {
 	font-family: "Roboto";
-	src: url("/font/Roboto-Black.ttf");
+	src: url("/font/Roboto/Roboto-Black.ttf");
 	font-weight: 900;
 	font-style: normal;
 }
 /* Bold italic */
 @font-face {
 	font-family: "Roboto";
-	src: url("/font/Roboto-BlackItalic.ttf");
+	src: url("/font/Roboto/Roboto-BlackItalic.ttf");
 	font-weight: 900;
 	font-style: italic;
 }
 
 * {
-	font-family: "Roboto";
+	font-family: "Roboto", sans-serif;
 }
 
 .buttonLike {
@@ -110,7 +110,7 @@
     border: none;
     cursor: pointer;
     display: block;
-    font-family: "Roboto";
+    font-family: "Roboto", sans-serif;
     font-size: 12pt;
 	font-weight: 900;
 	line-height: 30px;

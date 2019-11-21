@@ -23,33 +23,59 @@
             <div id="listOfCards">
                 {{-- TODO: Need to extend the layout --}}
             </div>
+        </div>
     </div>
 </div>
 @endsection
 
 <script>
 /** 
-* Get the cards of the user id. Update the view with the card template 
+* Gets the cards of the user id.
+* Updates the view with the card template
 */
-function searchCards() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        $("#listOfCards").empty(); //Clear to add the new cards
-        var xhttp2 = new XMLHttpRequest();
-        xhttp2.onreadystatechange = function() {
-            $("#listOfCards").append(this.responseText);
-        };
+async function searchCards() {
+	const author = $('#authors').find(":selected").val();
+	makeRequest("GET", `/api/getAllCardsFromUsers/${author}`)
+	.then((result) => {
+		$("#listOfCards").empty(); //Clears container to add the new cards
+		for (const card of JSON.parse(result)) {
+			makeRequest("GET", `/cards/${card.id}/`)
+			.then((cardResult) => {
+				$("#listOfCards").append(cardResult);
+			});
+		}
+	})
+	.catch((error) => {
+		console.error(`Error happened during xhr.\n${error.status} - ${error.statusText}`);
+	});
+}
 
-        cards = JSON.parse(this.responseText);
-        cards.forEach(card => {
-            xhttp2.open("GET", "/cards/" + card["card_id"], true);
-            xhttp2.send();
-        });
-    }
-  };
-  let authorEmail = $('#authors').find(":selected").val();
-  xhttp.open("GET", "/api/getAllCardsFromUsers/" + authorEmail, true);
-  xhttp.send();
-  }
+/**
+ * @param {string} the method of the request
+ * @param {string} the url to make the request to
+ * @return a promise of request
+ */
+function makeRequest (method, url) {
+	return new Promise((resolve, reject) => {
+		const xhr = new XMLHttpRequest();
+		xhr.open(method, url);
+		xhr.onload = () => {
+			if (xhr.status >= 200 && xhr.status < 300) {
+				resolve(xhr.response);
+			} else {
+				reject({
+					status: xhr.status,
+					statusText: xhr.statusText,
+				});
+			}
+		};
+		xhr.onerror = () => {
+			reject({
+				status: xhr.status,
+				statusText: xhr.statusText,
+			});
+		};
+		xhr.send();
+	});
+}
 </script>

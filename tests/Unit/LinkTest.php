@@ -3,7 +3,6 @@
 namespace Tests\Unit;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Link;
 use App\Card;
@@ -28,8 +27,8 @@ class LinkTest extends TestCase
         $cardA = Card::create(['heading'=>'test1', 'definition'=>'blabla2', 'owner_id'=>$user->id]);
         $cardB = Card::create(['heading'=>'test2', 'definition'=>'blabla2', 'owner_id'=>$user->id]);
         $link = new Link();
-        $link->cardA = $cardA->card_id;
-        $link->cardB = $cardB->card_id;
+        $link->cardA = $cardA->id;
+        $link->cardB = $cardB->id;
         $link->save();
         $this->assertEquals($link->getCardA()->id, $cardA->id);
     }
@@ -40,10 +39,9 @@ class LinkTest extends TestCase
         $cardA = Card::create(['heading'=>'test1', 'definition'=>'blabla2', 'owner_id'=>$user->id]);
         $cardB = Card::create(['heading'=>'test2', 'definition'=>'blabla2', 'owner_id'=>$user->id]);
         $link = new Link();
-        $link->cardA = $cardA->card_id;
-        $link->cardB = $cardB->card_id;
+        $link->cardA = $cardA->id;
+        $link->cardB = $cardB->id;
         $link->save();
         $this->assertEquals($link->getCardB()->id, $cardB->id);
     }
 }
-

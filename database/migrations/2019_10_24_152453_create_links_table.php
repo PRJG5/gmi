@@ -22,8 +22,8 @@ class CreateLinksTable extends Migration
             $table->unsignedBigInteger("cardB");
             
             ##Their references
-            $table->foreign('cardA')->references('card_id')->on('cards');
-            $table->foreign('cardB')->references('card_id')->on('cards');
+            $table->foreign('cardA')->references('id')->on('cards');
+            $table->foreign('cardB')->references('id')->on('cards');
 
             
         });

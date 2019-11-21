@@ -3,15 +3,27 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Card;
 
 
 // Relation between two cards
 class Link extends Model
 {
-    
-    protected $fillable = ['cardA','cardB'];
-    public $timestamps = false;
+	protected $table = 'links';
+	protected $primaryKey = 'id';
+	public $incrementing = true;
+	protected $keyType = 'bigIncrements';
+	public $timestamps = false;
+	protected $attributes = [
+		'cardA' => NULL,
+		'cardB' => NULL,
+	];
+    protected $fillable = [
+		'cardA',
+		'cardB',
+	];
+	protected $guarded = [
+        'id',
+	];
 
     //Get one card
     public function getCardA()
