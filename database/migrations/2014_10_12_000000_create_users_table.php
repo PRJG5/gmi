@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 class CreateUsersTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Run the migrations..
      *
      * @return void
      */
