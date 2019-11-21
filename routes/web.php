@@ -30,9 +30,14 @@ Route::resource('cards', 'CardController');
 Route::get('/searchByUser', function () {
     return view('searchByAuthor', array("authors" => User::all()));
 })->middleware('auth');
+
+Route::get('/addbasicdata', function () {
+    return view('addBasicData');
+})->middleware('auth');
 /**
  * Route to return all cards from an user in JSON
  * @param id The user id
  */
 Route::get('api/getAllCardsFromUsers/{id}', 'CardController@getCardsByUser');
+Route::get('api/addsubdomain/{name}', 'BasicDataController@addSubdomain');
 ?>

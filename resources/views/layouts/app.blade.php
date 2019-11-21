@@ -64,6 +64,7 @@
                                     </a>
 
                                     <a class="dropdown-item" href="/searchByUser">Recherche fiche par auteur</a>
+                                    <a class="dropdown-item" href="/addbasicdata">Ajout domaine/sous-domaine/langue</a>
                                     <a class="dropdown-item" href="{{ route('mesFiches') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('mesFiches-form').submit();">
