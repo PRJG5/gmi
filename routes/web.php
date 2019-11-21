@@ -48,5 +48,7 @@ Route::get('/searchByUser', function () {
 Route::get('api/getAllCardsFromUsers/{id}', 'CardController@getCardsByUser');
 
 Route::get('cards/{cardOrigin}/{cardLinked}/link','CardController@linkCard')->name('link');
+
+Route::get('api/addsubdomain/{name}', 'BasicDataController@addSubdomain');
 ?>
 
