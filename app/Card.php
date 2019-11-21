@@ -4,10 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-use App\Link;
 
 /**
- * Represents a Card (usually reffered as "Fiche")
+ * Represents a Card (usually referred as "Fiche")
  * Each Card only has one and only one "idea",
  * meaning that two words with the same "Vedette" (spelling) will be represented by two different cards.
  *
@@ -99,7 +98,7 @@ class Card extends Model
     ];
 
     /**
-     * @var array The fields thet can be mass edited.abs
+     * @var array The fields that can be mass edited.abs
      * @see https://laravel.com/docs/6.x/eloquent#mass-assignment
      */
     protected $fillable = [
@@ -148,6 +147,6 @@ class Card extends Model
 	 */
     public function links() {
         //TODO: Trouver le fonctionnement du hasManyThrough ----> return $this->hasManyThrough('\App\Card','App\Link');
-        return DB::table('links')->select('*')->where('cardA','=',$this->id,'or','cardB','=',$this->id)->get();
+        return DB::table('links')->select('*')->where(['cardA', '=', $this->id])->orWhere(['cardB', '=', $this->id])->get();
     }
 }

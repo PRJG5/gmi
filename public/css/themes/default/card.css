@@ -51,7 +51,7 @@ select>option:active {
 }
 
 /*
- Input field in the card are darkend when focused
+ Input field in the card are darkened when focused
  since outline is disabled.
  (Because the default outline is ugly)
 */

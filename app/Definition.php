@@ -12,7 +12,7 @@ class Definition extends Model
 
     /**
      * @var string SQL table name for definitions.
-     * This is the name of the SQL table containing all thedefinitions and their infos.
+     * This is the name of the SQL table containing all the definitions and their infos.
      * By default, Eloquent will assume the infos of the class are stored
      * in the table having the same name as the class except in plural form.
      * e.g. infos of "Definition" class will be stored in the "definitions" table.

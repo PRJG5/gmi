@@ -14,11 +14,8 @@ class Context extends Model
 	public $incrementing = true;
 	protected $keyType = 'bigIncrements';
 	public $timestamps = false;
-	protected $attributes = [
-		'decription' => '',
-	];
 	protected $fillable = [
-		'decription',
+		'context_to_string',
 	];
 	protected $guarded = [
         'id',

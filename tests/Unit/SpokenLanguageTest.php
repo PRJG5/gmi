@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 use App\User;
 use App\SpokenLanguages;
@@ -21,7 +22,7 @@ class SpokenLanguageTest extends TestCase
         $user->password = 'userPassword';
         $user->save();
 
-        $userDB = User::where('email', $user->email)->first();
+        $userDB = DB::table('users')->where('email', $user->email)->first();
 
         $spokenLanguage = new SpokenLanguages();
         $spokenLanguage->user_id = $userDB->id;
@@ -44,7 +45,7 @@ class SpokenLanguageTest extends TestCase
         $user->password = 'userPassword';
         $user->save();
 
-        $userDB = User::where('email', $user->email)->first();
+        $userDB = DB::table('users')->where('email', $user->email)->first();
 
         $spokenLanguage = new SpokenLanguages();
         $spokenLanguage->user_id = $userDB->id;
@@ -79,8 +80,8 @@ class SpokenLanguageTest extends TestCase
         $user2->password = 'userPassword';
         $user2->save();
 
-        $userDB = User::where('email', $user->email)->first();
-        $userDB2 = User::where('email', $user2->email)->first();
+        $userDB = DB::table('users')->where('email', $user->email)->first();
+        $userDB2 = DB::table('users')->where('email', $user2->email)->first();
 
         $spokenLanguage = new SpokenLanguages();
         $spokenLanguage->user_id = $userDB->id;
@@ -111,7 +112,7 @@ class SpokenLanguageTest extends TestCase
         $user->password = 'userPassword';
         $user->save();
 
-        $userDB = User::where('email', $user->email)->first();
+        $userDB = DB::table('users')->where('email', $user->email)->first();
 
         $this->expectException(QueryException::class);
         $spokenLanguage = new SpokenLanguages();

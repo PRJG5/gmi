@@ -108,4 +108,3 @@ return [
 		Subdomain::Other					=> 'Autre',
 	],
 ];
-?>

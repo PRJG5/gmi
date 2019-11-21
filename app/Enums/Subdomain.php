@@ -35,5 +35,4 @@ final class Subdomain extends Enum implements LocalizedEnum
 	const Surgery					= 'Surgery';
 	const Urology					= 'Urology';
 	const Other						= 'Other';
-
 }

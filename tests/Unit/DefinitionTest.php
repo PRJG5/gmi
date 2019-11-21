@@ -2,13 +2,8 @@
 
 namespace Tests\Unit;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-use App\Card as Card;
 use App\Definition as Definition;
 
 class DefinitionTest extends TestCase
@@ -53,7 +48,7 @@ class DefinitionTest extends TestCase
         $definition->save();
         $definition->delete();
         $this->assertDatabaseMissing('definitions', [
-            'id' => $definition->id
+            'id' => $definition->id,
         ]);
     }
 

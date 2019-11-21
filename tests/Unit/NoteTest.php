@@ -2,8 +2,6 @@
 
 namespace Tests\Unit;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Note;
 
@@ -23,7 +21,7 @@ class NoteTest extends TestCase
     /**
      * Check if the description is not null in the database.
      */
-    public function testRegistrerWithDescription()
+    public function testRegisterWithDescription()
     {
         $note = new Note();
         $note->description= "Test";
