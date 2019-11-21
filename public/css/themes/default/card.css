@@ -44,7 +44,9 @@
 }
 
 .cardBody>input[type="text"],
-.cardBody>input[type="text"]::placeholder {
+.cardBody>input[type="textarea"],
+.cardBody>input[type="text"]::placeholder,
+.cardBody>input[type="textarea"]::placeholder {
 	color: var(--card_text_dark);
 }
 
@@ -53,6 +55,7 @@
  since outline is disabled.
  (Because the default outline is ugly)
 */
-.card input[type="text"]:focus {
+.card input[type="text"]:focus,
+.card input[type="textarea"]:focus {
 	background-color: #66666630;
 }

@@ -33,7 +33,9 @@
 }
 
 .cardBody>input[type="text"],
-.cardBody>input[type="text"]::placeholder {
+.cardBody>input[type="textarea"],
+.cardBody>input[type="text"]::placeholder,
+.cardBody>input[type="textarea"]::placeholder {
 	font-size: 12pt;
 	font-weight: 500;
 }
@@ -46,11 +48,13 @@
 	width: 100%;
 }
 
-.card input[type="text"] {
+.card input[type="text"],
+.card input[type="textarea"] {
 	text-overflow: ellipsis;
 }
 
 .card input[type="text"]:focus,
+.card input[type="textarea"]:focus,
 .card select:focus {
 	outline: none;
 }
@@ -61,6 +65,7 @@
  Add rules for displaying the page on mobile devices.
  Maybe use a grid layout?
  Or a flex layout?
+ // TODO
 */
 @media (max-width: 640px) {
 
