@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d53dbb46e225e127547236a5ba2c36da",
+    "content-hash": "9eba3dbe96792dd1b028d2dd5897f8d1",
     "packages": [
         {
             "name": "bensampo/laravel-enum",
-            "version": "v1.26.1",
+            "version": "v1.27",
             "source": {
                 "type": "git",
                 "url": "https://github.com/BenSampo/laravel-enum.git",
-                "reference": "e78d0e80bdfc58d9caefec623dce112a92e677a7"
+                "reference": "6dfe3045e740bbebe30cc8c31e3ed0f6c3b33f98"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/BenSampo/laravel-enum/zipball/e78d0e80bdfc58d9caefec623dce112a92e677a7",
-                "reference": "e78d0e80bdfc58d9caefec623dce112a92e677a7",
+                "url": "https://api.github.com/repos/BenSampo/laravel-enum/zipball/6dfe3045e740bbebe30cc8c31e3ed0f6c3b33f98",
+                "reference": "6dfe3045e740bbebe30cc8c31e3ed0f6c3b33f98",
                 "shasum": ""
             },
             "require": {
@@ -27,6 +27,7 @@
                 "zendframework/zend-code": "^3.3"
             },
             "require-dev": {
+                "doctrine/dbal": "^2.9",
                 "laravel/framework": "5.8.*|^6.0",
                 "orchestra/testbench": "3.8.*|3.9.*",
                 "phpstan/phpstan": "^0.11.6",
@@ -41,6 +42,11 @@
                 "laravel": {
                     "providers": [
                         "BenSampo\\Enum\\EnumServiceProvider"
+                    ]
+                },
+                "phpstan": {
+                    "includes": [
+                        "extension.neon"
                     ]
                 }
             },
@@ -69,7 +75,7 @@
                 "package",
                 "validation"
             ],
-            "time": "2019-09-17T19:20:10+00:00"
+            "time": "2019-11-16T12:03:42+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",

@@ -53,7 +53,7 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ \App\Enums\Roles::getDescription(Auth::user()->role) }} : {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -69,6 +69,11 @@
                                                      document.getElementById('mesFiches-form').submit();">
                                         {{ __('Mes Fiches') }}
                                     </a>
+                                    @if (Auth::user()->role == \App\Enums\Roles::ADMIN)
+                                        <a class="dropdown-item" href="{{ route('ListingUsers') }}">
+                                            {{ __('Utilisateurs') }}
+                                        </a>
+                                    @endif
 
                                     <form id="mesFiches-form" action="{{ route('mesFiches') }}" method="POST" style="display: none;">
                                         @csrf

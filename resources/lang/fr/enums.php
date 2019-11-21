@@ -2,6 +2,7 @@
 
 use App\Enums\Language;
 use App\Enums\Domain;
+use App\Enums\Roles;
 use App\Enums\Subdomain;
 
 /**
@@ -107,4 +108,10 @@ return [
 		Subdomain::Urology					=> 'Urologie',
 		Subdomain::Other					=> 'Autre',
 	],
+
+    Roles::class=> [
+        Roles::ADMIN => 'Administrateur',
+        Roles::MOD => 'Modérateur',
+        Roles::USERS => 'Utilisateur',
+    ],
 ];
