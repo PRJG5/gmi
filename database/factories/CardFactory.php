@@ -36,11 +36,11 @@ $factory->define(Card::class, function (Faker $faker) {
 
     //$faker->locale = $testLanguages[$pickedLanguage];
     $faker = \Faker\Factory::create($testLanguages[$pickedLanguage]);
-    $randmIndex = array_rand(Language::getValues());
+
     fwrite(STDOUT, $faker->realText(rand(10,50))  . " ($testLanguages[$pickedLanguage])" . "\n");
     return [
         'heading' => $faker->word(),
         //'heading' => $faker->realText() . " ($testLanguages[$pickedLanguage])",
-        'language_id' =>array_rand(Language::getValues()),
+        'language_id' => Language::getRandomValue(),
     ];
 });

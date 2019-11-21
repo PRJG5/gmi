@@ -7,6 +7,7 @@
     <div class="input-group">
         <input type="search" name="search" class="form-control">
         <SELECT name="languages" size="1">
+        <OPTION>All
         @foreach($languages as $language)
         <OPTION>{{$language}}
         @endforeach

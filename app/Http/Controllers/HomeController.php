@@ -39,11 +39,29 @@ class HomeController extends Controller
         $search = $request->get('search');
         $language = $request->get('languages');
         $cards = null;
-        if ($search == "") {
+        //if($search ==""){
+        //    print("Tesst");
+        //    $search ="*";
+      // }
+       // if ($language =="All" || $language ==""){
+         //   print("Tesst2222");
+         //   $language = "*";
+        //}
+
+       // $cards = Card::where('heading', 'like', $search)->where('language_id', 'like' $language)->get();
+     
+        if ($search == "" && ($language == "All" || $language == "")) {
             $cards = Card::all();
-        } else {
-            $cards = Card::where('heading', '=', $search)->get();
+        } else if ($language == "All") {
+            
+            $cards = Card::where('heading', 'like', $search."%")->get();
+
+        } else if ($search == "") {
+            $cards = Card::where('language_id', '=', $language)->get();
+        }else {
+            $cards = Card::where('heading', 'like', $search."%")->where('language_id',  $language)->get();
         }
+    
         return view('searchCard', ['cards' => $cards, 'languages' => Language::getKeys()]);
     }
 }
