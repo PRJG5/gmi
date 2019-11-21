@@ -2,11 +2,12 @@
 
 namespace Tests\Unit;
 
+use App\Context;
+use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
-use App\Context;
-use Illuminate\Database\QueryException;
+
 class ContexTest extends TestCase
 {
     use RefreshDatabase;
@@ -18,17 +19,20 @@ class ContexTest extends TestCase
     public function testValidInsertion()
     {
         $context = "Hello I love You won't you tell me your name?";
-      // $con = factory(App\Context::class)->make();
+      	// $con = factory(App\Context::class)->make();
         $con = new Context();
-        $con->context_to_string= $context;
+        $con->context_to_string = $context;
         $con->save();
-        $this->assertDatabaseHas('contexts', ['id' =>$con->id, 'context_to_string'=>$context]);
-        $con->delete(); 
+        $this->assertDatabaseHas('contexts', [
+			'id' => $con->id,
+			'context_to_string'=> $context,
+		]);
+        $con->delete();
     }
 
     /**
-     * Test if an exception is thrown when we try to insert a context 
-     * with null context_to_string. 
+     * Test if an exception is thrown when we try to insert a context
+     * with null context_to_string.
      */
     public function testInsertNullDescription(){
         $this->expectException(QueryException::class);
@@ -42,11 +46,13 @@ class ContexTest extends TestCase
     public function testIfDeleted(){
         $context = "Whole Lotta Love";
         $con = new Context();
-        $con->context_to_string=$context;
+        $con->context_to_string = $context;
         $con->save();
-        $idCon=$con->id;
+        $idCon = $con->id;
         $con->delete();
-        $this->assertDatabaseMissing('contexts', ['id' =>$idCon]);
+        $this->assertDatabaseMissing('contexts', [
+			'id' =>$idCon,
+		]);
     }
 
     /**
@@ -55,10 +61,10 @@ class ContexTest extends TestCase
     public function testToString(){
         $con =new Context();
         $context = "Heaven Gate";
-        $con->context_to_string= $context;
+        $con->context_to_string = $context;
         $con->save();
         $str = $con->__toString();
-        $this->assertTrue($str == $con->id." ".$context);
+        $this->assertTrue($str == $con->id . " " . $context);
         $con->delete();
     }
 
