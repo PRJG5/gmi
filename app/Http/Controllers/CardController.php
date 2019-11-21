@@ -8,6 +8,7 @@ define("FORMAT_DESCRIPTION", "Pour consulter votre carte, veuillez suivre ce lie
 
 use App\Card;
 use App\Enums\Domain;
+use App\Phonetic;
 use App\User;
 use App\Enums\Language;
 use App\Enums\Subdomain;
@@ -59,11 +60,18 @@ class CardController extends Controller
 		if(!Auth::user()) { // TODO replace with authorize method
 			abort(403, 'Unauthorized action. You must be logged in to create a card.');
 		}
-		$request->merge(['owner_id' => Auth::user()->id]);
+		$request->merge([
+            'owner_id' => Auth::user()->id,
+        ]);
         if(isset($request['phonetic'])){
-            $phonetic = Phonetic::create(['textDescription' => $request['phonetic']]);
+
+            $phonetic = Phonetic::create([
+                'textDescription' => $request['phonetic'],
+            ]);
             $phonetic->save();
-            $request->merge(['phonetic_id'=> $phonetic->id]);
+            $request->merge([
+                'phonetic_id'=> $phonetic->id,
+            ]);
         }
 		// Créer objet Note
 		// Créer objet Contexte
@@ -88,7 +96,7 @@ class CardController extends Controller
 			'languages' => Language::getInstances(),
 			'subdomain' => Subdomain::getInstances(),
             'owner' 	=> User::find($card->owner_id),
-            'phonetic' => DB::table('phonetics')->where('id', $card->phonetic_id)->first(),
+            'phonetic'  => DB::table('phonetics')->where('id', $card->phonetic_id)->first(),
 		]);
     }
 
@@ -103,12 +111,13 @@ class CardController extends Controller
         $subject = sprintf(FORMAT_SUBJECT, $card->heading);
         $description = sprintf(FORMAT_DESCRIPTION, $_SERVER['HTTP_HOST'], $card->card_id);
         return view('card.edit', [
-            'mail' => ["subject" => urlencode($subject),'description' => urlencode($description)],
-            'card' => $card,
+            'mail'      => ["subject" => urlencode($subject),'description' => urlencode($description)],
+            'card'      => $card,
             'domain' 	=> Domain::getInstances(),
 			'languages' => Language::getInstances(),
 			'subdomain' => Subdomain::getInstances(),
-			'owner' 	=> DB::table('users')->where('id', $card->owner_id)->first(),
+            'owner' 	=> DB::table('users')->where('id', $card->owner_id)->first(),
+            'phonetic'  => DB::table('phonetics')->where('id', $card->phonetic_id)->first(),
 		]);
     }
 
@@ -159,6 +168,7 @@ class CardController extends Controller
             'heading'		=> 'required',
             'language_id'	=> 'required',
             'phonetic'		=> '',
+            'phonetic_id'   => '',
             'domain_id'		=> '',
             'subdomain_id'	=> '',
             'definition'	=> '',
