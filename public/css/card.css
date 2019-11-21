@@ -32,6 +32,14 @@
 	font-weight: 400;
 }
 
+.cardBody>* {
+	font-size: 12pt;
+}
+
+.cardBody>label {
+	text-decoration: underline;
+}
+
 .cardBody>input[type="text"],
 .cardBody>input[type="textarea"],
 .cardBody>input[type="text"]::placeholder,
