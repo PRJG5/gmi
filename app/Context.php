@@ -3,24 +3,34 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+
 /**
  * Define the Context object of the GMI Project
  */
 class Context extends Model
 {
-    
-    protected $fillable = ['decription'];
+	protected $table = 'contexts';
+	protected $primaryKey = 'id';
+	public $incrementing = true;
+	protected $keyType = 'bigIncrements';
+	public $timestamps = false;
+	protected $fillable = [
+		'context_to_string',
+	];
+	protected $guarded = [
+        'id',
+	];
     
 
     /**
      * Constructor of the Context Object.
      */
- //   public function __constructor($context){
-    //     $this->contextToString = $context;
+ 	// public function __constructor($context){
+    // 		$this->contextToString = $context;
     // }
 
     // public function getNameOfContext(){
-    //     return $this->contextToString;
+    // 		return $this->contextToString;
     // }
 
     /**
@@ -29,7 +39,4 @@ class Context extends Model
     public function __toString(){
          return $this->id ." ".  $this->context_to_string;
     }
-
-    
-
 }

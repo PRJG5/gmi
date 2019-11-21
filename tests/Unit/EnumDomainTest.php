@@ -2,12 +2,9 @@
 
 namespace Tests\Unit;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+use App\Enums\Domain as Domain;
+use Illuminate\Support\Facades\App;
 use Tests\TestCase;
-use App\Enums\Domain;
-use BenSampo\Enum\Rules\EnumValue;
-use App;
 
 class EnumDomainTest extends TestCase
 {
@@ -26,7 +23,7 @@ class EnumDomainTest extends TestCase
      */
     public function testGetKEYOne()
     {
-        $this->assertEquals(Domain::getKey(1) , 'Sante_mentale');
+        $this->assertEquals('MentalHealth', Domain::getKey('Mental Health'));
     }
 
     /**
@@ -34,14 +31,13 @@ class EnumDomainTest extends TestCase
      */
     public function testGetKeyTwo()
     {
-        $this->assertEquals(Domain::getKey(Domain::Sante_mentale) , 'Sante_mentale');
+		$this->assertEquals('MentalHealth', Domain::getKey(Domain::MentalHealth));
     }
 
     public function testGetDescription()
     {
-        App::SetLocale('fr');
-        $this->assertEquals(Domain::getDescription(Domain::Sante_mentale) , 'Sante mentale');
+        App::setlocale('fr');
+        $this->assertEquals('Juridique', Domain::getDescription('Legal'));
     }
 
 }
- 

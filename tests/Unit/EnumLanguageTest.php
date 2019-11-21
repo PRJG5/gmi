@@ -2,11 +2,9 @@
 
 namespace Tests\Unit;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\App;
 use Tests\TestCase;
 use App\Enums\Language;
-use App;
 
 class EnumLanguageTest extends TestCase
 {

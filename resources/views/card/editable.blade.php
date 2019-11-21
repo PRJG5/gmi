@@ -1,9 +1,11 @@
 @extends('card.show', [
 	'action' => $action,
 	'card' => $card,
+	'domain' => $domain,
 	'editable' => true,
 	'languages' => $languages,
-	'user' => $user,
+	'subdomain' => $subdomain,
+	'owner' => $owner,
 ])
 
 @section('csrf')
@@ -11,8 +13,8 @@
 @endsection
 
 @section('buttons')
-<input type="submit" 	class="buttonLike"	value="Submit"	title="Submit" />
-<input type="reset" 	class="buttonLike"	value="Clear"	title="Clear" />
+<input type="submit"	class="buttonLike"	value="Submit"	title="Submit" />
+<input type="reset"		class="buttonLike"	value="Clear"	title="Clear" />
 @endsection
 
 @section('error_language_id')
