@@ -88,14 +88,14 @@ class Card extends Model
      */
     protected $attributes = [
         'heading'		=> '',
-        'phonetic_id'	=> '',
+        'phonetic_id'	=> NULL,
         'domain_id'		=> '',
         'subdomain_id'	=> '',
-        'definition'	=> '',
-        'context'		=> '',
-        'note'			=> '',
+        'definition_id'	=> NULL,
+        'context_id'	=> NULL,
+        'note_id'		=> NULL,
 		'language_id'	=> '',
-		'owner_id'		=> 0,
+		'owner_id'		=> 1,
     ];
 
     /**
@@ -107,9 +107,9 @@ class Card extends Model
         'phonetic_id',
         'domain_id',
         'subdomain_id',
-        'definition',
-        'context',
-        'note',
+        'definition_id',
+        'context_id',
+        'note_id',
         'language_id',
         'owner_id',
     ];
@@ -124,6 +124,7 @@ class Card extends Model
 	
 	/**
 	 * Returns a string describing the card
+	 * @return string a string describing the card
 	 */
 	public function __toString() {
 		return
@@ -132,17 +133,20 @@ class Card extends Model
 			"\theading:"		. $this->heading		. "\n" .
 			"\tphonetic_id: "	. $this->phonetic_id	. "\n" .
 			"\tdomain_id:"		. $this->domain_id		. "\n" .
-			"\tdefinition: "	. $this->definition		. "\n" .
-			"\tcontext: "		. $this->context		. "\n" .
-			"\tnote: "			. $this->note			. "\n" .
+			"\tdefinition_id: "	. $this->definition_id	. "\n" .
+			"\tcontext_id: "	. $this->context_id		. "\n" .
+			"\tnote_id: "		. $this->note_id		. "\n" .
 			"\tlanguage_id: "	. $this->language_id	. "\n" .
 			"\towner_id: "		. $this->owner_id		. "\n" .
 		"}";
     }
 
 
-    // Return all the links refered to this card in an array.
-    public function links(){
+	/*
+	 * Returns all links referring to this card in an array.
+	 * @author 49222
+	 */
+    public function links() {
         //TODO: Trouver le fonctionnement du hasManyThrough ----> return $this->hasManyThrough('\App\Card','App\Link');
         return DB::table('links')->select('*')->where('cardA','=',$this->id,'or','cardB','=',$this->id)->get();
     }

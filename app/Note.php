@@ -9,8 +9,20 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Note extends Model
 {
-
-    protected $fillable = ['description'];
+	protected $table = 'notes';
+	protected $primaryKey = 'id';
+	public $incrementing = true;
+	protected $keyType = 'bigIncrements';
+	public $timestamps = false;
+	protected $attributes = [
+		'description' => '',
+	];
+    protected $fillable = [
+		'description',
+	];
+	protected $guarded = [
+        'id',
+	];
 
     public function card(){
         return $this->$belongsTo(Card::class);

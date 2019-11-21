@@ -28,14 +28,25 @@ class Definition extends Model
      * This variable is overriding the default primary key name.
      * @see https://laravel.com/docs/6.x/eloquent#defining-models section "Primary keys"
     */
-    protected $primaryKey = 'id';
+	protected $primaryKey = 'id';
+	
+	public $incrementing = true;
+
+	protected $keyType = 'bigIncrements';
 
     public $timestamps = false;
 
+	protected $attributes = [
+		'definition_content' => '',
+	];
 
     protected $fillable = [
         'definition_content',
-    ];
+	];
+	
+	protected $guarded = [
+        'id',
+	];
 
     /**
      * Returns a string of the definition with his id and content
