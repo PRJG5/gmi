@@ -18,7 +18,7 @@ class User extends Authenticatable
 	protected $attributes = [
 		'name' => '',
 		'email' => '',
-		'email_verified_at' => 0,
+		'email_verified_at' => NULL,
 		'password' => '',
 		'remember_token' => NULL,
 	];
