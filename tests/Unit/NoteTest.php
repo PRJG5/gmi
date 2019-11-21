@@ -14,7 +14,9 @@ class NoteTest extends TestCase
     {
         $note = new Note();
         $note->save();
-        $this->assertDatabaseHas('notes', ['id'=>$note->id,'description'=>null]);
+        $this->assertDatabaseHas('notes', [
+            'id' => $note->id,
+            'description'=> '']);
         $note->delete();
     }
 
@@ -24,9 +26,11 @@ class NoteTest extends TestCase
     public function testRegisterWithDescription()
     {
         $note = new Note();
-        $note->description= "Test";
+        $note->description= 'Test';
         $note->save();
-        $this->assertDatabaseHas('notes', ['id'=>$note->id,'description'=>"Test"]);
+        $this->assertDatabaseHas('notes', [
+            'id' => $note->id,
+            'description' => 'Test']);
         $note->delete();
     }
 
@@ -47,10 +51,10 @@ class NoteTest extends TestCase
      */
     public function testToString() {
         $note = new Note();
-        $note->description= "Test to string";
+        $note->description= 'Test to string';
         $note->save();
         $str = $note->__toString();
-        $this->assertTrue($str == $note->id . " - " . "Test to string");
+        $this->assertEquals($str, strval($note->id) . ' - ' . 'Test to string');
         $note->delete();
     }
 }

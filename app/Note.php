@@ -30,6 +30,6 @@ class Note extends Model
 
     public function __toString()
     {
-        return $this->id . " - " .  $this->description;
+        return strval($this->id) . " - " .  $this->description;
     }
 }

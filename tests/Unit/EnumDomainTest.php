@@ -31,7 +31,7 @@ class EnumDomainTest extends TestCase
      */
     public function testGetKeyTwo()
     {
-		$this->assertEquals('Mental Health', Domain::getKey(Domain::MentalHealth));
+		$this->assertEquals('MentalHealth', Domain::getKey(Domain::MentalHealth));
     }
 
     public function testGetDescription()
