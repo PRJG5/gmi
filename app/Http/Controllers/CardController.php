@@ -59,12 +59,11 @@ class CardController extends Controller
     {
 		if(!Auth::user()) { // TODO replace with authorize method
 			abort(403, 'Unauthorized action. You must be logged in to create a card.');
-		}
+        }
 		$request->merge([
             'owner_id' => Auth::user()->id,
         ]);
-        if(isset($request['phonetic'])){
-
+        if(isset($request['phonetic']) && strlen($request['phonetic']) > 0){
             $phonetic = Phonetic::create([
                 'textDescription' => $request['phonetic'],
             ]);
@@ -76,7 +75,7 @@ class CardController extends Controller
 		// Créer objet Note
 		// Créer objet Contexte
 		// Créer objet Définition
-        $card = new Card($this->validateData($request, true));
+        $card = Card::create($this->validateData($request, true));
 		$card->save();
         return redirect()->action('CardController@show', [$card]);
     }
@@ -174,11 +173,11 @@ class CardController extends Controller
             'definition'	=> '',
             'context'		=> '',
             'note'			=> '',
+            'owner_id'	    => 'required',
 		];
 		if(!$creating) {
 			array_merge($tab, [
 				'card_id'	=> 'required',
-				'owner_id'	=> 'required',
 			]);
 		}
         return $request->validate($tab);
