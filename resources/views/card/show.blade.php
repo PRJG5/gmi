@@ -37,7 +37,7 @@
 		--}}
 
 		@if (!isset($card) || in_array($card->language_id, $languages))
-		<select name="language_id" class="language_id" type="text" placeholder="Language" value="{{ isset($card) ? $card->language_id : '' }}" title="Langue" {{ (isset($editable) && $editable) ? '' : 'disabled' }} required >
+		<select name="language_id" class="language_id" type="text" value="{{ isset($card) ? $card->language_id : '' }}" title="Language" {{ (isset($editable) && $editable) ? '' : 'disabled' }} required >
 			@foreach  ($languages as $lang)
 			<option value="{{ $lang->key }}" {{ (isset($card) && ($card->language_id == $lang->key)) ? 'selected' : '' }} title="{{ $lang->description }}" >{{ $lang->description }}</option>
 			@endforeach
@@ -72,7 +72,7 @@
 
 		@if (!isset($card) || in_array($card->domain_id, $domain))
 		<label for="domain_id">Domain:</label>
-		<select name="domain_id" class="domain_id" type="text" placeholder="Domain" value="{{ isset($card) ? $card->domain_id : '' }}" title="Domain" {{ (isset($editable) && $editable) ? '' : 'disabled' }} required >
+		<select name="domain_id" class="domain_id" type="text" value="{{ isset($card) ? $card->domain_id : '' }}" title="Domain" {{ (isset($editable) && $editable) ? '' : 'disabled' }} required >
 			@foreach($domain as $dom)
 			<option value="{{ $dom->key}}" {{ (isset($card) && ($card->domain_id == $dom->key)) ? 'selected' : ''}} title="{{ $dom->description }}" >{{ $dom->description }}</option>
 			@endforeach
@@ -81,7 +81,7 @@
 
 		@if (!isset($card) || in_array($card->subdomain_id, $subdomain))
 		<label for="subdomain_id">Subdomain:</label>
-		<select name="subdomain_id" class="subdomain_id" type="text" placeholder="Subdomain" value="{{ isset($card) ? $card->subdomain_id : '' }}" title="Subdomain" {{ (isset($editable) && $editable) ? '' : 'disabled' }} required >
+		<select name="subdomain_id" class="subdomain_id" type="text" value="{{ isset($card) ? $card->subdomain_id : '' }}" title="Subdomain" {{ (isset($editable) && $editable) ? '' : 'disabled' }} required >
 			@foreach($subdomain as $subdom)
 			<option value="{{ $subdom->key}}" {{ (isset($card) && ($card->qubdomain_id == $subdom->key)) ? 'selected' : ''}} title="{{ $subdom->description }}" >{{ $subdom->description }}</option>
 			@endforeach
@@ -92,7 +92,7 @@
 		<input name="note" class="note" type="text" placeholder="Note" value="" title="" {{ (isset($editable) && $editable) ? '' : 'disabled' }} />
 
 		<label for="context">Contexte:</label>
-		<input name="context" class="context" type="textarea" placeholder="Context" value="" title="" {{ (isset($editable) && $editable) ? '' : 'disabled' }} />
+		<textarea name="context" class="context" placeholder="Context" value="" title="" {{ (isset($editable) && $editable) ? '' : 'disabled' }} ></textarea>
 
 	</div>
 

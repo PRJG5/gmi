@@ -44,9 +44,9 @@ select>option:active {
 }
 
 .cardBody>input[type="text"],
-.cardBody>input[type="textarea"],
+.cardBody>textarea,
 .cardBody>input[type="text"]::placeholder,
-.cardBody>input[type="textarea"]::placeholder {
+.cardBody>textarea::placeholder {
 	color: var(--card_text_dark);
 }
 
@@ -56,9 +56,9 @@ select>option:active {
  (Because the default outline is ugly)
 */
 .card input[type="text"]:focus,
-.card input[type="textarea"]:focus,
+.card textarea:focus,
 .card input[type="text"]:not(:disabled),
-.card input[type="textarea"]:not(:disabled),
+.card textarea:not(:disabled),
 .card select:not(:disabled) {
 	background-color: #66666630;
 }

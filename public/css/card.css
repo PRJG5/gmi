@@ -41,9 +41,9 @@
 }
 
 .cardBody>input[type="text"],
-.cardBody>input[type="textarea"],
+.cardBody>textarea,
 .cardBody>input[type="text"]::placeholder,
-.cardBody>input[type="textarea"]::placeholder {
+.cardBody>textarea::placeholder {
 	font-size: 12pt;
 	font-weight: 500;
 }
@@ -57,12 +57,12 @@
 }
 
 .card input[type="text"],
-.card input[type="textarea"] {
+.card textarea {
 	text-overflow: ellipsis;
 }
 
 .card input[type="text"]:focus,
-.card input[type="textarea"]:focus,
+.card textarea:focus,
 .card select:focus {
 	outline: none;
 }
