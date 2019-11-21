@@ -13,8 +13,9 @@
 @endsection
 
 @section('buttons')
-<input type="submit"	class="buttonLike"	value="Submit"	title="Submit" />
-<input type="reset"		class="buttonLike"	value="Clear"	title="Clear" />
+<input type="submit" 	class="buttonLike"	value="Submit"	title="Submit" />
+<input type="reset" 	class="buttonLike"	value="Clear"	title="Clear" />
+<a href="mailto:{{$user->email}}?subject={{$mail['subject']}}&body={{$mail['description']}}" class="buttonLike">Send mail</a>
 @endsection
 
 @section('error_language_id')
