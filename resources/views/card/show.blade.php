@@ -1,7 +1,15 @@
 {{--
 Next 8 HTML lines must be put in the base Blade tmplate.
-// TODO
+// TODO@extends('card.show', [
+	'action' => $action,
+	'card' => $card,
+	'editable' => true,
+	'languages' => $languages,
+	'user' => $user,
+])
 --}}
+
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -111,6 +119,5 @@ Next 8 HTML lines must be put in the base Blade tmplate.
 			<input type="submit" class="buttonLike" value="Delete"	title="Delete" />
 		</form>
 		@show
-
 	</body>
 </html>

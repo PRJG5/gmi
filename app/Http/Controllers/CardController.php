@@ -145,4 +145,15 @@ class CardController extends Controller
     public function getCardsByUser($userId) {
         return Card::where('owner_id', $userId)->get();
     }
+
+    public function linkCard(Card $cardOrigin, Card $cardLinked){
+        return view('card.link', [
+            'cardOrigin' => $cardOrigin,
+            'cardLinked' => $cardLinked,
+			'languages' => Language::getInstances(),
+            'userOrigin' => DB::table('users')->where('id', $cardOrigin->owner_id)->first(),
+			'userLinked' => DB::table('users')->where('id', $cardLinked->owner_id)->first(),
+            
+		]);
+    }
 }

@@ -35,4 +35,9 @@ Route::get('/searchByUser', function () {
  * @param id The user id
  */
 Route::get('api/getAllCardsFromUsers/{id}', 'CardController@getCardsByUser');
+
+Route::get('cards/{cardOrigin}/{cardLinked}/link','CardController@linkCard')->name('link');
+
+
 ?>
+
