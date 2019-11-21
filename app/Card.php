@@ -87,15 +87,15 @@ class Card extends Model
      * @see https://laravel.com/docs/6.x/eloquent#default-attribute-values
      */
     protected $attributes = [
-        'heading' => '',
-        // phonetic.
-        'domain_id' => 0,
-        'subdomain_id' => 0,
-        'definition' => '',
-        'context' => '',
-        'note' => '',
-		'language_id' => 0,
-		'owner_id' => 0,
+        'heading' 		=> '',
+        'phonetic'		=> '',
+        'domain_id' 	=> '',
+        'subdomain_id' 	=> '',
+        'definition' 	=> '',
+        'context' 		=> '',
+        'note' 			=> '',
+		'language_id' 	=> '',
+		'owner_id' 		=> 0,
     ];
 
     /**
@@ -104,9 +104,9 @@ class Card extends Model
      */
     protected $fillable = [
         'heading',
-        // phonetic.
-        'domain',
-        'subdomain',
+        'phonetic',
+        'domain_id',
+        'subdomain_id',
         'definition',
         'context',
         'note',
@@ -118,11 +118,11 @@ class Card extends Model
      * @var array The fields that cannot be mass edited.
      * @see https://laravel.com/docs/5.8/eloquent#mass-assignment
      */
-/*
+
     protected $guarded = [
         'card_id',
     ];
-*/
+
 
     // Return all the links refered to this card in an array.
     public function links(){
