@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Represents a vote 
  */
-class Definition extends Model
+class Vote extends Model
 {
     
     protected $table = 'votes';
@@ -29,9 +29,7 @@ class Definition extends Model
 	protected $guarded = [
         'id',
 	];
-    
-    
-    
-
 
 }
+
+?>
