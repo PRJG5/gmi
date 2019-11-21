@@ -126,7 +126,7 @@ class CardController extends Controller
     {
         $tab = [
             'heading' => 'required',
-            // 'phonetic',
+            'phonetic' => '',
             // domain.
             // sub-domain.
             // definition.

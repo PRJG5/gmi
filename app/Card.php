@@ -86,13 +86,13 @@ class Card extends Model
      */
     protected $attributes = [
         'heading' => '',
-        // phonetic.
+        'phonetic_id' => NULL,
         // domain.
         // sub-domain.
         'definition' => '',
         // context.
         // note.
-		'language_id' => 0,
+		'language_id' => '',
 		'owner_id' => 0,
     ];
 
