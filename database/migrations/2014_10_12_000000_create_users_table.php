@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 class CreateUsersTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Run the migrations..
      *
      * @return void
      */
@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
-          
+
         DB::table('users')->insert(['name' => 'med' , 'email' => 'meihdi1997@gmail.com' , 'password' => Hash::make('med')]);
         DB::table('users')->insert(['name' => 'test' , 'email' => 'test@test.com' , 'password' =>  Hash::make('test') ]);
         DB::table('users')->insert(['name' => 'root' , 'email' => 'root@test.com' , 'password' =>  Hash::make('rootroot') ]);

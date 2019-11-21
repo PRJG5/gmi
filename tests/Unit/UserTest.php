@@ -47,7 +47,7 @@ class UserTest extends TestCase
     /** @test */
     public function add_user_name_too_short()
     {
-        //TODO: Ask user which lenght
+        //TODO: Ask user which length
         $user = new User();
         $user->name = '';
         $user->email = 'user@example.com';

@@ -2,7 +2,7 @@
 	'action' => '/cards',
 	'card' => null,
 	'languages' => $languages,
-	'user' => null,
+	'owner' => null,
 ])
 
 @section('card_id')

@@ -2,13 +2,8 @@
 
 namespace Tests\Unit;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-use App\Card as Card;
 use App\Definition as Definition;
 
 class DefinitionTest extends TestCase
@@ -37,7 +32,7 @@ class DefinitionTest extends TestCase
         $definition->definition_content = "hello33";
         $definition->save();
         $this->assertDatabaseHas('definitions', [
-            'definition_id' => $definition->definition_id,
+            'id' => $definition->id,
             'definition_content' => $definition->definition_content,
         ]);
         $definition->delete();
@@ -53,7 +48,7 @@ class DefinitionTest extends TestCase
         $definition->save();
         $definition->delete();
         $this->assertDatabaseMissing('definitions', [
-            'definition_id' => $definition->definition_id
+            'id' => $definition->id,
         ]);
     }
 
@@ -66,7 +61,7 @@ class DefinitionTest extends TestCase
         $definition->definition_content = "Test to string";
         $definition->save();
         $str = $definition->__toString();
-        $this->assertTrue($str == $definition->definition_id . " - " . "Test to string");
+        $this->assertTrue($str == $definition->id . " - " . "Test to string");
         $definition->delete();
     }
 }

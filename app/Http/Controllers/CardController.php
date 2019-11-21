@@ -1,14 +1,21 @@
 <?php
-
 namespace App\Http\Controllers;
 
+//TODO: pour ceux qui devront traduire, Remplacer le contenu de ces constantes
+define("FORMAT_SUBJECT", "Remarque concernant votre carte %s");
+define("FORMAT_DESCRIPTION", "Pour consulter votre carte, veuillez suivre ce lien: %s/cards/%s");
+
+
 use App\Card;
+use App\Enums\Domain;
 use App\User;
 use App\Enums\Language;
+use App\Enums\Subdomain;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response;
+
 
 /**
  * Handles the different CRUD action about the cards.
@@ -19,7 +26,7 @@ class CardController extends Controller
 
     /**
      * Displays a list of all the cards.
-     * @return Response a list with all the cards in the database.
+     * @return a list with all the cards in the database.
      * @author 44422
      */
     public function index()
@@ -35,7 +42,9 @@ class CardController extends Controller
     public function create()
     {
         return view('card.create', [
-			'languages' => Language::getInstances(),
+            'domain' 	=> Domain::getInstances(),
+            'languages' => Language::getInstances(),
+            'subdomain' => Subdomain::getInstances(),
 		]);
     }
 
@@ -47,15 +56,15 @@ class CardController extends Controller
      */
     public function store(Request $request)
     {
-		$user = Auth::user();
-		$request->merge(['owner_id' => $user->id]);
-        $card = Card::create(
-            $request->validate([
-                'heading' => 'required',
-                'language_id' => 'required',
-                'owner_id' => 'required',
-            ])
-        );
+		if(!Auth::user()) { // TODO replace with authorize method
+			abort(403, 'Unauthorized action. You must be logged in to create a card.');
+		}
+		$request->merge(['owner_id' => Auth::user()->id]);
+		// Créer objet Phonétique
+		// Créer objet Note
+		// Créer objet Contexte
+		// Créer objet Définition
+        $card = new Card($this->validateData($request, true));
 		$card->save();
         return redirect()->action('CardController@show', [$card]);
     }
@@ -69,9 +78,12 @@ class CardController extends Controller
     public function show(Card $card)
     {
         return view('card.show', [
-			'card' => $card,
-			'user' => User::find($card->owner_id),
-			'languages' => Language::getInstances()
+			'card' 		=> $card,
+			'domain' 	=> Domain::getInstances(),
+			'editable'	=> false,
+			'languages' => Language::getInstances(),
+			'subdomain' => Subdomain::getInstances(),
+			'owner' 	=> User::find($card->owner_id),
 		]);
     }
 
@@ -83,10 +95,15 @@ class CardController extends Controller
      */
     public function edit(Card $card)
     {
+        $subject = sprintf(FORMAT_SUBJECT, $card->heading);
+        $description = sprintf(FORMAT_DESCRIPTION, $_SERVER['HTTP_HOST'], $card->card_id);
         return view('card.edit', [
-			'card' => $card,
+            'mail' => ["subject" => urlencode($subject),'description' => urlencode($description)],
+            'card' => $card,
+            'domain' 	=> Domain::getInstances(),
 			'languages' => Language::getInstances(),
-			'user' => DB::table('users')->where('id', $card->owner_id)->first(),
+			'subdomain' => Subdomain::getInstances(),
+			'owner' 	=> DB::table('users')->where('id', $card->owner_id)->first(),
 		]);
     }
 
@@ -99,50 +116,77 @@ class CardController extends Controller
      */
     public function update(Request $request, Card $card)
     {
-        $card->update($this->validateData($request));
+		$card->update($this->validateData($request, false));
+		// Mettre à jour objet Phonétique
+		// Mettre à jour objet Note
+		// Mettre à jour objet Contexte
+		// Mettre à jour objet Définition
         return redirect()->action('CardController@show', [$card]);
     }
 
     /**
      * Removes the specified card from the database.
-     * @param  Card  $card the card to delete.
+     * @param Card $card the card to delete.
      * @return Response the view with all the cards.
+     * @throws Exception if card to delete cannot be found
      * @author 44422
      */
     public function destroy(Card $card)
     {
-        $card->delete();
+        try {
+            $card->delete();
+        } catch(\Exception $exception) {
+
+        }
         return redirect()->action('CardController@index');
     }
 
     /**
-     * Validates the data recieved.
-     * @param Request the request to validate
+     * Validates the data received.
+     * @param Request $request the request
+     * @param bool $creating if the card is being created or not
      * @return array the validated data in a Card object.
      * @author 44422
+     * @see https://laravel.com/docs/6.x/validation
      */
-    private function validateData(Request $request)
-    {
-        return $request->validate([
-			'card_id' => 'required',
-            'heading' => 'required',
-            // phonetic.
-            // domain.
-            // sub-domain.
-            // definition.
-            // context.
-            // note.
-            'language_id' => 'required',
-            'owner_id' => 'required',
-        ]);
-    }
+    private function validateData(Request $request, bool $creating) {
+		$tab = [
+            'heading'		=> 'required',
+            'language_id'	=> 'required',
+            'phonetic'		=> '',
+            'domain_id'		=> '',
+            'subdomain_id'	=> '',
+            'definition'	=> '',
+            'context'		=> '',
+            'note'			=> '',
+		];
+		if(!$creating) {
+			array_merge($tab, [
+				'card_id'	=> 'required',
+				'owner_id'	=> 'required',
+			]);
+		}
+        return $request->validate($tab);
+	}
+
+    /**
+     * Determines if the user is authorized to make this request.
+     * @param $ability
+     * @param $arguments
+     * @return bool
+     * @author 44422
+     * @see https://laravel.com/docs/6.x/validation
+     */
+	public function authorize($ability, $arguments) {
+		return true; // TODO
+	}
     
     /**
      * Return all cards from an user
-     * @param userId The user id
-     * @return All cards from an user
+     * @param int userId The user id
+     * @return Card[] All cards from an user
      */
-    public function getCardsByUser($userId) {
+    public function getCardsByUser(int $userId) {
         return Card::where('owner_id', $userId)->get();
     }
 }

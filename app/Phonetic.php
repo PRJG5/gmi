@@ -6,5 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Phonetic extends Model
 {
-    protected $filable = ["textDescription"];
+	protected $table = 'phonetics';
+	protected $primaryKey = 'id';
+	public $incrementing = true;
+	protected $keyType = 'bigIncrements';
+	public $timestamps = false;
+	protected $attributes = [
+		'textDescription' => '',
+	];
+	protected $fillable = [
+		'textDescription',
+	];
+	protected $guarded = [
+        'id',
+	];
 }
