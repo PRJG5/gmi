@@ -139,20 +139,23 @@ class CardTest extends TestCase
 			'name'		=> 'Tester',
 			'email'		=> 'tester@test.com',
 			'password'	=> 'tested',
-		]);
-        $cardA =  new User([
+        ]);
+        $user->save();
+        $cardA =  new Card([
 			'heading'		=> 'test1',
 			'definition'	=> 'blabla2',
 			'owner_id'		=> $user->id
-		]);
-        $cardB =  new User([
+        ]);
+        $cardA->save();
+        $cardB =  new Card([
 			'heading'		=> 'test2',
 			'definition'	=> 'blabla2',
 			'owner_id'		=> $user->id
-		]);
+        ]);
+        $cardB->save();
         $link = new Link();
-        $link->cardA = $cardA->id;
-        $link->cardB = $cardB->id;
+        $link->cardA = $cardA->owner_id;
+        $link->cardB = $cardB->owner_id;
         $link->save();
         $this->assertEquals($cardA->links(), [$cardB]);
     }

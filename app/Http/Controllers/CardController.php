@@ -1,6 +1,10 @@
 <?php
-
 namespace App\Http\Controllers;
+
+//TODO: pour ceux qui devront traduire, Remplacer le contenu de ces constantes
+define("FORMAT_SUBJECT", "Remarque concernant votre carte %s");
+define("FORMAT_DESCRIPTION", "Pour consulter votre carte, veuillez suivre ce lien: %s/cards/%s");
+
 
 use App\Card;
 use App\Enums\Domain;
@@ -11,6 +15,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
+
 
 /**
  * Handles the different CRUD action about the cards.
@@ -90,9 +95,12 @@ class CardController extends Controller
      */
     public function edit(Card $card)
     {
+        $subject = sprintf(FORMAT_SUBJECT, $card->heading);
+        $description = sprintf(FORMAT_DESCRIPTION, $_SERVER['HTTP_HOST'], $card->card_id);
         return view('card.edit', [
-			'card' 		=> $card,
-			'domain' 	=> Domain::getInstances(),
+            'mail' => ["subject" => urlencode($subject),'description' => urlencode($description)],
+            'card' => $card,
+            'domain' 	=> Domain::getInstances(),
 			'languages' => Language::getInstances(),
 			'subdomain' => Subdomain::getInstances(),
 			'owner' 	=> DB::table('users')->where('id', $card->owner_id)->first(),
