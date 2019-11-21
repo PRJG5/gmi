@@ -52,9 +52,7 @@
 		@section('error_heading')
 		@show
 
-		{{--
-		phonetic
-		--}}
+		<input name="phonetic" class="phonetic" type="text" placeholder="Phonetic" value="{{ isset($phonetic) ? $phonetic->textDescription : ''}}" title="Phonetic" {{ (isset($editable) && $editable) ? '' : 'disabled' }} />
 	</div>
 	<div class="cardBody">
 

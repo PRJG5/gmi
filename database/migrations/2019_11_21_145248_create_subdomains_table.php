@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePhoneticsTable extends Migration
+class CreateSubdomainsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreatePhoneticsTable extends Migration
      */
     public function up()
     {
-        Schema::create('phonetics', function (Blueprint $table) {
+        Schema::create('subdomains', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('textDescription')->nullable(false);
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -27,7 +27,6 @@ class CreatePhoneticsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('phonetics');
+        Schema::dropIfExists('subdomains');
     }
 }
-//
