@@ -26,7 +26,7 @@ class CardController extends Controller
      */
     public function index()
     {
-        return Card::all();
+        return view('card.index',['cards' => Card::all()]);
     }
 
     /**
@@ -58,7 +58,7 @@ class CardController extends Controller
 		// Créer objet Phonétique
 		// Créer objet Note
 		// Créer objet Contexte
-		// Créer objet Définition
+        // Créer objet Définition
         $card = new Card($this->validateData($request, true));
 		$card->save();
         return redirect()->action('CardController@show', [$card]);
@@ -145,12 +145,12 @@ class CardController extends Controller
 		$tab = [
             'heading'		=> 'required',
             'language_id'	=> 'required',
-            'phonetic'		=> '',
+           // 'phonetic'		=> '',
             'domain_id'		=> '',
             'subdomain_id'	=> '',
             'definition'	=> '',
-            'context'		=> '',
-            'note'			=> '',
+            //'context_id'	=> '',
+            //'note_id'		=> '',
 		];
 		if(!$creating) {
 			array_merge($tab, [
@@ -179,7 +179,7 @@ class CardController extends Controller
      * @return Card[] All cards from an user
      */
     public function getCardsByUser(int $userId) {
-        return Card::where('owner_id', $userId)->get();
+        return view('card.index',['cards' => Card::where('owner_id',$userId)->get()]);
     }
 
     public function linkCard(Card $cardOrigin, Card $cardLinked){

@@ -93,7 +93,7 @@ class Card extends Model
         'definition_id'	=> NULL,
         'context_id'	=> NULL,
         'note_id'		=> NULL,
-		'language_id'	=> '',
+		//'language_id'	=> '',
 		'owner_id'		=> 1,
     ];
 
