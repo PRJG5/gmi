@@ -47,4 +47,7 @@ Route::get('/searchByUser', function () {
  */
 Route::get('api/getAllCardsFromUsers/{id}', 'CardController@getCardsByUser');
 Route::get('api/addsubdomain/{name}', 'BasicDataController@addSubdomain');
+
+Route::get('/addLanguage','LanguageController@importView');
+Route::post('/import','LanguageController@import')->name('importLanguage');
 ?>
