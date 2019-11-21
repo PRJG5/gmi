@@ -37,7 +37,7 @@ class DefinitionTest extends TestCase
         $definition->definition_content = "hello33";
         $definition->save();
         $this->assertDatabaseHas('definitions', [
-            'definition_id' => $definition->definition_id,
+            'id' => $definition->id,
             'definition_content' => $definition->definition_content,
         ]);
         $definition->delete();
@@ -53,7 +53,7 @@ class DefinitionTest extends TestCase
         $definition->save();
         $definition->delete();
         $this->assertDatabaseMissing('definitions', [
-            'definition_id' => $definition->definition_id
+            'id' => $definition->id
         ]);
     }
 
@@ -66,7 +66,7 @@ class DefinitionTest extends TestCase
         $definition->definition_content = "Test to string";
         $definition->save();
         $str = $definition->__toString();
-        $this->assertTrue($str == $definition->definition_id . " - " . "Test to string");
+        $this->assertTrue($str == $definition->id . " - " . "Test to string");
         $definition->delete();
     }
 }

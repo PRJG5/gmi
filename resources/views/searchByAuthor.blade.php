@@ -43,7 +43,7 @@ function searchCards() {
 
         cards = JSON.parse(this.responseText);
         cards.forEach(card => {
-            xhttp2.open("GET", "/cards/" + card["card_id"], true);
+            xhttp2.open("GET", "/cards/" + card["id"], true);
             xhttp2.send();
         });
     }

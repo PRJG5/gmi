@@ -28,7 +28,7 @@ class Definition extends Model
      * This variable is overriding the default primary key name.
      * @see https://laravel.com/docs/6.x/eloquent#defining-models section "Primary keys"
     */
-    protected $primaryKey = 'definition_id';
+    protected $primaryKey = 'id';
 
     public $timestamps = false;
 
@@ -43,6 +43,6 @@ class Definition extends Model
      * @author 49102
      */
     public function __toString() {
-        return $this->definition_id . " - " . $this->definition_content;
+        return $this->id . " - " . $this->definition_content;
      }
 }

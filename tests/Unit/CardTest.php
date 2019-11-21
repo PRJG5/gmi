@@ -28,7 +28,7 @@ class CardTest extends TestCase
         $card->owner_id="5";
         $card->save();
         $this->assertDatabaseHas('cards', [
-            'card_id' => $card->card_id,
+            'id' => $card->id,
             'heading' => $card->heading,
             'language_id' => strval($card->language_id),
             'definition' => $card->definition,
@@ -52,7 +52,7 @@ class CardTest extends TestCase
         $card->owner_id="5";
         $card->update();
         $this->assertDatabaseHas('cards', [
-            'card_id' => $card->card_id,
+            'id' => $card->id,
             'heading' => $card->heading,
             'language_id' => strval($card->language_id),
             'definition' => $card->definition,
@@ -75,7 +75,7 @@ class CardTest extends TestCase
         $card->save();
         $card->delete();
         $this->assertDatabaseMissing('cards', [
-            'card_id' => $card->card_id,
+            'id' => $card->id,
             'heading' => $card->heading,
             'language_id' => strval($card->language_id),
             'definition' => $card->definition,
@@ -89,8 +89,8 @@ class CardTest extends TestCase
         $cardA = Card::create(['heading'=>'test1', 'definition'=>'blabla2','owner_id'=>$user->id]);
         $cardB = Card::create(['heading'=>'test2', 'definition'=>'blabla2','owner_id'=>$user->id]);
         $link = new Link();
-        $link->cardA = $cardA->card_id;
-        $link->cardB = $cardB->card_id;
+        $link->cardA = $cardA->id;
+        $link->cardB = $cardB->id;
         $link->save();
         $this->assertEquals($cardA->links(), [$cardB]);
     }

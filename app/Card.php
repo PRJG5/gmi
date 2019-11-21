@@ -33,11 +33,11 @@ class Card extends Model
      * This variable is overriding the default primary key name.
      * @see https://laravel.com/docs/6.x/eloquent#defining-models section "Primary keys"
     */
-    protected $primaryKey = 'card_id';
+    protected $primaryKey = 'id';
 
 
     /**
-     * @var bool If the primary key "card_id" is auto-incrementing or not.
+     * @var bool If the primary key "id" is auto-incrementing or not.
      * This variable can be set to "false" disable the auto-increment inside the SQL table for the primary key.
      * By default, this variable is set to "true".
      * @see https://laravel.com/docs/6.x/eloquent#defining-models section "Primary keys"
@@ -87,15 +87,15 @@ class Card extends Model
      * @see https://laravel.com/docs/6.x/eloquent#default-attribute-values
      */
     protected $attributes = [
-        'heading' 		=> '',
-        'phonetic'		=> '',
-        'domain_id' 	=> '',
-        'subdomain_id' 	=> '',
-        'definition' 	=> '',
-        'context' 		=> '',
-        'note' 			=> '',
-		'language_id' 	=> '',
-		'owner_id' 		=> 0,
+        'heading'		=> '',
+        'phonetic_id'	=> '',
+        'domain_id'		=> '',
+        'subdomain_id'	=> '',
+        'definition'	=> '',
+        'context'		=> '',
+        'note'			=> '',
+		'language_id'	=> '',
+		'owner_id'		=> 0,
     ];
 
     /**
@@ -104,7 +104,7 @@ class Card extends Model
      */
     protected $fillable = [
         'heading',
-        'phonetic',
+        'phonetic_id',
         'domain_id',
         'subdomain_id',
         'definition',
@@ -118,15 +118,32 @@ class Card extends Model
      * @var array The fields that cannot be mass edited.
      * @see https://laravel.com/docs/5.8/eloquent#mass-assignment
      */
-
     protected $guarded = [
-        'card_id',
-    ];
+        'id',
+	];
+	
+	/**
+	 * Returns a string describing the card
+	 */
+	public function __toString() {
+		return
+		"{ Card\n" .
+			"\tid: "			. $this->id				. "\n" .
+			"\theading:"		. $this->heading		. "\n" .
+			"\tphonetic_id: "	. $this->phonetic_id	. "\n" .
+			"\tdomain_id:"		. $this->domain_id		. "\n" .
+			"\tdefinition: "	. $this->definition		. "\n" .
+			"\tcontext: "		. $this->context		. "\n" .
+			"\tnote: "			. $this->note			. "\n" .
+			"\tlanguage_id: "	. $this->language_id	. "\n" .
+			"\towner_id: "		. $this->owner_id		. "\n" .
+		"}";
+    }
 
 
     // Return all the links refered to this card in an array.
     public function links(){
         //TODO: Trouver le fonctionnement du hasManyThrough ----> return $this->hasManyThrough('\App\Card','App\Link');
-        return DB::table('links')->select('*')->where('cardA','=',$this->card_id,'or','cardB','=',$this->card_id)->get();
+        return DB::table('links')->select('*')->where('cardA','=',$this->id,'or','cardB','=',$this->id)->get();
     }
 }

@@ -60,7 +60,7 @@ class RegisterController extends Controller
     }
 
     /**
-     * Create a new user instance after a valid registration. Add speaked languages.
+     * Create a new user instance after a valid registration. Add spoken languages.
      * If an error occure, rollback.
      *
      * @param  array  $data
