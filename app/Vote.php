@@ -1,0 +1,37 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+/**
+ * Represents a vote 
+ */
+class Definition extends Model
+{
+    
+    protected $table = 'votes';
+    protected $primaryKey = 'id';
+    public $incrementing = true;
+    protected $keyType = 'bigIncrements';
+    public $timestamps = false;
+    
+    protected $attributes = [
+        'user_id' => '',
+        'card_id' => '',
+    ];
+    
+    protected $fillable = [
+		'user_id',
+        'card_id',
+	];
+    
+	protected $guarded = [
+        'id',
+	];
+    
+    
+    
+
+
+}
