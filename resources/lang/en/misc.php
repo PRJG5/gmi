@@ -5,6 +5,7 @@ return [
 	'addSubdomain'		=> 'Add Subdomain',
 	'error'				=> 'Error',
 	'importLanguages'	=> 'Import Languages',
+	'save'				=> 'Save',
 	'saved'				=> 'Saved',
 	'search'			=> 'Search',
 	'sendEmail'			=> 'Send Email',
