@@ -1,11 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.board')
 
-@section('content')
-<form action="{{ route('importLanguage') }}" method="POST" enctype="multipart/form-data">
-    @csrf
-    <input type="file" name="file" class="form-control">
-    <br>
-    <button class="btn btn-success">import Data </button>
+@section('card-header')
+@lang('misc.importLanguages')
+@endsection
+
+@section('card-body')
+<form action="{{ route('importLanguages') }}" method="POST" enctype="multipart/form-data">
+	@csrf
+	<input type="file" name="file" class="form-control" accept=".xls,.xlsx" required><br>
+	<button type="submit" class="btn btn-success">@lang('import.importData')</button>
 </form>
-
 @endsection

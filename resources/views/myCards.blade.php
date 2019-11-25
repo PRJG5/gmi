@@ -1,7 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.card')
 
-@section('content')
-<h1> Mes Fiches </h1>
+@section('card-header')
+@lang('card.myCards')
+@endsection
+@section('card-body')
 <!-- accès aux données du users via Auth::user() -->
-<a>Données du user -> Nom : {{ Auth::user()->name }}</a>
+@lang('users.userData')
+<ul>
+	<li>@lang('users.name'): {{ Auth::user()->name }}</li>
+</ul>
 @endsection

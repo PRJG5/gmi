@@ -2,7 +2,7 @@
 
 
 @extends('card.editable', [
-    'action' => "/cards/{$cardOrigin->card_id}/{$cardLinked->card_id}/link",
+	'action' => "/cards/{$cardOrigin->card_id}/{$cardLinked->card_id}/link",
 	'card' => $cardOrigin,
 	'editable' => false,
 	'languages' => $languages,
@@ -10,11 +10,11 @@
 ])
 
 @section('buttons')
-<input type="button" title="Link" />
+<input type="button" title="@lang('card.linkCard')" />
 @endsection
 
 @extends('card.editable', [
-    'action' => "/cards/{$cardOrigin->card_id}/{$cardLinked->card_id}/link",
+	'action' => "/cards/{$cardOrigin->card_id}/{$cardLinked->card_id}/link",
 	'card' => $cardLinked,
 	'editable' => false,
 	'languages' => $languages,
