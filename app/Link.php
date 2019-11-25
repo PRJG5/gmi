@@ -17,24 +17,24 @@ class Link extends Model
 		'cardA' => NULL,
 		'cardB' => NULL,
 	];
-    protected $fillable = [
+	protected $fillable = [
 		'cardA',
 		'cardB',
 	];
 	protected $guarded = [
-        'id',
+		'id',
 	];
 
-    //Get one card
-    public function getCardA()
-    {
-        // return $this->belongsTo('App\Card','cardsA'); TODO: Trouver le fonctionnement du hasManyThrough (voir le todo de Card)
-        return Card::find($this->cardA);
-    }
-    //Get the other
-    public function getCardB()
-    {
-        // return $this->belongsTo('App\Card','cardsB'); TODO: Trouver le fonctionnement du hasManyThrough (voir le todo de Card
-        return Card::find($this->cardB);
-    }
+	//Get one card
+	public function getCardA()
+	{
+		// return $this->belongsTo('App\Card', 'cardsA'); TODO: Trouver le fonctionnement du hasManyThrough (voir le todo de Card)
+		return Card::find($this->cardA);
+	}
+	//Get the other
+	public function getCardB()
+	{
+		// return $this->belongsTo('App\Card', 'cardsB'); TODO: Trouver le fonctionnement du hasManyThrough (voir le todo de Card
+		return Card::find($this->cardB);
+	}
 }

@@ -6,7 +6,7 @@ use App\Context;
 use Faker\Generator as Faker;
 
 $factory->define(Context::class, function (Faker $faker) {
-    return [
-        'context_to_string' => $faker->sentence()
-    ];
+	return [
+		'context_to_string' => $faker->sentence()
+	];
 });

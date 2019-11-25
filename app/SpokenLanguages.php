@@ -16,11 +16,11 @@ class SpokenLanguages extends Model
 		'user_id' => NULL,
 		'languageISO' => '',
 	];
-    protected $fillable = [
+	protected $fillable = [
 		'user_id',
 		'languageISO',
 	];
 	protected $guarded = [
-        'id',
+		'id',
 	];
 }

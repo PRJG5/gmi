@@ -6,7 +6,7 @@ use App\Enums\Roles;
 use App\Enums\Subdomain;
 
 return [
-    Language::class =>[
+	Language::class =>[
 		Language::ALB => 'Albanian',
 		Language::ARA => 'Arabic',
 		Language::ARC => 'Aramaic',
@@ -106,9 +106,9 @@ return [
 		Subdomain::Other					=> 'Other',
 	],
 
-    Roles::class=> [
-        Roles::ADMIN => 'Administrator',
-        Roles::MOD => 'Moderator',
-        Roles::USERS => 'User',
-    ],
+	Roles::class=> [
+		Roles::ADMIN	=> 'Administrator',
+		Roles::MOD		=> 'Moderator',
+		Roles::USERS	=> 'User',
+	],
  ];
