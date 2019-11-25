@@ -4,8 +4,8 @@
 	"theme_color": "#007bff",
 	"background_color": "#f7f7f7",
 	"display": "minimal-ui",
-	"Scope": "/",
-	"start_url": "https://boiling-harbor-91880.herokuapp.com/",
+	"scope": "/",
+	"start_url": "/",
 	"icons": [
 	  {
 		"src": "images/icons/icon-72x72.png",
