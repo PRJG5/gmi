@@ -19,12 +19,12 @@
 					@else
 					<tr>
 					@endif
-						<th>{{$user->name}}</th>
-						<td>{{$user->email}}</td>
+						<th>{{ $user->name }}</th>
+						<td>{{ $user->email }}</td>
 						<td>
 							<select id="authors" class="form-control" name="author" required="" onchange="updateRole({{ $user->id }}, this)">
 								@foreach(\App\Enums\Roles::getValues() as $role)
-									<option value="{{$role}}" @if($user->role == $role) selected @endif>{{ \App\Enums\Roles::getDescription($role) }}</option>
+									<option value="{{ $role }}" @if($user->role == $role) selected @endif>{{ \App\Enums\Roles::getDescription($role) }}</option>
 								@endforeach
 							</select>
 						</td>

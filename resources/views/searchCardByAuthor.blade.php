@@ -13,7 +13,7 @@
 	<label for="nameAuthor">@lang('card.searchCardByAuthor')</label>
 	<select id="authors" class="form-control" name="author" required>
 		@foreach ($authors as $author)
-			<option value="{{$author->id}}">{{$author->name}} ({{$author->email}})</option>
+			<option value="{{ $author->id }}">{{$author->name }} ({{$author->email }})</option>
 		@endforeach
 	</select>
 </div>
