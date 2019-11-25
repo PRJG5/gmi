@@ -5,7 +5,7 @@
 	<div class="row justify-content-center">
 		<div class="col-md-8">
 			<div class="card">
-				<div class="card-header">@lang('login.resetPassword')</div>
+				<div class="card-header">@lang('auth.resetPassword')</div>
 
 				<div class="card-body">
 					@if (session('status'))
@@ -34,7 +34,7 @@
 						<div class="form-group row mb-0">
 							<div class="col-md-6 offset-md-4">
 								<button type="submit" class="btn btn-primary">
-									@lang('login.sendPasswordResetLink')
+									@lang('auth.sendPasswordResetLink')
 								</button>
 							</div>
 						</div>

@@ -65,11 +65,11 @@
 						<!-- Authentication Links -->
 						@guest
 							<li class="nav-item">
-								<a class="nav-link" href="{{ route('login') }}">@lang('login.login')</a>
+								<a class="nav-link" href="{{ route('login') }}">@lang('auth.login')</a>
 							</li>
 							@if (Route::has('register'))
 								<li class="nav-item">
-									<a class="nav-link" href="{{ route('register') }}">@lang('login.register')</a>
+									<a class="nav-link" href="{{ route('register') }}">@lang('auth.register')</a>
 								</li>
 							@endif
 						@else
@@ -84,7 +84,7 @@
 									@endif
 									<a class="dropdown-item" href="{{ route('addBasicData') }}">@lang('misc.addBasicData')</a>
 									<a class="dropdown-item" href="{{ route('importLanguages') }}">@lang('misc.importLanguages')</a>
-									<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">@lang('login.logout')</a>
+									<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">@lang('auth.logout')</a>
 									<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
 								</div>
 							</li>
