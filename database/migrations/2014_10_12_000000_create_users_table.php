@@ -24,9 +24,23 @@ class CreateUsersTable extends Migration
 			$table->timestamps();
 		});
 
-		DB::table('users')->insert(['name' => 'med' , 'email' => 'meihdi1997@gmail.com' , 'password' => Hash::make('med')]);
-		DB::table('users')->insert(['name' => 'test' , 'email' => 'test@test.com' , 'password' =>  Hash::make('test') ]);
-		DB::table('users')->insert(['name' => 'root' , 'email' => 'root@test.com' , 'password' =>  Hash::make('rootroot') ]);
+		DB::table('users')->insert([
+			[
+				'name'		=> 'med',
+				'email'		=> 'meihdi1997@gmail.com',
+				'password'	=> Hash::make('med'),
+			],	
+			[
+				'name'		=> 'test',
+				'email'		=> 'test@test.com',
+				'password'	=> Hash::make('test'),
+			],
+			[
+				'name'		=> 'root',
+				'email'		=> 'root@test.com',
+				'password'	=> Hash::make('rootroot'),
+			],
+		]);
 	}
 
 	/**

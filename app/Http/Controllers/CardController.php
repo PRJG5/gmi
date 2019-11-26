@@ -27,8 +27,7 @@ class CardController extends Controller
 	 * @return Card[] a list with all the cards in the database.
 	 * @author 44422
 	 */
-	public function index()
-	{
+	public function index() {
 		return view('card.index', [
 			'cards' => Card::all(),
 		]);
@@ -39,8 +38,7 @@ class CardController extends Controller
 	 * @return Response the view to create a new card.
 	 * @author 44422
 	 */
-	public function create()
-	{
+	public function create() {
 		return view('card.create', [
 			'domain'	=> Domain::getInstances(),
 			'subdomain' => Subdomain::getInstances(),
@@ -54,15 +52,11 @@ class CardController extends Controller
 	 * @return Request the view with the newly created card.
 	 * @author 44422
 	 */
-	public function store(Request $request)
-	{
+	public function store(Request $request) {
 		$request->merge([
 			'owner_id' => Auth::user()->id,
 		]);
-
-		if(isset($request['phonetic']) &&
-			strlen($request['phonetic']) > 0) {
-
+		if(isset($request['phonetic']) && strlen($request['phonetic']) > 0) {
 			$phonetic = Phonetic::create([
 				'textDescription' => $request['phonetic'],
 			]);
@@ -71,9 +65,7 @@ class CardController extends Controller
 				'phonetic_id'=> $phonetic->id,
 			]);
 		}
-		if(isset($request['definition']) &&
-			strlen($request['definition']) > 0) {
-
+		if(isset($request['definition']) && strlen($request['definition']) > 0) {
 			$definition = Definition::create([
 				'definition_content' => $request['definition'],
 			]);
@@ -82,9 +74,7 @@ class CardController extends Controller
 				'definition_id'=> $definition->id,
 			]);
 		}
-		if(isset($request['note']) &&
-			strlen($request['note']) > 0) {
-
+		if(isset($request['note']) && strlen($request['note']) > 0) {
 			$note = Note::create([
 				'description' => $request['note'],
 			]);
@@ -93,9 +83,7 @@ class CardController extends Controller
 				'note_id'=> $note->id,
 			]);
 		}
-		if(isset($request['context']) &&
-			strlen($request['context']) > 0) {
-
+		if(isset($request['context']) && strlen($request['context']) > 0) {
 			$context = Context::create([
 				'context_to_string' => $request['context'],
 			]);
@@ -104,8 +92,7 @@ class CardController extends Controller
 				'context_id'=> $context->id,
 			]);
 		}
-
-		$card = Card::create($this->validateData($request, true));
+		$card = Card::create($this->validateData($request));
 		$card->save();
 		return redirect()->action('CardController@show', [$card]);
 	}
@@ -116,8 +103,7 @@ class CardController extends Controller
 	 * @return Response the view of the card.
 	 * @author 44422
 	 */
-	public function show(Card $card)
-	{
+	public function show(Card $card) {
 		return view('card.show', [
 			'card'			=> $card,
 			'context'		=> Context::find($card->context_id),
@@ -137,8 +123,7 @@ class CardController extends Controller
 	 * @return Response the view for the card to edit.
 	 * @author 44422
 	 */
-	public function edit(Card $card)
-	{
+	public function edit(Card $card) {
 		return view('card.edit', [
 			'card'			=> $card,
 			'context'		=> Context::find($card->context_id),
@@ -146,8 +131,8 @@ class CardController extends Controller
 			'domain'		=> Domain::getInstances(),
 			'languages'		=> Language::getInstances(),
 			'mail'	 => [
-				'subject'	=> __('card.mailSubject', ['cardHeading' => $card->heading]),
-				'body'		=> __('card.mailBody', ['cardLink' => route('cards.show', $card->id)]),
+				'subject'	=> trans('card.mailSubject', ['cardHeading' => $card->heading]),
+				'body'		=> trans('card.mailBody', ['cardLink' => route('cards.show', $card->id)]),
 			],
 			'note'			=> Note::find($card->note_id),
 			'owner'			=> User::find($card->owner_id),
@@ -163,29 +148,64 @@ class CardController extends Controller
 	 * @return Response the view with the edit card.
 	 * @author 44422
 	 */
-	public function update(Request $request, Card $card)
-	{
-		$card->update($this->validateData($request, false));
-		$phonetic = Phonetic::find($card->phonetic_id);
-		$definition = Definition::find($card->definition_id);
-		$note = Note::find($card->note_id);
-		$context = Context::find($card->contrext_id);
-		if($phonetic && $phonetic->textDescription != $request->phonetic) {
+	public function update(Request $request, Card $card) {
+		$request->merge([
+			'heading'	=>  $card->heading,
+			'language_id'	=>  $card->language_id,
+			'owner_id' 		=> $card->owner_id,
+		]);
+
+		$card->update($this->validateData($request));
+
+		if(isset($request['phonetic']) &&
+			strlen($request['phonetic']) > 0) {
+			$phonetic;
+			if($card->phonetic_id) {
+				$phonetic = Phonetic::find($card->phonetic_id);
+			} else {
+				$phonetic = new Phonetic();
+				$card->phonetic_id = $phonetic->id;
+			}
 			$phonetic->textDescription = $request->phonetic;
 			$phonetic->save();
 		}
-		if($definition && $definition->definition_content != $request->definition) {
+		if(isset($request['definition']) &&
+			strlen($request['definition']) > 0) {
+			$definition;
+			if($card->definition_id) {
+				$definition = Definition::find($card->definition_id);
+			} else {
+				$definition = new Definition();
+				$card->definition_id = $definition->id;
+			}
 			$definition->definition_content = $request->definition;
 			$definition->save();
 		}
-		if($note && $note->description != $request->note) {
+		if(isset($request['note']) &&
+			strlen($request['note']) > 0) {
+			$note;
+			if($card->note_id) {
+				$note = Note::find($card->note_id);
+			} else {
+				$note = new Note();
+				$card->note_id = $note->id;
+			}
 			$note->description = $request->note;
 			$note->save();
 		}
-		if($context && $context->context_to_string != $request->context) {
+		if(isset($request['context']) &&
+			strlen($request['context']) > 0) {
+			$context;
+			if($card->context_id) {
+				$context = Context::find($card->context_id);
+			} else {
+				$context = new Context();
+				$card->context_id = $context->id;
+			}
 			$context->context_to_string = $request->context;
 			$context->save();
 		}
+		$card->save();
 		return redirect()->action('CardController@show', [$card]);
 	}
 
@@ -196,8 +216,7 @@ class CardController extends Controller
 	 * @throws Exception if card to delete cannot be found
 	 * @author 44422
 	 */
-	public function destroy(Card $card)
-	{
+	public function destroy(Card $card) {
 		$this->authorize();
 		try {
 			$card->delete();
@@ -210,13 +229,12 @@ class CardController extends Controller
 	/**
 	 * Validates the data received.
 	 * @param Request $request the request
-	 * @param bool $creating if the card is being created or not
 	 * @return array the validated data in a Card object.
 	 * @author 44422
 	 * @see https://laravel.com/docs/6.x/validation
 	 */
-	private function validateData(Request $request, bool $creating) {
-		$tab = [
+	private function validateData(Request $request) {
+		return $request->validate([
 			'context_id'	=> '',
 			'context'		=> '',
 			'definition_id'	=> '',
@@ -231,13 +249,7 @@ class CardController extends Controller
 			'phonetic_id'	=> '',
 			'phonetic'		=> '',
 			'subdomain_id'	=> '',
-		];
-		if(!$creating) {
-			array_merge($tab, [
-				'card_id'	=> 'required',
-			]);
-		}
-		return $request->validate($tab);
+		]);
 	}
 
 	/**

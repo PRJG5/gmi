@@ -24,8 +24,6 @@ class CreateLinksTable extends Migration
 			##Their references
 			$table->foreign('cardA')->references('id')->on('cards');
 			$table->foreign('cardB')->references('id')->on('cards');
-
-			
 		});
 	}
 

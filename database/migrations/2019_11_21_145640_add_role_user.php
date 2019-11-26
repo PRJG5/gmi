@@ -19,7 +19,14 @@ class AddRoleUser extends Migration
 		});
 
 		// HARD CODED USERS ADMIN
-		DB::table('users')->insert(['name' => 'Administrateur' , 'email' => 'admin@admin.com' , 'password' => Hash::make('administrateur'), 'role' => Roles::ADMIN]);
+		DB::table('users')->insert([
+			[
+				'name'		=> 'Administrateur',
+				'email'		=> 'admin@admin.com',
+				'password'	=> Hash::make('administrateur'),
+				'role'		=> Roles::ADMIN,
+			],
+		]);
 	}
 
 	/**
