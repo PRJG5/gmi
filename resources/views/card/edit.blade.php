@@ -16,6 +16,9 @@
 
         <input type="hidden" name="owner" value="{{ isset($owner) ? $owner->name : '' }}" disabled/>
 
+		<label for="phonetic" class="col-md-6 col-form-label text-md-right">Phonetic:</label>
+		<input name="phonetic" class="phonetic" type="text" placeholder="Phonetic" value="" title="Phonetic"/>
+
         <label for="language_id" class="col-md-6 col-form-label text-md-right">Langue : </label> 
 		<label>{{$card->language_id}}</label>
         

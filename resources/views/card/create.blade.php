@@ -14,6 +14,9 @@
             <input type="text" name="heading" id="heading">
         </div>
 
+		<label for="phonetic" class="col-md-6 col-form-label text-md-right">Phonetic:</label>
+		<input name="phonetic" class="phonetic" type="text" placeholder="Phonetic" value="" title="Phonetic"/>
+		
         <input type="hidden" name="owner" value="{{ isset($owner) ? $owner->name : '' }}" disabled/>
 
         @if (!isset($card) || in_array($card->language_id, $languages))
@@ -51,6 +54,7 @@
 		<label for="context_id" class="col-md-6 col-form-label text-md-right">Contexte:</label>
 		<textarea name="context_id" class="context_id" placeholder="Context" value="" title=""></textarea>
 
+		
 
         <br>
         <button type="submit" class="btn btn-primary"> Register Card</button>
