@@ -6,6 +6,7 @@ return [
 	'error'				=> 'Error',
 	'importData'		=> 'Import Data',
 	'importLanguages'	=> 'Import Languages',
+	'noResults'			=> 'No Results',
 	'save'				=> 'Save',
 	'saved'				=> 'Saved',
 	'search'			=> 'Search',

@@ -30,21 +30,25 @@
 function searchCards() {
 	const author = $('#authors').find(":selected").val();
 	xhr("GET", `{{ route('getAllCardsFromUser', '') }}/${author}`)
-	.then((result) => {
+	.then((results) => {
 		$("#listOfCards").empty(); //Clears container to add the new cards
-		JSON.parse(result).forEach((card) => {
-			console.log(card);
-			xhr("GET", `{{ route('cards.show', '') }}/${card.id}`)
-			.then((cardResult) => {
-				$("#listOfCards").append(cardResult);
+		results = JSON.parse(results);
+		if(results.length > 0) {
+			results.forEach((card) => {
+				console.log(card);
+				xhr("GET", `{{ route('cards.show', '') }}/${card.id}`)
+				.then((cardResult) => {
+					$("#listOfCards").append(cardResult);
+				});
 			});
-		});
+		} else {
+			$("#listOfCards").append("@lang('misc.noResults')");
+		}
+		
 	})
 	.catch((error) => {
 		console.error(`Error happened during xhr.\n${error.status} - ${error.statusText}`);
 	});
 }
-
-
 </script>
 @endsection

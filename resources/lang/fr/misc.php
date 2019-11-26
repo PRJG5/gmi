@@ -6,6 +6,7 @@ return [
 	'error'				=> 'Erreur',
 	'importData'	=> 'Importer des données',
 	'importLanguages'	=> 'Importer des languges',
+	'noResults'			=> 'Pas de résultats',
 	'save'				=> 'Sauvegarder',
 	'saved'				=> 'Sauvegardé',
 	'search'			=> 'Rechercher',

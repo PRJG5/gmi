@@ -6,25 +6,25 @@
 	<meta name="description" content="{{ config('app.name') }}" >
 
 	<!-- Favicon -->
-	<link rel="apple-touch-icon" sizes="114x114" href="/img/icons/apple-icon-114x114.png">
-	<link rel="apple-touch-icon" sizes="120x120" href="/img/icons/apple-icon-120x120.png">
-	<link rel="apple-touch-icon" sizes="144x144" href="/img/icons/apple-icon-144x144.png">
-	<link rel="apple-touch-icon" sizes="152x152" href="/img/icons/apple-icon-152x152.png">
-	<link rel="apple-touch-icon" sizes="180x180" href="/img/icons/apple-icon-180x180.png">
-	<link rel="apple-touch-icon" sizes="57x57" href="/img/icons/apple-icon-57x57.png">
-	<link rel="apple-touch-icon" sizes="60x60" href="/img/icons/apple-icon-60x60.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="/img/icons/apple-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="76x76" href="/img/icons/apple-icon-76x76.png">
-	<link rel="icon" href="img/icons/favicon.ico" type="/image/x-icon">
-	<link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16x16.png">
-	<link rel="icon" type="image/png" sizes="192x192"  href="/img/icons/android-icon-192x192.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="/img/icons/favicon-96x96.png">
-	<link rel="manifest" href="/manifest.json">
-	<link rel="shortcut icon" href="/img/icons/favicon.ico" type="image/x-icon">
-	<meta name="msapplication-TileColor" content="#007BFF">
-	<meta name="msapplication-TileImage" content="/img/icons/ms-icon-144x144.png">
-	<meta name="theme-color" content="#007BFF">
+	<link rel="apple-touch-icon"			href="{{ asset('img/icons/favicon-114x114.png') }}"		sizes="114x114">
+	<link rel="apple-touch-icon"			href="{{ asset('img/icons/favicon-120x120.png') }}"		sizes="120x120">
+	<link rel="apple-touch-icon"			href="{{ asset('img/icons/favicon-144x144.png') }}"		sizes="144x144">
+	<link rel="apple-touch-icon"			href="{{ asset('img/icons/favicon-152x152.png') }}"		sizes="152x152">
+	<link rel="apple-touch-icon"			href="{{ asset('img/icons/favicon-180x180.png') }}"		sizes="180x180">
+	<link rel="apple-touch-icon"			href="{{ asset('img/icons/favicon-57x57.png') }}"		sizes="57x57">
+	<link rel="apple-touch-icon"			href="{{ asset('img/icons/favicon-60x60.png') }}"		sizes="60x60">
+	<link rel="apple-touch-icon"			href="{{ asset('img/icons/favicon-72x72.png') }}"		sizes="72x72">
+	<link rel="apple-touch-icon"			href="{{ asset('img/icons/favicon-76x76.png') }}"		sizes="76x76">
+	<link rel="icon"						href="{{ asset('img/icons/favicon-16x16.png') }}"		sizes="16x16"	type="image/png">
+	<link rel="icon"						href="{{ asset('img/icons/favicon-192x192.png') }}"		sizes="192x192"	type="image/png">
+	<link rel="icon"						href="{{ asset('img/icons/favicon-32x32.png') }}"		sizes="32x32"	type="image/png">
+	<link rel="icon"						href="{{ asset('img/icons/favicon-96x96.png') }}"		sizes="96x96"	type="image/png">
+	<link rel="icon"						href="{{ asset('img/icons/favicon.ico') }}"								type="image/x-icon">
+	<link rel="shortcut icon"				href="{{ asset('img/icons/favicon.ico') }}"				 				type="image/x-icon">
+	<link rel="manifest"					href="{{ asset('manifest.json') }}">
+	<meta name="msapplication-TileImage"	content="{{ asset('img/icons/favicon-144x144.png') }}">
+	<meta name="msapplication-TileColor"	content="#007BFF">
+	<meta name="theme-color"				content="#007BFF">
 
 	<title>{{ config('app.name') }}</title>
 
@@ -47,7 +47,7 @@
 	<div id="app">
 		<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
 			<div class="container">
-				<a class="navbar-brand" href="{{ url('/') }}">
+				<a class="navbar-brand" href="{{ route('root') }}">
 					{{ config('app.name') }}
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="@lang('misc.toggleNavigation')">
