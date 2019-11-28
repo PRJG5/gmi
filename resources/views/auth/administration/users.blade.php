@@ -35,7 +35,6 @@
     </div>
     <script>
         function updateRole(userId,event){
-            console.log(userId,event.value);
             $.ajax({
                 url: '{{ route('admin.updateRole') }}',
                 headers: {
