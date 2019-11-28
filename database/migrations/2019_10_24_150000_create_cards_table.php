@@ -20,30 +20,36 @@ class CreateCardsTable extends Migration
     public function up()
     {
         Schema::create('cards', function (Blueprint $table) {
-            $table->bigIncrements('card_id');
+            $table->bigIncrements('id');
 
             /*
             Also know as "vedette" of the card.
             The heading must support utf8 (or utf16, but probably not supported by all databases) chars,
             since non-latin languages may be used.
+            
             */
             $table->text('heading')->charset('utf8');
-            // phonetic.
-            // domain.
-            // sub-domain.
-            // definition.
-            // context.
-            // note.
-            $table->unsignedInteger('language_id')->default(1);
+            $table->unsignedBigInteger('owner_id');
+			$table->text('language_id')->charset('utf8');
+			
+            $table->text('domain_id')->charset('utf8')->nullable();
+			$table->text('subdomain_id')->charset('utf8')->nullable();
+			
+            $table->unsignedBigInteger('context_id')->nullable();
+            $table->unsignedBigInteger('definition_id')->nullable();
+            $table->unsignedBigInteger('note_id')->nullable();
+			$table->unsignedBigInteger('phonetic_id')->nullable();
 
-            /*
-             Check for correspondig table name
-             Need to create the table with all languages and languages id's
-             // TODO
-            */
-            // $table->foreign('language_id')->references('language_id')->on('languages');
+            /**
+             * LIST OF ALTER TABLE
+             */
+            $table->foreign('owner_id')->references('id')->on('users');
+            $table->foreign('context_id')->references('id')->on('contexts');
+            $table->foreign('definition_id')->references('id')->on('definitions');
+            $table->foreign('note_id')->references('id')->on('notes');
+            $table->foreign('phonetic_id')->references('id')->on('phonetics');
         });
-    }
+ }
 
     /**
      * Deletes the "Cards" table and all its entries.

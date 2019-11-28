@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Enums\Language;
-use App\SpeakedLanguage;
+use App\SpokenLanguages;
 use Illuminate\Support\Facades\DB;
 
 class RegisterController extends Controller
@@ -60,8 +60,8 @@ class RegisterController extends Controller
     }
 
     /**
-     * Create a new user instance after a valid registration. Add speaked languages.
-     * If an error occure, rollback.
+     * Create a new user instance after a valid registration. Add spoken languages.
+     * If an error occurs, rollback.
      *
      * @param  array  $data
      * @return \App\User or nothing if error
@@ -80,10 +80,10 @@ class RegisterController extends Controller
             DB::beginTransaction();
             $cpt = 0;
             do {
-                $speakedLanguage = new SpeakedLanguage();
-                $speakedLanguage->user_id = $userDB->id;
-                $speakedLanguage->languageISO = $data['languages'][$cpt];
-                $success = $speakedLanguage->save();
+                $spokenLanguage = new SpokenLanguages();
+                $spokenLanguage->user_id = $userDB->id;
+                $spokenLanguage->languageISO = $data['languages'][$cpt];
+                $success = $spokenLanguage->save();
                 $cpt++;
             } while ($success && $cpt < count($data['languages']));
             if (!$success) {
