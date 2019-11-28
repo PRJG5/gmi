@@ -15,6 +15,11 @@ class BasicDataController extends Controller
         $subdomain->save();  
     }
 
-
+    public function addDomain($content)
+    {
+        $domain = new Domain();
+        $domain->content=$content;
+        $domain->save();
+    }
 
 }
