@@ -34,6 +34,11 @@ class BasicDataController extends Controller
         return json_encode(array('success' => 'Save'));
     }
 
-
+    public function addDomain($content)
+    {
+        $domain = new Domain();
+        $domain->content=$content;
+        $domain->save();
+    }
 
 }

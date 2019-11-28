@@ -18,3 +18,4 @@ $factory->define(Card::class, function (Faker $faker) {
         'phonetic_id' => $faker->unique()->randomNumber(),
     ];
 });
+?>
