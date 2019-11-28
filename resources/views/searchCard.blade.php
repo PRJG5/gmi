@@ -19,30 +19,7 @@
 </form>
 
 
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Heading</th>
-        <!-- <th>Domain</th>
-        <th>Sub-Domaine</th> -->
-        <th>Language</th>
-        <!--  <th>User</th> -->
-       <!-- <th></th> -->
-    </tr>
-    @foreach($cards as $card)
-        <tr>
-            <td><a href='{{url('card/' . $card->id ) }}'>
-{{$card->card_id}}</a></td>
-            <td>{{$card->heading}}</td>
-            <!-- <td>{{$card->domain}}</td>
-        <td>{{$card->sub_domain}}</td>
-        -->
-            <td>{{$card->language_id}}</td> 
-
-            <!--   <td>{{$card->definition}}</td>
-            <td>{{$card->user}}</td> -->
-        </tr>
-    @endforeach
-</table>
+@include('card.index');
 
 @endsection
+
