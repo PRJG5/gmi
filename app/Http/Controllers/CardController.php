@@ -118,7 +118,7 @@ class CardController extends Controller
 
         $card = $this->create_card($request);
 
-        redirect()->action('CardController@show', [$card]);
+        return redirect()->action('CardController@show', [$card]);
     }
 
     /**
@@ -176,8 +176,8 @@ class CardController extends Controller
     public function update(Request $request, Card $card)
     {
         if(Auth::user()->id == $card->owner_id) {
-            $card->update($this->validateData($request, false));
-            redirect()->action('CardController@show', [$card]);
+            $card->update($request);
+            return redirect()->action('CardController@show', [$card]);
         } else {
             $request->merge([
                 'owner_id' => Auth::user()->id,
@@ -185,7 +185,7 @@ class CardController extends Controller
 
             $cardVersion = $this->create_card($request);
             $card->versions()->save($cardVersion);
-            redirect()->action('CardController@show', [$cardVersion]);
+            return redirect()->action('CardController@show', [$cardVersion]);
         }
     }
 
