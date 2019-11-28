@@ -30,4 +30,5 @@ class UserController extends Controller
             return ["status" => "SUCCESS", "type" => "", "message" => "" ];
         }
     }
+
 }

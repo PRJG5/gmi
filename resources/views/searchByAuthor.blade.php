@@ -21,7 +21,6 @@
 
             
             <div id="listOfCards">
-                {{-- TODO: Need to extend the layout --}}
             </div>
         </div>
     </div>
@@ -35,15 +34,10 @@
 */
 async function searchCards() {
 	const author = $('#authors').find(":selected").val();
-	makeRequest("GET", `/api/getAllCardsFromUsers/${author}`)
+	makeRequest("GET", `/searchByUser/${author}`)
 	.then((result) => {
-		$("#listOfCards").empty(); //Clears container to add the new cards
-		for (const card of JSON.parse(result)) {
-			makeRequest("GET", `/cards/${card.id}/`)
-			.then((cardResult) => {
-				$("#listOfCards").append(cardResult);
-			});
-		}
+		$("#listOfCards").html(result);
+		
 	})
 	.catch((error) => {
 		console.error(`Error happened during xhr.\n${error.status} - ${error.statusText}`);

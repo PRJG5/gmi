@@ -35,7 +35,7 @@ class CardController extends Controller
      */
     public function index()
     {
-        return view('card.index',['cards' => Card::all()]);
+        return view('allCards',['cards' => Card::all()]);
     }
 
     /**
@@ -48,24 +48,15 @@ class CardController extends Controller
         return view('card.create', [
             'domain' 	=> Domain::getInstances(),
             'subdomain' => Subdomain::getInstances(),
-			'languages' => Language::getInstances(), //Language::all()
-		]);
+			'languages' => Auth::user()->getLanguages()
+        ]);
     }
 
-    /**
-     * Stores a newly created card in the database.
-     * @param  Request  $request the incoming request.
-     * @return Request the view with the newly created card.
-     * @author 44422
+     /**
+     * @author 49762 49262
+     * 
      */
-    public function store(Request $request)
-    {
-		if(!Auth::user()) { // TODO replace with authorize method
-			abort(403, 'Unauthorized action. You must be logged in to create a card.');
-        }
-		$request->merge([
-            'owner_id' => Auth::user()->id,
-        ]);
+    private function create_card(Request $request){
         if(isset($request['phonetic']) && strlen($request['phonetic']) > 0){
             $phonetic = Phonetic::create([
                 'textDescription' => $request['phonetic'],
@@ -82,7 +73,7 @@ class CardController extends Controller
             ]);
             $note->save();
             $request->merge([
-                'note_id'=> $note->id,  
+                'note_id'=> $note->id,
             ]);
         }
 
@@ -92,7 +83,7 @@ class CardController extends Controller
             ]);
             $context->save();
             $request->merge([
-                'context_id'=> $context->id,  
+                'context_id'=> $context->id,
             ]);
         }
 
@@ -102,11 +93,31 @@ class CardController extends Controller
             ]);
             $note->save();
             $request->merge([
-                'definition_id'=> $note->id,  
+                'definition_id'=> $note->id,
             ]);
         }
         $card = Card::create($this->validateData($request, true));
 		$card->save();
+        return $card;
+    }
+
+    /**
+     * Stores a newly created card in the database.
+     * @param  Request  $request the incoming request.
+     * @return Request the view with the newly created card.
+     * @author 44422
+     */
+    public function store(Request $request)
+    {
+		if(!Auth::user()) { // TODO replace with authorize method
+			abort(403, 'Unauthorized action. You must be logged in to create a card.');
+        }
+		$request->merge([
+            'owner_id' => Auth::user()->id,
+        ]);
+
+        $card = $this->create_card($request);
+
         return redirect()->action('CardController@show', [$card]);
     }
 
@@ -164,8 +175,18 @@ class CardController extends Controller
      */
     public function update(Request $request, Card $card)
     {
-		$card->update($this->validateData($request, false));
-        return redirect()->action('CardController@show', [$card]);
+        if(Auth::user()->id == $card->owner_id) {
+            $card->update($request->all());
+            return redirect()->action('CardController@show', [$card]);
+        } else {
+            $request->merge([
+                'owner_id' => Auth::user()->id,
+            ]);
+
+            $cardVersion = $this->create_card($request);
+            $card->versions()->save($cardVersion);
+            return redirect()->action('CardController@show', [$cardVersion]);
+        }
     }
 
     /**
@@ -228,7 +249,7 @@ class CardController extends Controller
 	public function authorize($ability, $arguments) {
 		return true; // TODO
 	}
-    
+
     /**
      * Return all cards from an user
      * @param int userId The user id
@@ -245,7 +266,12 @@ class CardController extends Controller
 			'languages' => Language::getInstances(),
             'userOrigin' => DB::table('users')->where('id', $cardOrigin->owner_id)->first(),
 			'userLinked' => DB::table('users')->where('id', $cardLinked->owner_id)->first(),
-            
+
 		]);
     }
+
+   public function showCard($id) {
+       return view('card', ['card' => Card::find($id)]);
+   }
+
 }

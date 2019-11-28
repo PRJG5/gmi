@@ -7,7 +7,8 @@
 @endsection
 
 @section('card-body')
-    <form action="{{route('cards.store')}}" method="POST">
+	<form action="{{route('cards.update', $card)}}" method="POST">
+		@method('PUT')
         @csrf
        
 	    <label for="heading" class="col-md-6 col-form-label text-md-right"> Vedette : </label>
@@ -52,14 +53,16 @@
 		<textarea name="context" class="context" value="{{isset($context) ? $context->context_to_string : ' '}}">{{isset($context) ? $context->context_to_string : ""}}</textarea>
 
         <br>
-        <button type="submit" class="btn btn-primary"> Edit Card</button>
+		<button type="submit" class="btn btn-primary"> Edit Card</button>
 
     </form>
 
 <br>
 <br>
 <!--<input type="reset" 	class="buttonLike"	value="Clear"	title="Clear" />-->
-<a href="mailto:{{$owner->email}}?subject={{$mail['subject']}}&body={{$mail['description']}}" class="buttonLike">Send mail</a>
-    @extends('layouts.error')
+	@if(Auth::user()->role == \App\Enums\Roles::ADMIN)
+		<a href="mailto:{{$owner->email}}?subject={{$mail['subject']}}&body={{$mail['description']}}" class="buttonLike">Send mail</a>
+	@endif
+	@extends('layouts.error')
 @endsection
 

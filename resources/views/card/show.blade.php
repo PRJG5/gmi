@@ -43,10 +43,14 @@
 <label  class="col-md-6 col-form-label text-md-right"> Note : </label>
 <label>{{$note->description}}</label>
 @endif
+<div>
 
-<form action='/cards/{{$card->id}}/edit' method="get">
-    @csrf
-    <button type="submit" class="btn btn-primary">Edit</button>
-</form>
-
+        <form action='/cards/{{$card->id}}/edit' method="get" style="display: inline-block;">
+            @csrf
+            <button type="submit" class="btn btn-primary">Edit</button>
+        </form>
+    @if(Auth::user()->role != \App\Enums\Roles::USERS)
+        <button class="btn btn-danger float-right" style="">Supprimer</button>
+    @endif
+</div>
 @endsection

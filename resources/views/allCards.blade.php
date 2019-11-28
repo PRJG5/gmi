@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h1> Mes Fiches </h1>
+<h1>Toutes les fiches</h1>
 
 @if ($cards->isEmpty())
     <p>Pas de fiche</p>
