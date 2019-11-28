@@ -15,6 +15,7 @@ class AddConstraintLinksTableUniqueCardaCardb extends Migration
     {
         Schema::table('links', function (Blueprint $table) {
             $table->unique(['cardA' , 'cardB'])->change();
+            DB::statement('ALTER TABLE links ADD CONSTRAINT chk_card_different CHECK (cardA <> cardB);');
         });
     }
 }
