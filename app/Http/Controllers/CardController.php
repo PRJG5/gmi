@@ -72,6 +72,16 @@ class CardController extends Controller
                 'phonetic_id'=> $phonetic->id,
             ]);
         }
+
+        // if(isset($request['note_id']) && strlen($request['note_id']) > 0){
+        //     $note = Note::create([
+        //         'description' => $request['note_id'],
+        //     ]);
+        //     $note->save();
+        //     $request->merge([
+        //         'id'=> $phonetic->id,
+        //     ]);
+        // }
 		// Créer objet Note
 		// Créer objet Contexte
 		// Créer objet Définition
@@ -91,11 +101,13 @@ class CardController extends Controller
         return view('card.show', [
 			'card' 		=> $card,
 			'domain' 	=> Domain::getInstances(),
-			'editable'	=> false,
-			'languages' => Language::getInstances(),
+			'languages' => DB::table("cards")->where('language_id',$card->language_id),
 			'subdomain' => Subdomain::getInstances(),
             'owner' 	=> User::find($card->owner_id),
             'phonetic'  => DB::table('phonetics')->where('id', $card->phonetic_id)->first(),
+            'note'      => DB::table('notes')->where('id', $card->note_id)->first(),
+            'context'   => DB::table('contexts')->where('id',$card->context_id)->first(),
+            'definition'=> DB::table('definitions')->where('id',$card->definition_id)->first()
 		]);
     }
 
@@ -111,12 +123,15 @@ class CardController extends Controller
         $description = sprintf(FORMAT_DESCRIPTION, $_SERVER['HTTP_HOST'], $card->card_id);
         return view('card.edit', [
             'mail'      => ["subject" => urlencode($subject),'description' => urlencode($description)],
-            'card'      => $card,
-            'domain' 	=> Domain::getInstances(),
-			'languages' => Language::getInstances(),
+            'card' 		=> $card,
+			'domain' 	=> Domain::getInstances(),
+			'languages' => DB::table("cards")->where('id',$card->language_id),
 			'subdomain' => Subdomain::getInstances(),
-            'owner' 	=> DB::table('users')->where('id', $card->owner_id)->first(),
+            'owner' 	=> User::find($card->owner_id),
             'phonetic'  => DB::table('phonetics')->where('id', $card->phonetic_id)->first(),
+            'note'      => DB::table('notes')->where('id', $card->note_id)->first(),
+            'context'   => DB::table('contexts')->where('id',$card->context_id)->first(),
+            'definition'=> DB::table('definitions')->where('id',$card->definition_id)->first()
 		]);
     }
 

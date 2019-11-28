@@ -48,11 +48,14 @@
 		@endif
 
 
-        <label for="note_id" class="col-md-6 col-form-label text-md-right">Note:</label>
-		<input name="note_id" class="note_id" type="text" placeholder="Note" value="" title=""/>
+        <label for="note" class="col-md-6 col-form-label text-md-right">Note:</label>
+		<input name="note" class="note" type="text" placeholder="Note" value="" title="Note"/>
 
-		<label for="context_id" class="col-md-6 col-form-label text-md-right">Contexte:</label>
-		<textarea name="context_id" class="context_id" placeholder="Context" value="" title=""></textarea>
+		<label for="context" class="col-md-6 col-form-label text-md-right">Contexte:</label>
+		<textarea name="context" class="context" placeholder="Context" value="" title="COntext"></textarea>
+
+		<label for="definition" class="col-md-6 col-form-label text-md-right">Definition:</label>
+		<textarea name="definition" class="context" placeholder="Definition" value="" title="Definition"></textarea>
 
 		
 

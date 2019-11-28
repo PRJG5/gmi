@@ -12,36 +12,36 @@
 <label>{{$card->heading}}</label> 
 
 <label  class="col-md-6 col-form-label text-md-right"> Langue : </label>
-<label>{{$card->language_id}}</label> 
+<label>{{$card->language_id}}</label>   
 
-@if (!isset($card->phonetic_id))
+@if (isset($card->phonetic))
 <label  class="col-md-6 col-form-label text-md-right"> Phonetique : </label>
-<label>{{$card->phonetic_id}}</label> 
+<label>{{$phonetic->textDescription}}</label> 
 @endif
 
-@if (!isset($card->domain_id))
+@if (isset($card->domain_id))
 <label  class="col-md-6 col-form-label text-md-right"> Domaine : </label>
 <label>{{$card->domain_id}}</label> 
 @endif
 
-@if (!isset($card->subdomain_id))
+@if (isset($card->subdomain_id))
 <label  class="col-md-6 col-form-label text-md-right"> Sous-Domaine : </label>
 <label>{{$card->subdomain_id}}</label> 
 @endif
 
-@if (!isset($card->definition_id))
+@if (isset($card->definition_id))
 <label  class="col-md-6 col-form-label text-md-right"> Definition : </label>
-<label>{{$card->definition_id}}</label> 
+<label>{{$definition->definition_content}}</label> 
 @endif
 
-@if (!isset($card->context_id))
+@if (isset($card->context_id))
 <label  class="col-md-6 col-form-label text-md-right"> Contexte : </label>
-<label>{{$card->context_id}}</label> 
+<label>{{$context->context_to_string}}</label> 
 @endif
 
-@if (!isset($card->note_id))
+@if (isset($card->note_id))
 <label  class="col-md-6 col-form-label text-md-right"> Note : </label>
-<label>{{$card->note_id}}</label>
+<label>{{$note->description}}</label>
 @endif
 
 <form action='/cards/{{$card->id}}/edit' method="get">
