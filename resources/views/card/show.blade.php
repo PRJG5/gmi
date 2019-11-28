@@ -1,52 +1,72 @@
 @extends('layouts.card')
 
 @section('card-header')
-
-	Card
-    
+@lang('card.card')
 @endsection
 
 @section('card-body')
 
-<label class="col-md-6 col-form-label text-md-right"> Vedette : </label>
-<label>{{$card->heading}}</label> 
+<form action="{{ route('cards.store')}}" method="POST">
 
-<label  class="col-md-6 col-form-label text-md-right"> Langue : </label>
-<label>{{$card->language_id}}</label>   
+	<div class="form-group row">
+		<label for="heading" class="col-sm-2 col-form-label">@lang('card.heading') :</label>
+		<input name="heading" class="form-control col-sm-10" type="text" value="{{ $card->heading }}" title="@lang('card.heading')" readonly disabled/>
+	</div>
 
-@if (isset($card->phonetic))
-<label  class="col-md-6 col-form-label text-md-right"> Phonetique : </label>
-<label>{{$phonetic->textDescription}}</label> 
-@endif
+	<div class="form-group row">
+		<label for="phonetic" class="col-sm-2 col-form-label">@lang('card.phonetic') :</label>
+		<input name="phonetic" class="form-control col-sm-10" type="text" value="{{ isset($phonetic) ? $phonetic->textDescription : '' }}" title="@lang('card.phonetic')" readonly disabled/>
+	</div>
 
-@if (isset($card->domain_id))
-<label  class="col-md-6 col-form-label text-md-right"> Domaine : </label>
-<label>{{$card->domain_id}}</label> 
-@endif
+	<div class="form-group row">
+		<label for="language_id" class="col-sm-2 col-form-label">@lang('card.language') :</label>
+		<select name="language_id" class="form-control col-sm-10" type="text" value="" title="@lang('card.language')" readonly disabled>
+			@foreach ($languages as $lang)
+			<option value="{{ $lang->key }}" {{ $card->language_id == $lang->key ? 'selected' : '' }} title="{{ $lang->description }}" >{{ $lang->description }}</option>
+			@endforeach
+		</select>
+	</div>
 
-@if (isset($card->subdomain_id))
-<label  class="col-md-6 col-form-label text-md-right"> Sous-Domaine : </label>
-<label>{{$card->subdomain_id}}</label> 
-@endif
+	<div class="form-group row">
+		<label for="domain_id" class="col-sm-2 col-form-label">@lang('card.domain') :</label>
+		<select name="domain_id" class="form-control col-sm-10" type="text" value="{{ $card->domain_id }}" title="@lang('card.domain')" readonly disabled>
+			@foreach($domain as $dom)
+			<option value="{{ $dom->key }}" {{ $card->domain_id == $dom->key ? 'selected' : ''}} title="{{ $dom->description }}" >{{ $dom->description }}</option>
+			@endforeach
+		</select>
+	</div>
 
-@if (isset($card->definition_id))
-<label  class="col-md-6 col-form-label text-md-right"> Definition : </label>
-<label>{{$definition->definition_content}}</label> 
-@endif
+	<div class="form-group row">
+		@if (!isset($card) || in_array($card->subdomain_id, $subdomain))
+		<label for="subdomain_id" class="col-sm-2 col-form-label">@lang('card.subdomain') :</label>
+		<select name="subdomain_id" class="form-control col-sm-10" type="text" value="{{ $card->subdomain_id }}" title="@lang('card.subdomain')" readonly disabled>
+			@foreach($subdomain as $subdom)
+			<option value="{{ $subdom->key }}" {{ $card->subdomain_id == $subdom->key ? 'selected' : ''}} title="{{ $subdom->description }}" >{{ $subdom->description }}</option>
+			@endforeach
+		</select>
+		@endif
+	</div>
 
-@if (isset($card->context_id))
-<label  class="col-md-6 col-form-label text-md-right"> Contexte : </label>
-<label>{{$context->context_to_string}}</label> 
-@endif
+	<div class="form-group row">
+		<label for="definition" class="col-sm-2 col-form-label">@lang('card.definition') :</label>
+		<input name="definition" class="form-control col-sm-10" type="text" value="{{ isset($definition) ? $definition->definition_content : '' }}" title="@lang('card.definition')" readonly disabled/>
+	</div>
 
-@if (isset($card->note_id))
-<label  class="col-md-6 col-form-label text-md-right"> Note : </label>
-<label>{{$note->description}}</label>
-@endif
+	<div class="form-group row">
+		<label for="note" class="col-sm-2 col-form-label">@lang('card.note') :</label>
+		<input name="note" class="form-control col-sm-10" type="text" value="{{ isset($note) ? $note->description : '' }}" title="@lang('card.note')" readonly disabled/>
+	</div>
 
-<form action='/cards/{{$card->id}}/edit' method="get">
-    @csrf
-    <button type="submit" class="btn btn-primary">Edit</button>
+	<div class="form-group row">
+		<label for="context" class="col-sm-2 col-form-label">@lang('card.context') :</label>
+		<textarea name="context" class="form-control col-sm-10" title="@lang('card.context')" readonly disabled>{{ isset($context) ? $context->context_to_string : '' }}</textarea>
+	</div>
+
+	<div class="form-group form-check">
+		<a class="btn btn-primary" href="{{ route('cards.edit', $card->id) }}">@lang('card.editCard')</a>
+	</div>
+
 </form>
+
 
 @endsection

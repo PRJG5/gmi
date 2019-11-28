@@ -18,6 +18,6 @@ class Phonetic extends Model
 		'textDescription',
 	];
 	protected $guarded = [
-        'id',
+		'id',
 	];
 }

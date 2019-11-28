@@ -17,19 +17,19 @@ class Note extends Model
 	protected $attributes = [
 		'description' => '',
 	];
-    protected $fillable = [
+	protected $fillable = [
 		'description',
 	];
 	protected $guarded = [
-        'id',
+		'id',
 	];
 
-    public function card(){
-        return $this->belongsTo(Card::class);
-    }
+	public function card(){
+		return $this->belongsTo(Card::class);
+	}
 
-    public function __toString()
-    {
-        return strval($this->id) . " - " .  $this->description;
-    }
+	public function __toString()
+	{
+		return strval($this->id) . " - " .  $this->description;
+	}
 }

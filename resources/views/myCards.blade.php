@@ -1,8 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.card')
 
-@section('content')
-<h1> Mes Fiches </h1>
+@section('card-header')
+@lang('card.myCards')
+@endsection
+@section('card-body')
+@lang('users.userData')
 @foreach ($cards as $card)
     @include('card.show')
 @endforeach
-@endsection 
+@endsection

@@ -10,11 +10,11 @@ use App\Phonetic;
  */
 class PhoneticTableSeeder extends Seeder {
 
-    /**
-     * Creates 50 fake phonetic into the database.
-     * @author 44424
-     */
-    public function run() {
-        factory(Phonetic::class, 50)->create();
-    }
+	/**
+	 * Creates 50 fake phonetic into the database.
+	 * @author 44424
+	 */
+	public function run() {
+		factory(Phonetic::class, 50)->create();
+	}
 }

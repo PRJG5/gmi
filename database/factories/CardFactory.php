@@ -11,10 +11,10 @@ use App\Enums\Language;
 use App\Phonetic;
 
 $factory->define(Card::class, function (Faker $faker) {
-    return [
-        'heading' => $faker->text(100),
-        'language_id' => Language::getRandomValue(),
-        'owner_id' => User::all()->random()->id,
-        'phonetic_id' => $faker->unique()->randomNumber(),
-    ];
+	return [
+		'heading' => $faker->text(100),
+		'language_id' => Language::getRandomValue(),
+		'owner_id' => User::all()->random()->id,
+		'phonetic_id' => $faker->unique()->randomNumber(),
+	];
 });

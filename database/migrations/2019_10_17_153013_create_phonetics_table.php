@@ -6,28 +6,28 @@ use Illuminate\Support\Facades\Schema;
 
 class CreatePhoneticsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::create('phonetics', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('textDescription')->nullable(false);
-            $table->timestamps();
-        });
-    }
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	public function up()
+	{
+		Schema::create('phonetics', function (Blueprint $table) {
+			$table->bigIncrements('id');
+			$table->string('textDescription')->nullable(false);
+			$table->timestamps();
+		});
+	}
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('phonetics');
-    }
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down()
+	{
+		Schema::dropIfExists('phonetics');
+	}
 }
 //

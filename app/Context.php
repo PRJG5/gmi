@@ -18,25 +18,25 @@ class Context extends Model
 		'context_to_string',
 	];
 	protected $guarded = [
-        'id',
+		'id',
 	];
-    
+	
 
-    /**
-     * Constructor of the Context Object.
-     */
+	/**
+	 * Constructor of the Context Object.
+	 */
  	// public function __constructor($context){
-    // 		$this->contextToString = $context;
-    // }
+	// 		$this->contextToString = $context;
+	// }
 
-    // public function getNameOfContext(){
-    // 		return $this->contextToString;
-    // }
+	// public function getNameOfContext(){
+	// 		return $this->contextToString;
+	// }
 
-    /**
-     * ToString of the context
-     */
-    public function __toString(){
-         return $this->id ." ".  $this->context_to_string;
-    }
+	/**
+	 * ToString of the context
+	 */
+	public function __toString(){
+		 return $this->id ." ".  $this->context_to_string;
+	}
 }

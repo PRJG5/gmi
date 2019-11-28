@@ -109,9 +109,9 @@ return [
 		Subdomain::Other					=> 'Autre',
 	],
 
-    Roles::class=> [
-        Roles::ADMIN => 'Administrateur',
-        Roles::MOD => 'Modérateur',
-        Roles::USERS => 'Utilisateur',
-    ],
+	Roles::class=> [
+		Roles::ADMIN	=> 'Administrateur',
+		Roles::MOD		=> 'Modérateur',
+		Roles::USERS	=> 'Utilisateur',
+	],
 ];

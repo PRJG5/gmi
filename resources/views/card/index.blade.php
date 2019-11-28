@@ -1,23 +1,16 @@
 @extends('layouts.board')
 
 @section('card-header')
-    Cards
+@lang('card.allCards')
 @endsection
-@section('body')
-@foreach ($cards as $card)
-<!-- ICI LISTE DES CARTES-->
-    <div class="row">
-        <div class="col-md-4">{{$card->heading}}</div>
-        <form action='/cards/{{$card->id}}' method="get">
-            @csrf
-            <button type="submit" class="btn btn-primary">Show</button>
-        </form>
-    </div>
-@endforeach
-    <div class="row">
-        <form action={{route('cards.create')}} method="get">
-            @csrf
-            <button type="submit" class="btn btn-primary">add Card</button>
-        </form>
-    </div>
+
+@section('card-body')
+	@foreach ($cards as $card)
+		<div class="row">
+			<div class="col-md-4">{{ $card->heading }}</div>
+			<a href="{{ route('cards.show', $card->id) }}" class="btn btn-primary">@lang('card.viewDetails')</a>
+		</div>
+		<br>
+	@endforeach
+	<a class="btn btn-primary" href="{{ route('cards.create')}}">@lang('card.createCard')</a>
 @endsection

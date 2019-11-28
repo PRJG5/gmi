@@ -9,29 +9,27 @@ use Illuminate\Support\Facades\Schema;
  */
 class CreateLanguagesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::create('languages', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('content')->unique();
-            $table->string('slug')->unique();
-        });
-    }
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	public function up()
+	{
+		Schema::create('languages', function (Blueprint $table) {
+			$table->bigIncrements('id');
+			$table->string('content')->unique();
+			$table->string('slug')->unique();
+		});
+	}
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('languages');
-    }
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down()
+	{
+		Schema::dropIfExists('languages');
+	}
 }
-
-

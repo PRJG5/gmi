@@ -1,36 +1,40 @@
-@extends('layouts.app')
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-        <div style="display:none;" class="alert alert-success" role="alert" id="infosStatus">Enregistré!</div>
-            <div id="form">
-                <div class="form-group">
-                    <label for="subdomain">Sous-domaine</label>
-                    <input id="subdomain" class="form-control" name="subdomain" placeholder="Nom du sous-domaine" type="text">
-                </div>
-                <button onclick="addSubdomain()" class="btn btn-primary">Ajouter</button>
-            </div>
-        </div>
-    </div>
+@extends('layouts.card')
+
+@section('card-header')
+@lang('misc.addBasicData')
+@endsection
+@section('card-body')
+<div style="display:none;" class="alert alert-success" role="alert" id="statusSuccess">@lang('misc.saved')</div>
+<div style="display:none;" class="alert alert-danger" role="alert" id="statusError">@lang('misc.error')</div>
+<div class="form-group">
+	<label for="subdomain">@lang('card.subdomain')</label>
+	<input name="subdomain" id="subdomain" class="form-control" placeholder="@lang('misc.subdomainName')" type="text" />
 </div>
+<button onclick="addSubdomain()" class="btn btn-primary">@lang('misc.addSubdomain')</button>
 @endsection
 
 <script>
+/**
+ * Adds a new subdomain into the database
+ */
 function addSubdomain() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        $("#infosStatus").fadeIn();
-        $("#subdomain").val("");
-        setTimeout(function(){ $("#infosStatus").fadeOut(); }, 3000);
-        
-    }
-
-    
-  };
-  let nameSubdomain = $('#subdomain').val();
-  xhttp.open("GET", "/api/addsubdomain/" + nameSubdomain, true);
-  xhttp.send();
-  }
+	const nameSubdomain = $('#subdomain').val();
+	if(nameSubdomain.trim().length > 0) {
+		xhr("post", `{{ route('addSubdomains', '') }}/${nameSubdomain}`)
+		.then(() => {
+			$("#statusSuccess").fadeIn();
+			$("#subdomain").val("");
+			setTimeout(() => {
+				$("#statusSuccess").fadeOut();
+			}, 3000);
+		})
+		.catch(() => {
+			$("#statusError").fadeIn();
+			$("#subdomain").val("");
+			setTimeout(() => {
+				$("#statusError").fadeOut();
+			}, 3000);
+		});
+	}
+}
 </script>
