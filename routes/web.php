@@ -54,8 +54,7 @@ Route::get('api/getAllCardsFromUsers/{id}', 'CardController@getCardsByUser')->mi
 Route::get('cards/{cardOrigin}/{cardLinked}/link','CardController@linkCard')->name('link')->middleware('auth');
 
 Route::get('api/addsubdomain/{name}', 'BasicDataController@addSubdomain')->middleware('auth');
-
-Route::get('/addLanguage','LanguageController@importView')->middleware('auth');
-Route::post('/import','LanguageController@import')->name('importLanguage')->middleware('auth');
+Route::get('api/addlanguage/{name}/code/{iso}', 'BasicDataController@addLanguage')->middleware('auth');
+Route::get('/addbasicdata', 'LanguageController@index')->name('basicData')->middleware('auth');
 ?>
 
