@@ -42,7 +42,7 @@ class CardController extends Controller
 		return view('card.create', [
 			'domain'	=> Domain::getInstances(),
 			'subdomain' => Subdomain::getInstances(),
-			'languages' => Language::getInstances(), //Language::all()
+			'languages' => Language::getInstances(),
 		]);
 	}
 

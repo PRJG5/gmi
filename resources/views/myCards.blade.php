@@ -6,6 +6,7 @@
 @section('card-body')
 @lang('users.userData')
 @foreach ($cards as $card)
-    @include('card.show')
+    @inject('cardController', 'App\Http\Controllers\CardController')
+    {{ $cardController->show($card) }}
 @endforeach
 @endsection
