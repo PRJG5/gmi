@@ -9,6 +9,9 @@ define("FORMAT_DESCRIPTION", "Pour consulter votre carte, veuillez suivre ce lie
 use App\Card;
 use App\Enums\Domain;
 use App\Phonetic;
+use App\Note;
+use App\Context;
+use App\Definition;
 use App\User;
 use App\Enums\Language;
 use App\Enums\Subdomain;
@@ -73,18 +76,35 @@ class CardController extends Controller
             ]);
         }
 
-        // if(isset($request['note_id']) && strlen($request['note_id']) > 0){
-        //     $note = Note::create([
-        //         'description' => $request['note_id'],
-        //     ]);
-        //     $note->save();
-        //     $request->merge([
-        //         'id'=> $phonetic->id,
-        //     ]);
-        // }
-		// Créer objet Note
-		// Créer objet Contexte
-		// Créer objet Définition
+        if(isset($request['note']) && strlen($request['note']) > 0){
+            $note = Note::create([
+                'description' => $request['note'],
+            ]);
+            $note->save();
+            $request->merge([
+                'note_id'=> $note->id,  
+            ]);
+        }
+
+        if(isset($request['context']) && strlen($request['context']) > 0){
+            $context = Context::create([
+                'context_to_string' => $request['context'],
+            ]);
+            $context->save();
+            $request->merge([
+                'context_id'=> $context->id,  
+            ]);
+        }
+
+        if(isset($request['definition']) && strlen($request['definition']) > 0){
+            $note = Definition::create([
+                'definition_content' => $request['definition'],
+            ]);
+            $note->save();
+            $request->merge([
+                'definition_id'=> $note->id,  
+            ]);
+        }
         $card = Card::create($this->validateData($request, true));
 		$card->save();
         return redirect()->action('CardController@show', [$card]);
@@ -182,8 +202,11 @@ class CardController extends Controller
             'domain_id'		=> '',
             'subdomain_id'	=> '',
             'definition'	=> '',
+            'definition_id' => '',
             'context'		=> '',
-            'note'			=> '',
+            'context_id'    => '',
+            'note_id'		=> '',
+            'note'          => '',
             'owner_id'	    => 'required',
 		];
 		if(!$creating) {
