@@ -98,7 +98,7 @@
 
                                     <a class="dropdown-item" href="/searchCard">Chercher fiche</a>
 
-                                    <form id="mesFiches-form" action="{{ route('mesFiches') }}" method="POST" style="display: none;">
+                                    <form id="mesFiches-form" action="{{ route('mesFiches') }}" method="GET" style="display: none;">
                                         @csrf
                                     </form>
 

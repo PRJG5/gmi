@@ -20,7 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/searchCard' , 'HomeController@searchCard')->middleware('auth');
-Route::post('/mesFiches', 'MyCardController@index')->name('mesFiches')->middleware('auth');
+Route::get('/mesFiches', 'MyCardController@index')->name('mesFiches')->middleware('auth');
 Route::get('/users','HomeController@indexUsers')->name('ListingUsers')->middleware('auth');
 
 
@@ -42,9 +42,20 @@ Route::name('admin.')->group(function () {
     Route::post('updateRole','UserController@updateRole')->name('updateRole');
 });
 
+/**
+ * Route to get the view to search all cards from a user.
+ */
 Route::get('/searchByUser', function () {
     return view('searchByAuthor', array("authors" => User::all()));
 })->middleware('auth');
+
+/**
+ * Return a part of HTML to display all cards from the user
+ * @param id the id of the user 
+ */
+Route::get('/searchByUser/{id}', 'CardController@getCardsByUser')->middleware('auth');
+
+
 
 /**
  * Route to return all cards from an user in JSON
