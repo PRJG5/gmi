@@ -42,9 +42,9 @@ class LinkTest extends TestCase
         $user = User::create(["name"=>"Tester","email"=>"tester@test.com","password"=>"tested"]);
         $cardA = Card::create(['heading'=>'test1', 'definition'=>'blabla2', 'owner_id'=>$user->id]);
         $link = new Link();
+        $this->expectException(QueryException::class);
         $link->cardA = $cardA->id;
         $link->cardB = $cardA->id;
-        $this->expectException(QueryException::class);
         $link->save();
     }
 
@@ -61,12 +61,11 @@ class LinkTest extends TestCase
         $link = new Link();
         $link->cardA = $cardA->id;
         $link->cardB = $cardA->id;
+        $this->expectException(QueryException::class);
         $link->save();
-
         $link = new Link();
         $link->cardA = $cardA->id;
         $link->cardB = $cardA->id;
-        $this->expectException(QueryException::class);
         $link->save();
     }
 
