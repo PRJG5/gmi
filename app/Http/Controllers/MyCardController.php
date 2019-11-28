@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use \Illuminate\Contracts\Support\Renderable;
+use App\Card;
+use Illuminate\Support\Facades\Auth;
 
 class MyCardController extends Controller
 {
@@ -23,6 +25,7 @@ class MyCardController extends Controller
      */
     public function index()
     {
-        return view('myCards');
+        $cards = Card::where('owner_id', Auth::user()->id)->get();
+        return view('myCards', compact('cards'));
     }
 }

@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(ContextSeeder::class);
         $this->call(CardTableSeeder::class);
+        $this->call(PhoneticTableSeeder::class);
     }
 }

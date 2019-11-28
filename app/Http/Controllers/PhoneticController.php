@@ -83,4 +83,17 @@ class PhoneticController extends Controller
     {
         return;
     }
+
+    /**
+     * Validates the data recieved.
+     * @param Request the request to validate
+     * @return array the validated data in a phonetic object.
+     * @author 44424
+     */
+    private function validateData(Request $request)
+    {
+        return $request->validate([
+            'textDescription' => 'required'
+        ]);
+    }
 }
