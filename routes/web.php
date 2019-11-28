@@ -55,7 +55,12 @@ Route::get('cards/{cardOrigin}/{cardLinked}/link','CardController@linkCard')->na
 
 Route::get('api/addsubdomain/{name}', 'BasicDataController@addSubdomain')->middleware('auth');
 
+/**
+ * Route to add a language 
+ */
 Route::get('/addLanguage','LanguageController@importView')->middleware('auth');
 Route::post('/import','LanguageController@import')->name('importLanguage')->middleware('auth');
+
+Route::get('cards/vote/{card}','VoteController@voteCard')->name('voteCard')->middleware('auth');
 ?>
 

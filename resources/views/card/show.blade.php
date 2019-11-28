@@ -49,4 +49,9 @@
     <button type="submit" class="btn btn-primary">Edit</button>
 </form>
 
+<form action='/cards/vote/{{$card->id}}' method="get">
+    @csrf
+    <button type="submit" class="btn btn-primary">Vote</button>
+</form>
+
 @endsection
