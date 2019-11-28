@@ -19,8 +19,8 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-
 Route::post('/mesFiches', 'MyCardController@index')->name('mesFiches')->middleware('auth');
+Route::get('/users','HomeController@indexUsers')->name('ListingUsers')->middleware('auth');
 
 
 /**
@@ -46,5 +46,12 @@ Route::get('/searchByUser', function () {
  * @param id The user id
  */
 Route::get('api/getAllCardsFromUsers/{id}', 'CardController@getCardsByUser');
+
+Route::get('cards/{cardOrigin}/{cardLinked}/link','CardController@linkCard')->name('link');
+
 Route::get('api/addsubdomain/{name}', 'BasicDataController@addSubdomain');
+
+Route::get('/addLanguage','LanguageController@importView');
+Route::post('/import','LanguageController@import')->name('importLanguage');
 ?>
+

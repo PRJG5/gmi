@@ -32,7 +32,7 @@ class CardController extends Controller
      */
     public function index()
     {
-        return Card::all();
+        return view('card.index',['cards' => Card::all()]);
     }
 
     /**
@@ -44,8 +44,8 @@ class CardController extends Controller
     {
         return view('card.create', [
             'domain' 	=> Domain::getInstances(),
-            'languages' => Language::getInstances(),
             'subdomain' => Subdomain::getInstances(),
+			'languages' => Language::getInstances(), //Language::all()
 		]);
     }
 
@@ -197,6 +197,17 @@ class CardController extends Controller
      * @return Card[] All cards from an user
      */
     public function getCardsByUser(int $userId) {
-        return Card::where('owner_id', $userId)->get();
+        return view('card.index',['cards' => Card::where('owner_id',$userId)->get()]);
+    }
+
+    public function linkCard(Card $cardOrigin, Card $cardLinked){
+        return view('card.link', [
+            'cardOrigin' => $cardOrigin,
+            'cardLinked' => $cardLinked,
+			'languages' => Language::getInstances(),
+            'userOrigin' => DB::table('users')->where('id', $cardOrigin->owner_id)->first(),
+			'userLinked' => DB::table('users')->where('id', $cardLinked->owner_id)->first(),
+            
+		]);
     }
 }

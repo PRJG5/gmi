@@ -1,116 +1,52 @@
-<link rel="stylesheet" type="text/css" href="{{ asset('css/card.css') }}" >
-<link rel="stylesheet" type="text/css" href="{{ asset('css/themes/default/card.css') }}" >
-<link rel="stylesheet" type="text/css" href="{{ asset('css/common.css') }}" >
-<link rel="stylesheet" type="text/css" href="{{ asset('css/themes/default/common.css') }}" >
-<form class="card" {{ (isset($editable) && $editable) ? 'method=post ' .  'action=' . (isset($action) ? $action : '') : '' }} >
+@extends('layouts.card')
 
-	@section('csrf')
-	{{--
-	This section is empty in the show method
-	But will be filled if the form has to be edited
-	i.e. in a "create" action or an "edit" action.
-	--}}
-	@show
+@section('card-header')
 
-	@section('patch')
-	{{--
-	This section is empty in the show method
-	But will be filled if the form has to be sent for special action
-	i.e. in a "delete" action or an "edit" action.
-	--}}
-	@show
+	Card
+    
+@endsection
 
-	@section('card_id')
-	<input name="card_id" class="card_id" type="hidden" value="{{ isset($card) ? $card->id : '' }}" />
-	@show
+@section('card-body')
 
-	@section('owner_id')
-	<input name="owner_id" class="owner_id" type="hidden" value="{{isset($owner) ? $owner->id : ''}}" />
-	@show
+<label class="col-md-6 col-form-label text-md-right"> Vedette : </label>
+<label>{{$card->heading}}</label> 
 
-	<div class="cardHeader">
-		{{--
-		Classes are used for inputs for style
-		Rather than id's in case of multiple cards rendered
-		At the same time on the screen
-		i.e. in case of linking two cards.
-		--}}
+<label  class="col-md-6 col-form-label text-md-right"> Langue : </label>
+<label>{{$card->language_id}}</label> 
 
-		@if (!isset($card) || in_array($card->language_id, $languages))
-		<select name="language_id" class="language_id" type="text" value="{{ isset($card) ? $card->language_id : '' }}" title="Language" {{ (isset($editable) && $editable) ? '' : 'disabled' }} required >
-			@foreach  ($languages as $lang)
-			<option value="{{ $lang->key }}" {{ (isset($card) && ($card->language_id == $lang->key)) ? 'selected' : '' }} title="{{ $lang->description }}" >{{ $lang->description }}</option>
-			@endforeach
-		</select>
-		@endif
+@if (!isset($card->phonetic_id))
+<label  class="col-md-6 col-form-label text-md-right"> Phonetique : </label>
+<label>{{$card->phonetic_id}}</label> 
+@endif
 
-		@section('error_language_id')
-		@show
+@if (!isset($card->domain_id))
+<label  class="col-md-6 col-form-label text-md-right"> Domaine : </label>
+<label>{{$card->domain_id}}</label> 
+@endif
 
-		<input name="heading" class="heading" type="text" placeholder="Heading" value="{{ isset($card) ? $card->heading : '' }}" title="{{ isset($card) ? $card->heading : '' }}" {{ (isset($editable) && $editable) ? '' : 'disabled' }} required />
+@if (!isset($card->subdomain_id))
+<label  class="col-md-6 col-form-label text-md-right"> Sous-Domaine : </label>
+<label>{{$card->subdomain_id}}</label> 
+@endif
 
-		@section('error_heading')
-		@show
+@if (!isset($card->definition_id))
+<label  class="col-md-6 col-form-label text-md-right"> Definition : </label>
+<label>{{$card->definition_id}}</label> 
+@endif
 
-		<input name="phonetic" class="phonetic" type="text" placeholder="Phonetic" value="{{ isset($phonetic) ? $phonetic->textDescription : ''}}" title="Phonetic" {{ (isset($editable) && $editable) ? '' : 'disabled' }} />
-	</div>
-	<div class="cardBody">
+@if (!isset($card->context_id))
+<label  class="col-md-6 col-form-label text-md-right"> Contexte : </label>
+<label>{{$card->context_id}}</label> 
+@endif
 
-		@section('error_owner_id')
-			@show
+@if (!isset($card->note_id))
+<label  class="col-md-6 col-form-label text-md-right"> Note : </label>
+<label>{{$card->note_id}}</label>
+@endif
 
-			@section('owner')
-			<label for="owner">Owner:</label>
-			<input name="owner" value="{{ isset($owner) ? $owner->name : '' }}" disabled />
-		@show
-
-		{{--
-		definition
-		--}}
-
-		@if (!isset($card) || in_array($card->domain_id, $domain))
-		<label for="domain_id">Domain:</label>
-		<select name="domain_id" class="domain_id" type="text" value="{{ isset($card) ? $card->domain_id : '' }}" title="Domain" {{ (isset($editable) && $editable) ? '' : 'disabled' }} required >
-			@foreach($domain as $dom)
-			<option value="{{ $dom->key}}" {{ (isset($card) && ($card->domain_id == $dom->key)) ? 'selected' : ''}} title="{{ $dom->description }}" >{{ $dom->description }}</option>
-			@endforeach
-		</select>
-		@endif
-
-		@if (!isset($card) || in_array($card->subdomain_id, $subdomain))
-		<label for="subdomain_id">Subdomain:</label>
-		<select name="subdomain_id" class="subdomain_id" type="text" value="{{ isset($card) ? $card->subdomain_id : '' }}" title="Subdomain" {{ (isset($editable) && $editable) ? '' : 'disabled' }} required >
-			@foreach($subdomain as $subdom)
-			<option value="{{ $subdom->key}}" {{ (isset($card) && ($card->qubdomain_id == $subdom->key)) ? 'selected' : ''}} title="{{ $subdom->description }}" >{{ $subdom->description }}</option>
-			@endforeach
-		</select>
-		@endif
-
-		<label for="note">Note:</label>
-		<input name="note" class="note" type="text" placeholder="Note" value="" title="" {{ (isset($editable) && $editable) ? '' : 'disabled' }} />
-
-		<label for="context">Contexte:</label>
-		<textarea name="context" class="context" placeholder="Context" value="" title="" {{ (isset($editable) && $editable) ? '' : 'disabled' }} ></textarea>
-
-	</div>
-
-	@section('buttons')
-	@show
-
+<form action='/cards/{{$card->id}}/edit' method="get">
+    @csrf
+    <button type="submit" class="btn btn-primary">Edit</button>
 </form>
 
-@section('edit')
-{{--
-<a href="{{ isset($card) ? $card->id : '' }}/edit" class="buttonLike"title="Edit">Edit</a>
---}}
-@show
-
-@section('delete')
-{{--
-<form action="/cards/{{ isset($card) ? $card->id : '' }}" method="post">
-	@method('DELETE')
-	@csrf
-	<input type="submit" class="buttonLike" value="Delete"title="Delete" />
-</form>
---}}
-@show
+@endsection
