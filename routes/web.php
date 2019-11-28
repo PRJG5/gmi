@@ -55,7 +55,7 @@ Route::get('/searchByUser', function () {
  */
 Route::get('/searchByUser/{id}', 'CardController@getCardsByUser')->middleware('auth');
 
-
+Route::get("/card/{id}", 'CardController@showCard')->middleware('auth');
 
 /**
  * Route to return all cards from an user in JSON

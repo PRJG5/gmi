@@ -11,7 +11,7 @@
     <!-- ICI LISTE DES CARTES-->
         <div class="row">
             <div class="col-md-4">{{$card->heading}}</div>
-            <form action='/cards/{{$card->id}}' method="get">
+            <form action='/card/{{$card->id}}' method="get">
                 @csrf
                 <button type="submit" class="btn btn-primary">Show</button>
             </form>

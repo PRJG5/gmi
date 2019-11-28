@@ -249,16 +249,8 @@ class CardController extends Controller
 		]);
     }
 
-
-   // public function getCardsBasedOnName($name){
-   //     $cards = Card::where('heading', '=', $name)->get();
-   //     return view('searchCard', [ 'cards' => $cards]);
-   // }
-
-    public function getCardsBasedOnName($name, $language){
-        $cards = Card::where('heading', '=', $name)->where('language_id', '=', Language::getKey($language))->get();
-        return view('searchCard', [ 'cards' => $cards]);
-    }
-   // public function getCardsBasedOnLanguage($name, $listLanguage)
+   public function showCard($id) {
+       return view('card', ['card' => Card::find($id)]);
+   }
 
 }
