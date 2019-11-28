@@ -35,7 +35,7 @@ class CardController extends Controller
      */
     public function index()
     {
-        return view('card.index',['cards' => Card::whereIn('language_id',Auth::user()->getLanguagesKeyArray())->get()]);
+        return view('card.index',['cards' => Card::all()]);
     }
 
     /**

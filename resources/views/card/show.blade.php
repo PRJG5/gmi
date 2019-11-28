@@ -44,6 +44,7 @@
 <label>{{$note->description}}</label>
 @endif
 <div>
+
         <form action='/cards/{{$card->id}}/edit' method="get" style="display: inline-block;">
             @csrf
             <button type="submit" class="btn btn-primary">Edit</button>
