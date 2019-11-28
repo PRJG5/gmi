@@ -90,7 +90,7 @@
                                     </a>
                                     @if (Auth::user()->role == \App\Enums\Roles::ADMIN)
                                         <a class="dropdown-item" href="{{ route('ListingUsers') }}">
-                                            {{ __('Utilisateurs') }}
+                                            {{ __('Roles') }}
                                         </a>
                                         <a class="dropdown-item" href="/addLanguage">Ajout domaine/sous-domaine/langues</a>
                                     @endif

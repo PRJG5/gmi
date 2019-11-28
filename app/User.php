@@ -79,14 +79,14 @@ class User extends Authenticatable
      * GET A LIST OF USER LANGUAGE KEY ARRAY
      */
     public function getLanguagesKeyArray(){
-        $languages = [];
+        $languages = array();
         if($this->role == Enums\Roles::ADMIN){
             foreach(Language::get()->toarray() as $language){
-                $languages[] = array('key' => $language['slug']);
+                array_push($languages, $language['slug']);
             }
         }
         foreach(SpokenLanguages::select('languageISO')->where('user_id',$this->id)->get()->toarray() as $language){
-            $languages[] = array('key' => $language['languageISO']);
+            array_push($languages, $language['languageISO']);
         }
 
         return $languages;
