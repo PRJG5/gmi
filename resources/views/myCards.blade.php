@@ -2,6 +2,7 @@
 
 @section('content')
 <h1> Mes Fiches </h1>
-<!-- accès aux données du users via Auth::user() -->
-<a>Données du user -> Nom : {{ Auth::user()->name }}</a>
-@endsection
+@foreach ($cards as $card)
+    @include('card.show')
+@endforeach
+@endsection 

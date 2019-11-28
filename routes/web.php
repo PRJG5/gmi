@@ -32,11 +32,15 @@ Route::get('/users','HomeController@indexUsers')->name('ListingUsers')->middlewa
  * This should ideally be removed
  * @author 44422
  */
-Route::resource('cards', 'CardController');
+Route::resource('cards', 'CardController')->middleware('auth');
 
 /**
  * Route to display a page to search all cards from an user
  */
+Route::name('admin.')->group(function () {
+    Route::post('updateRole','UserController@updateRole')->name('updateRole');
+});
+
 Route::get('/searchByUser', function () {
     return view('searchByAuthor', array("authors" => User::all()));
 })->middleware('auth');
@@ -45,13 +49,13 @@ Route::get('/searchByUser', function () {
  * Route to return all cards from an user in JSON
  * @param id The user id
  */
-Route::get('api/getAllCardsFromUsers/{id}', 'CardController@getCardsByUser');
+Route::get('api/getAllCardsFromUsers/{id}', 'CardController@getCardsByUser')->middleware('auth');
 
-Route::get('cards/{cardOrigin}/{cardLinked}/link','CardController@linkCard')->name('link');
+Route::get('cards/{cardOrigin}/{cardLinked}/link','CardController@linkCard')->name('link')->middleware('auth');
 
-Route::get('api/addsubdomain/{name}', 'BasicDataController@addSubdomain');
+Route::get('api/addsubdomain/{name}', 'BasicDataController@addSubdomain')->middleware('auth');
 
-Route::get('/addLanguage','LanguageController@importView');
-Route::post('/import','LanguageController@import')->name('importLanguage');
+Route::get('/addLanguage','LanguageController@importView')->middleware('auth');
+Route::post('/import','LanguageController@import')->name('importLanguage')->middleware('auth');
 ?>
 

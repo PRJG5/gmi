@@ -9,16 +9,19 @@
 @section('card-body')
     <form action="{{route('cards.store')}}" method="POST">
         @csrf
-        <div class="form-group row">
-            <label for="heading" class="col-md-6 col-form-label text-md-right"> Vedette : </label>
-            <input type="text" name="heading" id="heading" value="{{$card->heading}}" readonly>
-        </div>
+       
+	    <label for="heading" class="col-md-6 col-form-label text-md-right"> Vedette : </label>
+        <input type="text" name="heading" id="heading" value="{{$card->heading}}" readonly>
+
+		<label for="language_id" class="col-md-6 col-form-label text-md-right">Langue : </label> 
+		<input type="text" name="language_id" id="heading" value="{{$card->language_id}}" readonly>
 
         <input type="hidden" name="owner" value="{{ isset($owner) ? $owner->name : '' }}" disabled/>
 
-        <label for="language_id" class="col-md-6 col-form-label text-md-right">Langue : </label> 
-		<label>{{$card->language_id}}</label>
-        
+		<label for="phonetic" class="col-md-6 col-form-label text-md-right">Phonetic:</label>
+		<input name="phonetic" class="phonetic" type="text" placeholder="Phonetic" value="{{isset($phonetic) ? $phonetic->textDescription : ' '}}" title="Phonetic"/>
+		
+        <!--METTRE LES VALEURS PAR DEFAUT A DOMAIN ET SUBDOMAIN-->
 
         @if (!isset($card) || in_array($card->domain_id, $domain))
 		<label for="domain_id" class="col-md-6 col-form-label text-md-right">Domain:</label>
@@ -33,18 +36,20 @@
 		<label for="subdomain_id" class="col-md-6 col-form-label text-md-right">Subdomain:</label>
 		<select name="subdomain_id" class="subdomain_id" type="text" value="{{$card->subdomain_id}}" title="Subdomain">
 			@foreach($subdomain as $subdom)
-			<option value="{{ $subdom->key}}" {{ (isset($card) && ($card->qubdomain_id == $subdom->key)) ? 'selected' : ''}} title="{{ $subdom->description }}" >{{ $subdom->description }}</option>
+			<option value="{{ $subdom->key}}" {{ (isset($card) && ($card->subdomain_id == $subdom->key)) ? 'selected' : ''}} title="{{ $subdom->description }}" >{{ $subdom->description }}</option>
 			@endforeach
 		</select>
 		@endif
 
 
-        <label for="note_id" class="col-md-6 col-form-label text-md-right">Note:</label>
-		<input name="note_id" class="note_id" type="text" value="{{$card->note_id}}" title=""/>
+		<label for="definition" class="col-md-6 col-form-label text-md-right">Definition:</label>
+		<textarea name="definition" class="definition" value="{{isset($definition) ? $definition->definition_content : ' '}}">{{isset($definition) ? $definition->definition_content : ""}}</textarea>
 
-		<label for="context_id" class="col-md-6 col-form-label text-md-right">Contexte:</label>
-		<textarea name="context_id" class="context_id" value="{{$card->context_id}}" title=""></textarea>
+        <label for="note" class="col-md-6 col-form-label text-md-right">Note:</label>
+		<input name="note" class="note" type="text" value="{{isset($note) ? $note->description : ' '}}"/>
 
+		<label for="context" class="col-md-6 col-form-label text-md-right">Contexte:</label>
+		<textarea name="context" class="context" value="{{isset($context) ? $context->context_to_string : ' '}}">{{isset($context) ? $context->context_to_string : ""}}</textarea>
 
         <br>
         <button type="submit" class="btn btn-primary"> Edit Card</button>
