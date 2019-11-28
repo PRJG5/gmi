@@ -48,8 +48,8 @@ class CardController extends Controller
         return view('card.create', [
             'domain' 	=> Domain::getInstances(),
             'subdomain' => Subdomain::getInstances(),
-			'languages' => Language::getInstances(), //Language::all()
-		]);
+			'languages' => Auth::user()->getLanguages()
+        ]);
     }
 
      /**
@@ -73,7 +73,7 @@ class CardController extends Controller
             ]);
             $note->save();
             $request->merge([
-                'note_id'=> $note->id,  
+                'note_id'=> $note->id,
             ]);
         }
 
@@ -83,7 +83,7 @@ class CardController extends Controller
             ]);
             $context->save();
             $request->merge([
-                'context_id'=> $context->id,  
+                'context_id'=> $context->id,
             ]);
         }
 
@@ -93,7 +93,7 @@ class CardController extends Controller
             ]);
             $note->save();
             $request->merge([
-                'definition_id'=> $note->id,  
+                'definition_id'=> $note->id,
             ]);
         }
         $card = Card::create($this->validateData($request, true));
@@ -249,7 +249,7 @@ class CardController extends Controller
 	public function authorize($ability, $arguments) {
 		return true; // TODO
 	}
-    
+
     /**
      * Return all cards from an user
      * @param int userId The user id
@@ -266,7 +266,7 @@ class CardController extends Controller
 			'languages' => Language::getInstances(),
             'userOrigin' => DB::table('users')->where('id', $cardOrigin->owner_id)->first(),
 			'userLinked' => DB::table('users')->where('id', $cardLinked->owner_id)->first(),
-            
+
 		]);
     }
 }
