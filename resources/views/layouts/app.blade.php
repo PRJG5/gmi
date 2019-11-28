@@ -90,13 +90,19 @@
                                     </a>
                                     @if (Auth::user()->role == \App\Enums\Roles::ADMIN)
                                         <a class="dropdown-item" href="{{ route('ListingUsers') }}">
-                                            {{ __('Utilisateurs') }}
+                                            {{ __('Roles') }}
+                                        </a>
+                                        <a class="dropdown-item" href="{{ route('basicData') }}">
+                                            Ajout domaines/sous-domaines/langues
                                         </a>
                                     @endif
+                                    
 
-                                    <a class="dropdown-item" href="/addLanguage">Ajout domaine/sous-domaine/langues</a>
+                                    
 
-                                    <form id="mesFiches-form" action="{{ route('mesFiches') }}" method="POST" style="display: none;">
+                                    <a class="dropdown-item" href="/searchCard">Chercher fiche</a>
+
+                                    <form id="mesFiches-form" action="{{ route('mesFiches') }}" method="GET" style="display: none;">
                                         @csrf
                                     </form>
 
@@ -112,7 +118,7 @@
         </nav>
 
         <main class="py-4">
-            <div class="container">
+            <div class="container" style="max-width: 960px">
                         @yield('content')
             </div>
         </main>
