@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Language extends Model
+class Domain extends Model
 {
     protected $fillable = [
         'content'

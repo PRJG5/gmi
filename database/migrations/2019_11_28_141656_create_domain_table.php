@@ -13,7 +13,7 @@ class CreateDomainTable extends Migration
      */
     public function up()
     {
-        Schema::create('domain', function (Blueprint $table) {
+        Schema::create('domains', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('content')->unique();
         });
@@ -26,6 +26,6 @@ class CreateDomainTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('domain');
+        Schema::dropIfExists('domains');
     }
 }
