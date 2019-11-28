@@ -114,7 +114,7 @@
         </nav>
 
         <main class="py-4">
-            <div class="container">
+            <div class="container" style="max-width: 960px">
                         @yield('content')
             </div>
         </main>

@@ -55,6 +55,9 @@ Route::get('/searchByUser', function () {
  */
 Route::get('/searchByUser/{id}', 'CardController@getCardsByUser')->middleware('auth');
 
+/**
+ * Return the view to display one card
+ */
 Route::get("/card/{id}", 'CardController@showCard')->middleware('auth');
 
 /**
