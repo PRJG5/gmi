@@ -149,4 +149,9 @@ class Card extends Model
         //TODO: Trouver le fonctionnement du hasManyThrough ----> return $this->hasManyThrough('\App\Card','App\Link');
         return DB::table('links')->select('*')->where(['cardA', '=', $this->id])->orWhere(['cardB', '=', $this->id])->get();
     }
+
+    public function versions(){
+
+        return $this->belongsToMany('App\Card' ,'card_card' , 'cardOrigin' , 'cardVersion');
+    }
 }

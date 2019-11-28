@@ -1,7 +1,8 @@
 <?php
 
 namespace App;
-
+use App\SpokenLanguages;
+use BenSampo\Enum\Enum;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -56,4 +57,38 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * GET A LIST OF USER LANGUAGE OBJECT
+     */
+    public function getLanguages(){
+        $languages = [];
+        if($this->role == Enums\Roles::ADMIN){
+            foreach(Language::get()->toarray() as $language){
+                $languages[] = (object) array('key' => $language['slug'], 'description' => $language['content']);
+            }
+        }
+        foreach(SpokenLanguages::select('languageISO')->where('user_id',$this->id)->get()->toarray() as $language){
+            $languages[] = (object) array('key' => $language['languageISO'], 'description' => Language::where('slug',$language['languageISO'])->first()->content);
+        }
+
+        return $languages;
+    }
+
+    /**
+     * GET A LIST OF USER LANGUAGE KEY ARRAY
+     */
+    public function getLanguagesKeyArray(){
+        $languages = [];
+        if($this->role == Enums\Roles::ADMIN){
+            foreach(Language::get()->toarray() as $language){
+                $languages[] = array('key' => $language['slug']);
+            }
+        }
+        foreach(SpokenLanguages::select('languageISO')->where('user_id',$this->id)->get()->toarray() as $language){
+            $languages[] = array('key' => $language['languageISO']);
+        }
+
+        return $languages;
+    }
 }

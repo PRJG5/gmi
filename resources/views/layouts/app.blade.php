@@ -92,6 +92,7 @@
                                         <a class="dropdown-item" href="{{ route('ListingUsers') }}">
                                             {{ __('Utilisateurs') }}
                                         </a>
+                                        <a class="dropdown-item" href="/addLanguage">Ajout domaine/sous-domaine/langues</a>
                                     @endif
 
                                     <a class="dropdown-item" href="/addLanguage">Ajout domaine/sous-domaine/langues</a>
