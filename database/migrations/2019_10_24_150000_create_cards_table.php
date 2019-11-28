@@ -26,6 +26,7 @@ class CreateCardsTable extends Migration
             Also know as "vedette" of the card.
             The heading must support utf8 (or utf16, but probably not supported by all databases) chars,
             since non-latin languages may be used.
+            
             */
             $table->text('heading')->charset('utf8');
             $table->unsignedBigInteger('owner_id');
