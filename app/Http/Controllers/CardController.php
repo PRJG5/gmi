@@ -176,7 +176,7 @@ class CardController extends Controller
     public function update(Request $request, Card $card)
     {
         if(Auth::user()->id == $card->owner_id) {
-            $card->update($request);
+            $card->update($request->all());
             return redirect()->action('CardController@show', [$card]);
         } else {
             $request->merge([
