@@ -52,20 +52,11 @@ class CardController extends Controller
 		]);
     }
 
-    /**
-     * Stores a newly created card in the database.
-     * @param  Request  $request the incoming request.
-     * @return Request the view with the newly created card.
-     * @author 44422
+     /**
+     * @author 49762 49262
+     * 
      */
-    public function store(Request $request)
-    {
-		if(!Auth::user()) { // TODO replace with authorize method
-			abort(403, 'Unauthorized action. You must be logged in to create a card.');
-        }
-		$request->merge([
-            'owner_id' => Auth::user()->id,
-        ]);
+    private function create_card(Request $request){
         if(isset($request['phonetic']) && strlen($request['phonetic']) > 0){
             $phonetic = Phonetic::create([
                 'textDescription' => $request['phonetic'],
@@ -107,7 +98,27 @@ class CardController extends Controller
         }
         $card = Card::create($this->validateData($request, true));
 		$card->save();
-        return redirect()->action('CardController@show', [$card]);
+        return $card;
+    }
+
+    /**
+     * Stores a newly created card in the database.
+     * @param  Request  $request the incoming request.
+     * @return Request the view with the newly created card.
+     * @author 44422
+     */
+    public function store(Request $request)
+    {
+		if(!Auth::user()) { // TODO replace with authorize method
+			abort(403, 'Unauthorized action. You must be logged in to create a card.');
+        }
+		$request->merge([
+            'owner_id' => Auth::user()->id,
+        ]);
+
+        $card = $this->create_card($request);
+
+        redirect()->action('CardController@show', [$card]);
     }
 
     /**
@@ -164,8 +175,18 @@ class CardController extends Controller
      */
     public function update(Request $request, Card $card)
     {
-		$card->update($this->validateData($request, false));
-        return redirect()->action('CardController@show', [$card]);
+        if(Auth::user()->id == $card->owner_id) {
+            $card->update($this->validateData($request, false));
+            redirect()->action('CardController@show', [$card]);
+        } else {
+            $request->merge([
+                'owner_id' => Auth::user()->id,
+            ]);
+
+            $cardVersion = $this->create_card($request);
+            $card->versions()->save($cardVersion);
+            redirect()->action('CardController@show', [$cardVersion]);
+        }
     }
 
     /**
