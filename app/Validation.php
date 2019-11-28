@@ -16,6 +16,11 @@ class Validation extends Model
 	];
     
 
+    
+
+    
+
+
     public function __toString(){
         return $this->id
         . " [votes:" . $this->voteNb

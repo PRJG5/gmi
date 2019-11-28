@@ -13,7 +13,6 @@ class ValidationTest extends TestCase
 
 
 
-
     public function testCreation(){
         $validation = Validation::create([
             'voteNb' => 20,

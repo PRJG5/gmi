@@ -13,6 +13,7 @@ use App\User as User;
 use App\Note;
 use App\Context;
 use App\Definition;
+use App\Validation;
 
 class CardTest extends TestCase
 {
@@ -310,6 +311,9 @@ class CardTest extends TestCase
         $definition->definition_content = 'helloDefinition';
         $definition->save();
 
+        $validation = new Validation();
+        $validation->save();
+
 
 		$card = new Card();
 		$card->heading = $heading;
@@ -322,6 +326,7 @@ class CardTest extends TestCase
         $card->definition_id = Definition::where('definition_content', $definition->definition_content)->first()->id;
         $card->context_id = Context::where('context_to_string',  $context->context_to_string)->first()->id;
         $card->note_id = Note::where('description', $note->description)->first()->id;
+        $card->validation_id = Validation::findOrFail($validation->id)->id;
         $card->save();
         $this->assertDatabaseHas('cards', [
             'id'			=> $card->id,
@@ -334,6 +339,7 @@ class CardTest extends TestCase
             'context_id'	=> $card->context_id,
             'language_id'	=> strval($card->language_id),
             'owner_id'		=> $card->owner_id,
+            'validation_id' => $validation->id,
         ]);
     }
 

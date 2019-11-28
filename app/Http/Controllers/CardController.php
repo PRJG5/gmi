@@ -15,6 +15,7 @@ use App\Definition;
 use App\User;
 use App\Enums\Language;
 use App\Enums\Subdomain;
+use App\Validation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -96,6 +97,12 @@ class CardController extends Controller
                 'definition_id'=> $note->id,
             ]);
         }
+
+        {
+            $validation = Validation::create();
+            $request->merge(['validation_id' => $validation->id]);
+        }
+
         $card = Card::create($this->validateData($request, true));
 		$card->save();
         return $card;
@@ -229,6 +236,7 @@ class CardController extends Controller
             'note_id'		=> '',
             'note'          => '',
             'owner_id'	    => 'required',
+            'validation_id' => 'required',
 		];
 		if(!$creating) {
 			array_merge($tab, [

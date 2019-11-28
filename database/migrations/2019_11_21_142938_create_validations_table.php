@@ -15,10 +15,10 @@ class CreateValidationsTable extends Migration
     {
         Schema::create('validations', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('voteNb');
-            $table->unsignedInteger('userNb');
-            $table->unsignedTinyInteger('validationRate');
-            $table->date('validated_at');
+            $table->unsignedInteger('voteNb')->unsigned()->nullable()->default(null);
+            $table->unsignedInteger('userNb')->unsigned()->nullable()->default(null);
+            $table->unsignedTinyInteger('validationRate')->unsigned()->nullable()->default(70);
+            $table->date('validated_at')->nullable()->default(null);
             $table->timestamps();
         });
     }
