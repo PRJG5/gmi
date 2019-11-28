@@ -19,44 +19,6 @@ class CardTest extends TestCase
     use RefreshDatabase;
 
     /**
-     * Create a card.
-     * @return void
-     * @author 43268
-     * @test
-     */
-    // public function createCardTest()
-    // {
-	// 	$owner = new User([
-	// 		'name'		=> 'Test',
-	// 		'email'		=> 'test@test.com',
-	// 		'password'	=> 'test',
-	// 	]);
-    //     $card = new Card();
-	// 	$card->heading = 'My Card';
-	// 	$card->phonetic_id = NULL;
-	// 	$card->domain_id = 'Legal';
-	// 	$card->subdomain_id = 'Justice';
-    //     $card->definition_id = NULL;
-    //     $card->context_id = NULL;
-    //     $card->note_id = NULL;
-    //     $card->language_id = 'ARA';
-    //     $card->owner_id = $owner->id;
-    //     $card->save();
-    //     $this->assertDatabaseHas('cards', [
-    //         'id'			=> $card->id,
-    //         'heading'		=> $card->heading,
-    //         'phonetic_id'	=> $card->phonetic_id,
-    //         'domain_id'		=> strval($card->domain_id),
-    //         'subdomain_id'	=> strval($card->subdomain_id),
-    //         'definition_id' => $card->definition_id,
-    //         'note_id'		=> $card->note_id,
-    //         'context_id'	=> $card->context_id,
-    //         'language_id'	=> strval($card->language_id),
-    //         'owner_id'		=> $card->owner_id,
-    //     ]);
-    // }
-
-    /**
      * Test if the card's new values has been correctly updated in DB, and checks if the old values isn't in DB
      * @return void
      * @author 43268, 49102, 43121
@@ -67,7 +29,7 @@ class CardTest extends TestCase
         $heading = "My Card";
 		$owner = new User([
 			'name'		=> 'Test',
-			'email'		=> 'test@test.com',
+			'email'		=> 'tttttesttttt@test.com',
 			'password'	=> 'test',
         ]);
         $owner->save();
@@ -120,7 +82,7 @@ class CardTest extends TestCase
     {
 		$owner = new User([
 			'name'		=> 'Test',
-			'email'		=> 'test@test.com',
+			'email'		=> 'tttttesttttt@test.com',
 			'password'	=> 'test',
         ]);
         $owner->save();
@@ -163,7 +125,7 @@ class CardTest extends TestCase
     {
 		$owner = new User([
 			'name'		=> 'Test',
-			'email'		=> 'test@test.com',
+			'email'		=> 'tttttesttttt@test.com',
 			'password'	=> 'test',
         ]);
         $owner->save();
@@ -206,7 +168,7 @@ class CardTest extends TestCase
     {
 		$owner = new User([
 			'name'		=> 'Test',
-			'email'		=> 'test@test.com',
+			'email'		=> 'tttttesttttt@test.com',
 			'password'	=> 'test',
         ]);
         $owner->save();
@@ -251,7 +213,7 @@ class CardTest extends TestCase
         $heading = "My Card";
 		$owner = new User([
 			'name'		=> 'Test',
-			'email'		=> 'test@test.com',
+			'email'		=> 'tttttesttttt@test.com',
 			'password'	=> 'test',
         ]);
         $owner->save();
@@ -326,7 +288,7 @@ class CardTest extends TestCase
         $heading = "My Card";
 		$owner = new User([
 			'name'		=> 'Test',
-			'email'		=> 'test@test.com',
+			'email'		=> 'tttttesttttt@test.com',
 			'password'	=> 'test',
         ]);
         $owner->save();
@@ -385,7 +347,7 @@ class CardTest extends TestCase
     {
 		$owner = new User([
 			'name'		=> 'Test',
-			'email'		=> 'test@test.com',
+			'email'		=> 'tttttesttttt@test.com',
 			'password'	=> 'test',
         ]);
         $owner->save();
@@ -414,7 +376,7 @@ class CardTest extends TestCase
     {
 		$owner = new User([
 			'name'		=> 'Test',
-			'email'		=> 'test@test.com',
+			'email'		=> 'tttttesttttt@test.com',
 			'password'	=> 'test',
         ]);
         $owner->save();
@@ -467,7 +429,7 @@ class CardTest extends TestCase
     {
 		$owner = new User([
 			'name'		=> 'Test',
-			'email'		=> 'test@test.com',
+			'email'		=> 'tttttesttttt@test.com',
 			'password'	=> 'test',
         ]);
         $owner->save();
@@ -508,7 +470,7 @@ class CardTest extends TestCase
     {
 		$owner = new User([
 			'name'		=> 'Test',
-			'email'		=> 'test@test.com',
+			'email'		=> 'tttttesttttt@test.com',
 			'password'	=> 'test',
         ]);
         $owner->save();
@@ -529,51 +491,51 @@ class CardTest extends TestCase
         Card::destroy($card->id);
     }
 
-	/**
-	 * @author 49102 43121
-     * @test
-     *  Link two cards ok
-     */
-    public function linksCardsOkTest()
-    {
-        $user = new User([
-			'name'		=> 'Tester',
-			'email'		=> 'tester@test.com',
-			'password'	=> 'tested',
-        ]);
-        $user->save();
+	// /**
+	//  * @author 49102 43121
+    //  * @test
+    //  *  Link two cards ok
+    //  */
+    // public function linksCardsOkTest()
+    // {
+    //     $user = new User([
+	// 		'name'		=> 'Tester',
+	// 		'email'		=> 'tester@test.com',
+	// 		'password'	=> 'tested',
+    //     ]);
+    //     $user->save();
 
-        $card = new Card();
-		$card->heading = 'My Card';
-		$card->phonetic_id = NULL;
-		$card->domain_id = 'Legal';
-		$card->subdomain_id = 'Justice';
-        $card->definition_id = NULL;
-        $card->context_id = NULL;
-        $card->note_id = NULL;
-        $card->language_id = 'ARA';
-        $card->owner_id = User::where('email', $user->email)->first()->id;
-        $card->save();
-        $card = new Card();
-		$card->heading = 'My second card';
-		$card->phonetic_id = NULL;
-		$card->domain_id = 'Legal';
-		$card->subdomain_id = 'Justice';
-        $card->definition_id = NULL;
-        $card->context_id = NULL;
-        $card->note_id = NULL;
-        $card->language_id = 'ARA';
-        $card->save();
+    //     $card = new Card();
+	// 	$card->heading = 'My Card';
+	// 	$card->phonetic_id = NULL;
+	// 	$card->domain_id = 'Legal';
+	// 	$card->subdomain_id = 'Justice';
+    //     $card->definition_id = NULL;
+    //     $card->context_id = NULL;
+    //     $card->note_id = NULL;
+    //     $card->language_id = 'ARA';
+    //     $card->owner_id = User::where('email', $user->email)->first()->id;
+    //     $card->save();
+    //     $card = new Card();
+	// 	$card->heading = 'My second card';
+	// 	$card->phonetic_id = NULL;
+	// 	$card->domain_id = 'Legal';
+	// 	$card->subdomain_id = 'Justice';
+    //     $card->definition_id = NULL;
+    //     $card->context_id = NULL;
+    //     $card->note_id = NULL;
+    //     $card->language_id = 'ARA';
+    //     $card->save();
     
-        $link = new Link();
-        $link->cardA = Card::where('heading', 'My Card')->first()->id;
-        $link->cardB = Card::where('heading', 'My second card')->first()->id;
-        $link->save();
+    //     $link = new Link();
+    //     $link->cardA = Card::where('heading', 'My Card')->first()->id;
+    //     $link->cardB = Card::where('heading', 'My second card')->first()->id;
+    //     $link->save();
         
-		$this->assertDatabaseHas('links', [
-            'id'            => $link->id,
-            'cardA'			=> $link->cardA,
-            'cardB'		    => $link->cardB,
-        ]);
-    }
+	// 	$this->assertDatabaseHas('links', [
+    //         'id'            => $link->id,
+    //         'cardA'			=> $link->cardA,
+    //         'cardB'		    => $link->cardB,
+    //     ]);
+    // }
 }
