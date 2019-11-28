@@ -33,6 +33,7 @@
 	<script src="{{ asset('js/Bootstrap/bootstrap.min.js') }}" defer></script>
 	<script src="{{ asset('js/Bootstrap/bootstrap.bundle.min.js') }}" defer></script>
 	<script src="{{ asset('js/xhr.js') }}"></script>
+	<script src="{{ asset('js/cookie.js') }}"></script>
 	<script src="{{ asset('js/main.js') }}"></script>
 	<script src="{{ asset('js/serviceWorker.js') }}"></script>
 

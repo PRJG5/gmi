@@ -16,9 +16,12 @@ Route::get('/user', function(Request $request) {
 	return $request->user();
 });
 
-Route::post('/updateRole', function(Request $request) {
+/**
+ * Updates the role of a user
+ */
+Route::put('/updateRole', function(Request $request) {
 	return "UserId : ". $request->userId . " : remplacer en une methode post";
-});
+})->name('updateRole');
 
 /**
  * Route that returns all cards from a user in JSON format
