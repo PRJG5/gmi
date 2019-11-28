@@ -96,6 +96,8 @@
 
                                     <a class="dropdown-item" href="/addLanguage">Ajout domaine/sous-domaine/langues</a>
 
+                                    <a class="dropdown-item" href="/searchCard">Chercher fiche</a>
+
                                     <form id="mesFiches-form" action="{{ route('mesFiches') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>

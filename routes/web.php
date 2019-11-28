@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/searchCard' , 'HomeController@searchCard');
+Route::get('/searchCard' , 'HomeController@searchCard')->middleware('auth');
 Route::post('/mesFiches', 'MyCardController@index')->name('mesFiches')->middleware('auth');
 Route::get('/users','HomeController@indexUsers')->name('ListingUsers')->middleware('auth');
 
