@@ -1,0 +1,211 @@
+{
+  "id": "d7b460c9-8127-4a27-9067-e1cb6cc7293d",
+  "version": "2.0",
+  "name": "Test01",
+  "url": "http://localhost/gmi/public/cards/1",
+  "tests": [{
+    "id": "a024f537-2188-4c84-95c6-cb742a23c372",
+    "name": "Test",
+    "commands": [{
+      "id": "684e6930-2e47-4ef7-82a3-bd9f447d38e2",
+      "comment": "",
+      "command": "open",
+      "target": "/gmi/public/cards/1",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "dd87acc8-8792-42be-9c20-20631cf23c6f",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1050x718",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "15b1ad66-f3d2-4ba7-a929-19f2823ade5e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.cardHeader",
+      "targets": [
+        ["css=.cardHeader", "css:finder"],
+        ["xpath=//div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9a84cdd8-c7f8-4149-a523-dffbc57d8bf3",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Edit",
+      "targets": [
+        ["linkText=Edit", "linkText"],
+        ["css=.buttonLike:nth-child(2)", "css:finder"],
+        ["xpath=//a[contains(text(),'Edit')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '1/edit')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Edit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ffd1c282-6bf1-433c-ae3d-851a193dd29e",
+      "comment": "",
+      "command": "click",
+      "target": "name=heading",
+      "targets": [
+        ["name=heading", "name"],
+        ["css=.heading", "css:finder"],
+        ["xpath=//input[@name='heading']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0a6ecc08-2755-46aa-aff5-a08b4840f585",
+      "comment": "",
+      "command": "click",
+      "target": "name=heading",
+      "targets": [
+        ["name=heading", "name"],
+        ["css=.heading", "css:finder"],
+        ["xpath=//input[@name='heading']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c6253fe6-5653-4576-82ee-fa4558b6b966",
+      "comment": "",
+      "command": "doubleClick",
+      "target": "name=heading",
+      "targets": [
+        ["name=heading", "name"],
+        ["css=.heading", "css:finder"],
+        ["xpath=//input[@name='heading']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0a8bb3b8-c3c2-4761-a639-17b15149ab80",
+      "comment": "",
+      "command": "click",
+      "target": "name=heading",
+      "targets": [
+        ["name=heading", "name"],
+        ["css=.heading", "css:finder"],
+        ["xpath=//input[@name='heading']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d783c052-68c8-4fed-9b72-f6ba6fedfbc5",
+      "comment": "",
+      "command": "click",
+      "target": "name=heading",
+      "targets": [
+        ["name=heading", "name"],
+        ["css=.heading", "css:finder"],
+        ["xpath=//input[@name='heading']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a6b19e2d-8e76-4eb4-a927-04f883a290e8",
+      "comment": "",
+      "command": "doubleClick",
+      "target": "name=heading",
+      "targets": [
+        ["name=heading", "name"],
+        ["css=.heading", "css:finder"],
+        ["xpath=//input[@name='heading']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f53404e4-b78f-47f5-b134-6bbc0feda647",
+      "comment": "",
+      "command": "type",
+      "target": "name=heading",
+      "targets": [
+        ["name=heading", "name"],
+        ["css=.heading", "css:finder"],
+        ["xpath=//input[@name='heading']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "لييليييب"
+    }]
+  }, {
+    "id": "ac8933b9-9ff7-402d-b1b7-5abd75cc620a",
+    "name": "test02",
+    "commands": [{
+      "id": "a9a0d97a-fed2-4d6f-b5bb-daa1fbc50eb4",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/gmi/public/cards/1",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "40ac1d3c-727f-4a48-8ded-a1db917ca17e",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1050x718",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ffc6acb8-4d7c-409d-92af-a2561bedc159",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Edit",
+      "targets": [
+        ["linkText=Edit", "linkText"],
+        ["css=.buttonLike:nth-child(2)", "css:finder"],
+        ["xpath=//a[contains(text(),'Edit')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '1/edit')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Edit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7c561d15-cbf9-42e5-b327-58b891282a9c",
+      "comment": "",
+      "command": "click",
+      "target": "name=heading",
+      "targets": [
+        ["name=heading", "name"],
+        ["css=.heading", "css:finder"],
+        ["xpath=//input[@name='heading']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4f32853f-ed92-4bc3-82ea-4692def8d7be",
+      "comment": "",
+      "command": "click",
+      "target": "name=heading",
+      "targets": [
+        ["name=heading", "name"],
+        ["css=.heading", "css:finder"],
+        ["xpath=//input[@name='heading']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a594bc09-acbf-4e6f-bccd-2caddfa367c6",
+      "comment": "",
+      "command": "type",
+      "target": "name=heading",
+      "targets": [
+        ["name=heading", "name"],
+        ["css=.heading", "css:finder"],
+        ["xpath=//input[@name='heading']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "ثصهعىءوكؤم"
+    }]
+  }],
+  "suites": [{
+    "id": "33602181-2724-4a32-9fc2-788ee1d58667",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["a024f537-2188-4c84-95c6-cb742a23c372"]
+  }],
+  "urls": ["http://localhost/", "http://localhost/gmi/public/cards/1"],
+  "plugins": []
+}

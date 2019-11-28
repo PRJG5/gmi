@@ -13,6 +13,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" defer></script>
     <script src="{{ asset('js/Bootstrap/bootstrap.min.js') }}" defer></script>
     <script src="{{ asset('js/Bootstrap/bootstrap.bundle.min.js') }}" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -28,6 +29,24 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
+        <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+                <a class="nav-link" href="{{ route('mesFiches') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('mesFiches-form').submit();">
+                                        {{ __('Mes Fiches') }}
+                </a>
+        </li>  
+
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Recherche par 
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/searchByUser">Auteur</a>
+      </li>
+
+        </ul>   
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -53,8 +72,9 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ \App\Enums\Roles::getDescription(Auth::user()->role) }} : {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
+
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
@@ -62,13 +82,19 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-
                                     <a class="dropdown-item" href="/searchByUser">Recherche fiche par auteur</a>
                                     <a class="dropdown-item" href="{{ route('mesFiches') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('mesFiches-form').submit();">
                                         {{ __('Mes Fiches') }}
                                     </a>
+                                    @if (Auth::user()->role == \App\Enums\Roles::ADMIN)
+                                        <a class="dropdown-item" href="{{ route('ListingUsers') }}">
+                                            {{ __('Utilisateurs') }}
+                                        </a>
+                                    @endif
+
+                                    <a class="dropdown-item" href="/addLanguage">Ajout domaine/sous-domaine/langues</a>
 
                                     <form id="mesFiches-form" action="{{ route('mesFiches') }}" method="GET" style="display: none;">
                                         @csrf
@@ -86,7 +112,9 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+            <div class="container">
+                        @yield('content')
+            </div>
         </main>
     </div>
 </body>
