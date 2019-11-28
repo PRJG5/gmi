@@ -37,6 +37,9 @@ Route::resource('cards', 'CardController')->middleware('auth');
 /**
  * Route to display a page to search all cards from an user
  */
+Route::name('admin.')->group(function () {
+    Route::post('updateRole','UserController@updateRole')->name('updateRole');
+});
 Route::get('/searchByUser', function () {
     return view('searchByAuthor', array("authors" => User::all()));
 })->middleware('auth');

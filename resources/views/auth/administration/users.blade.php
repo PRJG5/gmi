@@ -36,11 +36,31 @@
     <script>
         function updateRole(userId,event){
             console.log(userId,event.value);
-            let status = "OK";
-            if(status == "OK"){
-                alert("youhou le status viens de changer (en construction)");
-                location.reload();
-            }
+            $.ajax({
+                url: '{{ route('admin.updateRole') }}',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: "post",
+                data: {
+                    userId : userId,
+                    role: event.value,
+                },
+                success: function(data){
+                    if(data.status == "SUCCESS"){
+                       location.reload();
+                    }else{
+                        Swal.fire({
+                            icon: 'error',
+                            title: data.type,
+                            text: data.message,
+                        })
+                    }
+                },
+                error: function(){
+                    alert('failure');
+                }
+            });
         }
     </script>
 @endsection

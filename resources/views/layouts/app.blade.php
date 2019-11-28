@@ -13,6 +13,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" defer></script>
     <script src="{{ asset('js/Bootstrap/bootstrap.min.js') }}" defer></script>
     <script src="{{ asset('js/Bootstrap/bootstrap.bundle.min.js') }}" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -81,14 +82,19 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-                                    <a class="dropdown-item" href="/addbasicdata">Ajout domaine/sous-domaine/langue</a>
+                                    <a class="dropdown-item" href="/searchByUser">Recherche fiche par auteur</a>
+                                    <a class="dropdown-item" href="{{ route('mesFiches') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('mesFiches-form').submit();">
+                                        {{ __('Mes Fiches') }}
+                                    </a>
                                     @if (Auth::user()->role == \App\Enums\Roles::ADMIN)
                                         <a class="dropdown-item" href="{{ route('ListingUsers') }}">
                                             {{ __('Utilisateurs') }}
                                         </a>
                                     @endif
 
-                                    <a class="dropdown-item" href="/addLanguage">Importer des langues</a>
+                                    <a class="dropdown-item" href="/addLanguage">Ajout domaine/sous-domaine/langues</a>
 
                                     <form id="mesFiches-form" action="{{ route('mesFiches') }}" method="POST" style="display: none;">
                                         @csrf
@@ -106,7 +112,9 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+            <div class="container">
+                        @yield('content')
+            </div>
         </main>
     </div>
 </body>
