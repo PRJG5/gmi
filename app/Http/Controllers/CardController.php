@@ -269,4 +269,19 @@ class CardController extends Controller
             
 		]);
     }
+    
+    
+    
+    public function getCardsSortedByVote(){
+        
+        function cmp($a,$b){
+            if($a == $b){
+                return 0;
+            }
+            
+            return ($a < $b) ? 1 : -1;
+        }
+        $allCards = Card::all();
+        usort($allCards,"cmp") ;
+    }
 }
