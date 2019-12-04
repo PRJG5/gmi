@@ -2,40 +2,50 @@
 
 	namespace App\Http\Controllers;
 
-	use App\User;
+use App\Enums\Roles;
+use App\User;
 	use Illuminate\Http\Request;
 	use Illuminate\Support\Facades\Auth;
 
 	class UserController extends Controller {
-		/**
-		 * Create a new controller instance.
-		 *
-		 * @return void
-		 */
-		public function __construct() {
 
-		}
-
-		public function allUsers() {
-			return view('administration.allUsers')->with(['users' => User::all()]);
+		public function manageRoles() {
+			return view('administration.manageRoles')->with([
+				'users' => User::all(),
+				'roles' => Roles::getValues(),
+			]);
 		}
 
 		public function updateRole(Request $request) {
-			if(Auth::id() == $request->userId) {
-				return [
-					'status'  => 'ERROR',
-					'type'    => 'Permission non accordée',
-					'message' => 'Vous ne pouvez pas modifier vos propres droits',
-				];
+			$user = User::find($request->userId);
+			// Auth user cannot be accessed from the API
+			// need to setup and use Passport
+			if(Auth::user()->role > 0) { // has to be admin
+				return response()->json([
+					'errors' => [
+						'status' => 403,
+						'title'  => 'Forbidden',
+						'detail' => 'You don\'t have permission to do that.',
+					],
+				], 403);
+			} else if(Auth::user() == $user) { // cannot edit himself
+				return response()->json([
+					'errors' => [
+						'status' => 403,
+						'title'  => 'Conflict',
+						'detail' => 'You don\'t have permission to do that.',
+					],
+				], 409);
 			} else {
-				$user = User::find($request->userId);
 				$user->role = $request->role;
 				$user->save();
-				return [
-					'status'  => 'SUCCESS',
-					'type'    => '',
-					'message' => '',
-				];
+				return response()->json([
+					'data' => [
+						'status' => 200,
+						'title'  => 'OK',
+						'detail' => 'Role has been updated.',
+					],
+				], 200);
 			}
 		}
 

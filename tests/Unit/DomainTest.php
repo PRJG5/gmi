@@ -1,33 +1,37 @@
 <?php
 
-namespace Tests\Unit;
+	namespace Tests\Unit;
 
-use Tests\TestCase;
-use App\Domain;
+	use App\Domain;
+	use Illuminate\Foundation\Testing\RefreshDatabase;
+	use Tests\TestCase;
 
-class DomainTest extends TestCase
-{
-    /**
-     * Check if the domain is in the database.
-     */
-    public function testDomainInsert()
-    {
-        $domain = new Domain();
-        $domain->content = 'Legal';
-        $domain->save();
-        $this->assertDatabaseHas('domains', [
-            'content'=> $domain->content
-        ]);
-        $domain->delete();
-    }
+	class DomainTest extends TestCase {
 
-    public function testDomainDelete(){
-        $domain = new Domain();
-        $domain->content = 'Legal';
-        $domain->save();
-        $idDomain = $domain->id;
-        $domain->delete();
-        $this->assertDatabaseMissing('domains', ['id' => $idDomain]);
-    }
+		use RefreshDatabase;
 
-}
+		/**
+		 * Check if the domain is in the database.
+		 */
+		public function testDomainInsert() {
+			$domain = new Domain();
+			$domain->content = 'Test Domain';
+			$domain->save();
+			$this->assertDatabaseHas('domains', [
+				'content' => $domain->content,
+			]);
+			$domain->delete();
+		}
+
+		public function testDomainDelete() {
+			$domain = new Domain();
+			$domain->content = 'Test Domain';
+			$domain->save();
+			$idDomain = $domain->id;
+			$domain->delete();
+			$this->assertDatabaseMissing('domains', [
+				'id' => $idDomain,
+			]);
+		}
+
+	}

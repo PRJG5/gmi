@@ -24,17 +24,6 @@
 	 */
 	class Card extends Model {
 
-		private $id;
-		private $heading;
-		private $phonetic_id;
-		private $domain_id;
-		private $definition_id;
-		private $context_id;
-		private $note_id;
-		private $language_id;
-		private $owner_id;
-
-
 		/**
 		 * @var string SQL table name for cards.
 		 * This is the name of the SQL table containing all the cards and their infos.
@@ -146,18 +135,7 @@
 		 * @return string a string describing the card
 		 */
 		public function __toString() {
-			return
-				"{ Card\n" .
-				"\tid: " . $this->id . "\n" .
-				"\theading:" . $this->heading . "\n" .
-				"\tphonetic_id: " . $this->phonetic_id . "\n" .
-				"\tdomain_id:" . $this->domain_id . "\n" .
-				"\tdefinition_id: " . $this->definition_id . "\n" .
-				"\tcontext_id: " . $this->context_id . "\n" .
-				"\tnote_id: " . $this->note_id . "\n" .
-				"\tlanguage_id: " . $this->language_id . "\n" .
-				"\towner_id: " . $this->owner_id . "\n" .
-				"}";
+			return "{ Card\n" . "\tid: " . $this->id . "\n" . "\theading:" . $this->heading . "\n" . "\tphonetic_id: " . $this->phonetic_id . "\n" . "\tdomain_id:" . $this->domain_id . "\n" . "\tdefinition_id: " . $this->definition_id . "\n" . "\tcontext_id: " . $this->context_id . "\n" . "\tnote_id: " . $this->note_id . "\n" . "\tlanguage_id: " . $this->language_id . "\n" . "\towner_id: " . $this->owner_id . "\n" . "}";
 		}
 
 
@@ -167,22 +145,21 @@
 		 */
 		public function links() {
 			//TODO: Trouver le fonctionnement du hasManyThrough ----> return $this->hasManyThrough('\App\Card', 'App\Link');
-			return DB::table('links')
-					 ->select('*')
-					 ->where([
-								 'card_a',
-								 '=',
-								 $this->id,
-							 ])
-					 ->orWhere([
-								   'card_b',
-								   '=',
-								   $this->id,
-							   ])
-					 ->get();
+			return DB::table('links')->select('*')->where([
+				'card_a',
+				'=',
+				$this->id,
+			])->orWhere([
+				'card_b',
+				'=',
+				$this->id,
+			])->get();
 		}
 
 		public function versions() {
-			return $this->belongsToMany('App\Card', 'card_card', 'cardOrigin', 'cardVersion');
+			return $this->belongsToMany('App\Card',
+				'card_card',
+				'cardOrigin',
+				'cardVersion');
 		}
 	}

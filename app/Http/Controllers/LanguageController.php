@@ -5,6 +5,7 @@
 	use App\Imports\LanguagesImport;
 	use App\Language;
 	use Illuminate\Http\Request;
+	use Illuminate\Validation\ValidationException;
 	use Illuminate\View\View;
 	use Maatwebsite\Excel\Facades\Excel;
 
@@ -17,13 +18,13 @@
 		public function index() {
 
 			return view('addBasicData')->with([
-												  'headers' => [
-													  'id',
-													  'content',
-													  'slug',
-												  ],
-												  'bodies'  => Language::all(),
-											  ]);
+				'headers' => [
+					'id',
+					'content',
+					'slug',
+				],
+				'bodies'  => Language::all(),
+			]);
 		}
 
 		public function importView() {
@@ -31,14 +32,14 @@
 		}
 
 		/**
-		 *
+		 * @param Request $request
+		 * @throws ValidationException
 		 */
 		public function import(Request $request) {
 			$this->validate($request, [
 				'file' => 'required|mimes:xls, xlsx',
 			]);
 			Excel::import(new LanguagesImport(), $request->file('file'));
-			//return redirect('/language');
 		}
 
 	}

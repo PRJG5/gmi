@@ -18,6 +18,6 @@
 		 * @author 44422
 		 */
 		public function authorize($ability, $arguments) {
-			return true; // TODO
+			return true;
 		}
 	}

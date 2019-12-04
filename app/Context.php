@@ -13,9 +13,6 @@
 	 */
 	class Context extends Model {
 
-		private $id;
-		private $context_to_string;
-
 		protected $table = 'contexts';
 
 		protected $primaryKey = 'id';
@@ -26,9 +23,7 @@
 
 		public $timestamps = false;
 
-		protected $attributes = [
-			'context_to_string' => '',
-		];
+		protected $attributes = [];
 
 		protected $fillable = [
 			'context_to_string',
@@ -45,7 +40,7 @@
 		 */
 		public function __constructor($context) {
 			if($context == NULL || $context == '') {
-				throw new QueryException();
+				throw new QueryException('');
 			}
 			$this->contextToString = $context;
 		}

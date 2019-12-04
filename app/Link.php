@@ -13,10 +13,6 @@
 	 */
 	class Link extends Model {
 
-		private $id;
-		private $card_a;
-		private $card_b;
-
 		protected $table = 'links';
 
 		protected $primaryKey = 'id';

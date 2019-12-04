@@ -2,14 +2,12 @@
 
 	namespace App\Http\Controllers\Auth;
 
-	use App\Enums\Language;
 	use App\Http\Controllers\Controller;
+	use App\Language;
 	use App\SpokenLanguages;
 	use App\User;
-	use Exception;
 	use Illuminate\Foundation\Auth\RegistersUsers;
 	use Illuminate\Http\Response;
-	use Illuminate\Support\Facades\DB;
 	use Illuminate\Support\Facades\Hash;
 	use Illuminate\Support\Facades\Validator;
 
@@ -44,33 +42,36 @@
 		}
 
 		/**
-		 * Get a validator for an incoming registration request.
+		 * Get a validator for an incoming registration data.
 		 *
 		 * @param array $data
-		 * @return \Illuminate\Contracts\Validation\Validator
+		 * @return Validator
 		 */
 		protected function validator(array $data) {
-			return Validator::make($data, [
-				'name'      => [
-					'required',
-					'string',
-					'max:255',
-				],
-				'email'     => [
-					'required',
-					'string',
-					'email',
-					'max:255',
-					'unique:users',
-				],
-				'password'  => [
-					'required',
-					'string',
-					'min:8',
-					'confirmed',
-				],
-				'languages' => ['required'],
-			]);
+			return Validator::make($data,
+				[
+					'name'      => [
+						'required',
+						'string',
+						'max:255',
+					],
+					'email'     => [
+						'required',
+						'string',
+						'email',
+						'max:255',
+						'unique:users',
+					],
+					'password'  => [
+						'required',
+						'string',
+						'min:8',
+						'confirmed',
+					],
+					'languages' => [
+						'required',
+					],
+				]);
 		}
 
 		/**
@@ -81,32 +82,22 @@
 		 * @return User or nothing if error
 		 */
 		protected function create(array $data) {
-			$user = User::create([
-									 'name'     => $data['name'],
-									 'email'    => $data['email'],
-									 'password' => Hash::make($data['password']),
-								 ]);
+			$data = (object) $data;
+			$user = new User([
+				'name'     => $data->name,
+				'email'    => $data->email,
+				'password' => Hash::make($data->password),
+			]);
+			$user->save();
 
-			$userDB = User::where('email', $data['email'])->first();
-
-			try {
-				DB::beginTransaction();
-				$cpt = 0;
-				do {
-					$spokenLanguage = new SpokenLanguages();
-					$spokenLanguage->user_id = $userDB->id;
-					$spokenLanguage->language_ISO = $data['languages'][$cpt];
-					$success = $spokenLanguage->save();
-					$cpt++;
-				} while($success && $cpt < count($data['languages']));
-				if(!$success) {
-					DB::rollback();
-				} else {
-					DB::commit();
-				}
-			} catch(Exception $e) {
-				DB::rollback();
+			foreach($data->languages as $lang) {
+				$spokenLanguage = new SpokenLanguages([
+					'user_id'      => $user->id,
+					'language_ISO' => $lang,
+				]);
+				$spokenLanguage->save();
 			}
+
 			return $user;
 		}
 
@@ -116,15 +107,9 @@
 		 * @return Response
 		 */
 		public function showRegistrationForm() {
-			$languages = [];
-			$cpt = 0;
-			foreach(Language::getKeys() as $key) {
-				$languages[$cpt] = [
-					$key,
-					Language::getDescription($key),
-				];
-				$cpt++;
-			}
-			return view('auth.register', compact('languages'));
+			return view('auth.register',
+				[
+					'languages' => Language::all(),
+				]);
 		}
 	}

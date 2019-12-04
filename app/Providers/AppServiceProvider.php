@@ -23,9 +23,10 @@
 		 */
 		public function boot() {
 			Schema::defaultStringLength(191);
-			Blade::directive('datetime', function() {
-				//$user = Auth::user();
-				/*return '<?php echo($user->id) ?>';*/
-			});
+			Blade::directive('datetime',
+				function() {
+					//$user = Auth::user();
+					/*return '<?php echo($user->id) ?>';*/
+				});
 		}
 	}

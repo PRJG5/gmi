@@ -1,6 +1,6 @@
 <?php
 
-return [
-	'unauthorized'	=> 'Unauthorized',
-	'forbidden'		=> 'Forbidden'
-];
+	return [
+		'unauthorized' => 'Unauthorized',
+		'forbidden'    => 'Forbidden',
+	];

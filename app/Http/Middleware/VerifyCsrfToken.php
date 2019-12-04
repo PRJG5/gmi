@@ -17,7 +17,6 @@
 		 *
 		 * @var array
 		 */
-		protected $except = [
-			//
+		protected $except = [//
 		];
 	}

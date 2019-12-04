@@ -11,9 +11,6 @@
 	 */
 	class Phonetic extends Model {
 
-		private $id;
-		private $text_description;
-
 		protected $table = 'phonetics';
 
 		protected $primaryKey = 'id';

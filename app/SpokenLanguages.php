@@ -12,10 +12,6 @@
 	 */
 	class SpokenLanguages extends Model {
 
-		private $id;
-		private $user_id;
-		private $language_ISO;
-
 		protected $table = 'spoken_languages';
 
 		protected $primaryKey = 'id';
@@ -27,7 +23,7 @@
 		public $timestamps = false;
 
 		protected $attributes = [
-			'user_id'     => NULL,
+			'user_id'      => NULL,
 			'language_ISO' => '',
 		];
 

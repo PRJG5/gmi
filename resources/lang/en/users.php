@@ -1,12 +1,13 @@
 <?php
 
-return [
-	'allUsers'			=> 'All Users',
-	'email'				=> 'Email',
-	'name'				=> 'Name',
-	'role'				=> 'Role',
-	'roleUpdated'		=> 'The role has been updated',
-	'spokenLanguages'	=> 'Spoken Languages',
-	'userData'			=> 'User Data',
-	'users'				=> 'Users',
-];
+	return [
+		'allUsers'        => 'All Users',
+		'email'           => 'Email',
+		'manageRoles'     => 'Manage Roles',
+		'name'            => 'Name',
+		'role'            => 'Role',
+		'roleUpdated'     => 'The role has been updated',
+		'spokenLanguages' => 'Spoken Languages',
+		'userData'        => 'User Data',
+		'users'           => 'Users',
+	];

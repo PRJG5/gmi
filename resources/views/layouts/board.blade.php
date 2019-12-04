@@ -1,6 +1,6 @@
-@extends('layouts.card')
+@extends('layouts.container')
 
-@section('card-body')
+@section('container-body')
 	<div class="row">
 		@yield('header')
 	</div>

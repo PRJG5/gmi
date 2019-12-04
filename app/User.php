@@ -2,6 +2,7 @@
 
 	namespace App;
 
+	use Exception;
 	use Illuminate\Foundation\Auth\User as Authenticatable;
 
 	/**
@@ -15,14 +16,6 @@
 	 * @property $role
 	 */
 	class User extends Authenticatable {
-
-		private $id;
-		private $name;
-		private $email;
-		private $email_verified_at;
-		private $password;
-		private $remember_token;
-		private $role;
 
 		protected $table = 'users';
 
@@ -41,6 +34,7 @@
 			'password'          => '',
 			'remember_token'    => NULL,
 			'role'              => 2,
+			'api_token'         => NULL,
 		];
 
 		/**
@@ -54,6 +48,7 @@
 			'password',
 			'remember_token',
 			'role',
+			'api_token',
 		];
 
 		/**
@@ -64,6 +59,7 @@
 		protected $hidden = [
 			'password',
 			'remember_token',
+			'api_token',
 		];
 
 		protected $guarded = [
@@ -83,21 +79,26 @@
 		 */
 		public function getLanguages() {
 			$languages = [];
-			if($this->role == Enums\Roles::ADMIN) {
+			if($this->role == 0) {
 				foreach(Language::get()->toarray() as $language) {
-					$languages[] = (object) [
-						'key'         => $language['slug'],
-						'description' => $language['content'],
-					];
+					array_push($languages,
+						(object) [
+							'key'         => $language['slug'],
+							'description' => $language['content'],
+						]);
+				}
+			} else {
+				foreach(SpokenLanguages::where('user_id',
+					$this->id)->get()->toarray() as $language) {
+					$language = (object) $language;
+					array_push($languages,
+						(object) [
+							'key'         => $language->language_ISO,
+							'description' => Language::where('slug',
+								$language->language_ISO)->first()['content'],
+						]);
 				}
 			}
-			foreach(SpokenLanguages::select('language_ISO')->where('user_id', $this->id)->get()->toarray() as $language) {
-				$languages[] = (object) [
-					'key'         => $language['language_ISO'],
-					'description' => Language::where('slug', $language['language_ISO'])->first()->content,
-				];
-			}
-
 			return $languages;
 		}
 
@@ -108,13 +109,51 @@
 			$languages = [];
 			if($this->role == Enums\Roles::ADMIN) {
 				foreach(Language::get()->toarray() as $language) {
-					array_push($languages, $language['slug']);
+					array_push($languages,
+						$language['slug']);
 				}
 			}
-			foreach(SpokenLanguages::select('language_ISO')->where('user_id', $this->id)->get()->toarray() as $language) {
-				array_push($languages, $language['language_ISO']);
+			foreach(SpokenLanguages::select('language_ISO')->where('user_id',
+				$this->id)->get()->toarray() as $language) {
+				array_push($languages,
+					$language['language_ISO']);
 			}
 
 			return $languages;
+		}
+
+		/**
+		 * Gets a new API token for the user and stores the token in the database
+		 * @param int length the length of the token
+		 * @return string
+		 * @throws Exception
+		 */
+		public function getAPIToken($length = 32) {
+			$token = bin2hex(random_bytes($length));
+			$this->api_token = hash('sha256',
+				$token);
+			$this->save();
+			return $token;
+		}
+
+		/**
+		 * Checks if the provided token is a valid API token
+		 * @param $token
+		 * @return bool
+		 */
+		public function checkAPIToken($token) {
+			return $this->api_token == hash('sha256',
+					$token);
+		}
+
+		/**
+		 * Returns true if the user speaks the languages provided as parameter
+		 * @param $languages_id
+		 * @return boolean true if the user speaks this language
+		 */
+		public function speaks($languages_id) {
+			return count(SpokenLanguages::where('user_id',
+					$this->id)->where('language_ISO',
+					$languages_id)->get()) == 1;
 		}
 	}

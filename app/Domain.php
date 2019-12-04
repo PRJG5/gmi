@@ -11,9 +11,6 @@
 	 */
 	class Domain extends Model {
 
-		private $id;
-		private $content;
-
 		protected $table = 'domains';
 
 		protected $primaryKey = 'id';

@@ -1,12 +1,16 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+	/**
+	 * @var Factory $factory
+	 */
 
-use App\Definition;
-use Faker\Generator as Faker;
+	use App\Definition;
+	use Faker\Generator as Faker;
+	use Illuminate\Database\Eloquent\Factory;
 
-$factory->define(Definition::class, function (Faker $faker) {
-	return [
-		'definition_content' => $faker->sentence(),
-	];
-});
+	$factory->define(Definition::class,
+		function(Faker $faker) {
+			return [
+				'definition_content' => $faker->sentence(),
+			];
+		});

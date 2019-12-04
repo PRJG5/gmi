@@ -9,10 +9,6 @@
 	 */
 	class Vote extends Model {
 
-		private $id;
-		private $user_id;
-		private $card_id;
-
 		protected $table = 'votes';
 
 		protected $primaryKey = 'id';
@@ -42,4 +38,3 @@
 		}
 
 	}
-

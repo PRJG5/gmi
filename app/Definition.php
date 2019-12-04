@@ -12,9 +12,6 @@
 	 */
 	class Definition extends Model {
 
-		private $id;
-		private $definition_content;
-
 		/**
 		 * @var string SQL table name for definitions.
 		 * This is the name of the SQL table containing all the definitions and their infos.

@@ -1,117 +1,14 @@
 <?php
 
-use App\Enums\Language;
-use App\Enums\Domain;
-use App\Enums\Roles;
-use App\Enums\Subdomain;
+	use App\Enums\Roles;
 
-/**
- * Returns the string value of the enum
- */
-return [
-	Language::class => [
-		Language::ALB => 'Albanais',
-		Language::ARA => 'Arabe',
-		Language::ARC => 'Araméen',
-		Language::BAD => 'Badini',
-		Language::BAM => 'Bambara',
-		Language::BER => 'Berbère',
-		Language::BOS => 'Bosniaque',
-		Language::BUL => 'Bulgare',
-		Language::CES => 'Tchèque',
-		Language::CHE => 'Tchétchène',
-		Language::CKB => 'Sorani',
-		Language::CNR => 'Monténégrin',
-		Language::DEU => 'Allemand',
-		Language::ENG => 'Anglais',
-		Language::FAS => 'Farsi',
-		Language::FRA => 'Français',
-		Language::FUL => 'Poular',
-		Language::GRE => 'Grec',
-		Language::GUJ => 'Gujarati',
-		Language::HBS => 'Serbe',
-		Language::HIN => 'Hindi',
-		Language::HRV => 'Croate',
-		Language::HYE => 'Arménien',
-		Language::ITA => 'Italien',
-		Language::JPN => 'Japonais',
-		Language::KAT => 'Géorgien',
-		Language::KAZ => 'Kazakh',
-		Language::KOR => 'Coréen',
-		Language::KUR => 'Kurde',
-		Language::LIN => 'Lingala',
-		Language::MAN => 'Malinké',
-		Language::MKD => 'Macédonien',
-		Language::MOL => 'Moldave',
-		Language::NLD => 'Néerlandais',
-		Language::PAN => 'Pundjabi',
-		Language::POL => 'Polonais',
-		Language::POR => 'Portugais',
-		Language::PRS => 'Dari',
-		Language::PUS => 'Pashto',
-		Language::RIF => 'Tarifit',
-		Language::ROM => 'Rom',
-		Language::RON => 'Roumain',
-		Language::RUS => 'Russe',
-		Language::SLK => 'Slovaque',
-		Language::SLV => 'Slovène',
-		Language::SOM => 'Somali',
-		Language::SPA => 'Espagnol',
-		Language::SUS => 'Soussou',
-		Language::SWA => 'Swahili',
-		Language::TIR => 'Tigrigna',
-		Language::TUK => 'Turkmène',
-		Language::TUR => 'Turc',
-		Language::UIG => 'Ouïgour',
-		Language::UKR => 'Ukrainien',
-		Language::URD => 'Ourdou',
-		Language::ZHO => 'Chinois',
-
-		Language::SFB => 'Langue des signes de Belgique Francophone',
-		Language::VGT => 'Vlaamse Gebarentaal',
-		Language::ILS => 'International Sign',
-	],
-
-	Domain::class=> [
-		Domain::Economic		=> 'Économique',
-		Domain::Legal			=> 'Juridique',
-		Domain::MentalHealth	=> 'Santé mentale',
-		Domain::Scientific		=> 'Scientifique',
-		Domain::SomaticHealth	=> 'Santé somatique',
-		Domain::Technical		=> 'Technique',
-		Domain::Other			=> 'Autre',
-	],
-
-	Subdomain::class=> [
-		Subdomain::Anesthesia				=> 'Anesthésie',
-		Subdomain::Asylum					=> 'Asile',
-		Subdomain::Cardiology				=> 'Cardiologie',
-		Subdomain::Dentistry				=> 'Dentisterie',
-		Subdomain::Dermatology				=> 'Dermatologie',
-		Subdomain::Diabetology				=> 'Diabétologie',
-		Subdomain::Endocrinology			=> 'Endocrinologie',
-		Subdomain::Gastroenterology			=> 'Gastro entérologie',
-		Subdomain::Geriatric				=> 'Gériatrie',
-		Subdomain::Gynecology				=> 'Gynécologie',
-		Subdomain::Justice					=> 'Justice',
-		Subdomain::Nephrology				=> 'Néphrologie',
-		Subdomain::Neurology				=> 'Neurologie',
-		Subdomain::Oncology					=> 'Oncologie',
-		Subdomain::Otorhinolaryngology		=> 'Oto-rhino-laryngologie',
-		Subdomain::OrthopedicTraumatology	=> 'Orthopédie traumatologie',
-		Subdomain::Pediatric				=> 'Pédiatrie',
-		Subdomain::Physiotherapy			=> 'Kinésithérapie',
-		Subdomain::Pneumonology				=> 'Pneumologie',
-		Subdomain::Police					=> 'Policier',
-		Subdomain::Radiology				=> 'Radiologie',
-		Subdomain::Surgery					=> 'Chirurgie',
-		Subdomain::Urology					=> 'Urologie',
-		Subdomain::Other					=> 'Autre',
-	],
-
-	Roles::class=> [
-		Roles::ADMIN	=> 'Administrateur',
-		Roles::MOD		=> 'Modérateur',
-		Roles::USERS	=> 'Utilisateur',
-	],
-];
+	/**
+	 * Returns the string value of the enum
+	 */
+	return [
+		Roles::class => [
+			Roles::ADMIN => 'Administrateur',
+			Roles::MOD   => 'Modérateur',
+			Roles::USERS => 'Utilisateur',
+		],
+	];

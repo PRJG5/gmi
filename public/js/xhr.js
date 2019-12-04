@@ -6,32 +6,30 @@
  * @return a promise of request
  */
 function xhr(method, url, headers = {}, formDatas = {}) {
-	return new Promise((resolve, reject) => {
-		const xhr = new XMLHttpRequest();
-		xhr.open(method, url, true);
-		for(const header in headers) {
-			xhr.setRequestHeader(header, headers[header]);
-		}
-		const formData = new FormData();
-		for(const data in formDatas) {
-			formData.append(data, formDatas[data]);
-		}
-		xhr.onload = () => {
-			if (xhr.status >= 200 && xhr.status < 300) {
-				resolve(xhr.response);
-			} else {
-				reject({
-					status: xhr.status,
-					statusText: xhr.statusText,
-				});
-			}
-		};
-		xhr.onerror = () => {
-			reject({
-				status: xhr.status,
-				statusText: xhr.statusText,
-			});
-		};
-		xhr.send(formData);
-	});
+    return new Promise((resolve, reject) => {
+        const xmlHttpRequest = new XMLHttpRequest();
+        xmlHttpRequest.open(method, url, true);
+        for (const header in headers) {
+            xmlHttpRequest.setRequestHeader(header, headers[header]);
+        }
+        xmlHttpRequest.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+        xmlHttpRequest.setRequestHeader("Accept", "application/json");
+        // xmlHttpRequest.setRequestHeader("Authorization", "Bearer " + token);
+        xmlHttpRequest.setRequestHeader("X-CSRF-TOKEN", document.querySelector('meta[name=api_token]').content);
+        const formData = new FormData();
+        for (const data in formDatas) {
+            formData.append(data, formDatas[data]);
+        }
+        xmlHttpRequest.onload = () => {
+            if (xmlHttpRequest.status >= 200 && xmlHttpRequest.status < 300) {
+                resolve(xmlHttpRequest);
+            } else {
+                reject(xmlHttpRequest);
+            }
+        };
+        xmlHttpRequest.onerror = () => {
+            reject(xmlHttpRequest);
+        };
+        xmlHttpRequest.send(formData);
+    });
 }

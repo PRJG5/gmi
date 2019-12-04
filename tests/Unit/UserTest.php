@@ -1,63 +1,60 @@
 <?php
 
-namespace Tests\Unit;
+	namespace Tests\Unit;
 
-use App\User;
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Database\QueryException;
+	use App\User;
+	use Illuminate\Database\QueryException;
+	use Illuminate\Foundation\Testing\RefreshDatabase;
+	use Tests\TestCase;
 
-class UserTest extends TestCase
-{
-	use DatabaseTransactions; //Resetting The Database After Each Test
+	class UserTest extends TestCase {
 
-	/** @test */
-	public function add_user_ok()
-	{
-		$user = new User();
-		$user->name = 'user';
-		$user->email = 'user@example.com';
-		$user->password = 'userPassword';
-		$user->save();
+		use RefreshDatabase;
 
-		$this->assertDatabaseHas('users', [
-			'name' => $user->name,
-			'email' => $user->email,
-			'password' => $user->password
-		]);
+		/** @test */
+		public function add_user_ok() {
+			$user = new User();
+			$user->name = 'user';
+			$user->email = 'user@example.com';
+			$user->password = 'userPassword';
+			$user->save();
+
+			$this->assertDatabaseHas('users', [
+					'name'     => $user->name,
+					'email'    => $user->email,
+					'password' => $user->password,
+				]);
+		}
+
+		/** @test */
+		public function add_user_email_already_used() {
+			$user = new User();
+			$user->name = 'user';
+			$user->email = 'user@example.com';
+			$user->password = 'userPassword';
+			$user->save();
+
+			$this->expectException(QueryException::class);
+			$user = new User();
+			$user->name = 'user2';
+			$user->email = 'user@example.com';
+			$user->password = 'user2Password';
+			$user->save();
+		}
+
+		/** @test */
+		public function add_user_name_too_short() {
+			//TODO: Ask user which length
+			$user = new User();
+			$user->name = '';
+			$user->email = 'user@example.com';
+			$user->password = 'userPassword';
+			$user->save();
+
+			$this->assertDatabaseHas('users', [
+					'name'     => $user->name,
+					'email'    => $user->email,
+					'password' => $user->password,
+				]);
+		}
 	}
-
-	/** @test */
-	public function add_user_email_already_used()
-	{
-		$user = new User();
-		$user->name = 'user';
-		$user->email = 'user@example.com';
-		$user->password = 'userPassword';
-		$user->save();
-
-		$this->expectException(QueryException::class);
-		$user = new User();
-		$user->name = 'user2';
-		$user->email = 'user@example.com';
-		$user->password = 'user2Password';
-		$user->save();
-	}
-
-	/** @test */
-	public function add_user_name_too_short()
-	{
-		//TODO: Ask user which length
-		$user = new User();
-		$user->name = '';
-		$user->email = 'user@example.com';
-		$user->password = 'userPassword';
-		$user->save();
-
-		$this->assertDatabaseHas('users', [
-			'name' => $user->name,
-			'email' => $user->email,
-			'password' => $user->password
-		]);
-	}
-}

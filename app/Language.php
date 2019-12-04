@@ -12,10 +12,6 @@
 	 */
 	class Language extends Model {
 
-		private $id;
-		private $content;
-		private $slug;
-
 		protected $table = 'languages';
 
 		protected $primaryKey = 'id';

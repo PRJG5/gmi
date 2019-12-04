@@ -11,9 +11,6 @@
 	 */
 	class Subdomain extends Model {
 
-		private $id;
-		private $name;
-
 		protected $table = 'subdomains';
 
 		protected $primaryKey = 'id';
@@ -25,11 +22,11 @@
 		public $timestamps = false;
 
 		protected $attributes = [
-			'name' => '',
+			'content' => '',
 		];
 
 		protected $fillable = [
-			'name',
+			'content',
 		];
 
 		public function __toString() {

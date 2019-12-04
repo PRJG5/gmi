@@ -12,9 +12,6 @@
 	 */
 	class Note extends Model {
 
-		private $id;
-		private $description;
-
 		protected $table = 'notes';
 
 		protected $primaryKey = 'id';

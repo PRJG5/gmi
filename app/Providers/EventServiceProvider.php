@@ -25,7 +25,5 @@
 		 */
 		public function boot() {
 			parent::boot();
-
-			//
 		}
 	}

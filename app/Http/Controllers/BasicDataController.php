@@ -12,27 +12,64 @@
 	class BasicDataController extends Controller {
 
 		public function addSubdomain($name) {
-			if(Subdomain::where('content', '=', $name)->count() > 0) {
-				return json_encode(['error' => 'Already saved']);
+			if(Subdomain::where('content',
+					'=',
+					$name)->count() > 0) {
+				return response()->json([
+					'errors' => [
+						'status' => 409,
+						'title'  => 'Conflict',
+						'detail' => 'A subdomain with this name already exists.',
+					],
+				]);
 			}
 			$subdomain = new Subdomain();
 			$subdomain->content = $name;
 			$subdomain->save();
-			return json_encode(['success' => 'Save']);
+			return response()->json([
+				'data' => [
+					'status' => 201,
+					'title'  => 'Created',
+				],
+			], 201);
 		}
 
 		public function addLanguage($name, $iso) {
-			if(Language::where('content', '=', $name)->count() > 0) {
-				return json_encode(['error' => 'Name already saved']);
+			if(Language::where('content',
+					'=',
+					$name)->count() > 0) {
+				return response()->json([
+					'errors' => [
+						'status' => 409,
+						'title'  => 'Conflict',
+						'detail' => 'A language with this name already exists.',
+					],
+				],
+					409);
 			}
-			if(Language::where('slug', '=', $iso)->count() > 0) {
-				return json_encode(['error' => 'Slug already saved']);
+			if(Language::where('slug',
+					'=',
+					$iso)->count() > 0) {
+				return response()->json([
+					'errors' => [
+						'status' => 409,
+						'title'  => 'Conflict',
+						'detail' => 'A language with this slug already exists.',
+					],
+				],
+					409);
 			}
 			$language = new Language();
 			$language->content = $name;
 			$language->slug = $iso;
 			$language->save();
-			return json_encode(['success' => 'Save']);
+			return response()->json([
+				'data' => [
+					'status' => 201,
+					'title'  => 'Created',
+				],
+			],
+				201);
 		}
 
 		public function addDomain($content) {

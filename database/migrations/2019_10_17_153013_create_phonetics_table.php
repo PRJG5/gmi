@@ -1,33 +1,31 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+	use Illuminate\Database\Migrations\Migration;
+	use Illuminate\Database\Schema\Blueprint;
+	use Illuminate\Support\Facades\Schema;
 
-class CreatePhoneticsTable extends Migration
-{
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function up()
-	{
-		Schema::create('phonetics', function (Blueprint $table) {
-			$table->bigIncrements('id');
-			$table->string('text_description')->nullable(false);
-			$table->timestamps();
-		});
-	}
+	class CreatePhoneticsTable extends Migration {
+		/**
+		 * Run the migrations.
+		 *
+		 * @return void
+		 */
+		public function up() {
+			Schema::create('phonetics',
+				function(Blueprint $table) {
+					$table->bigIncrements('id');
+					$table->string('text_description')->nullable(false);
+					$table->timestamps();
+				});
+		}
 
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down()
-	{
-		Schema::dropIfExists('phonetics');
+		/**
+		 * Reverse the migrations.
+		 *
+		 * @return void
+		 */
+		public function down() {
+			Schema::dropIfExists('phonetics');
+		}
 	}
-}
-//
+	//
