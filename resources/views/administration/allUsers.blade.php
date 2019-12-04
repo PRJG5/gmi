@@ -7,7 +7,7 @@
 			<thead class="thead-dark">
 				<tr>
 					<th scope="col">@lang('users.name')</th>
-					<th scope="col">@lang('user.email')</th>
+					<th scope="col">@lang('users.email')</th>
 					<th scope="col">@lang('users.role')</th>
 				</tr>
 			</thead>
@@ -39,7 +39,7 @@
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Changes Saved</h5>
+						<h5 class="modal-title" id="exampleModalLabel">@lang('misc.changesSaved')</h5>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
@@ -54,38 +54,38 @@
 	</div>
 </div>
 <script>
-	function updateRole(userId, event) {
-		xhr("POST",
-			"{{ route('updateRole') }}",
-			{
-				"X-CSRF-TOKEN": getCookie("XSRF-TOKEN"),
-			},
-			{
-				"_method":	"PUT",
-				"_token":	getCookie("XSRF-TOKEN"),
-				"userId":	userId,
-				"role":		event.value,
-			},
-		)
-		.then((response) => {
-			switch(event.value) {
-				case "0":
-					event.parentElement.parentElement.className = "table-danger";
-					break;
-				case "1":
-					event.parentElement.parentElement.className = "table-primary";
-					break;
-				case "2":
-					event.parentElement.parentElement.className = "table-success";
-					break;
-				default:
-					event.parentElement.parentElement.className = "table-default";
-			}
-			$("#exampleModal").modal('show');
-		})
-		.catch((err) => {
-			alert(err);
-		});
-	}
+function updateRole(userId, event) {
+	xhr("POST",
+		"{{ route('updateRole') }}",
+		{
+			"X-CSRF-TOKEN": getCookie("XSRF-TOKEN"),
+		},
+		{
+			"_method":	"PUT",
+			"_token":	getCookie("XSRF-TOKEN"),
+			"userId":	userId,
+			"role":		event.value,
+		},
+	)
+	.then((response) => {
+		switch(event.value) {
+			case "0":
+				event.parentElement.parentElement.className = "table-danger";
+				break;
+			case "1":
+				event.parentElement.parentElement.className = "table-primary";
+				break;
+			case "2":
+				event.parentElement.parentElement.className = "table-success";
+				break;
+			default:
+				event.parentElement.parentElement.className = "table-default";
+		}
+		$("#exampleModal").modal('show');
+	})
+	.catch((err) => {
+		alert(err);
+	});
+}
 </script>
 @endsection

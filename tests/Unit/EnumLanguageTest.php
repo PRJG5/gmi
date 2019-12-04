@@ -27,7 +27,7 @@ class EnumLanguageTest extends TestCase
 	 */
 	 public function TestFindLanguage()
 	 {
-		 $temp = Language::hasKey("FRA");
+		 $temp = Language::hasKey('FRA');
 		 $this->assertTrue($temp);
 	 }
 

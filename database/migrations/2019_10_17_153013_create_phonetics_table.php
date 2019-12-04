@@ -15,7 +15,7 @@ class CreatePhoneticsTable extends Migration
 	{
 		Schema::create('phonetics', function (Blueprint $table) {
 			$table->bigIncrements('id');
-			$table->string('textDescription')->nullable(false);
+			$table->string('text_description')->nullable(false);
 			$table->timestamps();
 		});
 	}

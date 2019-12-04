@@ -6,7 +6,7 @@ use App\Enums\Roles;
 use App\Enums\Subdomain;
 
 return [
-	Language::class =>[
+	Language::class => [
 		Language::ALB => 'Albanian',
 		Language::ARA => 'Arabic',
 		Language::ARC => 'Aramaic',

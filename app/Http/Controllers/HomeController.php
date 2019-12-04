@@ -1,33 +1,29 @@
 <?php
 
-namespace App\Http\Controllers;
+	namespace App\Http\Controllers;
 
-use App\User;
-
-class HomeController extends Controller
-{
-	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
-	public function __construct()
-	{
-		$this->middleware('auth');
-	}
+	use Illuminate\Contracts\Support\Renderable;
 
 	/**
-	 * Show the application dashboard.
 	 *
-	 * @return \Illuminate\Contracts\Support\Renderable
 	 */
-	public function index() {
-		return view('home');
-	}
+	class HomeController extends Controller {
+		/**
+		 * Create a new controller instance.
+		 *
+		 * @return void
+		 */
+		public function __construct() {
+			$this->middleware('auth');
+		}
 
-	public function indexAllUsers() {
-		return view('administration.allUsers', [
-			'users'=> User::all(),
-		]);
+		/**
+		 * Show the application dashboard.
+		 *
+		 * @return Renderable
+		 */
+		public function index() {
+			return view('home');
+		}
+
 	}
-}

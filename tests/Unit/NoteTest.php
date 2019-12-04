@@ -43,7 +43,7 @@ class NoteTest extends TestCase
 		$note->save();
 		$idNote = $note->id;
 		$note->delete();
-		$this->assertDatabaseMissing('notes', ['id'=>$idNote]);
+		$this->assertDatabaseMissing('notes', ['id' => $idNote]);
 	}
 
 	/**

@@ -26,12 +26,12 @@ class SpokenLanguageTest extends TestCase
 
 		$spokenLanguage = new SpokenLanguages();
 		$spokenLanguage->user_id = $userDB->id;
-		$spokenLanguage->languageISO = 'SPA';
+		$spokenLanguage->language_ISO = 'SPA';
 		$spokenLanguage->save();
 
 		$this->assertDatabaseHas('spoken_languages', [
 			'user_id' => $spokenLanguage->user_id,
-			'languageISO' => $spokenLanguage->languageISO
+			'language_ISO' => $spokenLanguage->language_ISO
 		]);
 	}
 
@@ -49,20 +49,20 @@ class SpokenLanguageTest extends TestCase
 
 		$spokenLanguage = new SpokenLanguages();
 		$spokenLanguage->user_id = $userDB->id;
-		$spokenLanguage->languageISO = 'SPA';
+		$spokenLanguage->language_ISO = 'SPA';
 		$spokenLanguage->save();
 		$spokenLanguage2 = new SpokenLanguages();
 		$spokenLanguage2->user_id = $userDB->id;
-		$spokenLanguage2->languageISO = 'FRA';
+		$spokenLanguage2->language_ISO = 'FRA';
 		$spokenLanguage2->save();
 
 		$this->assertDatabaseHas('spoken_languages', [
 			'user_id' => $spokenLanguage->user_id,
-			'languageISO' => $spokenLanguage->languageISO
+			'language_ISO' => $spokenLanguage->language_ISO
 		]);
 		$this->assertDatabaseHas('spoken_languages', [
 			'user_id' => $spokenLanguage2->user_id,
-			'languageISO' => $spokenLanguage2->languageISO
+			'language_ISO' => $spokenLanguage2->language_ISO
 		]);
 	}
 
@@ -85,21 +85,21 @@ class SpokenLanguageTest extends TestCase
 
 		$spokenLanguage = new SpokenLanguages();
 		$spokenLanguage->user_id = $userDB->id;
-		$spokenLanguage->languageISO = 'SPA';
+		$spokenLanguage->language_ISO = 'SPA';
 		$spokenLanguage->save();
 		$spokenLanguage = new SpokenLanguages();
 		$spokenLanguage->user_id = $userDB2->id;
-		$spokenLanguage->languageISO = 'SPA';
+		$spokenLanguage->language_ISO = 'SPA';
 		$spokenLanguage->save();
 
 		$this->assertDatabaseHas('spoken_languages', [
 			'user_id' => $userDB->id,
-			'languageISO' => $spokenLanguage->languageISO
+			'language_ISO' => $spokenLanguage->language_ISO
 		]);
 
 		$this->assertDatabaseHas('spoken_languages', [
 			'user_id' => $userDB2->id,
-			'languageISO' => $spokenLanguage->languageISO
+			'language_ISO' => $spokenLanguage->language_ISO
 		]);
 	   
 	}
@@ -117,11 +117,11 @@ class SpokenLanguageTest extends TestCase
 		$this->expectException(QueryException::class);
 		$spokenLanguage = new SpokenLanguages();
 		$spokenLanguage->user_id = $userDB->id;
-		$spokenLanguage->languageISO = 'SPA';
+		$spokenLanguage->language_ISO = 'SPA';
 		$spokenLanguage->save();
 		$spokenLanguage = new SpokenLanguages();
 		$spokenLanguage->user_id = $userDB->id;
-		$spokenLanguage->languageISO = 'SPA';
+		$spokenLanguage->language_ISO = 'SPA';
 		$spokenLanguage->save();
 	}
 }

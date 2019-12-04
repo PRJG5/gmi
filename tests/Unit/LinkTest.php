@@ -7,41 +7,99 @@ use Tests\TestCase;
 use App\Link;
 use App\Card;
 use App\User;
+use Illuminate\Database\QueryException;
 
 class LinkTest extends TestCase
 {
 	use RefreshDatabase;
 
-	// /**
-	//  * A basic unit test example.
-	//  *
-	//  * @return void
-	//  */
-	// public function testExample()
-	// {
-	//	 $this->assertTrue(true);
-	// }
-	public function testGetA()
-	{
-		$user = User::create(["name"=>"Tester", "email"=>"tester@test.com", "password"=>"tested"]);
-		$cardA = Card::create(['heading'=>'test1', 'definition'=>'blabla2', 'owner_id'=>$user->id]);
-		$cardB = Card::create(['heading'=>'test2', 'definition'=>'blabla2', 'owner_id'=>$user->id]);
-		$link = new Link();
-		$link->cardA = $cardA->id;
-		$link->cardB = $cardB->id;
-		$link->save();
-		$this->assertEquals($link->getCardA()->id, $cardA->id);
-	}
+    /**
+     * @test
+     * Test a link with two cards ok
+     */
+    public function linkOkTest()
+    {
+        $user = User::create([
+        	'name' => 'Tester',
+			'email' => 'tester@test.com',
+			'password' => 'tested',
+		 ]);
+        $card_a = Card::create([
+        	'heading' => 'test1',
+			'definition' => 'blabla2',
+			'owner_id' => $user->id,
+		]);
+        $card_b = Card::create([
+        	'heading' => 'test2',
+			'definition' => 'blabla2',
+			'owner_id' => $user->id,
+		]);
+        $link = new Link();
+        $link->card_a = $card_a->id;
+        $link->card_b = $card_b->id;
+        $link->save();
+        $this->assertDatabaseHas('links', [
+            'id' => $link->id,
+            'card_a' => $link->card_a,
+            'card_b' => $link->card_b,
+        ]);
+    }
 
-	public function testGetB()
-	{
-		$user = User::create(["name"=>"Tester", "email"=>"tester@test.com", "password"=>"tested"]);
-		$cardA = Card::create(['heading'=>'test1', 'definition'=>'blabla2', 'owner_id'=>$user->id]);
-		$cardB = Card::create(['heading'=>'test2', 'definition'=>'blabla2', 'owner_id'=>$user->id]);
-		$link = new Link();
-		$link->cardA = $cardA->id;
-		$link->cardB = $cardB->id;
-		$link->save();
-		$this->assertEquals($link->getCardB()->id, $cardB->id);
-	}
+    /**
+     * @test
+     * Test with a link, where the first card is same of the second. Is error.
+     */
+    public function linkWithSameCardTest()
+    {
+        $user = User::create([
+        	'name' => 'Tester',
+			'email' => 'tester@test.com',
+			'password' => 'tested',
+		]);
+        $card_a = Card::create([
+        	'heading' => 'test1',
+			'definition' => 'blabla2',
+			'owner_id' => $user->id,
+	   	]);
+        $link = new Link();
+        $this->expectException(QueryException::class);
+        $link->card_a = $card_a->id;
+        $link->card_b = $card_a->id;
+        $link->save();
+    }
+
+    
+    /**
+     * @test
+     * Test with two links, with the same cards
+     */
+    public function twoSameLinksNotOKTest()
+    {
+        $user = User::create([
+        	'name' => 'Tester',
+			'email' => 'tester@test.com',
+			'password' => 'tested',
+		]);
+        $card_a = Card::create([
+        	'heading' => 'test1',
+			'definition' => 'blabla2',
+			'owner_id' => $user->id,
+		]);
+        $card_b = Card::create([
+        	'heading' => 'test1',
+			'definition' => 'blabla2',
+			'owner_id' => $user->id,
+		]);
+        $link = new Link();
+        $link->card_a = $card_a->id;
+        $link->card_b = $card_a->id;
+        $this->expectException(QueryException::class);
+        $link->save();
+        $link = new Link();
+        $link->card_a = $card_a->id;
+        $link->card_b = $card_a->id;
+        $link->save();
+    }
+
+    
 }

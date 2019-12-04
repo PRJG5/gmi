@@ -17,8 +17,8 @@ class CreateSpokenLanguagesTable extends Migration
 		Schema::create('spoken_languages', function (Blueprint $table) {
 			$table->bigIncrements('id');
 			$table->unsignedBigInteger('user_id');
-			$table->string('languageISO');
-			$table->unique(['user_id' , 'languageISO']);
+			$table->string('language_ISO');
+			$table->unique(['user_id' , 'language_ISO']);
 			$table->timestamps();
 			$table->foreign('user_id')->references('id')->on('users');
 		});

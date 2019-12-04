@@ -7,6 +7,6 @@ use Faker\Generator as Faker;
 
 $factory->define(Phonetic::class, function (Faker $faker) {
 	return [
-		'textDescription' => $faker->asciify('***********'),
+		'text_description' => $faker->asciify('***********'),
 	];
 });

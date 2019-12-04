@@ -17,13 +17,13 @@ class CreateLinksTable extends Migration
 			$table->bigIncrements('id');
 			
 			//Foreign key to a card A
-			$table->unsignedBigInteger("cardA");
+			$table->unsignedBigInteger('card_a');
 			//Foreign key to a card B
-			$table->unsignedBigInteger("cardB");
+			$table->unsignedBigInteger('card_b');
 			
 			##Their references
-			$table->foreign('cardA')->references('id')->on('cards');
-			$table->foreign('cardB')->references('id')->on('cards');
+			$table->foreign('card_a')->references('id')->on('cards');
+			$table->foreign('card_b')->references('id')->on('cards');
 		});
 	}
 

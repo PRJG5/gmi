@@ -1,42 +1,59 @@
 <?php
 
-namespace App;
+	namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-
-/**
- * Define the Context object of the GMI Project
- */
-class Context extends Model
-{
-	protected $table = 'contexts';
-	protected $primaryKey = 'id';
-	public $incrementing = true;
-	protected $keyType = 'bigIncrements';
-	public $timestamps = false;
-	protected $fillable = [
-		'context_to_string',
-	];
-	protected $guarded = [
-		'id',
-	];
-	
+	use Illuminate\Database\Eloquent\Model;
+	use Illuminate\Database\QueryException;
 
 	/**
-	 * Constructor of the Context Object.
+	 * Define the Context object of the GMI Project
+	 *
+	 * @property $id
+	 * @property $context_to_string
 	 */
- 	// public function __constructor($context){
-	// 		$this->contextToString = $context;
-	// }
+	class Context extends Model {
 
-	// public function getNameOfContext(){
-	// 		return $this->contextToString;
-	// }
+		private $id;
+		private $context_to_string;
 
-	/**
-	 * ToString of the context
-	 */
-	public function __toString(){
-		 return $this->id ." ".  $this->context_to_string;
+		protected $table = 'contexts';
+
+		protected $primaryKey = 'id';
+
+		public $incrementing = true;
+
+		protected $keyType = 'bigIncrements';
+
+		public $timestamps = false;
+
+		protected $attributes = [
+			'context_to_string' => '',
+		];
+
+		protected $fillable = [
+			'context_to_string',
+		];
+
+		protected $guarded = [
+			'id',
+		];
+
+
+		/**
+		 * Constructor of the Context Object.
+		 * @param string $context the context for the object
+		 */
+		public function __constructor($context) {
+			if($context == NULL || $context == '') {
+				throw new QueryException();
+			}
+			$this->contextToString = $context;
+		}
+
+		/**
+		 * ToString of the context
+		 */
+		public function __toString() {
+			return $this->id . ' - ' . $this->context_to_string;
+		}
 	}
-}

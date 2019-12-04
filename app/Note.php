@@ -1,35 +1,47 @@
 <?php
 
-namespace App;
+	namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+	use Illuminate\Database\Eloquent\Model;
 
-/**
- * Model from Eloquent representing a Note who belongs to a Card model object.
- */
-class Note extends Model
-{
-	protected $table = 'notes';
-	protected $primaryKey = 'id';
-	public $incrementing = true;
-	protected $keyType = 'bigIncrements';
-	public $timestamps = false;
-	protected $attributes = [
-		'description' => '',
-	];
-	protected $fillable = [
-		'description',
-	];
-	protected $guarded = [
-		'id',
-	];
+	/**
+	 * Model from Eloquent representing a Note who belongs to a Card model object.
+	 *
+	 * @property $id
+	 * @property $description
+	 */
+	class Note extends Model {
 
-	public function card(){
-		return $this->belongsTo(Card::class);
+		private $id;
+		private $description;
+
+		protected $table = 'notes';
+
+		protected $primaryKey = 'id';
+
+		public $incrementing = true;
+
+		protected $keyType = 'bigIncrements';
+
+		public $timestamps = false;
+
+		protected $attributes = [
+			'description' => '',
+		];
+
+		protected $fillable = [
+			'description',
+		];
+
+		protected $guarded = [
+			'id',
+		];
+
+		public function card() {
+			return $this->belongsTo(Card::class);
+		}
+
+		public function __toString() {
+			return $this->id . ' - ' . $this->description;
+		}
 	}
-
-	public function __toString()
-	{
-		return strval($this->id) . " - " .  $this->description;
-	}
-}

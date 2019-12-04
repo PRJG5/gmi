@@ -9,7 +9,7 @@ use App\Enums\Subdomain;
  * Returns the string value of the enum
  */
 return [
-	Language::class =>[
+	Language::class => [
 		Language::ALB => 'Albanais',
 		Language::ARA => 'Arabe',
 		Language::ARC => 'Araméen',

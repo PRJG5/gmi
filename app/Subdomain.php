@@ -1,12 +1,38 @@
 <?php
 
-namespace App;
+	namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+	use Illuminate\Database\Eloquent\Model;
 
-class Subdomain extends Model
-{
-   protected $fillable = [
-	   'name',
-   ];
-}
+	/**
+	 *
+	 * @property $id
+	 * @property $name
+	 */
+	class Subdomain extends Model {
+
+		private $id;
+		private $name;
+
+		protected $table = 'subdomains';
+
+		protected $primaryKey = 'id';
+
+		public $incrementing = true;
+
+		protected $keyType = 'bigIncrements';
+
+		public $timestamps = false;
+
+		protected $attributes = [
+			'name' => '',
+		];
+
+		protected $fillable = [
+			'name',
+		];
+
+		public function __toString() {
+			return $this->id . ' - ' . $this->name;
+		}
+	}

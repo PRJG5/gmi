@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use Exception;
 use Tests\TestCase;
 use App\Phonetic;
 use Illuminate\Support\Facades\DB;
@@ -12,15 +13,16 @@ class PhoneticTest extends TestCase
 	 * A basic unit test example.
 	 *
 	 * @return void
+	 * @throws Exception
 	 */
 	public function testInsertDb()
 	{
 		$tempPho = new Phonetic();
-		$str = "coucou";
-		$tempPho->textDescription = $str;
+		$str = 'coucou';
+		$tempPho->text_description = $str;
 		$tempPho->save();
-		$verif = DB::table('phonetics')->where('textDescription', $str)->select("*")->get();
-		$this->assertEquals($verif[0]->textDescription, $tempPho->textDescription);
+		$verif = DB::table('phonetics')->where('text_description', $str)->select('*')->get();
+		$this->assertEquals($verif[0]->text_description, $tempPho->text_description);
 		$tempPho->delete();
 	}
 
@@ -28,28 +30,29 @@ class PhoneticTest extends TestCase
 	 * A basic unit test example.
 	 *
 	 * @return void
+	 * @throws Exception
 	 */
 	public function testInsertDbSpecialChar()
 	{
 		$tempPho = new Phonetic();
-		$str = "fdeəi:ɒaʊaɪʊəʤʧŋɜ:";
-		$tempPho->textDescription = $str;
+		$str = 'fdeəi:ɒaʊaɪʊəʤʧŋɜ:';
+		$tempPho->text_description = $str;
 		$tempPho->save();
-		$verif = DB::table('phonetics')->where('textDescription', $str)->select("*")->get();
-		$this->assertEquals($verif[0]->textDescription, $tempPho->textDescription);
+		$verif = DB::table('phonetics')->where('text_description', $str)->select('*')->get();
+		$this->assertEquals($verif[0]->text_description, $tempPho->text_description);
 		$tempPho->delete();
 	}
 	
 	public function testDeleteDb(){
 		$tempPho = new Phonetic();
-		$str = "fdeəi:ɒaʊaɪʊəʤʧŋɜ:";
-		$tempPho->textDescription = $str;
+		$str = 'fdeəi:ɒaʊaɪʊəʤʧŋɜ:';
+		$tempPho->text_description = $str;
 		$tempPho->save();
-		$verif = DB::table('phonetics')->where('textDescription', $str)->select("*")->get();
-		$this->assertEquals($verif[0]->textDescription, $tempPho->textDescription);
+		$verif = DB::table('phonetics')->where('text_description', $str)->select('*')->get();
+		$this->assertEquals($verif[0]->text_description, $tempPho->text_description);
 		$tempPho->delete();
 		$this->assertDatabaseMissing('phonetics', [
-			'textDescription' => $str,
+			'text_description' => $str,
 		]);
 	}
 }

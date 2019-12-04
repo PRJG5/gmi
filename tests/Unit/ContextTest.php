@@ -17,7 +17,7 @@ class ContextTest extends TestCase
 	 */
 	public function testValidInsertion()
 	{
-		$context = "Hello I love You won't you tell me your name?";
+		$context = 'Hello I love You won\'t you tell me your name?';
 	  	// $con = factory(App\Context::class)->make();
 		$con = new Context();
 		$con->context_to_string = $context;
@@ -43,14 +43,14 @@ class ContextTest extends TestCase
 	 * Test if a deleted context is no more into the database.
 	 */
 	public function testIfDeleted(){
-		$context = "Whole Lotta Love";
+		$context = 'Whole Lotta Love';
 		$con = new Context();
 		$con->context_to_string = $context;
 		$con->save();
 		$idCon = $con->id;
 		$con->delete();
 		$this->assertDatabaseMissing('contexts', [
-			'id' =>$idCon,
+			'id' => $idCon,
 		]);
 	}
 
@@ -58,15 +58,13 @@ class ContextTest extends TestCase
 	 * Test if the toString method returns a valid toString.
 	 */
 	public function testToString(){
-		$con =new Context();
-		$context = "Heaven Gate";
+		$con = new Context();
+		$context = 'Heaven Gate';
 		$con->context_to_string = $context;
 		$con->save();
 		$str = $con->__toString();
-		$this->assertTrue($str == $con->id . " " . $context);
+		$this->assertTrue($str == $con->id . ' - ' . $context);
 		$con->delete();
 	}
-
-
 
 }
