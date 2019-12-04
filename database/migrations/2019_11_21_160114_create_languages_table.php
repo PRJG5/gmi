@@ -21,6 +21,8 @@ class CreateLanguagesTable extends Migration
             $table->string('content')->unique();
             $table->string('slug')->unique();
         });
+
+        App\Http\Controllers\LanguageController::importFile(resource_path('lang/Langues.xlsx'));
     }
 
     /**
