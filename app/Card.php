@@ -111,6 +111,7 @@ class Card extends Model
         'note_id',
         'language_id',
         'owner_id',
+        'validation_id',
     ];
 
     /**

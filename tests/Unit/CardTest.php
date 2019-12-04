@@ -34,6 +34,8 @@ class CardTest extends TestCase
 			'password'	=> 'test',
         ]);
         $owner->save();
+        $validation = new Validation();
+        $validation->save();
 		$card = new Card();
 		$card->heading = $heading;
 		$card->phonetic_id = NULL;
@@ -44,9 +46,8 @@ class CardTest extends TestCase
         $card->note_id = NULL;
         $card->language_id = 'ARA';
         $card->owner_id =  User::where('email', $owner->email)->first()->id;
+        $card->validation_id = $validation->id; 
         $card->save();
-		$card->heading = 'My New Card';
-		$card->update();
         $this->assertDatabaseHas('cards', [
             'id'			=> $card->id,
             'heading'		=> $card->heading,
@@ -58,7 +59,11 @@ class CardTest extends TestCase
             'context_id'	=> $card->context_id,
             'language_id'	=> strval($card->language_id),
             'owner_id'		=> $card->owner_id,
+            'validation_id' => $card->validation_id,
         ]);
+		$card->heading = 'My New Card';
+		$card->update();
+        
         $this->assertDatabaseMissing('cards', [
             'id'			=> $card->id,
             'heading'		=> $heading,
@@ -70,6 +75,7 @@ class CardTest extends TestCase
             'context_id'	=> $card->context_id,
             'language_id'	=> strval($card->language_id),
             'owner_id'		=> $card->owner_id,
+            'validation_id' => $card->validation_id,
         ]);
     }
 
@@ -87,6 +93,8 @@ class CardTest extends TestCase
 			'password'	=> 'test',
         ]);
         $owner->save();
+        $validation = new Validation();
+        $validation->save();
 		$card = new Card();
 		$card->heading = 'hello';
 		$card->phonetic_id = NULL;
@@ -97,6 +105,7 @@ class CardTest extends TestCase
         $card->note_id = NULL;
         $card->language_id = 'ARA';
         $card->owner_id = User::where('email', $owner->email)->first()->id;
+        $card->validation_id = $validation->id; 
         $card->save();
         $card->heading = NULL;
         $this->expectException(QueryException::class);
@@ -113,6 +122,7 @@ class CardTest extends TestCase
             'context_id'	=> $card->context_id,
             'language_id'	=> strval($card->language_id),
             'owner_id'		=> $card->owner_id,
+            'validation_id' => $card->validation_id,
         ]);
     }
 
@@ -130,6 +140,8 @@ class CardTest extends TestCase
 			'password'	=> 'test',
         ]);
         $owner->save();
+        $validation = new Validation();
+        $validation->save();
 		$card = new Card();
 		$card->heading = 'hello';
 		$card->phonetic_id = NULL;
@@ -140,6 +152,7 @@ class CardTest extends TestCase
         $card->note_id = NULL;
         $card->language_id = 'ARA';
         $card->owner_id = User::where('email', $owner->email)->first()->id;
+        $card->validation_id = $validation->id; 
         $card->save();
         $card->language_id = NULL;
         $this->expectException(QueryException::class);
@@ -156,6 +169,7 @@ class CardTest extends TestCase
             'context_id'	=> $card->context_id,
             'language_id'	=> strval('ARA'),
             'owner_id'		=> $card->owner_id,
+            'validation_id' => $card->validation_id,
         ]);
     }
 
@@ -173,6 +187,8 @@ class CardTest extends TestCase
 			'password'	=> 'test',
         ]);
         $owner->save();
+        $validation = new Validation();
+        $validation->save();
         $owner_id = User::where('email', $owner->email)->first()->id;
 		$card = new Card();
 		$card->heading = 'hello';
@@ -184,6 +200,7 @@ class CardTest extends TestCase
         $card->note_id = NULL;
         $card->language_id = 'ARA';
         $card->owner_id = $owner_id;
+        $card->validation_id = $validation->id;
         $card->save();
         $card->owner_id = NULL;
         $this->expectException(QueryException::class);
@@ -200,6 +217,7 @@ class CardTest extends TestCase
             'context_id'	=> $card->context_id,
             'language_id'	=> strval($card->language_id),
             'owner_id'		=> $owner_id,
+            'validation_id' => $card->validation_id,
         ]);
     }
 
@@ -218,6 +236,8 @@ class CardTest extends TestCase
 			'password'	=> 'test',
         ]);
         $owner->save();
+        $validation = new Validation();
+        $validation->save();
 		$card = new Card();
 		$card->heading = $heading;
 		$card->phonetic_id = NULL;
@@ -228,6 +248,7 @@ class CardTest extends TestCase
         $card->note_id = NULL;
         $card->language_id = 'ARA';
         $card->owner_id =  User::where('email', $owner->email)->first()->id;
+        $card->validation_id = $validation->id;
         $card->save();
 
         $phonetic = new Phonetic();
@@ -262,6 +283,7 @@ class CardTest extends TestCase
             'context_id'	=> $card->context_id,
             'language_id'	=> strval($card->language_id),
             'owner_id'		=> $card->owner_id,
+            'validation_id' => $card->validation_id,
         ]);
         $this->assertDatabaseMissing('cards', [
             'id'			=> $card->id,
@@ -274,6 +296,7 @@ class CardTest extends TestCase
             'context_id'	=> NULL,
             'language_id'	=> strval($card->language_id),
             'owner_id'		=> $card->owner_id,
+            'validation_id' => $card->validation_id,
         ]);
     }
 
@@ -326,7 +349,7 @@ class CardTest extends TestCase
         $card->definition_id = Definition::where('definition_content', $definition->definition_content)->first()->id;
         $card->context_id = Context::where('context_to_string',  $context->context_to_string)->first()->id;
         $card->note_id = Note::where('description', $note->description)->first()->id;
-        $card->validation_id = Validation::findOrFail($validation->id)->id;
+        $card->validation_id = $validation->id;
         $card->save();
         $this->assertDatabaseHas('cards', [
             'id'			=> $card->id,
@@ -339,7 +362,7 @@ class CardTest extends TestCase
             'context_id'	=> $card->context_id,
             'language_id'	=> strval($card->language_id),
             'owner_id'		=> $card->owner_id,
-            'validation_id' => $validation->id,
+            'validation_id' => $card->validation_id,
         ]);
     }
 
@@ -356,6 +379,8 @@ class CardTest extends TestCase
 			'email'		=> 'tttttesttttt@test.com',
 			'password'	=> 'test',
         ]);
+        $validation = new Validation();
+        $validation->save();
         $owner->save();
 		$card = new Card();
 		$card->heading = NULL;
@@ -367,6 +392,7 @@ class CardTest extends TestCase
         $card->note_id = NULL;
         $card->language_id = 'ARA';
         $card->owner_id = User::where('email', $owner->email)->first()->id;
+        $card->validation_id;
         
         $this->expectException(QueryException::class);
         $card->save();
@@ -385,6 +411,8 @@ class CardTest extends TestCase
 			'email'		=> 'tttttesttttt@test.com',
 			'password'	=> 'test',
         ]);
+        $validation = new Validation();
+        $validation->save();
         $owner->save();
 		$card = new Card();
 		$card->heading = 'hello';
@@ -396,6 +424,7 @@ class CardTest extends TestCase
         $card->note_id = NULL;
         $card->language_id = NULL;
         $card->owner_id = User::where('email', $owner->email)->first()->id;
+        $card->validation_id = $validation->id;
         $this->expectException(QueryException::class);
         $card->save();
     }
@@ -408,6 +437,8 @@ class CardTest extends TestCase
      */
     public function createCardWithoutOwnerNotOKTest()
     {
+        $validation = new Validation();
+        $validation->save();
 		$card = new Card();
 		$card->heading = 'hello';
 		$card->phonetic_id = NULL;
@@ -418,6 +449,7 @@ class CardTest extends TestCase
         $card->note_id = NULL;
         $card->language_id = 'ARA';
         $card->owner_id = NULL;
+        $card->validation_id = $validation->id;
         $this->expectException(QueryException::class);
         $card->save();
     }
@@ -439,6 +471,8 @@ class CardTest extends TestCase
 			'password'	=> 'test',
         ]);
         $owner->save();
+        $validation = new Validation();
+        $validation->save();
 		$card = new Card();
 		$card->heading = 'My Card';
 		$card->phonetic_id = NULL;
@@ -449,6 +483,7 @@ class CardTest extends TestCase
         $card->note_id = NULL;
         $card->language_id = 'ARA';
         $card->owner_id = User::where('email', $owner->email)->first()->id;
+        $card->validation_id = $validation->id;
 		$card->save();
 		$card->delete();
 		$this->assertDatabaseMissing('cards', [
@@ -462,6 +497,7 @@ class CardTest extends TestCase
             'context_id'	=> $card->context_id,
             'language_id'	=> strval($card->language_id),
             'owner_id'		=> $card->owner_id,
+            'validation_id'    => $card->validation_id
 		]);
     }
 
@@ -480,6 +516,8 @@ class CardTest extends TestCase
 			'password'	=> 'test',
         ]);
         $owner->save();
+        $validation = new Validation();
+        $validation->save();
 		$card = new Card();
 		$card->heading = 'My Card';
 		$card->phonetic_id = NULL;
@@ -490,6 +528,7 @@ class CardTest extends TestCase
         $card->note_id = NULL;
         $card->language_id = 'ARA';
         $card->owner_id = User::where('email', $owner->email)->first()->id;
+        $card->validation_id = $validation->id;
         $card->save();
         $card->id = Card::where('heading', $card->heading)->first()->id;
         Card::destroy($card->id);
