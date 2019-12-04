@@ -70,6 +70,7 @@ Route::get('cards/{cardOrigin}/{cardLinked}/link','CardController@linkCard')->na
 
 Route::get('api/addsubdomain/{name}', 'BasicDataController@addSubdomain')->middleware('auth');
 Route::get('api/addlanguage/{name}/code/{iso}', 'BasicDataController@addLanguage')->middleware('auth');
+Route::get('api/adddomain/{name}', 'BasicDataController@addDomain')->middleware('auth');
 Route::get('/addbasicdata', 'LanguageController@index')->name('basicData')->middleware('auth');
 ?>
 
