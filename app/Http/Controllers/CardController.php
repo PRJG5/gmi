@@ -9,10 +9,12 @@ define("FORMAT_DESCRIPTION", "Pour consulter votre carte, veuillez suivre ce lie
 use App\Card;
 use App\Enums\Domain;
 use App\Phonetic;
+use App\Link;
 use App\Note;
 use App\Context;
 use App\Definition;
 use App\User;
+use App\vote;
 use App\Enums\Language;
 use App\Enums\Subdomain;
 use Illuminate\Http\Request;
@@ -199,6 +201,15 @@ class CardController extends Controller
     public function destroy(Card $card)
     {
         try {
+            Link::where('cardA',
+                $card->id)->orWhere('cardB',
+                $card->id)->delete();
+            Context::find($card->context_id)->delete();
+            Definition::find($card->definition_id)->delete();
+            Note::find($card->note_id)->delete();
+            Phonetic::find($card->phonetic_id)->delete();
+            Vote::where('card_id',
+                $card->id)->delete();
             $card->delete();
         } catch(\Exception $exception) {
 
