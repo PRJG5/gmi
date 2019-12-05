@@ -23,7 +23,7 @@
       <th scope="row">{{$card->heading}}</th>
       <td>{{$card->getLanguage()}}</td>
       <td>{{$card->getDefinition()}}</td>
-      <td>{{$card->nbVotes()}}</td>
+      <td>{{$card->nbVotes}}</td>
       <td>
           <form action='/card/{{$card->id}}' method="get">
               @csrf
