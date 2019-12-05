@@ -229,7 +229,7 @@ class CardController extends Controller
         } catch(\Exception $exception) {
             echo $exception;
         }
-        //return redirect()->action('CardController@index');
+        return redirect()->action('CardController@index');
     }
 
     /**
