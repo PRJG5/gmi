@@ -20,4 +20,8 @@ class Phonetic extends Model
 	protected $guarded = [
         'id',
 	];
+    
+    public function medias() {
+        return $this->belongsToMany('App\Media' ,'phonetic_media' , 'phonetic' , 'media');
+    }
 }
