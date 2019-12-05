@@ -12,16 +12,14 @@
 	class BasicDataController extends Controller {
 
 		public function addSubdomain($name) {
-			if(Subdomain::where('content',
-					'=',
-					$name)->count() > 0) {
+			if(Subdomain::where('content', '=', $name)->count() > 0) {
 				return response()->json([
 					'errors' => [
 						'status' => 409,
 						'title'  => 'Conflict',
 						'detail' => 'A subdomain with this name already exists.',
 					],
-				]);
+				], 409);
 			}
 			$subdomain = new Subdomain();
 			$subdomain->content = $name;
@@ -35,29 +33,23 @@
 		}
 
 		public function addLanguage($name, $iso) {
-			if(Language::where('content',
-					'=',
-					$name)->count() > 0) {
+			if(Language::where('content', '=', $name)->count() > 0) {
 				return response()->json([
 					'errors' => [
 						'status' => 409,
 						'title'  => 'Conflict',
 						'detail' => 'A language with this name already exists.',
 					],
-				],
-					409);
+				], 409);
 			}
-			if(Language::where('slug',
-					'=',
-					$iso)->count() > 0) {
+			if(Language::where('slug', '=', $iso)->count() > 0) {
 				return response()->json([
 					'errors' => [
 						'status' => 409,
 						'title'  => 'Conflict',
 						'detail' => 'A language with this slug already exists.',
 					],
-				],
-					409);
+				], 409);
 			}
 			$language = new Language();
 			$language->content = $name;
@@ -68,8 +60,7 @@
 					'status' => 201,
 					'title'  => 'Created',
 				],
-			],
-				201);
+			], 201);
 		}
 
 		public function addDomain($content) {
