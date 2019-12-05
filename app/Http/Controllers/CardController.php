@@ -38,7 +38,7 @@ class CardController extends Controller
      */
     public function index()
     {
-        return view('allCards',['cards' => Card::all()]);
+        return view('allCards',['cards' => Card::orderBy('heading', 'ASC')->get()]);
     }
 
     /**
