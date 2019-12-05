@@ -38,4 +38,10 @@ class LanguageController extends Controller
         //return redirect("/language");
     }
 
+    public static function importFile($file){
+
+        Excel::import(new LanguagesImport,$file);
+
+    }
+
 }

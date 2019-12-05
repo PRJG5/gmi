@@ -4,10 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-/**
- * New implemetation of Language with a model
- */
-class CreateLanguagesTable extends Migration
+class AddNbvoteInCards extends Migration
 {
     /**
      * Run the migrations.
@@ -16,12 +13,9 @@ class CreateLanguagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('languages', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('content')->unique();
-            $table->string('slug')->unique();
+        Schema::table('cards', function (Blueprint $table) {
+            $table->unsignedInteger('nbVotes')->default(0);
         });
-
     }
 
     /**
@@ -31,8 +25,5 @@ class CreateLanguagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('languages');
     }
 }
-
-

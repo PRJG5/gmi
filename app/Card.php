@@ -94,7 +94,8 @@ class Card extends Model
         'context_id'	=> NULL,
         'note_id'		=> NULL,
 		'language_id'	=> '',
-		'owner_id'		=> 1,
+        'owner_id'		=> 1,
+        'nbVotes'       => 0,
     ];
 
     /**
@@ -111,6 +112,8 @@ class Card extends Model
         'note_id',
         'language_id',
         'owner_id',
+        'nbVotes',
+        'validation_id',
     ];
 
     /**
@@ -136,10 +139,25 @@ class Card extends Model
 			"\tcontext_id: "	. $this->context_id		. "\n" .
 			"\tnote_id: "		. $this->note_id		. "\n" .
 			"\tlanguage_id: "	. $this->language_id	. "\n" .
-			"\towner_id: "		. $this->owner_id		. "\n" .
+            "\towner_id: "		. $this->owner_id		. "\n" .
+            "\tnbVotes: "       . $this->nbVotes        . "\n" .
+            "\tvalidation_id "  . $this->validation_id  . "\n" .
 		"}";
     }
 
+    public function getDefinition(){
+        if($this->definition_id != null){
+            $def = Definition::where('id','=',$this->definition_id)->get();
+       return $def[0]->definition_content;
+        }
+        return "";
+        
+   }
+    public function getLanguage(){
+         $langs = Language::where('slug','=',$this->language_id)->get();
+        return $langs[0]->content;
+         
+    }
 
 	/*
 	 * Returns all links referring to this card in an array.
