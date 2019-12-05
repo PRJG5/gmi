@@ -13,7 +13,7 @@
             <div class="col-md-4">{{$card->heading}}</div>
             <form action='/card/{{$card->id}}' method="get">
                 @csrf
-                <button type="submit" class="btn btn-primary">Show</button>
+                <button type="submit" class="btn btn-primary" style="padding-top=10px">Show</button>
             </form>
         </div>
     @endforeach
