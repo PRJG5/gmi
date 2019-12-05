@@ -60,14 +60,11 @@
     @endif
 @endif
 
-<<<<<<< HEAD
-=======
 @if (isset($card->nbVotes))
 <label  class="col-md-6 col-form-label text-md-right"> Nombre de vote : </label>
 <label>{{$card->nbVotes}}</label>
 @endif
 
->>>>>>> master
 <div>
         <form action='/cards/vote/{{$card->id}}' method="get">
         @csrf

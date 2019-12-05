@@ -67,11 +67,7 @@
 			<textarea name="context" class="context" value="{{isset($context) ? $context->context_to_string : ' '}}">{{isset($context) ? $context->context_to_string : ""}}</textarea>
 		@endif
         <br>
-<<<<<<< HEAD
-		<button type="submit" class="btn btn-primary">Sauvegarder</button>
-=======
 		<button type="submit" class="btn btn-primary"> Validate </button>
->>>>>>> master
 
     </form>
 

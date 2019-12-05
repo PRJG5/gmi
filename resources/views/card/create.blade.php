@@ -26,16 +26,18 @@
 		
         <div class="form-group row" id="formLanguage">
 			<label for="language_id" class="col-md-6 col-form-label text-md-right">Langue : </label> 
-			<select name="language_id" class="language_id" type="text" value="{{$languages->id}}" title="Language" required>
-				@foreach  ($languages as $lang)
-					<option value="{{ $lang->slug }}" title="{{ $lang->content }}" >{{ $lang->content }}</option>
-				@endforeach
+			<select id="selectLanguage" name="language_id" class="language_id" type="text" {{-- value="{{$languages->id}}"--}} title="Language" required>
+					<option value="FRA" title="FRA" >FRA</option>
+					<option value="ILS" title="ILS" >ILS</option>
+				{{-- @foreach  ($languages as $lang)
+				<option value="{{ $lang->slug }}" title="{{ $lang->content }}" >{{ $lang->content }}</option>
+				@endforeach --}}
 			</select>
 		</div>       
 		
-        <div class="form-group row" id="formDomaine">
-			<label for="domain_id" class="col-md-6 col-form-label text-md-right">Langue : </label> 
-			<select name="language_id" class="domain_id" type="text" value="{{$domains->id}}" title="Domain" >
+        {{-- <div class="form-group row" id="formDomaine">
+			<label for="domain_id" class="col-md-6 col-form-label text-md-right">Domaine : </label> 
+			<select name="domain_id" class="domain_id" type="text" value="{{$domains->id}}" title="Domain" >
 				@foreach  ($domains as $domain)
 					<option value="{{ $domain->id }}" title="{{ $domain->content }}" >{{ $domain->content }}</option>
 				@endforeach
@@ -43,13 +45,13 @@
         </div> 
 
         <div class="form-group row" id="formSubDomaine">
-			<label for="subdomain_id" class="col-md-6 col-form-label text-md-right">Langue : </label> 
-			<select name="language_id" class="subdomain_id" type="text" value="{{$subdomains->id}}" title="Subdomain" >
+			<label for="subdomain_id" class="col-md-6 col-form-label text-md-right">Sous domaine : </label> 
+			<select name="subdomain_id" class="subdomain_id" type="text" value="{{$subdomains->id}}" title="Subdomain" >
 				@foreach  ($subdomains as $subdomain)
 					<option value="{{ $subdomain->id }}" title="{{ $subdomain->content }}" >{{ $subdomain->content }}</option>
 				@endforeach
 			</select>
-        </div> 
+        </div>  --}}
 
 
 		<div class="form-group row" id="formNote">
@@ -74,3 +76,20 @@
     </form>
     @extends('layouts.error')
 @endsection
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script>
+
+<script>
+	$( document ).ready(function(){
+		$("#selectLanguage").change(function() {
+			if ($("#selectLanguage").val() == "ILS" //TODO: no hard code
+				|| $("#selectLanguage").val() == "LSF"
+				|| $("#selectLanguage").val() == "???") {
+					$("#formHeadingURL").show();
+					$("#formPhonetic").hide();
+				} else {
+
+				}
+		});
+	});
+</script>
