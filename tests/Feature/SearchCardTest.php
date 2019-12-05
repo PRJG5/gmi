@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\User;
 use App\Card;
+use App\Validation;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -18,21 +19,27 @@ class SearchCardTest extends TestCase
      */
     public function test1()
     {
+        $validation = Validation::create();
         $card1 = Card::create([
             "heading" => "Persona",
-            "language_id" => "EN"]);
+            "language_id" => "EN",
+            "validation_id" => $validation->id]);
         $card2 = Card::create([
             "heading" => "Shadow",
-            "language_id" => "FR"])->create();
+            "language_id" => "FR",
+            "validation_id" => $validation->id]);
         $card3 = Card::create([
             "heading" => "Hello",
-            "language_id" => "HUY"])->create();
+            "language_id" => "HUY",
+            "validation_id" => $validation->id]);
         $card4 = Card::create([
             "heading" => "Heyololo",
-            "language_id" => "FR"])->create();
+            "language_id" => "FR",
+            "validation_id" => $validation->id]);
         $card5 = Card::create([
             "heading" => "Pouloulou",
-            "language_id" => "EN"])->create();
+            "language_id" => "EN",
+            "validation_id" => $validation->id]);
 
         $user = User::create([
             "name" => "lolo",

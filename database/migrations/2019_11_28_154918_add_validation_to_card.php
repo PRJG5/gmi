@@ -4,10 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-/**
- * New implemetation of Language with a model
- */
-class CreateLanguagesTable extends Migration
+class AddValidationToCard extends Migration
 {
     /**
      * Run the migrations.
@@ -16,12 +13,10 @@ class CreateLanguagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('languages', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('content')->unique();
-            $table->string('slug')->unique();
+        Schema::table('cards', function (Blueprint $table) {
+            $table->unsignedBigInteger('validation_id');
+            $table->foreign('validation_id')->references('id')->on('validations')->onDelete('cascade');;
         });
-
     }
 
     /**
@@ -31,8 +26,8 @@ class CreateLanguagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('languages');
+        Schema::table('cards', function (Blueprint $table) {
+            //
+        });
     }
 }
-
-
