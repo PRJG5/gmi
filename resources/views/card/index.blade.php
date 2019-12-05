@@ -14,16 +14,6 @@
     </tr>
   </thead>
     @foreach ($cards as $card)
-<<<<<<< HEAD
-    <!-- ICI LISTE DES CARTES-->
-        <div class="row">
-            <div class="col-md-4">{{$card->heading}}</div>
-            <form action='/card/{{$card->id}}' method="get">
-                @csrf
-                <button type="submit" class="btn btn-primary" style="padding-top=10px">Show</button>
-            </form>
-        </div>
-=======
         
   
   <tbody>
@@ -31,12 +21,16 @@
       <th scope="row">{{$card->heading}}</th>
       <td>{{$card->getLanguage()}}</td>
       <td>{{$card->getDefinition()}}</td>
-      <td> <button type="submit" class="btn btn-primary">Show</button></td>
+      <td>
+        <form action='/card/{{$card->id}}' method="get">
+            @csrf
+            <button type="submit" class="btn btn-primary">Show</button>
+        </form> 
+      </td>
     </tr>
     
   </tbody>
 
->>>>>>> master
     @endforeach
 
     </table>
