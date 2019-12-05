@@ -92,9 +92,10 @@
                                         <a class="dropdown-item" href="{{ route('ListingUsers') }}">
                                             {{ __('Roles') }}
                                         </a>
-                                        <a class="dropdown-item" href="/addLanguage">Ajout domaine/sous-domaine/langues</a>
+                                        <a class="dropdown-item" href="{{ route('basicData') }}">
+                                            Ajout domaines/sous-domaines/langues
+                                        </a>
                                     @endif
-
                                     <a class="dropdown-item" href="/searchCard">Chercher fiche</a>
 
                                     <form id="mesFiches-form" action="{{ route('mesFiches') }}" method="GET" style="display: none;">

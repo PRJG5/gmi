@@ -15,8 +15,7 @@ class CreateSubdomainsTable extends Migration
     {
         Schema::create('subdomains', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->timestamps();
+            $table->string('content')->unique();
         });
     }
 
