@@ -211,20 +211,6 @@ class CardController extends Controller
     {
         try { 
             Link::where('cardA', $card->id)->orWhere('cardB', $card->id)->delete();
-
-            if(Context::find($card->context_id) != null) {
-                Context::find($card->context_id)->delete();
-            }
-            if(Definition::find($card->definition_id) != null) {
-                Definition::find($card->definition_id)->delete();
-            }
-            if(Note::find($card->note_id) != null) {
-                Note::find($card->note_id)->delete();
-            }
-            if(Phonetic::find($card->phonetic_id) != null) {
-                Phonetic::find($card->phonetic_id)->delete();
-            }
-            //Vote::where('card_id', $card->id)->delete();
             $card->delete();
         } catch(\Exception $exception) {
             echo $exception;
