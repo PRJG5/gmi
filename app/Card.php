@@ -113,6 +113,7 @@ class Card extends Model
         'language_id',
         'owner_id',
         'nbVotes',
+        'validation_id',
     ];
 
     /**
@@ -140,6 +141,7 @@ class Card extends Model
 			"\tlanguage_id: "	. $this->language_id	. "\n" .
             "\towner_id: "		. $this->owner_id		. "\n" .
             "\tnbVotes: "       . $this->nbVotes        . "\n" .
+            "\tvalidation_id "  . $this->validation_id  . "\n" .
 		"}";
     }
 
