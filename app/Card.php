@@ -145,6 +145,19 @@ class Card extends Model
 		"}";
     }
 
+    public function getDefinition(){
+        if($this->definition_id != null){
+            $def = Definition::where('id','=',$this->definition_id)->get();
+       return $def[0]->definition_content;
+        }
+        return "";
+        
+   }
+    public function getLanguage(){
+         $langs = Language::where('slug','=',$this->language_id)->get();
+        return $langs[0]->content;
+         
+    }
 
 	/*
 	 * Returns all links referring to this card in an array.
