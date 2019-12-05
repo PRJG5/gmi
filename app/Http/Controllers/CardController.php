@@ -200,7 +200,7 @@ class CardController extends Controller
      */
     public function destroy(Card $card)
     {
-        try {
+        try { 
             Link::where('cardA',
                 $card->id)->orWhere('cardB',
                 $card->id)->delete();
