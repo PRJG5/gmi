@@ -21,7 +21,12 @@
       <th scope="row">{{$card->heading}}</th>
       <td>{{$card->getLanguage()}}</td>
       <td>{{$card->getDefinition()}}</td>
-      <td> <button type="submit" class="btn btn-primary">Show</button></td>
+      <td>
+          <form action='/card/{{$card->id}}' method="get">
+              @csrf
+              <button type="submit" class="btn btn-primary">Show</button>
+          </form>
+      </td>
     </tr>
     
   </tbody>
@@ -36,5 +41,6 @@
         @csrf
         <button type="submit" class="btn btn-primary">add Card</button>
     </form>
+
 </div>
     
