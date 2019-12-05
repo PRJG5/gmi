@@ -62,8 +62,11 @@ class ValidationTest extends TestCase
             'validationRate' => 80,
             'validated_at' => date('Y-m-d')
         ]);
+        $id = $validation->id;
+        $voteNb = $validation->voteNb;
+
         $this->assertDatabaseHas('validations', ['id'=>$validation->id, 'voteNb'=>$validation->voteNb]);
         $validation->delete();
-        $this->assertDatabaseMissing('validations', ['id'=>$validation->id, 'voteNb'=>$$validation->voteNb]);
+        $this->assertDatabaseMissing('validations', ['id'=>$id, 'voteNb'=>$voteNb]);
     }
 }

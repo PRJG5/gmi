@@ -1,396 +1,296 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="" tests="47" assertions="38" errors="12" warnings="0" failures="0" skipped="0" time="45.165262">
-    <testsuite name="Unit" tests="47" assertions="38" errors="12" warnings="0" failures="0" skipped="0" time="45.165262">
-      <testsuite name="Tests\Unit\CardTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\CardTest.php" tests="11" assertions="1" errors="10" warnings="0" failures="0" skipped="0" time="34.086235">
-        <testcase name="editCardOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\CardTest.php" line="27" assertions="0" time="31.581133">
-          <error type="Illuminate\Database\QueryException">Tests\Unit\CardTest::editCardOKTest
-Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'test@test.com' for key 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (Test, test@test.com, ?, test, ?, 2019-11-28 16:48:33, 2019-11-28 16:48:33))
-
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:665
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:625
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:460
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:412
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
-C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\CardTest.php:35
+  <testsuite name="" tests="57" assertions="75" errors="3" warnings="0" failures="0" skipped="0" time="2.599728">
+    <testsuite name="Unit" tests="56" assertions="60" errors="3" warnings="0" failures="0" skipped="0" time="2.552676">
+      <testsuite name="Tests\Unit\CardTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/CardTest.php" tests="14" assertions="15" errors="1" warnings="0" failures="0" skipped="0" time="2.063541">
+        <testcase name="editCardOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/CardTest.php" line="28" assertions="2" time="1.870498">
+          <system-out>
+</system-out>
+        </testcase>
+        <testcase name="editCardWithoutHeadingNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/CardTest.php" line="88" assertions="1" time="0.012888">
+          <system-out>
+</system-out>
+        </testcase>
+        <testcase name="editCardWithoutLanguageNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/CardTest.php" line="135" assertions="1" time="0.015965">
+          <system-out>
+</system-out>
+        </testcase>
+        <testcase name="editCardWithoutValidationNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/CardTest.php" line="183" assertions="1" time="0.012890">
+          <system-out>
+</system-out>
+        </testcase>
+        <testcase name="editCardWithValidationOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/CardTest.php" line="230" assertions="1" time="0.016163">
+          <system-out>
+</system-out>
+        </testcase>
+        <testcase name="editCardWithoutOwnerNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/CardTest.php" line="278" assertions="1" time="0.014814">
+          <system-out>
+</system-out>
+        </testcase>
+        <testcase name="editCardWithAllValuesSetOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/CardTest.php" line="329" assertions="2" time="0.024731">
+          <system-out>
+</system-out>
+        </testcase>
+        <testcase name="createCardWithAllValuesSetOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/CardTest.php" line="409" assertions="1" time="0.019065">
+          <system-out>
+</system-out>
+        </testcase>
+        <testcase name="createCardWithoutHeadingNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/CardTest.php" line="474" assertions="1" time="0.011770">
+          <system-out>
+</system-out>
+        </testcase>
+        <testcase name="createCardWithoutValidationNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/CardTest.php" line="507" assertions="1" time="0.011369">
+          <system-out>
+</system-out>
+        </testcase>
+        <testcase name="createCardWithoutLanguageNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/CardTest.php" line="551" assertions="1" time="0.012034">
+          <system-out>
+</system-out>
+        </testcase>
+        <testcase name="createCardWithoutOwnerNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/CardTest.php" line="582" assertions="1" time="0.010745">
+          <system-out>
+</system-out>
+        </testcase>
+        <testcase name="deleteOKCardTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/CardTest.php" line="610" assertions="1" time="0.013436">
+          <system-out>
+</system-out>
+        </testcase>
+        <testcase name="deleteNotExistingCardNotOkTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/CardTest.php" line="655" assertions="0" time="0.017173">
+          <error type="PHPUnit\Framework\RiskyTestError">Risky Test
 </error>
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="editCardWithoutHeadingNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\CardTest.php" line="81" assertions="0" time="0.251290">
-          <error type="Illuminate\Database\QueryException">Tests\Unit\CardTest::editCardWithoutHeadingNotOKTest
-Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'test@test.com' for key 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (Test, test@test.com, ?, test, ?, 2019-11-28 16:48:33, 2019-11-28 16:48:33))
-
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:665
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:625
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:460
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:412
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
-C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\CardTest.php:88
-</error>
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="editCardWithoutLanguageNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\CardTest.php" line="124" assertions="0" time="0.217334">
-          <error type="Illuminate\Database\QueryException">Tests\Unit\CardTest::editCardWithoutLanguageNotOKTest
-Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'test@test.com' for key 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (Test, test@test.com, ?, test, ?, 2019-11-28 16:48:34, 2019-11-28 16:48:34))
-
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:665
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:625
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:460
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:412
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
-C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\CardTest.php:131
-</error>
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="editCardWithoutOwnerNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\CardTest.php" line="167" assertions="0" time="0.206588">
-          <error type="Illuminate\Database\QueryException">Tests\Unit\CardTest::editCardWithoutOwnerNotOKTest
-Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'test@test.com' for key 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (Test, test@test.com, ?, test, ?, 2019-11-28 16:48:34, 2019-11-28 16:48:34))
-
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:665
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:625
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:460
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:412
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
-C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\CardTest.php:174
-</error>
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="editCardWithAllValuesSetOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\CardTest.php" line="211" assertions="0" time="0.209126">
-          <error type="Illuminate\Database\QueryException">Tests\Unit\CardTest::editCardWithAllValuesSetOKTest
-Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'test@test.com' for key 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (Test, test@test.com, ?, test, ?, 2019-11-28 16:48:34, 2019-11-28 16:48:34))
-
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:665
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:625
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:460
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:412
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
-C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\CardTest.php:219
-</error>
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="createCardWithAllValuesSetOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\CardTest.php" line="286" assertions="0" time="0.240192">
-          <error type="Illuminate\Database\QueryException">Tests\Unit\CardTest::createCardWithAllValuesSetOKTest
-Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'test@test.com' for key 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (Test, test@test.com, ?, test, ?, 2019-11-28 16:48:34, 2019-11-28 16:48:34))
-
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:665
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:625
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:460
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:412
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
-C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\CardTest.php:294
-</error>
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="createCardWithoutHeadingNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\CardTest.php" line="346" assertions="0" time="0.234291">
-          <error type="Illuminate\Database\QueryException">Tests\Unit\CardTest::createCardWithoutHeadingNotOKTest
-Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'test@test.com' for key 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (Test, test@test.com, ?, test, ?, 2019-11-28 16:48:35, 2019-11-28 16:48:35))
-
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:665
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:625
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:460
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:412
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
-C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\CardTest.php:353
-</error>
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="createCardWithoutLanguageNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\CardTest.php" line="375" assertions="0" time="0.273361">
-          <error type="Illuminate\Database\QueryException">Tests\Unit\CardTest::createCardWithoutLanguageNotOKTest
-Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'test@test.com' for key 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (Test, test@test.com, ?, test, ?, 2019-11-28 16:48:35, 2019-11-28 16:48:35))
-
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:665
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:625
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:460
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:412
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
-C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\CardTest.php:382
-</error>
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="createCardWithoutOwnerNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\CardTest.php" line="403" assertions="1" time="0.170583">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="deleteOKCardTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\CardTest.php" line="428" assertions="0" time="0.445724">
-          <error type="Illuminate\Database\QueryException">Tests\Unit\CardTest::deleteOKCardTest
-Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'test@test.com' for key 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (Test, test@test.com, ?, test, ?, 2019-11-28 16:48:35, 2019-11-28 16:48:35))
-
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:665
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:625
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:460
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:412
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
-C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\CardTest.php:435
-</error>
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="deleteNotExistingCardNotOkTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\CardTest.php" line="469" assertions="0" time="0.256612">
-          <error type="Illuminate\Database\QueryException">Tests\Unit\CardTest::deleteNotExistingCardNotOkTest
-Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'test@test.com' for key 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (Test, test@test.com, ?, test, ?, 2019-11-28 16:48:36, 2019-11-28 16:48:36))
-
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:665
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:625
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:460
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:412
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
-C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\CardTest.php:476
-</error>
-          <system-out>&#13;
+          <system-out>
 </system-out>
         </testcase>
       </testsuite>
-      <testsuite name="Tests\Unit\ContextTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\ContextTest.php" tests="4" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="1.099276">
-        <testcase name="testValidInsertion" class="Tests\Unit\ContextTest" classname="Tests.Unit.ContextTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\ContextTest.php" line="18" assertions="1" time="0.354609">
-          <system-out>&#13;
+      <testsuite name="Tests\Unit\ContextTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/ContextTest.php" tests="4" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.038503">
+        <testcase name="testValidInsertion" class="Tests\Unit\ContextTest" classname="Tests.Unit.ContextTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/ContextTest.php" line="18" assertions="1" time="0.010486">
+          <system-out>
 </system-out>
         </testcase>
-        <testcase name="testInsertNullDescription" class="Tests\Unit\ContextTest" classname="Tests.Unit.ContextTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\ContextTest.php" line="36" assertions="1" time="0.189487">
-          <system-out>&#13;
+        <testcase name="testInsertNullDescription" class="Tests\Unit\ContextTest" classname="Tests.Unit.ContextTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/ContextTest.php" line="36" assertions="1" time="0.007542">
+          <system-out>
 </system-out>
         </testcase>
-        <testcase name="testIfDeleted" class="Tests\Unit\ContextTest" classname="Tests.Unit.ContextTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\ContextTest.php" line="45" assertions="1" time="0.236552">
-          <system-out>&#13;
+        <testcase name="testIfDeleted" class="Tests\Unit\ContextTest" classname="Tests.Unit.ContextTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/ContextTest.php" line="45" assertions="1" time="0.009945">
+          <system-out>
 </system-out>
         </testcase>
-        <testcase name="testToString" class="Tests\Unit\ContextTest" classname="Tests.Unit.ContextTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\ContextTest.php" line="60" assertions="1" time="0.318628">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-      </testsuite>
-      <testsuite name="Tests\Unit\DefinitionTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\DefinitionTest.php" tests="4" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="1.738577">
-        <testcase name="testDefinitionWithContent" class="Tests\Unit\DefinitionTest" classname="Tests.Unit.DefinitionTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\DefinitionTest.php" line="15" assertions="1" time="0.407204">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="testDefinitionWithId" class="Tests\Unit\DefinitionTest" classname="Tests.Unit.DefinitionTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\DefinitionTest.php" line="30" assertions="1" time="0.352884">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="testDefinitionMissing" class="Tests\Unit\DefinitionTest" classname="Tests.Unit.DefinitionTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\DefinitionTest.php" line="45" assertions="1" time="0.348340">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="testDefinitionToString" class="Tests\Unit\DefinitionTest" classname="Tests.Unit.DefinitionTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\DefinitionTest.php" line="59" assertions="1" time="0.630149">
-          <system-out>&#13;
+        <testcase name="testToString" class="Tests\Unit\ContextTest" classname="Tests.Unit.ContextTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/ContextTest.php" line="60" assertions="1" time="0.010530">
+          <system-out>
 </system-out>
         </testcase>
       </testsuite>
-      <testsuite name="Tests\Unit\EnumDomainTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\EnumDomainTest.php" tests="3" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.457262">
-        <testcase name="testGetKEYOne" class="Tests\Unit\EnumDomainTest" classname="Tests.Unit.EnumDomainTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\EnumDomainTest.php" line="24" assertions="1" time="0.156980">
-          <system-out>&#13;
+      <testsuite name="Tests\Unit\DefinitionTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/DefinitionTest.php" tests="4" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.052847">
+        <testcase name="testDefinitionWithContent" class="Tests\Unit\DefinitionTest" classname="Tests.Unit.DefinitionTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/DefinitionTest.php" line="15" assertions="1" time="0.013916">
+          <system-out>
 </system-out>
         </testcase>
-        <testcase name="testGetKeyTwo" class="Tests\Unit\EnumDomainTest" classname="Tests.Unit.EnumDomainTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\EnumDomainTest.php" line="32" assertions="1" time="0.151183">
-          <system-out>&#13;
+        <testcase name="testDefinitionWithId" class="Tests\Unit\DefinitionTest" classname="Tests.Unit.DefinitionTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/DefinitionTest.php" line="30" assertions="1" time="0.012432">
+          <system-out>
 </system-out>
         </testcase>
-        <testcase name="testGetDescription" class="Tests\Unit\EnumDomainTest" classname="Tests.Unit.EnumDomainTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\EnumDomainTest.php" line="37" assertions="1" time="0.149099">
-          <system-out>&#13;
+        <testcase name="testDefinitionMissing" class="Tests\Unit\DefinitionTest" classname="Tests.Unit.DefinitionTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/DefinitionTest.php" line="45" assertions="1" time="0.013399">
+          <system-out>
 </system-out>
         </testcase>
-      </testsuite>
-      <testsuite name="Tests\Unit\EnumLanguageTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\EnumLanguageTest.php" tests="4" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.609164">
-        <testcase name="TestSizeLanguage" class="Tests\Unit\EnumLanguageTest" classname="Tests.Unit.EnumLanguageTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\EnumLanguageTest.php" line="17" assertions="1" time="0.149544">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="TestFindLanguage" class="Tests\Unit\EnumLanguageTest" classname="Tests.Unit.EnumLanguageTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\EnumLanguageTest.php" line="28" assertions="1" time="0.148606">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="TestNumberLanguage" class="Tests\Unit\EnumLanguageTest" classname="Tests.Unit.EnumLanguageTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\EnumLanguageTest.php" line="38" assertions="1" time="0.157673">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="LanguageDescriptionTest" class="Tests\Unit\EnumLanguageTest" classname="Tests.Unit.EnumLanguageTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\EnumLanguageTest.php" line="48" assertions="1" time="0.153341">
-          <system-out>&#13;
+        <testcase name="testDefinitionToString" class="Tests\Unit\DefinitionTest" classname="Tests.Unit.DefinitionTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/DefinitionTest.php" line="59" assertions="1" time="0.013100">
+          <system-out>
 </system-out>
         </testcase>
       </testsuite>
-      <testsuite name="Tests\Unit\EnumSubdomainTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\EnumSubdomainTest.php" tests="3" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.470152">
-        <testcase name="testGetKEYOne" class="Tests\Unit\EnumSubdomainTest" classname="Tests.Unit.EnumSubdomainTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\EnumSubdomainTest.php" line="24" assertions="1" time="0.156307">
-          <system-out>&#13;
+      <testsuite name="Tests\Unit\DomainTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/DomainTest.php" tests="2" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.029925">
+        <testcase name="testDomainInsert" class="Tests\Unit\DomainTest" classname="Tests.Unit.DomainTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/DomainTest.php" line="13" assertions="1" time="0.016334">
+          <system-out>
 </system-out>
         </testcase>
-        <testcase name="testGetKeyTwo" class="Tests\Unit\EnumSubdomainTest" classname="Tests.Unit.EnumSubdomainTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\EnumSubdomainTest.php" line="32" assertions="1" time="0.153270">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="testGetDescription" class="Tests\Unit\EnumSubdomainTest" classname="Tests.Unit.EnumSubdomainTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\EnumSubdomainTest.php" line="37" assertions="1" time="0.160575">
-          <system-out>&#13;
+        <testcase name="testDomainDelete" class="Tests\Unit\DomainTest" classname="Tests.Unit.DomainTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/DomainTest.php" line="24" assertions="1" time="0.013591">
+          <system-out>
 </system-out>
         </testcase>
       </testsuite>
-      <testsuite name="Tests\Unit\LinkTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\LinkTest.php" tests="2" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.844967">
-        <testcase name="testGetA" class="Tests\Unit\LinkTest" classname="Tests.Unit.LinkTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\LinkTest.php" line="24" assertions="1" time="0.528086">
-          <system-out>&#13;
+      <testsuite name="Tests\Unit\EnumDomainTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/EnumDomainTest.php" tests="3" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.017547">
+        <testcase name="testGetKEYOne" class="Tests\Unit\EnumDomainTest" classname="Tests.Unit.EnumDomainTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/EnumDomainTest.php" line="24" assertions="1" time="0.005132">
+          <system-out>
 </system-out>
         </testcase>
-        <testcase name="testGetB" class="Tests\Unit\LinkTest" classname="Tests.Unit.LinkTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\LinkTest.php" line="36" assertions="1" time="0.316881">
-          <system-out>&#13;
+        <testcase name="testGetKeyTwo" class="Tests\Unit\EnumDomainTest" classname="Tests.Unit.EnumDomainTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/EnumDomainTest.php" line="32" assertions="1" time="0.006560">
+          <system-out>
 </system-out>
         </testcase>
-      </testsuite>
-      <testsuite name="Tests\Unit\NoteTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\NoteTest.php" tests="4" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="1.783184">
-        <testcase name="testRegisterNullDescription" class="Tests\Unit\NoteTest" classname="Tests.Unit.NoteTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\NoteTest.php" line="13" assertions="1" time="0.498096">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="testRegisterWithDescription" class="Tests\Unit\NoteTest" classname="Tests.Unit.NoteTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\NoteTest.php" line="26" assertions="1" time="0.402133">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="testIfDeleted" class="Tests\Unit\NoteTest" classname="Tests.Unit.NoteTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\NoteTest.php" line="40" assertions="1" time="0.454122">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="testToString" class="Tests\Unit\NoteTest" classname="Tests.Unit.NoteTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\NoteTest.php" line="52" assertions="1" time="0.428833">
-          <system-out>&#13;
+        <testcase name="testGetDescription" class="Tests\Unit\EnumDomainTest" classname="Tests.Unit.EnumDomainTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/EnumDomainTest.php" line="37" assertions="1" time="0.005855">
+          <system-out>
 </system-out>
         </testcase>
       </testsuite>
-      <testsuite name="Tests\Unit\PhoneticTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\PhoneticTest.php" tests="3" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="1.017328">
-        <testcase name="testInsertDb" class="Tests\Unit\PhoneticTest" classname="Tests.Unit.PhoneticTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\PhoneticTest.php" line="16" assertions="1" time="0.382214">
-          <system-out>&#13;
+      <testsuite name="Tests\Unit\EnumLanguageTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/EnumLanguageTest.php" tests="4" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.019836">
+        <testcase name="TestSizeLanguage" class="Tests\Unit\EnumLanguageTest" classname="Tests.Unit.EnumLanguageTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/EnumLanguageTest.php" line="17" assertions="1" time="0.006216">
+          <system-out>
 </system-out>
         </testcase>
-        <testcase name="testInsertDbSpecialChar" class="Tests\Unit\PhoneticTest" classname="Tests.Unit.PhoneticTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\PhoneticTest.php" line="32" assertions="1" time="0.343148">
-          <system-out>&#13;
+        <testcase name="TestFindLanguage" class="Tests\Unit\EnumLanguageTest" classname="Tests.Unit.EnumLanguageTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/EnumLanguageTest.php" line="28" assertions="1" time="0.006018">
+          <system-out>
 </system-out>
         </testcase>
-        <testcase name="testDeleteDb" class="Tests\Unit\PhoneticTest" classname="Tests.Unit.PhoneticTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\PhoneticTest.php" line="43" assertions="2" time="0.291966">
-          <system-out>&#13;
+        <testcase name="TestNumberLanguage" class="Tests\Unit\EnumLanguageTest" classname="Tests.Unit.EnumLanguageTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/EnumLanguageTest.php" line="38" assertions="1" time="0.003688">
+          <system-out>
 </system-out>
         </testcase>
-      </testsuite>
-      <testsuite name="Tests\Unit\SpokenLanguageTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\SpokenLanguageTest.php" tests="4" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="1.399314">
-        <testcase name="add_user_one_lang_ok" class="Tests\Unit\SpokenLanguageTest" classname="Tests.Unit.SpokenLanguageTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\SpokenLanguageTest.php" line="17" assertions="1" time="0.394498">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="add_user_with_two_lang_ok" class="Tests\Unit\SpokenLanguageTest" classname="Tests.Unit.SpokenLanguageTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\SpokenLanguageTest.php" line="39" assertions="2" time="0.292433">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="add_two_users_with_same_lang" class="Tests\Unit\SpokenLanguageTest" classname="Tests.Unit.SpokenLanguageTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\SpokenLanguageTest.php" line="70" assertions="2" time="0.324793">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="add_user_with_two_same_lang" class="Tests\Unit\SpokenLanguageTest" classname="Tests.Unit.SpokenLanguageTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\SpokenLanguageTest.php" line="107" assertions="1" time="0.387590">
-          <system-out>&#13;
+        <testcase name="LanguageDescriptionTest" class="Tests\Unit\EnumLanguageTest" classname="Tests.Unit.EnumLanguageTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/EnumLanguageTest.php" line="48" assertions="1" time="0.003914">
+          <system-out>
 </system-out>
         </testcase>
       </testsuite>
-      <testsuite name="Tests\Unit\UserTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\UserTest.php" tests="3" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="1.023283">
-        <testcase name="add_user_ok" class="Tests\Unit\UserTest" classname="Tests.Unit.UserTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\UserTest.php" line="15" assertions="1" time="0.377138">
-          <system-out>&#13;
+      <testsuite name="Tests\Unit\EnumSubdomainTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/EnumSubdomainTest.php" tests="3" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.021396">
+        <testcase name="testGetKEYOne" class="Tests\Unit\EnumSubdomainTest" classname="Tests.Unit.EnumSubdomainTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/EnumSubdomainTest.php" line="24" assertions="1" time="0.004105">
+          <system-out>
 </system-out>
         </testcase>
-        <testcase name="add_user_email_already_used" class="Tests\Unit\UserTest" classname="Tests.Unit.UserTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\UserTest.php" line="31" assertions="1" time="0.407760">
-          <system-out>&#13;
+        <testcase name="testGetKeyTwo" class="Tests\Unit\EnumSubdomainTest" classname="Tests.Unit.EnumSubdomainTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/EnumSubdomainTest.php" line="32" assertions="1" time="0.012836">
+          <system-out>
 </system-out>
         </testcase>
-        <testcase name="add_user_name_too_short" class="Tests\Unit\UserTest" classname="Tests.Unit.UserTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\UserTest.php" line="48" assertions="1" time="0.238385">
-          <system-out>&#13;
+        <testcase name="testGetDescription" class="Tests\Unit\EnumSubdomainTest" classname="Tests.Unit.EnumSubdomainTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/EnumSubdomainTest.php" line="37" assertions="1" time="0.004455">
+          <system-out>
 </system-out>
         </testcase>
       </testsuite>
-      <testsuite name="Tests\Unit\VoteTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\VoteTest.php" tests="2" assertions="0" errors="2" warnings="0" failures="0" skipped="0" time="0.636520">
-        <testcase name="testVoteInsert" class="Tests\Unit\VoteTest" classname="Tests.Unit.VoteTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\VoteTest.php" line="15" assertions="0" time="0.351882">
+      <testsuite name="Tests\Unit\LinkTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/LinkTest.php" tests="3" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.038095">
+        <testcase name="linkOkTest" class="Tests\Unit\LinkTest" classname="Tests.Unit.LinkTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/LinkTest.php" line="21" assertions="1" time="0.014111">
+          <system-out>
+</system-out>
+        </testcase>
+        <testcase name="linkWithSameCardTest" class="Tests\Unit\LinkTest" classname="Tests.Unit.LinkTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/LinkTest.php" line="43" assertions="1" time="0.012652">
+          <system-out>
+</system-out>
+        </testcase>
+        <testcase name="twoSameLinksNotOKTest" class="Tests\Unit\LinkTest" classname="Tests.Unit.LinkTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/LinkTest.php" line="60" assertions="1" time="0.011332">
+          <system-out>
+</system-out>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Unit\NoteTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/NoteTest.php" tests="4" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.062820">
+        <testcase name="testRegisterNullDescription" class="Tests\Unit\NoteTest" classname="Tests.Unit.NoteTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/NoteTest.php" line="13" assertions="1" time="0.014561">
+          <system-out>
+</system-out>
+        </testcase>
+        <testcase name="testRegisterWithDescription" class="Tests\Unit\NoteTest" classname="Tests.Unit.NoteTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/NoteTest.php" line="26" assertions="1" time="0.014464">
+          <system-out>
+</system-out>
+        </testcase>
+        <testcase name="testIfDeleted" class="Tests\Unit\NoteTest" classname="Tests.Unit.NoteTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/NoteTest.php" line="40" assertions="1" time="0.017880">
+          <system-out>
+</system-out>
+        </testcase>
+        <testcase name="testToString" class="Tests\Unit\NoteTest" classname="Tests.Unit.NoteTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/NoteTest.php" line="52" assertions="1" time="0.015915">
+          <system-out>
+</system-out>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Unit\PhoneticTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/PhoneticTest.php" tests="3" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.064140">
+        <testcase name="testInsertDb" class="Tests\Unit\PhoneticTest" classname="Tests.Unit.PhoneticTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/PhoneticTest.php" line="16" assertions="1" time="0.017268">
+          <system-out>
+</system-out>
+        </testcase>
+        <testcase name="testInsertDbSpecialChar" class="Tests\Unit\PhoneticTest" classname="Tests.Unit.PhoneticTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/PhoneticTest.php" line="32" assertions="1" time="0.021358">
+          <system-out>
+</system-out>
+        </testcase>
+        <testcase name="testDeleteDb" class="Tests\Unit\PhoneticTest" classname="Tests.Unit.PhoneticTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/PhoneticTest.php" line="43" assertions="2" time="0.025514">
+          <system-out>
+</system-out>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Unit\SpokenLanguageTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/SpokenLanguageTest.php" tests="4" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.061826">
+        <testcase name="add_user_one_lang_ok" class="Tests\Unit\SpokenLanguageTest" classname="Tests.Unit.SpokenLanguageTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/SpokenLanguageTest.php" line="17" assertions="1" time="0.021259">
+          <system-out>
+</system-out>
+        </testcase>
+        <testcase name="add_user_with_two_lang_ok" class="Tests\Unit\SpokenLanguageTest" classname="Tests.Unit.SpokenLanguageTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/SpokenLanguageTest.php" line="39" assertions="2" time="0.014465">
+          <system-out>
+</system-out>
+        </testcase>
+        <testcase name="add_two_users_with_same_lang" class="Tests\Unit\SpokenLanguageTest" classname="Tests.Unit.SpokenLanguageTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/SpokenLanguageTest.php" line="70" assertions="2" time="0.014817">
+          <system-out>
+</system-out>
+        </testcase>
+        <testcase name="add_user_with_two_same_lang" class="Tests\Unit\SpokenLanguageTest" classname="Tests.Unit.SpokenLanguageTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/SpokenLanguageTest.php" line="107" assertions="1" time="0.011285">
+          <system-out>
+</system-out>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Unit\UserTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/UserTest.php" tests="3" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.030786">
+        <testcase name="add_user_ok" class="Tests\Unit\UserTest" classname="Tests.Unit.UserTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/UserTest.php" line="15" assertions="1" time="0.010528">
+          <system-out>
+</system-out>
+        </testcase>
+        <testcase name="add_user_email_already_used" class="Tests\Unit\UserTest" classname="Tests.Unit.UserTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/UserTest.php" line="31" assertions="1" time="0.009807">
+          <system-out>
+</system-out>
+        </testcase>
+        <testcase name="add_user_name_too_short" class="Tests\Unit\UserTest" classname="Tests.Unit.UserTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/UserTest.php" line="48" assertions="1" time="0.010451">
+          <system-out>
+</system-out>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Unit\ValidationTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/ValidationTest.php" tests="3" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="0.032746">
+        <testcase name="createValidation" class="Tests\Unit\ValidationTest" classname="Tests.Unit.ValidationTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/ValidationTest.php" line="22" assertions="1" time="0.010251">
+          <system-out>
+</system-out>
+        </testcase>
+        <testcase name="updateValidation" class="Tests\Unit\ValidationTest" classname="Tests.Unit.ValidationTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/ValidationTest.php" line="38" assertions="2" time="0.012095">
+          <system-out>
+</system-out>
+        </testcase>
+        <testcase name="deleteValidation" class="Tests\Unit\ValidationTest" classname="Tests.Unit.ValidationTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/ValidationTest.php" line="58" assertions="2" time="0.010400">
+          <system-out>
+</system-out>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Unit\VoteTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/VoteTest.php" tests="2" assertions="0" errors="2" warnings="0" failures="0" skipped="0" time="0.018668">
+        <testcase name="testVoteInsert" class="Tests\Unit\VoteTest" classname="Tests.Unit.VoteTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/VoteTest.php" line="15" assertions="0" time="0.010072">
           <error type="Illuminate\Database\QueryException">Tests\Unit\VoteTest::testVoteInsert
-Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`laravel`.`votes`, CONSTRAINT `votes_card_id_foreign` FOREIGN KEY (`card_id`) REFERENCES `cards` (`id`)) (SQL: insert into `votes` (`user_id`, `card_id`) values (1, 7))
+Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`gmi`.`votes`, CONSTRAINT `votes_card_id_foreign` FOREIGN KEY (`card_id`) REFERENCES `cards` (`id`)) (SQL: insert into `votes` (`user_id`, `card_id`) values (1, 7))
 
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:665
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:625
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:460
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:412
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
-C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\VoteTest.php:20
+/home/ciskeh/Documents/PRJG5/gmi/vendor/laravel/framework/src/Illuminate/Database/Connection.php:665
+/home/ciskeh/Documents/PRJG5/gmi/vendor/laravel/framework/src/Illuminate/Database/Connection.php:625
+/home/ciskeh/Documents/PRJG5/gmi/vendor/laravel/framework/src/Illuminate/Database/Connection.php:460
+/home/ciskeh/Documents/PRJG5/gmi/vendor/laravel/framework/src/Illuminate/Database/Connection.php:412
+/home/ciskeh/Documents/PRJG5/gmi/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/Processor.php:32
+/home/ciskeh/Documents/PRJG5/gmi/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:2670
+/home/ciskeh/Documents/PRJG5/gmi/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php:1350
+/home/ciskeh/Documents/PRJG5/gmi/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php:839
+/home/ciskeh/Documents/PRJG5/gmi/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php:804
+/home/ciskeh/Documents/PRJG5/gmi/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php:667
+/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/VoteTest.php:20
 </error>
-          <system-out>&#13;
+          <system-out>
 </system-out>
         </testcase>
-        <testcase name="testVoteDelete" class="Tests\Unit\VoteTest" classname="Tests.Unit.VoteTest" file="C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\VoteTest.php" line="27" assertions="0" time="0.284638">
+        <testcase name="testVoteDelete" class="Tests\Unit\VoteTest" classname="Tests.Unit.VoteTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/VoteTest.php" line="27" assertions="0" time="0.008596">
           <error type="Illuminate\Database\QueryException">Tests\Unit\VoteTest::testVoteDelete
-Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`laravel`.`votes`, CONSTRAINT `votes_card_id_foreign` FOREIGN KEY (`card_id`) REFERENCES `cards` (`id`)) (SQL: insert into `votes` (`user_id`, `card_id`) values (2, 8))
+Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`gmi`.`votes`, CONSTRAINT `votes_card_id_foreign` FOREIGN KEY (`card_id`) REFERENCES `cards` (`id`)) (SQL: insert into `votes` (`user_id`, `card_id`) values (2, 8))
 
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:665
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:625
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:460
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:412
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
-C:\Users\g45022\Documents\SonarGMI\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
-C:\Users\g45022\Documents\SonarGMI\gmi\tests\Unit\VoteTest.php:31
+/home/ciskeh/Documents/PRJG5/gmi/vendor/laravel/framework/src/Illuminate/Database/Connection.php:665
+/home/ciskeh/Documents/PRJG5/gmi/vendor/laravel/framework/src/Illuminate/Database/Connection.php:625
+/home/ciskeh/Documents/PRJG5/gmi/vendor/laravel/framework/src/Illuminate/Database/Connection.php:460
+/home/ciskeh/Documents/PRJG5/gmi/vendor/laravel/framework/src/Illuminate/Database/Connection.php:412
+/home/ciskeh/Documents/PRJG5/gmi/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/Processor.php:32
+/home/ciskeh/Documents/PRJG5/gmi/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:2670
+/home/ciskeh/Documents/PRJG5/gmi/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php:1350
+/home/ciskeh/Documents/PRJG5/gmi/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php:839
+/home/ciskeh/Documents/PRJG5/gmi/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php:804
+/home/ciskeh/Documents/PRJG5/gmi/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php:667
+/home/ciskeh/Documents/PRJG5/gmi/tests/Unit/VoteTest.php:31
 </error>
-          <system-out>&#13;
+          <system-out>
+</system-out>
+        </testcase>
+      </testsuite>
+    </testsuite>
+    <testsuite name="Feature" tests="1" assertions="15" errors="0" warnings="0" failures="0" skipped="0" time="0.047052">
+      <testsuite name="Tests\Feature\SearchCardTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Feature/SearchCardTest.php" tests="1" assertions="15" errors="0" warnings="0" failures="0" skipped="0" time="0.047052">
+        <testcase name="test1" class="Tests\Feature\SearchCardTest" classname="Tests.Feature.SearchCardTest" file="/home/ciskeh/Documents/PRJG5/gmi/tests/Feature/SearchCardTest.php" line="20" assertions="15" time="0.047052">
+          <system-out>
 </system-out>
         </testcase>
       </testsuite>
