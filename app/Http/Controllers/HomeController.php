@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Card;
-use App\Enums\Language;
+use App\Language;
 use Illuminate\Http\Request;
 use App\User;
 
@@ -63,7 +63,7 @@ class HomeController extends Controller
                             ->get();
         }
     
-        return view('searchCard', ['cards' => $cards, 'languages' => Language::getKeys()]);
+        return view('searchCard', ['cards' => $cards, 'languages' => Language::all()]);
     }
 
     public function indexUsers(){

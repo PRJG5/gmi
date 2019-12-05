@@ -21,26 +21,21 @@
 
 		<label for="phonetic" class="col-md-6 col-form-label text-md-right">Phonetic:</label>
 		<input name="phonetic" class="phonetic" type="text" placeholder="Phonetic" value="{{isset($phonetic) ? $phonetic->textDescription : ' '}}" title="Phonetic"/>
-		
-        <!--METTRE LES VALEURS PAR DEFAUT A DOMAIN ET SUBDOMAIN-->
 
-        @if (!isset($card) || in_array($card->domain_id, $domain))
-		<label for="domain_id" class="col-md-6 col-form-label text-md-right">Domain:</label>
+        <!--METTRE LES VALEURS PAR DEFAUT A DOMAIN ET SUBDOMAIN-->
+        <label for="domain_id" class="col-md-6 col-form-label text-md-right">Domain:</label>
 		<select name="domain_id" class="domain_id" type="text" value="{{$card->domain_id}}" title="Domain">
 			@foreach($domain as $dom)
-			<option value="{{ $dom->key}}" {{ (isset($card) && ($card->domain_id == $dom->key)) ? 'selected' : ''}} title="{{ $dom->description }}" >{{ $dom->description }}</option>
+			<option value="{{ $dom->id}}" {{ (isset($card) && ($card->domain_id == $dom->id)) ? 'selected' : ''}} title="{{ $dom->content }}" >{{ $dom->content }}</option>
 			@endforeach
 		</select>
-		@endif
 
-		@if (!isset($card) || in_array($card->subdomain_id, $subdomain))
 		<label for="subdomain_id" class="col-md-6 col-form-label text-md-right">Subdomain:</label>
 		<select name="subdomain_id" class="subdomain_id" type="text" value="{{$card->subdomain_id}}" title="Subdomain">
 			@foreach($subdomain as $subdom)
-			<option value="{{ $subdom->key}}" {{ (isset($card) && ($card->subdomain_id == $subdom->key)) ? 'selected' : ''}} title="{{ $subdom->description }}" >{{ $subdom->description }}</option>
+			<option value="{{ $subdom->id}}" {{ (isset($card) && ($card->subdomain_id == $subdom->id)) ? 'selected' : ''}} title="{{ $subdom->content }}" >{{ $subdom->content }}</option>
 			@endforeach
 		</select>
-		@endif
 
 
 		<label for="definition" class="col-md-6 col-form-label text-md-right">Definition:</label>
@@ -53,7 +48,7 @@
 		<textarea name="context" class="context" value="{{isset($context) ? $context->context_to_string : ' '}}">{{isset($context) ? $context->context_to_string : ""}}</textarea>
 
         <br>
-		<button type="submit" class="btn btn-primary"> Edit Card</button>
+		<button type="submit" class="btn btn-primary"> Validate </button>
 
     </form>
 

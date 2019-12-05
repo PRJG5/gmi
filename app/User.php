@@ -64,15 +64,12 @@ class User extends Authenticatable
     public function getLanguages(){
         $languages = [];
         if($this->role == Enums\Roles::ADMIN){
-            foreach(Language::get()->toarray() as $language){
-                $languages[] = (object) array('key' => $language['slug'], 'description' => $language['content']);
-            }
-        }
-        foreach(SpokenLanguages::select('languageISO')->where('user_id',$this->id)->get()->toarray() as $language){
-            $languages[] = (object) array('key' => $language['languageISO'], 'description' => Language::where('slug',$language['languageISO'])->first()->content);
+            return Language::all();
+        }else{
+
+            return SpokenLanguages::join('languages', 'spoken_languages.languageISO', '=', 'languages.slug')->where('user_id',$this->id)->get();
         }
 
-        return $languages;
     }
 
     /**

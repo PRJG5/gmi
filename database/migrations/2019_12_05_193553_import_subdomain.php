@@ -1,8 +1,10 @@
 <?php
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-class AddValidationToCard extends Migration
+
+class ImportSubdomain extends Migration
 {
     /**
      * Run the migrations.
@@ -11,11 +13,9 @@ class AddValidationToCard extends Migration
      */
     public function up()
     {
-        Schema::table('cards', function (Blueprint $table) {
-            $table->unsignedBigInteger('validation_id');
-            $table->foreign('validation_id')->references('id')->on('validations')->onDelete('cascade');;
-        });
+        App\Http\Controllers\SubDomainController::importFile(resource_path('excels/SubDomains.xlsx'));
     }
+
     /**
      * Reverse the migrations.
      *
@@ -23,6 +23,6 @@ class AddValidationToCard extends Migration
      */
     public function down()
     {
-
+        //
     }
 }

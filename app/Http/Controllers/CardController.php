@@ -7,17 +7,18 @@ define("FORMAT_DESCRIPTION", "Pour consulter votre carte, veuillez suivre ce lie
 
 
 use App\Card;
-use App\Enums\Domain;
+use App\Domain;
+use App\Language;
 use App\Phonetic;
 use App\Link;
 use App\Note;
 use App\Context;
 use App\Definition;
+use App\Subdomain;
 use App\User;
 use App\vote;
-use App\Enums\Language;
-use App\Enums\Subdomain;
 use App\Validation;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -49,8 +50,8 @@ class CardController extends Controller
     public function create()
     {
         return view('card.create', [
-            'domain' 	=> Domain::getInstances(),
-            'subdomain' => Subdomain::getInstances(),
+            'domain' 	=> Domain::all(),
+            'subdomain' => Subdomain::all(),
 			'languages' => Auth::user()->getLanguages()
         ]);
     }
@@ -140,9 +141,9 @@ class CardController extends Controller
     {
         return view('card.show', [
 			'card' 		=> $card,
-			'domain' 	=> Domain::getInstances(),
-			'languages' => DB::table("cards")->where('language_id',$card->language_id),
-			'subdomain' => Subdomain::getInstances(),
+			'domain' 	=> Domain::all()->where('id',$card->domain_id)->first(),
+			'languages' => Language::all()->where('slug',$card->language_id)->first(),
+			'subdomain' => Subdomain::all()->where('id',$card->subdomain_id)->first(),
             'owner' 	=> User::find($card->owner_id),
             'phonetic'  => DB::table('phonetics')->where('id', $card->phonetic_id)->first(),
             'note'      => DB::table('notes')->where('id', $card->note_id)->first(),
@@ -161,13 +162,14 @@ class CardController extends Controller
     {
         $subject = sprintf(FORMAT_SUBJECT, $card->heading);
         $description = sprintf(FORMAT_DESCRIPTION, $_SERVER['HTTP_HOST'], $card->card_id);
+
         return view('card.edit', [
             'mail'      => ["subject" => urlencode($subject),'description' => urlencode($description)],
             'card' 		=> $card,
-			'domain' 	=> Domain::getInstances(),
-			'languages' => DB::table("cards")->where('id',$card->language_id),
-			'subdomain' => Subdomain::getInstances(),
-            'owner' 	=> User::find($card->owner_id),
+			'domain' 	=> Domain::all(),
+			'languages' => DB::table("cards")->where('id',$card->language_id)->first(),
+			'subdomain' => Subdomain::all(),
+            'owner' 	=> User::find($card->owner_id)->first(),
             'phonetic'  => DB::table('phonetics')->where('id', $card->phonetic_id)->first(),
             'note'      => DB::table('notes')->where('id', $card->note_id)->first(),
             'context'   => DB::table('contexts')->where('id',$card->context_id)->first(),
@@ -211,17 +213,26 @@ class CardController extends Controller
             Link::where('cardA',
                 $card->id)->orWhere('cardB',
                 $card->id)->delete();
-            Context::find($card->context_id)->delete();
-            Definition::find($card->definition_id)->delete();
-            Note::find($card->note_id)->delete();
-            Phonetic::find($card->phonetic_id)->delete();
+
+            if(Context::find($card->context_id) != null) {
+                Context::find($card->context_id)->delete();
+            }
+            if(Definition::find($card->definition_id) != null) {
+                Definition::find($card->definition_id)->delete();
+            }
+            if(Note::find($card->note_id) != null) {
+                Note::find($card->note_id)->delete();
+            }
+            if(Phonetic::find($card->phonetic_id) != null) {
+                Phonetic::find($card->phonetic_id)->delete();
+            }
             Vote::where('card_id',
                 $card->id)->delete();
             $card->delete();
         } catch(\Exception $exception) {
-
+            echo $exception;
         }
-        return redirect()->action('CardController@index');
+        //return redirect()->action('CardController@index');
     }
 
     /**
@@ -282,7 +293,7 @@ class CardController extends Controller
         return view('card.link', [
             'cardOrigin' => $cardOrigin,
             'cardLinked' => $cardLinked,
-			'languages' => Language::getInstances(),
+			'languages' => Language::all(),
             'userOrigin' => DB::table('users')->where('id', $cardOrigin->owner_id)->first(),
 			'userLinked' => DB::table('users')->where('id', $cardLinked->owner_id)->first(),
 
@@ -290,7 +301,17 @@ class CardController extends Controller
     }
 
    public function showCard($id) {
-       return view('card', ['card' => Card::find($id)]);
+        $card = Card::find($id);
+       return view('card', [
+           'card' => $card,
+            'phonetic'  => DB::table('phonetics')->where('id', $card->phonetic_id)->first(),
+            'note'      => DB::table('notes')->where('id', $card->note_id)->first(),
+            'context'   => DB::table('contexts')->where('id',$card->context_id)->first(),
+            'definition'=> DB::table('definitions')->where('id',$card->definition_id)->first(),
+            'domain' 	=> Domain::all()->where('id',$card->domain_id)->first(),
+           'languages' => Language::all()->where('slug',$card->language_id)->first(),
+           'subdomain' => Subdomain::all()->where('id',$card->subdomain_id)->first(),
+       ]);
    }
 
 }
