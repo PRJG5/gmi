@@ -51,7 +51,7 @@ Route::get('/searchByUser', function () {
  */
 Route::get('api/getAllCardsFromUsers/{id}', 'CardController@getCardsByUser')->middleware('auth');
 
-Route::get('cards/{cardOrigin}/link','CardController@linkCard')->name('link')->middleware('auth');
+Route::get('cards/{cardOrigin}/link','CardController@getCardFilterByLanguage')->name('link')->middleware('auth');
 
 Route::get('api/addsubdomain/{name}', 'BasicDataController@addSubdomain')->middleware('auth');
 

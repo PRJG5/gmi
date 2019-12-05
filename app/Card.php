@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -168,11 +169,7 @@ class Card extends Model
         return DB::table('definitions')->where('id',$this->definition_id)->first();
     }
 
-    public function  getCardFilterByLanguage(){
-        $cardBtemp =Link::select('cardB')->where('cardA','=',$this->id);
-        $cardAtemp =Link::select('cardA')->where('CardB','=',$this->id);
-        return Card::where('language_id','!=',$this->language_id)->where('id','!=',$this->id)->whereNotIn('id',$cardAtemp)->whereNotIn('id',$cardBtemp)->get();
-    }
+    
 
     public function getLinkedCard(){
         $cardBtemp =Link::select('cardB')->where('cardA','=',$this->id);
@@ -184,9 +181,25 @@ class Card extends Model
         return Card::where('languages_id',$languages);
     }
 
-    public function getCardForLanguageAuth(User $auth){
+    public function getCardForLanguageAuth(User $user){
         
     }
+
+    public function  getCardFilterByLanguage(){
+
+        $user= Auth::user();
+        $varTemp = collect();
+        
+        foreach($user->getLanguages() as $lang){
+            $varTemp->prepend(Card::where('language_id',$lang->languageISO)->get());
+
+        }
+        $cardsLinked = Card::getLinkedCard();
+        dd(Card::whereIn('language_id',$varTemp)->where('id','!=',$this->id)->whereNotIn('id',$cardsLinked)->get());
+    }
+
+
+
 
 
 

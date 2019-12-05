@@ -57,5 +57,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
+    public function getLanguages(){
+        return SpokenLanguages::select('languageISO')->where('user_id','=',$this->id)->get();     
+    }
     
 }

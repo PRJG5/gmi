@@ -258,4 +258,7 @@ class CardController extends Controller
     $l =Link::create(compact('cardA','cardB'));
     return redirect()->back();
     }
+
+
+    
 }
