@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
+
+
 /**
  * Represents a Card (usually referred as "Fiche")
  * Each Card only has one and only one "idea",
@@ -149,4 +151,57 @@ class Card extends Model
         //TODO: Trouver le fonctionnement du hasManyThrough ----> return $this->hasManyThrough('\App\Card','App\Link');
         return DB::table('links')->select('*')->where(['cardA', '=', $this->id])->orWhere(['cardB', '=', $this->id])->get();
     }
+
+    public function getPhonetic(){
+        return DB::table('phonetics')->where('id', $this->phonetic_id)->first();
+    }
+
+    public function getNote(){
+        return DB::table('notes')->where('id', $this->note_id)->first();
+    }
+
+    public function getContext(){
+        return DB::table('contexts')->where('id',$this->context_id)->first();
+    }
+
+    public function getDefinition(){
+        return DB::table('definitions')->where('id',$this->definition_id)->first();
+    }
+
+    public function  getCardFilterByLanguage(){
+        $cardBtemp =Link::select('cardB')->where('cardA','=',$this->id);
+        $cardAtemp =Link::select('cardA')->where('CardB','=',$this->id);
+        return Card::where('language_id','!=',$this->language_id)->where('id','!=',$this->id)->whereNotIn('id',$cardAtemp)->whereNotIn('id',$cardBtemp)->get();
+    }
+
+    public function getLinkedCard(){
+        $cardBtemp =Link::select('cardB')->where('cardA','=',$this->id);
+        $cardAtemp =Link::select('cardA')->where('CardB','=',$this->id);
+        return Card::whereIn($cardAtemp)->whereIn($cardBtemp)->get();
+    }
+
+    private function getCardbyLanguage($languages){
+        return Card::where('languages_id',$languages);
+    }
+
+    public function getCardForLanguageAuth(User $auth){
+        
+    }
+
+
+
+//         SELECT * 
+// FROM `cards` 
+// WHERE language_id != "BUL" 
+// AND id != 1 
+// AND id NOT IN ( SELECT cardB 
+//                	FROM links 
+//                 WHERE cardA = 1)
+                
+// AND id NOT IN (SELECT cardA
+//                FROM links
+//                WHERE cardB=1);
+               
+    
+
 }

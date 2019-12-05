@@ -51,11 +51,13 @@ Route::get('/searchByUser', function () {
  */
 Route::get('api/getAllCardsFromUsers/{id}', 'CardController@getCardsByUser')->middleware('auth');
 
-Route::get('cards/{cardOrigin}/{cardLinked}/link','CardController@linkCard')->name('link')->middleware('auth');
+Route::get('cards/{cardOrigin}/link','CardController@linkCard')->name('link')->middleware('auth');
 
 Route::get('api/addsubdomain/{name}', 'BasicDataController@addSubdomain')->middleware('auth');
 
 Route::get('/addLanguage','LanguageController@importView')->middleware('auth');
 Route::post('/import','LanguageController@import')->name('importLanguage')->middleware('auth');
+
+Route::get('cards/{card}/{cardOrigin}/link','cardController@linkToAnotherCard')->middleware('auth');
 ?>
 

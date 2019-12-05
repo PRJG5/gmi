@@ -9,7 +9,7 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
+    <!-- Scripts -->    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" defer></script>
     <script src="{{ asset('js/Bootstrap/bootstrap.min.js') }}" defer></script>
     <script src="{{ asset('js/Bootstrap/bootstrap.bundle.min.js') }}" defer></script>
@@ -20,7 +20,10 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/Bootstrap/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/Bootstrap/bootstrap.css') }}" rel="stylesheet">   
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css.map"/>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 </head>
 <body>
     <div id="app">
@@ -45,7 +48,6 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="/searchByUser">Auteur</a>
       </li>
-
         </ul>   
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -117,5 +119,18 @@
             </div>
         </main>
     </div>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+
+<script>
+    $('.my-slider').slick({
+      centerMode: true,
+      slidesToShow: 1,
+      infinite: true,
+      nextArrow: $('.la.la-angle-right.arrow-slider'),
+      prevArrow: $('.la.la-angle-left.arrow-slider'), 
+    });
+    </script>
 </body>
 </html>

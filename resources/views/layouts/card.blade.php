@@ -10,4 +10,8 @@
             </div>
         </div>
     </div>
+
+<div>
+@yield('under-card')
+</div>
 @endsection

@@ -13,6 +13,7 @@ use App\Note;
 use App\Context;
 use App\Definition;
 use App\User;
+use App\Link;
 use App\Enums\Language;
 use App\Enums\Subdomain;
 use Illuminate\Http\Request;
@@ -124,10 +125,6 @@ class CardController extends Controller
 			'languages' => DB::table("cards")->where('language_id',$card->language_id),
 			'subdomain' => Subdomain::getInstances(),
             'owner' 	=> User::find($card->owner_id),
-            'phonetic'  => DB::table('phonetics')->where('id', $card->phonetic_id)->first(),
-            'note'      => DB::table('notes')->where('id', $card->note_id)->first(),
-            'context'   => DB::table('contexts')->where('id',$card->context_id)->first(),
-            'definition'=> DB::table('definitions')->where('id',$card->definition_id)->first()
 		]);
     }
 
@@ -148,10 +145,10 @@ class CardController extends Controller
 			'languages' => DB::table("cards")->where('id',$card->language_id),
 			'subdomain' => Subdomain::getInstances(),
             'owner' 	=> User::find($card->owner_id),
-            'phonetic'  => DB::table('phonetics')->where('id', $card->phonetic_id)->first(),
-            'note'      => DB::table('notes')->where('id', $card->note_id)->first(),
-            'context'   => DB::table('contexts')->where('id',$card->context_id)->first(),
-            'definition'=> DB::table('definitions')->where('id',$card->definition_id)->first()
+            'phonetic'  => $card->getPhonetic(),
+            'note'      => $card->getNote(),
+            'context'   => $card->getContext(),
+            'definition'=> $card->getDefinition()
 		]);
     }
 
@@ -238,14 +235,27 @@ class CardController extends Controller
         return view('card.index',['cards' => Card::where('owner_id',$userId)->get()]);
     }
 
-    public function linkCard(Card $cardOrigin, Card $cardLinked){
+    public function linkCard(Card $cardOrigin){
         return view('card.link', [
             'cardOrigin' => $cardOrigin,
-            'cardLinked' => $cardLinked,
+            'cardLinked' => $cardOrigin->getCardFilterByLanguage(),
 			'languages' => Language::getInstances(),
             'userOrigin' => DB::table('users')->where('id', $cardOrigin->owner_id)->first(),
-			'userLinked' => DB::table('users')->where('id', $cardLinked->owner_id)->first(),
-            
 		]);
+    }
+
+    public function linkListCard(Card $card){
+        
+    }
+
+    public function linkToAnotherCard(Request $request){
+        $request->validate([
+            'cardOrigin' => 'required',
+            'card' => 'required',
+        ]);
+    $cardA = $request->cardOrigin;
+    $cardB = $request->card;
+    $l =Link::create(compact('cardA','cardB'));
+    return redirect()->back();
     }
 }

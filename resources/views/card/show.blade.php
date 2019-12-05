@@ -16,7 +16,7 @@
 
 @if (isset($card->phonetic))
 <label  class="col-md-6 col-form-label text-md-right"> Phonetique : </label>
-<label>{{$phonetic->textDescription}}</label> 
+<label>{{$card->getPhonetic()}}</label> 
 @endif
 
 @if (isset($card->domain_id))
@@ -31,22 +31,31 @@
 
 @if (isset($card->definition_id))
 <label  class="col-md-6 col-form-label text-md-right"> Definition : </label>
-<label>{{$definition->definition_content}}</label> 
+<label>{{$card->getDefinition()->definition_content}}</label> 
 @endif
 
 @if (isset($card->context_id))
 <label  class="col-md-6 col-form-label text-md-right"> Contexte : </label>
-<label>{{$context->context_to_string}}</label> 
+<label>{{$card->getContext()->context_to_string}}</label> 
 @endif
 
 @if (isset($card->note_id))
 <label  class="col-md-6 col-form-label text-md-right"> Note : </label>
-<label>{{$note->description}}</label>
+<label>{{$card->getNote()->description}}</label>
 @endif
 
 <form action='/cards/{{$card->id}}/edit' method="get">
     @csrf
-    <button type="submit" class="btn btn-primary">Edit</button>
+    <button type="submit" class="btn btn-primary">Modifier</button>
 </form>
 
+<form action='/cards/{{$card->id}}/linkList' method="get">
+    @csrf
+    <button type="submit" class="btn btn-primary">Liste des liens</button>
+</form>
+
+<form action='/cards/{{$card->id}}/link' method="get">
+    @csrf
+    <button type="submit" class="btn btn-primary">Faire un lien</button>
+</form>
 @endsection
