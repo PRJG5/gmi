@@ -230,9 +230,9 @@ class CardController extends Controller
                 $card->id)->delete();
             $card->delete();
         } catch(\Exception $exception) {
-
+            echo $exception;
         }
-        return redirect()->action('CardController@index');
+        //return redirect()->action('CardController@index');
     }
 
     /**
