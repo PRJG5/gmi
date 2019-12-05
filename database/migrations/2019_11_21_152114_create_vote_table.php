@@ -24,7 +24,7 @@ class CreateVoteTable extends Migration
             //List of alter table
             
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('card_id')->references('id')->on('cards');
+            $table->foreign('card_id')->references('id')->on('cards')->onDelete('cascade');
             
             
         });
