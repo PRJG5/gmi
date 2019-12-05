@@ -13,7 +13,7 @@ class VoteController extends Controller
         $vote = new Vote();
         $vote->user_id= Auth::user()->id;
         $vote->card_id=$card_id;
-        if($vote = Vote::where('user_id','=',$vote->user_id)->exists()){
+        if(!(Vote::where('user_id','=',$vote->user_id, 'AND','card_id','=',$vote->card_id)->exists())){
             $vote->save();
         }
         return redirect()->action('CardController@show', [$card_id]);
