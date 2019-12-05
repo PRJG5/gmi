@@ -1,381 +1,1140 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="" tests="51" assertions="50" errors="17" warnings="0" failures="0" skipped="0" time="1.698568">
-    <testsuite name="Unit" tests="50" assertions="35" errors="17" warnings="0" failures="0" skipped="0" time="1.578708">
-      <testsuite name="Tests\Unit\CardTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\CardTest.php" tests="11" assertions="3" errors="9" warnings="0" failures="0" skipped="0" time="0.941900">
-        <testcase name="editCardOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\CardTest.php" line="27" assertions="2" time="0.778575">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="editCardWithoutHeadingNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\CardTest.php" line="81" assertions="0" time="0.023330">
-          <error type="Illuminate\Database\QueryException">Tests\Unit\CardTest::editCardWithoutHeadingNotOKTest
-Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'tttttesttttt@test.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (Test, tttttesttttt@test.com, ?, test, ?, 2019-12-05 14:42:17, 2019-12-05 14:42:17))
+  <testsuite name="" tests="51" assertions="27" errors="25" warnings="0" failures="0" skipped="0" time="14.927391">
+    <testsuite name="Unit" tests="50" assertions="27" errors="24" warnings="0" failures="0" skipped="0" time="14.006529">
+      <testsuite name="Tests\Unit\CardTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\CardTest.php" tests="11" assertions="0" errors="11" warnings="0" failures="0" skipped="0" time="8.195810">
+        <testcase name="editCardOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\CardTest.php" line="27" assertions="0" time="0.897733">
+          <error type="Illuminate\Contracts\Container\BindingResolutionException">Tests\Unit\CardTest::editCardOKTest
+Illuminate\Contracts\Container\BindingResolutionException: Target class [excel] does not exist.
 
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:665
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:625
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:460
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:412
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
-C:\wamp64\www\PRJFINAL\gmi\tests\Unit\CardTest.php:88
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:805
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:681
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:629
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Application.php:769
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:1245
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:198
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:166
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:255
+C:\wamp64\www\PRJFINAL\gmi\app\Http\Controllers\LanguageController.php:43
+C:\wamp64\www\PRJFINAL\gmi\database\migrations\2019_12_04_144956_import_lang.php:16
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:387
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:396
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:197
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:162
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:109
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\MigrateCommand.php:71
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:32
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Util.php:36
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:90
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:34
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:590
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:202
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Command\Command.php:255
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:189
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:242
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:214
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\FreshCommand.php:52
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:32
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Util.php:36
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:90
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:34
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:590
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:202
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Command\Command.php:255
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:189
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:1011
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:272
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:148
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Application.php:93
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Application.php:185
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php:273
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\PendingCommand.php:136
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\PendingCommand.php:220
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\InteractsWithConsole.php:56
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\RefreshDatabase.php:55
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\RefreshDatabase.php:18
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:115
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:82
 </error>
           <system-out>&#13;
 </system-out>
         </testcase>
-        <testcase name="editCardWithoutLanguageNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\CardTest.php" line="124" assertions="0" time="0.013212">
-          <error type="Illuminate\Database\QueryException">Tests\Unit\CardTest::editCardWithoutLanguageNotOKTest
-Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'tttttesttttt@test.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (Test, tttttesttttt@test.com, ?, test, ?, 2019-12-05 14:42:17, 2019-12-05 14:42:17))
+        <testcase name="editCardWithoutHeadingNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\CardTest.php" line="81" assertions="0" time="0.804625">
+          <error type="Illuminate\Contracts\Container\BindingResolutionException">Tests\Unit\CardTest::editCardWithoutHeadingNotOKTest
+Illuminate\Contracts\Container\BindingResolutionException: Target class [excel] does not exist.
 
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:665
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:625
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:460
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:412
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
-C:\wamp64\www\PRJFINAL\gmi\tests\Unit\CardTest.php:131
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:805
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:681
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:629
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Application.php:769
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:1245
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:198
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:166
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:255
+C:\wamp64\www\PRJFINAL\gmi\app\Http\Controllers\LanguageController.php:43
+C:\wamp64\www\PRJFINAL\gmi\database\migrations\2019_12_04_144956_import_lang.php:16
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:387
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:396
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:197
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:162
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:109
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\MigrateCommand.php:71
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:32
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Util.php:36
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:90
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:34
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:590
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:202
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Command\Command.php:255
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:189
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:242
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:214
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\FreshCommand.php:52
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:32
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Util.php:36
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:90
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:34
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:590
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:202
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Command\Command.php:255
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:189
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:1011
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:272
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:148
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Application.php:93
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Application.php:185
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php:273
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\PendingCommand.php:136
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\PendingCommand.php:220
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\InteractsWithConsole.php:56
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\RefreshDatabase.php:55
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\RefreshDatabase.php:18
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:115
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:82
 </error>
           <system-out>&#13;
 </system-out>
         </testcase>
-        <testcase name="editCardWithoutOwnerNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\CardTest.php" line="167" assertions="0" time="0.017130">
-          <error type="Illuminate\Database\QueryException">Tests\Unit\CardTest::editCardWithoutOwnerNotOKTest
-Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'tttttesttttt@test.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (Test, tttttesttttt@test.com, ?, test, ?, 2019-12-05 14:42:17, 2019-12-05 14:42:17))
+        <testcase name="editCardWithoutLanguageNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\CardTest.php" line="124" assertions="0" time="0.688918">
+          <error type="Illuminate\Contracts\Container\BindingResolutionException">Tests\Unit\CardTest::editCardWithoutLanguageNotOKTest
+Illuminate\Contracts\Container\BindingResolutionException: Target class [excel] does not exist.
 
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:665
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:625
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:460
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:412
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
-C:\wamp64\www\PRJFINAL\gmi\tests\Unit\CardTest.php:174
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:805
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:681
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:629
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Application.php:769
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:1245
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:198
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:166
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:255
+C:\wamp64\www\PRJFINAL\gmi\app\Http\Controllers\LanguageController.php:43
+C:\wamp64\www\PRJFINAL\gmi\database\migrations\2019_12_04_144956_import_lang.php:16
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:387
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:396
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:197
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:162
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:109
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\MigrateCommand.php:71
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:32
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Util.php:36
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:90
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:34
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:590
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:202
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Command\Command.php:255
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:189
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:242
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:214
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\FreshCommand.php:52
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:32
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Util.php:36
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:90
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:34
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:590
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:202
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Command\Command.php:255
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:189
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:1011
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:272
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:148
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Application.php:93
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Application.php:185
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php:273
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\PendingCommand.php:136
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\PendingCommand.php:220
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\InteractsWithConsole.php:56
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\RefreshDatabase.php:55
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\RefreshDatabase.php:18
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:115
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:82
 </error>
           <system-out>&#13;
 </system-out>
         </testcase>
-        <testcase name="editCardWithAllValuesSetOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\CardTest.php" line="211" assertions="0" time="0.015285">
-          <error type="Illuminate\Database\QueryException">Tests\Unit\CardTest::editCardWithAllValuesSetOKTest
-Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'tttttesttttt@test.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (Test, tttttesttttt@test.com, ?, test, ?, 2019-12-05 14:42:17, 2019-12-05 14:42:17))
+        <testcase name="editCardWithoutOwnerNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\CardTest.php" line="167" assertions="0" time="0.662987">
+          <error type="Illuminate\Contracts\Container\BindingResolutionException">Tests\Unit\CardTest::editCardWithoutOwnerNotOKTest
+Illuminate\Contracts\Container\BindingResolutionException: Target class [excel] does not exist.
 
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:665
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:625
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:460
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:412
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
-C:\wamp64\www\PRJFINAL\gmi\tests\Unit\CardTest.php:219
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:805
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:681
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:629
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Application.php:769
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:1245
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:198
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:166
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:255
+C:\wamp64\www\PRJFINAL\gmi\app\Http\Controllers\LanguageController.php:43
+C:\wamp64\www\PRJFINAL\gmi\database\migrations\2019_12_04_144956_import_lang.php:16
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:387
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:396
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:197
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:162
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:109
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\MigrateCommand.php:71
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:32
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Util.php:36
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:90
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:34
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:590
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:202
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Command\Command.php:255
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:189
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:242
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:214
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\FreshCommand.php:52
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:32
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Util.php:36
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:90
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:34
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:590
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:202
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Command\Command.php:255
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:189
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:1011
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:272
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:148
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Application.php:93
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Application.php:185
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php:273
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\PendingCommand.php:136
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\PendingCommand.php:220
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\InteractsWithConsole.php:56
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\RefreshDatabase.php:55
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\RefreshDatabase.php:18
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:115
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:82
 </error>
           <system-out>&#13;
 </system-out>
         </testcase>
-        <testcase name="createCardWithAllValuesSetOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\CardTest.php" line="286" assertions="0" time="0.014646">
-          <error type="Illuminate\Database\QueryException">Tests\Unit\CardTest::createCardWithAllValuesSetOKTest
-Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'tttttesttttt@test.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (Test, tttttesttttt@test.com, ?, test, ?, 2019-12-05 14:42:17, 2019-12-05 14:42:17))
+        <testcase name="editCardWithAllValuesSetOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\CardTest.php" line="211" assertions="0" time="0.684976">
+          <error type="Illuminate\Contracts\Container\BindingResolutionException">Tests\Unit\CardTest::editCardWithAllValuesSetOKTest
+Illuminate\Contracts\Container\BindingResolutionException: Target class [excel] does not exist.
 
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:665
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:625
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:460
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:412
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
-C:\wamp64\www\PRJFINAL\gmi\tests\Unit\CardTest.php:294
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:805
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:681
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:629
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Application.php:769
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:1245
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:198
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:166
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:255
+C:\wamp64\www\PRJFINAL\gmi\app\Http\Controllers\LanguageController.php:43
+C:\wamp64\www\PRJFINAL\gmi\database\migrations\2019_12_04_144956_import_lang.php:16
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:387
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:396
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:197
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:162
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:109
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\MigrateCommand.php:71
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:32
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Util.php:36
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:90
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:34
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:590
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:202
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Command\Command.php:255
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:189
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:242
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:214
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\FreshCommand.php:52
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:32
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Util.php:36
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:90
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:34
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:590
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:202
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Command\Command.php:255
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:189
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:1011
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:272
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:148
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Application.php:93
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Application.php:185
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php:273
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\PendingCommand.php:136
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\PendingCommand.php:220
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\InteractsWithConsole.php:56
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\RefreshDatabase.php:55
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\RefreshDatabase.php:18
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:115
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:82
 </error>
           <system-out>&#13;
 </system-out>
         </testcase>
-        <testcase name="createCardWithoutHeadingNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\CardTest.php" line="346" assertions="0" time="0.014839">
-          <error type="Illuminate\Database\QueryException">Tests\Unit\CardTest::createCardWithoutHeadingNotOKTest
-Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'tttttesttttt@test.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (Test, tttttesttttt@test.com, ?, test, ?, 2019-12-05 14:42:17, 2019-12-05 14:42:17))
+        <testcase name="createCardWithAllValuesSetOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\CardTest.php" line="286" assertions="0" time="0.955206">
+          <error type="Illuminate\Contracts\Container\BindingResolutionException">Tests\Unit\CardTest::createCardWithAllValuesSetOKTest
+Illuminate\Contracts\Container\BindingResolutionException: Target class [excel] does not exist.
 
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:665
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:625
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:460
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:412
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
-C:\wamp64\www\PRJFINAL\gmi\tests\Unit\CardTest.php:353
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:805
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:681
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:629
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Application.php:769
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:1245
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:198
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:166
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:255
+C:\wamp64\www\PRJFINAL\gmi\app\Http\Controllers\LanguageController.php:43
+C:\wamp64\www\PRJFINAL\gmi\database\migrations\2019_12_04_144956_import_lang.php:16
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:387
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:396
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:197
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:162
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:109
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\MigrateCommand.php:71
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:32
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Util.php:36
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:90
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:34
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:590
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:202
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Command\Command.php:255
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:189
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:242
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:214
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\FreshCommand.php:52
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:32
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Util.php:36
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:90
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:34
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:590
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:202
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Command\Command.php:255
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:189
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:1011
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:272
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:148
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Application.php:93
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Application.php:185
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php:273
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\PendingCommand.php:136
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\PendingCommand.php:220
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\InteractsWithConsole.php:56
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\RefreshDatabase.php:55
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\RefreshDatabase.php:18
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:115
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:82
 </error>
           <system-out>&#13;
 </system-out>
         </testcase>
-        <testcase name="createCardWithoutLanguageNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\CardTest.php" line="375" assertions="0" time="0.013013">
-          <error type="Illuminate\Database\QueryException">Tests\Unit\CardTest::createCardWithoutLanguageNotOKTest
-Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'tttttesttttt@test.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (Test, tttttesttttt@test.com, ?, test, ?, 2019-12-05 14:42:17, 2019-12-05 14:42:17))
+        <testcase name="createCardWithoutHeadingNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\CardTest.php" line="346" assertions="0" time="0.730753">
+          <error type="Illuminate\Contracts\Container\BindingResolutionException">Tests\Unit\CardTest::createCardWithoutHeadingNotOKTest
+Illuminate\Contracts\Container\BindingResolutionException: Target class [excel] does not exist.
 
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:665
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:625
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:460
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:412
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
-C:\wamp64\www\PRJFINAL\gmi\tests\Unit\CardTest.php:382
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:805
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:681
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:629
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Application.php:769
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:1245
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:198
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:166
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:255
+C:\wamp64\www\PRJFINAL\gmi\app\Http\Controllers\LanguageController.php:43
+C:\wamp64\www\PRJFINAL\gmi\database\migrations\2019_12_04_144956_import_lang.php:16
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:387
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:396
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:197
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:162
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:109
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\MigrateCommand.php:71
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:32
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Util.php:36
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:90
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:34
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:590
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:202
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Command\Command.php:255
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:189
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:242
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:214
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\FreshCommand.php:52
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:32
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Util.php:36
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:90
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:34
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:590
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:202
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Command\Command.php:255
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:189
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:1011
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:272
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:148
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Application.php:93
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Application.php:185
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php:273
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\PendingCommand.php:136
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\PendingCommand.php:220
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\InteractsWithConsole.php:56
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\RefreshDatabase.php:55
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\RefreshDatabase.php:18
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:115
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:82
 </error>
           <system-out>&#13;
 </system-out>
         </testcase>
-        <testcase name="createCardWithoutOwnerNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\CardTest.php" line="403" assertions="1" time="0.019898">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="deleteOKCardTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\CardTest.php" line="428" assertions="0" time="0.015892">
-          <error type="Illuminate\Database\QueryException">Tests\Unit\CardTest::deleteOKCardTest
-Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'tttttesttttt@test.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (Test, tttttesttttt@test.com, ?, test, ?, 2019-12-05 14:42:17, 2019-12-05 14:42:17))
+        <testcase name="createCardWithoutLanguageNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\CardTest.php" line="375" assertions="0" time="0.683888">
+          <error type="Illuminate\Contracts\Container\BindingResolutionException">Tests\Unit\CardTest::createCardWithoutLanguageNotOKTest
+Illuminate\Contracts\Container\BindingResolutionException: Target class [excel] does not exist.
 
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:665
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:625
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:460
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:412
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
-C:\wamp64\www\PRJFINAL\gmi\tests\Unit\CardTest.php:435
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:805
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:681
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:629
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Application.php:769
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:1245
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:198
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:166
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:255
+C:\wamp64\www\PRJFINAL\gmi\app\Http\Controllers\LanguageController.php:43
+C:\wamp64\www\PRJFINAL\gmi\database\migrations\2019_12_04_144956_import_lang.php:16
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:387
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:396
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:197
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:162
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:109
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\MigrateCommand.php:71
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:32
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Util.php:36
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:90
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:34
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:590
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:202
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Command\Command.php:255
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:189
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:242
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:214
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\FreshCommand.php:52
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:32
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Util.php:36
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:90
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:34
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:590
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:202
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Command\Command.php:255
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:189
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:1011
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:272
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:148
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Application.php:93
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Application.php:185
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php:273
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\PendingCommand.php:136
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\PendingCommand.php:220
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\InteractsWithConsole.php:56
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\RefreshDatabase.php:55
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\RefreshDatabase.php:18
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:115
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:82
 </error>
           <system-out>&#13;
 </system-out>
         </testcase>
-        <testcase name="deleteNotExistingCardNotOkTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\CardTest.php" line="469" assertions="0" time="0.016079">
-          <error type="Illuminate\Database\QueryException">Tests\Unit\CardTest::deleteNotExistingCardNotOkTest
-Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'tttttesttttt@test.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (Test, tttttesttttt@test.com, ?, test, ?, 2019-12-05 14:42:17, 2019-12-05 14:42:17))
+        <testcase name="createCardWithoutOwnerNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\CardTest.php" line="403" assertions="0" time="0.694718">
+          <error type="Illuminate\Contracts\Container\BindingResolutionException">Tests\Unit\CardTest::createCardWithoutOwnerNotOKTest
+Illuminate\Contracts\Container\BindingResolutionException: Target class [excel] does not exist.
 
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:665
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:625
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:460
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:412
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
-C:\wamp64\www\PRJFINAL\gmi\tests\Unit\CardTest.php:476
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:805
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:681
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:629
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Application.php:769
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:1245
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:198
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:166
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:255
+C:\wamp64\www\PRJFINAL\gmi\app\Http\Controllers\LanguageController.php:43
+C:\wamp64\www\PRJFINAL\gmi\database\migrations\2019_12_04_144956_import_lang.php:16
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:387
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:396
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:197
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:162
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:109
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\MigrateCommand.php:71
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:32
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Util.php:36
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:90
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:34
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:590
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:202
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Command\Command.php:255
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:189
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:242
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:214
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\FreshCommand.php:52
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:32
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Util.php:36
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:90
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:34
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:590
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:202
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Command\Command.php:255
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:189
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:1011
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:272
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:148
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Application.php:93
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Application.php:185
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php:273
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\PendingCommand.php:136
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\PendingCommand.php:220
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\InteractsWithConsole.php:56
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\RefreshDatabase.php:55
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\RefreshDatabase.php:18
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:115
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:82
+</error>
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="deleteOKCardTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\CardTest.php" line="428" assertions="0" time="0.751086">
+          <error type="Illuminate\Contracts\Container\BindingResolutionException">Tests\Unit\CardTest::deleteOKCardTest
+Illuminate\Contracts\Container\BindingResolutionException: Target class [excel] does not exist.
+
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:805
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:681
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:629
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Application.php:769
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:1245
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:198
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:166
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:255
+C:\wamp64\www\PRJFINAL\gmi\app\Http\Controllers\LanguageController.php:43
+C:\wamp64\www\PRJFINAL\gmi\database\migrations\2019_12_04_144956_import_lang.php:16
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:387
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:396
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:197
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:162
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:109
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\MigrateCommand.php:71
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:32
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Util.php:36
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:90
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:34
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:590
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:202
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Command\Command.php:255
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:189
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:242
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:214
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\FreshCommand.php:52
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:32
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Util.php:36
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:90
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:34
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:590
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:202
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Command\Command.php:255
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:189
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:1011
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:272
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:148
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Application.php:93
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Application.php:185
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php:273
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\PendingCommand.php:136
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\PendingCommand.php:220
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\InteractsWithConsole.php:56
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\RefreshDatabase.php:55
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\RefreshDatabase.php:18
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:115
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:82
+</error>
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="deleteNotExistingCardNotOkTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\CardTest.php" line="469" assertions="0" time="0.640920">
+          <error type="Illuminate\Contracts\Container\BindingResolutionException">Tests\Unit\CardTest::deleteNotExistingCardNotOkTest
+Illuminate\Contracts\Container\BindingResolutionException: Target class [excel] does not exist.
+
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:805
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:681
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:629
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Application.php:769
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:1245
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:198
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:166
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:255
+C:\wamp64\www\PRJFINAL\gmi\app\Http\Controllers\LanguageController.php:43
+C:\wamp64\www\PRJFINAL\gmi\database\migrations\2019_12_04_144956_import_lang.php:16
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:387
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:396
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:197
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:162
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:109
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\MigrateCommand.php:71
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:32
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Util.php:36
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:90
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:34
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:590
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:202
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Command\Command.php:255
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:189
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:242
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:214
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\FreshCommand.php:52
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:32
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Util.php:36
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:90
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:34
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:590
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:202
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Command\Command.php:255
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:189
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:1011
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:272
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:148
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Application.php:93
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Application.php:185
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php:273
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\PendingCommand.php:136
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\PendingCommand.php:220
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\InteractsWithConsole.php:56
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\RefreshDatabase.php:55
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\RefreshDatabase.php:18
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:115
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:82
 </error>
           <system-out>&#13;
 </system-out>
         </testcase>
       </testsuite>
-      <testsuite name="Tests\Unit\ContextTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\ContextTest.php" tests="4" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.071761">
-        <testcase name="testValidInsertion" class="Tests\Unit\ContextTest" classname="Tests.Unit.ContextTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\ContextTest.php" line="18" assertions="1" time="0.012132">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="testInsertNullDescription" class="Tests\Unit\ContextTest" classname="Tests.Unit.ContextTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\ContextTest.php" line="36" assertions="1" time="0.029915">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="testIfDeleted" class="Tests\Unit\ContextTest" classname="Tests.Unit.ContextTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\ContextTest.php" line="45" assertions="1" time="0.010737">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="testToString" class="Tests\Unit\ContextTest" classname="Tests.Unit.ContextTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\ContextTest.php" line="60" assertions="1" time="0.018977">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-      </testsuite>
-      <testsuite name="Tests\Unit\DefinitionTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\DefinitionTest.php" tests="4" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.064343">
-        <testcase name="testDefinitionWithContent" class="Tests\Unit\DefinitionTest" classname="Tests.Unit.DefinitionTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\DefinitionTest.php" line="15" assertions="1" time="0.010767">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="testDefinitionWithId" class="Tests\Unit\DefinitionTest" classname="Tests.Unit.DefinitionTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\DefinitionTest.php" line="30" assertions="1" time="0.018921">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="testDefinitionMissing" class="Tests\Unit\DefinitionTest" classname="Tests.Unit.DefinitionTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\DefinitionTest.php" line="45" assertions="1" time="0.017265">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="testDefinitionToString" class="Tests\Unit\DefinitionTest" classname="Tests.Unit.DefinitionTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\DefinitionTest.php" line="59" assertions="1" time="0.017390">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-      </testsuite>
-      <testsuite name="Tests\Unit\DomainTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\DomainTest.php" tests="2" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.034157">
-        <testcase name="testDomainInsert" class="Tests\Unit\DomainTest" classname="Tests.Unit.DomainTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\DomainTest.php" line="13" assertions="1" time="0.011636">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="testDomainDelete" class="Tests\Unit\DomainTest" classname="Tests.Unit.DomainTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\DomainTest.php" line="24" assertions="1" time="0.022521">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-      </testsuite>
-      <testsuite name="Tests\Unit\EnumDomainTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\EnumDomainTest.php" tests="3" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.035400">
-        <testcase name="testGetKEYOne" class="Tests\Unit\EnumDomainTest" classname="Tests.Unit.EnumDomainTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\EnumDomainTest.php" line="24" assertions="1" time="0.010503">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="testGetKeyTwo" class="Tests\Unit\EnumDomainTest" classname="Tests.Unit.EnumDomainTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\EnumDomainTest.php" line="32" assertions="1" time="0.008507">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="testGetDescription" class="Tests\Unit\EnumDomainTest" classname="Tests.Unit.EnumDomainTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\EnumDomainTest.php" line="37" assertions="1" time="0.016390">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-      </testsuite>
-      <testsuite name="Tests\Unit\EnumLanguageTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\EnumLanguageTest.php" tests="4" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.039561">
-        <testcase name="TestSizeLanguage" class="Tests\Unit\EnumLanguageTest" classname="Tests.Unit.EnumLanguageTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\EnumLanguageTest.php" line="17" assertions="1" time="0.010545">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="TestFindLanguage" class="Tests\Unit\EnumLanguageTest" classname="Tests.Unit.EnumLanguageTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\EnumLanguageTest.php" line="28" assertions="1" time="0.008442">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="TestNumberLanguage" class="Tests\Unit\EnumLanguageTest" classname="Tests.Unit.EnumLanguageTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\EnumLanguageTest.php" line="38" assertions="1" time="0.010583">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="LanguageDescriptionTest" class="Tests\Unit\EnumLanguageTest" classname="Tests.Unit.EnumLanguageTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\EnumLanguageTest.php" line="48" assertions="1" time="0.009991">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-      </testsuite>
-      <testsuite name="Tests\Unit\EnumSubdomainTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\EnumSubdomainTest.php" tests="3" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.035271">
-        <testcase name="testGetKEYOne" class="Tests\Unit\EnumSubdomainTest" classname="Tests.Unit.EnumSubdomainTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\EnumSubdomainTest.php" line="24" assertions="1" time="0.016493">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="testGetKeyTwo" class="Tests\Unit\EnumSubdomainTest" classname="Tests.Unit.EnumSubdomainTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\EnumSubdomainTest.php" line="32" assertions="1" time="0.011447">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="testGetDescription" class="Tests\Unit\EnumSubdomainTest" classname="Tests.Unit.EnumSubdomainTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\EnumSubdomainTest.php" line="37" assertions="1" time="0.007331">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-      </testsuite>
-      <testsuite name="Tests\Unit\LinkTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\LinkTest.php" tests="3" assertions="1" errors="2" warnings="0" failures="0" skipped="0" time="0.040506">
-        <testcase name="linkOkTest" class="Tests\Unit\LinkTest" classname="Tests.Unit.LinkTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\LinkTest.php" line="20" assertions="1" time="0.017464">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="linkWithSameCardTest" class="Tests\Unit\LinkTest" classname="Tests.Unit.LinkTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\LinkTest.php" line="40" assertions="0" time="0.010066">
-          <error type="Illuminate\Database\QueryException">Tests\Unit\LinkTest::linkWithSameCardTest
-Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'tester@test.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (Tester, tester@test.com, ?, tested, ?, 2019-12-05 14:42:18, 2019-12-05 14:42:18))
+      <testsuite name="Tests\Unit\ContextTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\ContextTest.php" tests="4" assertions="0" errors="4" warnings="0" failures="0" skipped="0" time="2.976020">
+        <testcase name="testValidInsertion" class="Tests\Unit\ContextTest" classname="Tests.Unit.ContextTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\ContextTest.php" line="18" assertions="0" time="0.677466">
+          <error type="Illuminate\Contracts\Container\BindingResolutionException">Tests\Unit\ContextTest::testValidInsertion
+Illuminate\Contracts\Container\BindingResolutionException: Target class [excel] does not exist.
 
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:665
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:625
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:460
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:412
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:749
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\helpers.php:422
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:750
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php:23
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1618
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1630
-C:\wamp64\www\PRJFINAL\gmi\tests\Unit\LinkTest.php:42
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:805
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:681
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:629
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Application.php:769
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:1245
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:198
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:166
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:255
+C:\wamp64\www\PRJFINAL\gmi\app\Http\Controllers\LanguageController.php:43
+C:\wamp64\www\PRJFINAL\gmi\database\migrations\2019_12_04_144956_import_lang.php:16
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:387
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:396
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:197
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:162
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:109
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\MigrateCommand.php:71
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:32
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Util.php:36
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:90
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:34
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:590
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:202
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Command\Command.php:255
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:189
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:242
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:214
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\FreshCommand.php:52
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:32
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Util.php:36
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:90
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:34
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:590
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:202
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Command\Command.php:255
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:189
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:1011
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:272
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:148
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Application.php:93
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Application.php:185
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php:273
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\PendingCommand.php:136
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\PendingCommand.php:220
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\InteractsWithConsole.php:56
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\RefreshDatabase.php:55
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\RefreshDatabase.php:18
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:115
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:82
 </error>
           <system-out>&#13;
 </system-out>
         </testcase>
-        <testcase name="twoSameLinksNotOKTest" class="Tests\Unit\LinkTest" classname="Tests.Unit.LinkTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\LinkTest.php" line="56" assertions="0" time="0.012976">
-          <error type="Illuminate\Database\QueryException">Tests\Unit\LinkTest::twoSameLinksNotOKTest
-Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'tester@test.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (Tester, tester@test.com, ?, tested, ?, 2019-12-05 14:42:18, 2019-12-05 14:42:18))
+        <testcase name="testInsertNullDescription" class="Tests\Unit\ContextTest" classname="Tests.Unit.ContextTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\ContextTest.php" line="36" assertions="0" time="0.722228">
+          <error type="Illuminate\Contracts\Container\BindingResolutionException">Tests\Unit\ContextTest::testInsertNullDescription
+Illuminate\Contracts\Container\BindingResolutionException: Target class [excel] does not exist.
 
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:665
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:625
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:460
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:412
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:749
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\helpers.php:422
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:750
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php:23
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1618
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1630
-C:\wamp64\www\PRJFINAL\gmi\tests\Unit\LinkTest.php:58
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:805
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:681
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:629
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Application.php:769
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:1245
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:198
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:166
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:255
+C:\wamp64\www\PRJFINAL\gmi\app\Http\Controllers\LanguageController.php:43
+C:\wamp64\www\PRJFINAL\gmi\database\migrations\2019_12_04_144956_import_lang.php:16
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:387
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:396
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:197
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:162
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:109
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\MigrateCommand.php:71
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:32
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Util.php:36
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:90
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:34
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:590
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:202
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Command\Command.php:255
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:189
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:242
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:214
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\FreshCommand.php:52
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:32
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Util.php:36
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:90
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:34
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:590
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:202
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Command\Command.php:255
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:189
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:1011
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:272
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:148
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Application.php:93
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Application.php:185
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php:273
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\PendingCommand.php:136
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\PendingCommand.php:220
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\InteractsWithConsole.php:56
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\RefreshDatabase.php:55
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\RefreshDatabase.php:18
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:115
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:82
+</error>
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testIfDeleted" class="Tests\Unit\ContextTest" classname="Tests.Unit.ContextTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\ContextTest.php" line="45" assertions="0" time="0.909830">
+          <error type="Illuminate\Contracts\Container\BindingResolutionException">Tests\Unit\ContextTest::testIfDeleted
+Illuminate\Contracts\Container\BindingResolutionException: Target class [excel] does not exist.
+
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:805
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:681
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:629
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Application.php:769
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:1245
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:198
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:166
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:255
+C:\wamp64\www\PRJFINAL\gmi\app\Http\Controllers\LanguageController.php:43
+C:\wamp64\www\PRJFINAL\gmi\database\migrations\2019_12_04_144956_import_lang.php:16
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:387
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:396
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:197
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:162
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:109
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\MigrateCommand.php:71
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:32
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Util.php:36
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:90
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:34
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:590
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:202
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Command\Command.php:255
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:189
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:242
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:214
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\FreshCommand.php:52
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:32
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Util.php:36
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:90
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:34
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:590
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:202
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Command\Command.php:255
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:189
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:1011
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:272
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:148
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Application.php:93
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Application.php:185
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php:273
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\PendingCommand.php:136
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\PendingCommand.php:220
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\InteractsWithConsole.php:56
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\RefreshDatabase.php:55
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\RefreshDatabase.php:18
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:115
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:82
+</error>
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testToString" class="Tests\Unit\ContextTest" classname="Tests.Unit.ContextTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\ContextTest.php" line="60" assertions="0" time="0.666496">
+          <error type="Illuminate\Contracts\Container\BindingResolutionException">Tests\Unit\ContextTest::testToString
+Illuminate\Contracts\Container\BindingResolutionException: Target class [excel] does not exist.
+
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:805
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:681
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:629
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Application.php:769
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:1245
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:198
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:166
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:255
+C:\wamp64\www\PRJFINAL\gmi\app\Http\Controllers\LanguageController.php:43
+C:\wamp64\www\PRJFINAL\gmi\database\migrations\2019_12_04_144956_import_lang.php:16
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:387
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:396
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:197
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:162
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:109
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\MigrateCommand.php:71
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:32
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Util.php:36
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:90
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:34
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:590
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:202
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Command\Command.php:255
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:189
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:242
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:214
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\FreshCommand.php:52
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:32
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Util.php:36
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:90
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:34
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:590
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:202
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Command\Command.php:255
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:189
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:1011
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:272
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:148
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Application.php:93
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Application.php:185
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php:273
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\PendingCommand.php:136
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\PendingCommand.php:220
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\InteractsWithConsole.php:56
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\RefreshDatabase.php:55
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\RefreshDatabase.php:18
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:115
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:82
 </error>
           <system-out>&#13;
 </system-out>
         </testcase>
       </testsuite>
-      <testsuite name="Tests\Unit\NoteTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\NoteTest.php" tests="4" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.098097">
-        <testcase name="testRegisterNullDescription" class="Tests\Unit\NoteTest" classname="Tests.Unit.NoteTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\NoteTest.php" line="13" assertions="1" time="0.014551">
+      <testsuite name="Tests\Unit\DefinitionTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\DefinitionTest.php" tests="4" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.068748">
+        <testcase name="testDefinitionWithContent" class="Tests\Unit\DefinitionTest" classname="Tests.Unit.DefinitionTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\DefinitionTest.php" line="15" assertions="1" time="0.013864">
           <system-out>&#13;
 </system-out>
         </testcase>
-        <testcase name="testRegisterWithDescription" class="Tests\Unit\NoteTest" classname="Tests.Unit.NoteTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\NoteTest.php" line="26" assertions="1" time="0.027868">
+        <testcase name="testDefinitionWithId" class="Tests\Unit\DefinitionTest" classname="Tests.Unit.DefinitionTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\DefinitionTest.php" line="30" assertions="1" time="0.017031">
           <system-out>&#13;
 </system-out>
         </testcase>
-        <testcase name="testIfDeleted" class="Tests\Unit\NoteTest" classname="Tests.Unit.NoteTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\NoteTest.php" line="40" assertions="1" time="0.025085">
+        <testcase name="testDefinitionMissing" class="Tests\Unit\DefinitionTest" classname="Tests.Unit.DefinitionTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\DefinitionTest.php" line="45" assertions="1" time="0.018060">
           <system-out>&#13;
 </system-out>
         </testcase>
-        <testcase name="testToString" class="Tests\Unit\NoteTest" classname="Tests.Unit.NoteTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\NoteTest.php" line="52" assertions="1" time="0.030593">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-      </testsuite>
-      <testsuite name="Tests\Unit\PhoneticTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\PhoneticTest.php" tests="3" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.068824">
-        <testcase name="testInsertDb" class="Tests\Unit\PhoneticTest" classname="Tests.Unit.PhoneticTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\PhoneticTest.php" line="16" assertions="1" time="0.014560">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="testInsertDbSpecialChar" class="Tests\Unit\PhoneticTest" classname="Tests.Unit.PhoneticTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\PhoneticTest.php" line="32" assertions="1" time="0.025186">
-          <system-out>&#13;
-</system-out>
-        </testcase>
-        <testcase name="testDeleteDb" class="Tests\Unit\PhoneticTest" classname="Tests.Unit.PhoneticTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\PhoneticTest.php" line="43" assertions="2" time="0.029078">
+        <testcase name="testDefinitionToString" class="Tests\Unit\DefinitionTest" classname="Tests.Unit.DefinitionTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\DefinitionTest.php" line="59" assertions="1" time="0.019793">
           <system-out>&#13;
 </system-out>
         </testcase>
       </testsuite>
-      <testsuite name="Tests\Unit\SpokenLanguageTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\SpokenLanguageTest.php" tests="4" assertions="1" errors="3" warnings="0" failures="0" skipped="0" time="0.061810">
-        <testcase name="add_user_one_lang_ok" class="Tests\Unit\SpokenLanguageTest" classname="Tests.Unit.SpokenLanguageTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\SpokenLanguageTest.php" line="17" assertions="1" time="0.029533">
+      <testsuite name="Tests\Unit\DomainTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\DomainTest.php" tests="2" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.046783">
+        <testcase name="testDomainInsert" class="Tests\Unit\DomainTest" classname="Tests.Unit.DomainTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\DomainTest.php" line="13" assertions="1" time="0.019624">
           <system-out>&#13;
 </system-out>
         </testcase>
-        <testcase name="add_user_with_two_lang_ok" class="Tests\Unit\SpokenLanguageTest" classname="Tests.Unit.SpokenLanguageTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\SpokenLanguageTest.php" line="39" assertions="0" time="0.011353">
+        <testcase name="testDomainDelete" class="Tests\Unit\DomainTest" classname="Tests.Unit.DomainTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\DomainTest.php" line="24" assertions="1" time="0.027159">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Unit\EnumDomainTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\EnumDomainTest.php" tests="3" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.025997">
+        <testcase name="testGetKEYOne" class="Tests\Unit\EnumDomainTest" classname="Tests.Unit.EnumDomainTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\EnumDomainTest.php" line="24" assertions="1" time="0.008014">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testGetKeyTwo" class="Tests\Unit\EnumDomainTest" classname="Tests.Unit.EnumDomainTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\EnumDomainTest.php" line="32" assertions="1" time="0.008848">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testGetDescription" class="Tests\Unit\EnumDomainTest" classname="Tests.Unit.EnumDomainTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\EnumDomainTest.php" line="37" assertions="1" time="0.009135">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Unit\EnumLanguageTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\EnumLanguageTest.php" tests="4" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.026720">
+        <testcase name="TestSizeLanguage" class="Tests\Unit\EnumLanguageTest" classname="Tests.Unit.EnumLanguageTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\EnumLanguageTest.php" line="17" assertions="1" time="0.005862">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="TestFindLanguage" class="Tests\Unit\EnumLanguageTest" classname="Tests.Unit.EnumLanguageTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\EnumLanguageTest.php" line="28" assertions="1" time="0.006864">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="TestNumberLanguage" class="Tests\Unit\EnumLanguageTest" classname="Tests.Unit.EnumLanguageTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\EnumLanguageTest.php" line="38" assertions="1" time="0.005295">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="LanguageDescriptionTest" class="Tests\Unit\EnumLanguageTest" classname="Tests.Unit.EnumLanguageTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\EnumLanguageTest.php" line="48" assertions="1" time="0.008699">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Unit\EnumSubdomainTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\EnumSubdomainTest.php" tests="3" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.018747">
+        <testcase name="testGetKEYOne" class="Tests\Unit\EnumSubdomainTest" classname="Tests.Unit.EnumSubdomainTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\EnumSubdomainTest.php" line="24" assertions="1" time="0.004989">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testGetKeyTwo" class="Tests\Unit\EnumSubdomainTest" classname="Tests.Unit.EnumSubdomainTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\EnumSubdomainTest.php" line="32" assertions="1" time="0.007938">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testGetDescription" class="Tests\Unit\EnumSubdomainTest" classname="Tests.Unit.EnumSubdomainTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\EnumSubdomainTest.php" line="37" assertions="1" time="0.005820">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Unit\LinkTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\LinkTest.php" tests="3" assertions="0" errors="3" warnings="0" failures="0" skipped="0" time="2.345527">
+        <testcase name="linkOkTest" class="Tests\Unit\LinkTest" classname="Tests.Unit.LinkTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\LinkTest.php" line="20" assertions="0" time="0.746493">
+          <error type="Illuminate\Contracts\Container\BindingResolutionException">Tests\Unit\LinkTest::linkOkTest
+Illuminate\Contracts\Container\BindingResolutionException: Target class [excel] does not exist.
+
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:805
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:681
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:629
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Application.php:769
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:1245
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:198
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:166
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:255
+C:\wamp64\www\PRJFINAL\gmi\app\Http\Controllers\LanguageController.php:43
+C:\wamp64\www\PRJFINAL\gmi\database\migrations\2019_12_04_144956_import_lang.php:16
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:387
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:396
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:197
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:162
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:109
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\MigrateCommand.php:71
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:32
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Util.php:36
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:90
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:34
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:590
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:202
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Command\Command.php:255
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:189
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:242
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:214
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\FreshCommand.php:52
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:32
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Util.php:36
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:90
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:34
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:590
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:202
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Command\Command.php:255
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:189
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:1011
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:272
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:148
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Application.php:93
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Application.php:185
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php:273
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\PendingCommand.php:136
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\PendingCommand.php:220
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\InteractsWithConsole.php:56
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\RefreshDatabase.php:55
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\RefreshDatabase.php:18
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:115
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:82
+</error>
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="linkWithSameCardTest" class="Tests\Unit\LinkTest" classname="Tests.Unit.LinkTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\LinkTest.php" line="40" assertions="0" time="0.914997">
+          <error type="Illuminate\Contracts\Container\BindingResolutionException">Tests\Unit\LinkTest::linkWithSameCardTest
+Illuminate\Contracts\Container\BindingResolutionException: Target class [excel] does not exist.
+
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:805
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:681
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:629
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Application.php:769
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:1245
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:198
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:166
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:255
+C:\wamp64\www\PRJFINAL\gmi\app\Http\Controllers\LanguageController.php:43
+C:\wamp64\www\PRJFINAL\gmi\database\migrations\2019_12_04_144956_import_lang.php:16
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:387
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:396
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:197
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:162
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:109
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\MigrateCommand.php:71
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:32
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Util.php:36
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:90
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:34
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:590
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:202
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Command\Command.php:255
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:189
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:242
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:214
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\FreshCommand.php:52
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:32
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Util.php:36
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:90
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:34
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:590
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:202
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Command\Command.php:255
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:189
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:1011
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:272
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:148
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Application.php:93
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Application.php:185
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php:273
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\PendingCommand.php:136
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\PendingCommand.php:220
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\InteractsWithConsole.php:56
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\RefreshDatabase.php:55
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\RefreshDatabase.php:18
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:115
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:82
+</error>
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="twoSameLinksNotOKTest" class="Tests\Unit\LinkTest" classname="Tests.Unit.LinkTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\LinkTest.php" line="56" assertions="0" time="0.684037">
+          <error type="Illuminate\Contracts\Container\BindingResolutionException">Tests\Unit\LinkTest::twoSameLinksNotOKTest
+Illuminate\Contracts\Container\BindingResolutionException: Target class [excel] does not exist.
+
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:805
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:681
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:629
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Application.php:769
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:1245
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:198
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:166
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:255
+C:\wamp64\www\PRJFINAL\gmi\app\Http\Controllers\LanguageController.php:43
+C:\wamp64\www\PRJFINAL\gmi\database\migrations\2019_12_04_144956_import_lang.php:16
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:387
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:396
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:197
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:162
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:109
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\MigrateCommand.php:71
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:32
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Util.php:36
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:90
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:34
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:590
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:202
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Command\Command.php:255
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:189
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:242
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:214
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\FreshCommand.php:52
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:32
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Util.php:36
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:90
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:34
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:590
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:202
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Command\Command.php:255
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:189
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:1011
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:272
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:148
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Application.php:93
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Application.php:185
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php:273
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\PendingCommand.php:136
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\PendingCommand.php:220
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\InteractsWithConsole.php:56
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\RefreshDatabase.php:55
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\RefreshDatabase.php:18
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:115
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:82
+</error>
+          <system-out>&#13;
+</system-out>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Unit\NoteTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\NoteTest.php" tests="4" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.070185">
+        <testcase name="testRegisterNullDescription" class="Tests\Unit\NoteTest" classname="Tests.Unit.NoteTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\NoteTest.php" line="13" assertions="1" time="0.010878">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testRegisterWithDescription" class="Tests\Unit\NoteTest" classname="Tests.Unit.NoteTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\NoteTest.php" line="26" assertions="1" time="0.020070">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testIfDeleted" class="Tests\Unit\NoteTest" classname="Tests.Unit.NoteTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\NoteTest.php" line="40" assertions="1" time="0.019475">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testToString" class="Tests\Unit\NoteTest" classname="Tests.Unit.NoteTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\NoteTest.php" line="52" assertions="1" time="0.019762">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Unit\PhoneticTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\PhoneticTest.php" tests="3" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.053264">
+        <testcase name="testInsertDb" class="Tests\Unit\PhoneticTest" classname="Tests.Unit.PhoneticTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\PhoneticTest.php" line="16" assertions="1" time="0.010875">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testInsertDbSpecialChar" class="Tests\Unit\PhoneticTest" classname="Tests.Unit.PhoneticTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\PhoneticTest.php" line="32" assertions="1" time="0.020122">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testDeleteDb" class="Tests\Unit\PhoneticTest" classname="Tests.Unit.PhoneticTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\PhoneticTest.php" line="43" assertions="2" time="0.022267">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Unit\SpokenLanguageTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\SpokenLanguageTest.php" tests="4" assertions="1" errors="3" warnings="0" failures="0" skipped="0" time="0.089825">
+        <testcase name="add_user_one_lang_ok" class="Tests\Unit\SpokenLanguageTest" classname="Tests.Unit.SpokenLanguageTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\SpokenLanguageTest.php" line="17" assertions="1" time="0.026471">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="add_user_with_two_lang_ok" class="Tests\Unit\SpokenLanguageTest" classname="Tests.Unit.SpokenLanguageTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\SpokenLanguageTest.php" line="39" assertions="0" time="0.021818">
           <error type="Illuminate\Database\QueryException">Tests\Unit\SpokenLanguageTest::add_user_with_two_lang_ok
-Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'user@example.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (user, user@example.com, ?, userPassword, ?, 2019-12-05 14:42:18, 2019-12-05 14:42:18))
+Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'user@example.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (user, user@example.com, ?, userPassword, ?, 2019-12-05 14:54:26, 2019-12-05 14:54:26))
 
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:665
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:625
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:460
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:412
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:669
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:629
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:464
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:416
 C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
 C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
 C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
@@ -387,14 +1146,14 @@ C:\wamp64\www\PRJFINAL\gmi\tests\Unit\SpokenLanguageTest.php:46
           <system-out>&#13;
 </system-out>
         </testcase>
-        <testcase name="add_two_users_with_same_lang" class="Tests\Unit\SpokenLanguageTest" classname="Tests.Unit.SpokenLanguageTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\SpokenLanguageTest.php" line="70" assertions="0" time="0.010685">
+        <testcase name="add_two_users_with_same_lang" class="Tests\Unit\SpokenLanguageTest" classname="Tests.Unit.SpokenLanguageTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\SpokenLanguageTest.php" line="70" assertions="0" time="0.025948">
           <error type="Illuminate\Database\QueryException">Tests\Unit\SpokenLanguageTest::add_two_users_with_same_lang
-Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'user@example.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (user, user@example.com, ?, userPassword, ?, 2019-12-05 14:42:18, 2019-12-05 14:42:18))
+Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'user@example.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (user, user@example.com, ?, userPassword, ?, 2019-12-05 14:54:26, 2019-12-05 14:54:26))
 
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:665
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:625
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:460
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:412
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:669
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:629
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:464
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:416
 C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
 C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
 C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
@@ -406,14 +1165,14 @@ C:\wamp64\www\PRJFINAL\gmi\tests\Unit\SpokenLanguageTest.php:75
           <system-out>&#13;
 </system-out>
         </testcase>
-        <testcase name="add_user_with_two_same_lang" class="Tests\Unit\SpokenLanguageTest" classname="Tests.Unit.SpokenLanguageTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\SpokenLanguageTest.php" line="107" assertions="0" time="0.010239">
+        <testcase name="add_user_with_two_same_lang" class="Tests\Unit\SpokenLanguageTest" classname="Tests.Unit.SpokenLanguageTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\SpokenLanguageTest.php" line="107" assertions="0" time="0.015588">
           <error type="Illuminate\Database\QueryException">Tests\Unit\SpokenLanguageTest::add_user_with_two_same_lang
-Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'user@example.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (user, user@example.com, ?, userPassword, ?, 2019-12-05 14:42:18, 2019-12-05 14:42:18))
+Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'user@example.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (user, user@example.com, ?, userPassword, ?, 2019-12-05 14:54:26, 2019-12-05 14:54:26))
 
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:665
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:625
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:460
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:412
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:669
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:629
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:464
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:416
 C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
 C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
 C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
@@ -426,15 +1185,15 @@ C:\wamp64\www\PRJFINAL\gmi\tests\Unit\SpokenLanguageTest.php:113
 </system-out>
         </testcase>
       </testsuite>
-      <testsuite name="Tests\Unit\UserTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\UserTest.php" tests="3" assertions="0" errors="3" warnings="0" failures="0" skipped="0" time="0.041266">
-        <testcase name="add_user_ok" class="Tests\Unit\UserTest" classname="Tests.Unit.UserTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\UserTest.php" line="15" assertions="0" time="0.011596">
+      <testsuite name="Tests\Unit\UserTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\UserTest.php" tests="3" assertions="0" errors="3" warnings="0" failures="0" skipped="0" time="0.057459">
+        <testcase name="add_user_ok" class="Tests\Unit\UserTest" classname="Tests.Unit.UserTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\UserTest.php" line="15" assertions="0" time="0.019336">
           <error type="Illuminate\Database\QueryException">Tests\Unit\UserTest::add_user_ok
-Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'user@example.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (user, user@example.com, ?, userPassword, ?, 2019-12-05 14:42:18, 2019-12-05 14:42:18))
+Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'user@example.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (user, user@example.com, ?, userPassword, ?, 2019-12-05 14:54:26, 2019-12-05 14:54:26))
 
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:665
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:625
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:460
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:412
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:669
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:629
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:464
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:416
 C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
 C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
 C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
@@ -446,14 +1205,14 @@ C:\wamp64\www\PRJFINAL\gmi\tests\Unit\UserTest.php:21
           <system-out>&#13;
 </system-out>
         </testcase>
-        <testcase name="add_user_email_already_used" class="Tests\Unit\UserTest" classname="Tests.Unit.UserTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\UserTest.php" line="31" assertions="0" time="0.015812">
+        <testcase name="add_user_email_already_used" class="Tests\Unit\UserTest" classname="Tests.Unit.UserTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\UserTest.php" line="31" assertions="0" time="0.023153">
           <error type="Illuminate\Database\QueryException">Tests\Unit\UserTest::add_user_email_already_used
-Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'user@example.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (user, user@example.com, ?, userPassword, ?, 2019-12-05 14:42:18, 2019-12-05 14:42:18))
+Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'user@example.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (user, user@example.com, ?, userPassword, ?, 2019-12-05 14:54:26, 2019-12-05 14:54:26))
 
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:665
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:625
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:460
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:412
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:669
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:629
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:464
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:416
 C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
 C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
 C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
@@ -465,14 +1224,14 @@ C:\wamp64\www\PRJFINAL\gmi\tests\Unit\UserTest.php:37
           <system-out>&#13;
 </system-out>
         </testcase>
-        <testcase name="add_user_name_too_short" class="Tests\Unit\UserTest" classname="Tests.Unit.UserTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\UserTest.php" line="48" assertions="0" time="0.013858">
+        <testcase name="add_user_name_too_short" class="Tests\Unit\UserTest" classname="Tests.Unit.UserTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\UserTest.php" line="48" assertions="0" time="0.014970">
           <error type="Illuminate\Database\QueryException">Tests\Unit\UserTest::add_user_name_too_short
-Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'user@example.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (, user@example.com, ?, userPassword, ?, 2019-12-05 14:42:18, 2019-12-05 14:42:18))
+Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'user@example.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (, user@example.com, ?, userPassword, ?, 2019-12-05 14:54:26, 2019-12-05 14:54:26))
 
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:665
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:625
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:460
-C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:412
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:669
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:629
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:464
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:416
 C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
 C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
 C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
@@ -485,20 +1244,72 @@ C:\wamp64\www\PRJFINAL\gmi\tests\Unit\UserTest.php:55
 </system-out>
         </testcase>
       </testsuite>
-      <testsuite name="Tests\Unit\VoteTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\VoteTest.php" tests="2" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.045812">
-        <testcase name="testVoteInsert" class="Tests\Unit\VoteTest" classname="Tests.Unit.VoteTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\VoteTest.php" line="15" assertions="1" time="0.014343">
+      <testsuite name="Tests\Unit\VoteTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\VoteTest.php" tests="2" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.031443">
+        <testcase name="testVoteInsert" class="Tests\Unit\VoteTest" classname="Tests.Unit.VoteTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\VoteTest.php" line="15" assertions="1" time="0.010121">
           <system-out>&#13;
 </system-out>
         </testcase>
-        <testcase name="testVoteDelete" class="Tests\Unit\VoteTest" classname="Tests.Unit.VoteTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\VoteTest.php" line="27" assertions="1" time="0.031469">
+        <testcase name="testVoteDelete" class="Tests\Unit\VoteTest" classname="Tests.Unit.VoteTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Unit\VoteTest.php" line="27" assertions="1" time="0.021322">
           <system-out>&#13;
 </system-out>
         </testcase>
       </testsuite>
     </testsuite>
-    <testsuite name="Feature" tests="1" assertions="15" errors="0" warnings="0" failures="0" skipped="0" time="0.119860">
-      <testsuite name="Tests\Feature\SearchCardTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Feature\SearchCardTest.php" tests="1" assertions="15" errors="0" warnings="0" failures="0" skipped="0" time="0.119860">
-        <testcase name="test1" class="Tests\Feature\SearchCardTest" classname="Tests.Feature.SearchCardTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Feature\SearchCardTest.php" line="19" assertions="15" time="0.119860">
+    <testsuite name="Feature" tests="1" assertions="0" errors="1" warnings="0" failures="0" skipped="0" time="0.920862">
+      <testsuite name="Tests\Feature\SearchCardTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Feature\SearchCardTest.php" tests="1" assertions="0" errors="1" warnings="0" failures="0" skipped="0" time="0.920862">
+        <testcase name="test1" class="Tests\Feature\SearchCardTest" classname="Tests.Feature.SearchCardTest" file="C:\wamp64\www\PRJFINAL\gmi\tests\Feature\SearchCardTest.php" line="19" assertions="0" time="0.920862">
+          <error type="Illuminate\Contracts\Container\BindingResolutionException">Tests\Feature\SearchCardTest::test1
+Illuminate\Contracts\Container\BindingResolutionException: Target class [excel] does not exist.
+
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:805
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:681
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:629
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Application.php:769
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:1245
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:198
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:166
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php:255
+C:\wamp64\www\PRJFINAL\gmi\app\Http\Controllers\LanguageController.php:43
+C:\wamp64\www\PRJFINAL\gmi\database\migrations\2019_12_04_144956_import_lang.php:16
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:387
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:396
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:197
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:162
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php:109
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\MigrateCommand.php:71
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:32
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Util.php:36
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:90
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:34
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:590
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:202
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Command\Command.php:255
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:189
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:242
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:214
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Database\Console\Migrations\FreshCommand.php:52
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:32
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Util.php:36
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:90
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php:34
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:590
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:202
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Command\Command.php:255
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Command.php:189
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:1011
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:272
+C:\wamp64\www\PRJFINAL\gmi\vendor\symfony\console\Application.php:148
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Application.php:93
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Console\Application.php:185
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php:273
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\PendingCommand.php:136
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\PendingCommand.php:220
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\InteractsWithConsole.php:56
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\RefreshDatabase.php:55
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\RefreshDatabase.php:18
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:115
+C:\wamp64\www\PRJFINAL\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestCase.php:82
+</error>
           <system-out>&#13;
 </system-out>
         </testcase>
