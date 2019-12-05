@@ -17,12 +17,12 @@ class CreateVoteTable extends Migration
             $table->bigIncrements('id');
             //$table->timestamps();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('card_id')->unsigned()->nullable();
+            $table->unsignedBigInteger('card_id');
 
             
             //List of alter table
             
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('card_id')->references('id')->on('cards')->onDelete('cascade');
 
         });
