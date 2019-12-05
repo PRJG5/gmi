@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Subdomain;
 use App\Language;
+use App\Domain;
 
 class BasicDataController extends Controller
 {
@@ -36,9 +37,13 @@ class BasicDataController extends Controller
 
     public function addDomain($content)
     {
+        if (Domain::where('content', '=', $content)->count() > 0) {
+            return json_encode(array('error' => 'Domain already saved'));
+        }
         $domain = new Domain();
         $domain->content=$content;
         $domain->save();
+        return json_encode(array('success' => 'Save'));
     }
 
 }
