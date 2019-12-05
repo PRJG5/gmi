@@ -43,7 +43,17 @@
 <label  class="col-md-6 col-form-label text-md-right"> Note : </label>
 <label>{{$note->description}}</label>
 @endif
+
+@if (isset($card->nbVotes))
+<label  class="col-md-6 col-form-label text-md-right"> Nombre de vote : </label>
+<label>{{$card->nbVotes}}</label>
+@endif
+
 <div>
+        <form action='/cards/vote/{{$card->id}}' method="get">
+        @csrf
+            <button type="submit" class="btn btn-primary">Vote</button>
+        </form>
     @if(in_array($card->language_id,Auth::user()->getLanguagesKeyArray()))
         <form action='/cards/{{$card->id}}/edit' method="get" style="display: inline-block;">
             @csrf

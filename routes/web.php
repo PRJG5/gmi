@@ -72,5 +72,6 @@ Route::get('api/addsubdomain/{name}', 'BasicDataController@addSubdomain')->middl
 Route::get('api/addlanguage/{name}/code/{iso}', 'BasicDataController@addLanguage')->middleware('auth');
 Route::get('api/adddomain/{name}', 'BasicDataController@addDomain')->middleware('auth');
 Route::get('/addbasicdata', 'LanguageController@index')->name('basicData')->middleware('auth');
+Route::get('cards/vote/{card}','VoteController@voteCard')->name('voteCard')->middleware('auth');
 ?>
 

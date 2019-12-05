@@ -17,6 +17,7 @@ use App\User;
 use App\vote;
 use App\Enums\Language;
 use App\Enums\Subdomain;
+use App\Validation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -98,6 +99,12 @@ class CardController extends Controller
                 'definition_id'=> $note->id,
             ]);
         }
+
+        {
+            $validation = Validation::create();
+            $request->merge(['validation_id' => $validation->id]);
+        }
+
         $card = Card::create($this->validateData($request, true));
 		$card->save();
         return $card;
@@ -200,14 +207,23 @@ class CardController extends Controller
      */
     public function destroy(Card $card)
     {
-        try {
+        try { 
             Link::where('cardA',
                 $card->id)->orWhere('cardB',
                 $card->id)->delete();
-            Context::find($card->context_id)->delete();
-            Definition::find($card->definition_id)->delete();
-            Note::find($card->note_id)->delete();
-            Phonetic::find($card->phonetic_id)->delete();
+
+            if(Context::find($card->context_id) != null) {
+                Context::find($card->context_id)->delete();
+            }
+            if(Definition::find($card->definition_id) != null) {
+                Definition::find($card->definition_id)->delete();
+            }
+            if(Note::find($card->note_id) != null) {
+                Note::find($card->note_id)->delete();
+            }
+            if(Phonetic::find($card->phonetic_id) != null) {
+                Phonetic::find($card->phonetic_id)->delete();
+            }
             Vote::where('card_id',
                 $card->id)->delete();
             $card->delete();
@@ -240,6 +256,7 @@ class CardController extends Controller
             'note_id'		=> '',
             'note'          => '',
             'owner_id'	    => 'required',
+            'validation_id' => 'required',
 		];
 		if(!$creating) {
 			array_merge($tab, [

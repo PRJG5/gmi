@@ -19,7 +19,7 @@
 </form>
 
 
-@include('card.index');
+@include('card.index')
 
 @endsection
 
