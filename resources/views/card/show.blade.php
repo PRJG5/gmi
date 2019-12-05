@@ -11,10 +11,14 @@
 <label class="col-md-6 col-form-label text-md-right"> Vedette : </label>
 <label>{{$card->heading}}</label> 
 
+@if ($card->isSignedLanguage())
+    <a href="{{$card->headingURL}}" target="_blank">Vidéo</a>
+@endif
+
 <label  class="col-md-6 col-form-label text-md-right"> Langue : </label>
 <label>{{$card->language_id}}</label>   
 
-@if (isset($card->phonetic))
+@if (isset($card->phonetic) && (!$card->isSignedLanguage()))
 <label  class="col-md-6 col-form-label text-md-right"> Phonetique : </label>
 <label>{{$phonetic->textDescription}}</label> 
 @endif
@@ -30,19 +34,32 @@
 @endif
 
 @if (isset($card->definition_id))
-<label  class="col-md-6 col-form-label text-md-right"> Definition : </label>
-<label>{{$definition->definition_content}}</label> 
+    <label  class="col-md-6 col-form-label text-md-right"> Definition : </label>
+    @if ($card->isSignedLanguage())
+        <a href="{{$definition->definition_content}}" target="_blank">Vidéo</a>
+    @else
+        <label>{{$definition->definition_content}}</label> 
+    @endif
 @endif
 
 @if (isset($card->context_id))
-<label  class="col-md-6 col-form-label text-md-right"> Contexte : </label>
-<label>{{$context->context_to_string}}</label> 
+    <label  class="col-md-6 col-form-label text-md-right"> Contexte : </label>
+    @if ($card->isSignedLanguage())
+        <a href="{{$context->context_to_string}}" target="_blank">Vidéo</a>
+    @else
+        <label>{{$context->context_to_string}}</label> 
+    @endif
 @endif
 
 @if (isset($card->note_id))
-<label  class="col-md-6 col-form-label text-md-right"> Note : </label>
-<label>{{$note->description}}</label>
+    <label  class="col-md-6 col-form-label text-md-right"> Note : </label>
+    @if ($card->isSignedLanguage())
+        <a href="{{$note->description}}" target="_blank">Vidéo</a>
+    @else
+        <label>{{$note->description}}</label>
+    @endif
 @endif
+
 <div>
     @if(in_array($card->language_id,Auth::user()->getLanguagesKeyArray()))
         <form action='/cards/{{$card->id}}/edit' method="get" style="display: inline-block;">

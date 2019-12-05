@@ -11,53 +11,62 @@
         @csrf
         <div class="form-group row">
             <label for="heading" class="col-md-6 col-form-label text-md-right"> Vedette : </label>
-            <input type="text" name="heading" id="heading">
+			<input type="text" name="heading" id="heading" required>
+		</div>
+		
+        <div class="form-group row" id="formHeadingURL" hidden>
+			<label for="headingURL" class="col-md-6 col-form-label text-md-right"> Vedette URL : </label>
+			<input type="text" name="headingURL" id="headingURL" placeholder="www.example.com">
         </div>
 
-		<label for="phonetic" class="col-md-6 col-form-label text-md-right">Phonetic:</label>
-		<input name="phonetic" class="phonetic" type="text" placeholder="Phonetic" value="" title="Phonetic"/>
+        <div class="form-group row" id="formPhonetic">
+			<label for="phonetic" class="col-md-6 col-form-label text-md-right">Phonetic:</label>
+			<input name="phonetic" class="phonetic" type="text" placeholder="Phonetic" value="" title="Phonetic"/>
+		</div>
 		
-        <input type="hidden" name="owner" value="{{ isset($owner) ? $owner->name : '' }}" disabled/>
+        <div class="form-group row" id="formLanguage">
+			<label for="language_id" class="col-md-6 col-form-label text-md-right">Langue : </label> 
+			<select name="language_id" class="language_id" type="text" value="{{$languages->id}}" title="Language" required>
+				@foreach  ($languages as $lang)
+					<option value="{{ $lang->slug }}" title="{{ $lang->content }}" >{{ $lang->content }}</option>
+				@endforeach
+			</select>
+		</div>       
+		
+        <div class="form-group row" id="formDomaine">
+			<label for="domain_id" class="col-md-6 col-form-label text-md-right">Langue : </label> 
+			<select name="language_id" class="domain_id" type="text" value="{{$domains->id}}" title="Domain" >
+				@foreach  ($domains as $domain)
+					<option value="{{ $domain->id }}" title="{{ $domain->content }}" >{{ $domain->content }}</option>
+				@endforeach
+			</select>
+        </div> 
 
-        @if (!isset($card) || in_array($card->language_id, $languages))
-        <label for="language_id" class="col-md-6 col-form-label text-md-right">Langue : </label> 
-		<select name="language_id" class="language_id" type="text" value="{{ isset($card) ? $card->language_id : '' }}" title="Language">
-			@foreach  ($languages as $lang)
-			<option value="{{ $lang->key }}" {{ (isset($card) && ($card->language_id == $lang->key)) ? 'selected' : '' }} title="{{ $lang->description }}" >{{ $lang->description }}</option>
-			@endforeach
-		</select>
-		@endif
+        <div class="form-group row" id="formSubDomaine">
+			<label for="subdomain_id" class="col-md-6 col-form-label text-md-right">Langue : </label> 
+			<select name="language_id" class="subdomain_id" type="text" value="{{$subdomains->id}}" title="Subdomain" >
+				@foreach  ($subdomains as $subdomain)
+					<option value="{{ $subdomain->id }}" title="{{ $subdomain->content }}" >{{ $subdomain->content }}</option>
+				@endforeach
+			</select>
+        </div> 
+
+
+		<div class="form-group row" id="formNote">
+			<label for="note" class="col-md-6 col-form-label text-md-right">Note : </label>
+			<input name="note" class="note" type="text" placeholder="Note" value="" title="Note" placeholder="Une note"/>
+		</div>
         
-
-        @if (!isset($card) || in_array($card->domain_id, $domain))
-		<label for="domain_id" class="col-md-6 col-form-label text-md-right">Domain:</label>
-		<select name="domain_id" class="domain_id" type="text" value="{{ isset($card) ? $card->domain_id : '' }}" title="Domain">
-			@foreach($domain as $dom)
-			<option value="{{ $dom->key}}" {{ (isset($card) && ($card->domain_id == $dom->key)) ? 'selected' : ''}} title="{{ $dom->description }}" >{{ $dom->description }}</option>
-			@endforeach
-		</select>
-		@endif
-
-		@if (!isset($card) || in_array($card->subdomain_id, $subdomain))
-		<label for="subdomain_id" class="col-md-6 col-form-label text-md-right">Subdomain:</label>
-		<select name="subdomain_id" class="subdomain_id" type="text" value="{{ isset($card) ? $card->subdomain_id : '' }}" title="Subdomain">
-			@foreach($subdomain as $subdom)
-			<option value="{{ $subdom->key}}" {{ (isset($card) && ($card->qubdomain_id == $subdom->key)) ? 'selected' : ''}} title="{{ $subdom->description }}" >{{ $subdom->description }}</option>
-			@endforeach
-		</select>
-		@endif
-
-
-        <label for="note" class="col-md-6 col-form-label text-md-right">Note:</label>
-		<input name="note" class="note" type="text" placeholder="Note" value="" title="Note"/>
-
-		<label for="context" class="col-md-6 col-form-label text-md-right">Contexte:</label>
-		<textarea name="context" class="context" placeholder="Context" value="" title="COntext"></textarea>
-
-		<label for="definition" class="col-md-6 col-form-label text-md-right">Definition:</label>
-		<textarea name="definition" class="context" placeholder="Definition" value="" title="Definition"></textarea>
+		<div class="form-group row" id="formContexte">
+			<label for="context" class="col-md-6 col-form-label text-md-right">Contexte : </label>
+			<textarea name="context" class="context" placeholder="Context" value="" title="Context" placeholder="Un contexte"></textarea>
+		</div>
 
 		
+		<div class="form-group row" id="formDefinition">
+			<label for="definition" class="col-md-6 col-form-label text-md-right">Definition : </label>
+			<textarea name="definition" class="context" placeholder="Definition" value="" title="Definition" placeholder="Une définition"></textarea>
+		</div>
 
         <br>
         <button type="submit" class="btn btn-primary"> Register Card</button>

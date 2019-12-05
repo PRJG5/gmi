@@ -154,4 +154,14 @@ class Card extends Model
 
         return $this->belongsToMany('App\Card' ,'card_card' , 'cardOrigin' , 'cardVersion');
     }
+
+    /**
+     * Return true if the card's language is a signed language
+     * @return true if the card's language is a signed language
+     */
+    public function isSignedLanguage(){
+        return $this->language_id == "SFB"
+            || $this->language_id == "VGT"
+            || $this->language_id == "ILS";
+    }
 }

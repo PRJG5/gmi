@@ -19,8 +19,10 @@
 
         <input type="hidden" name="owner" value="{{ isset($owner) ? $owner->name : '' }}" disabled/>
 
-		<label for="phonetic" class="col-md-6 col-form-label text-md-right">Phonetic:</label>
-		<input name="phonetic" class="phonetic" type="text" placeholder="Phonetic" value="{{isset($phonetic) ? $phonetic->textDescription : ' '}}" title="Phonetic"/>
+		@if (!$card->isSignedLanguage())
+			<label for="phonetic" class="col-md-6 col-form-label text-md-right">Phonetic:</label>
+			<input name="phonetic" class="phonetic" type="text" placeholder="Phonetic" value="{{isset($phonetic) ? $phonetic->textDescription : ' '}}" title="Phonetic"/>
+		@endif		
 		
         <!--METTRE LES VALEURS PAR DEFAUT A DOMAIN ET SUBDOMAIN-->
 
@@ -44,16 +46,28 @@
 
 
 		<label for="definition" class="col-md-6 col-form-label text-md-right">Definition:</label>
-		<textarea name="definition" class="definition" value="{{isset($definition) ? $definition->definition_content : ' '}}">{{isset($definition) ? $definition->definition_content : ""}}</textarea>
+		@if ($card->isSignedLanguage())
+			<input name="definition" class="definition" type="text" value="{{isset($definition) ? $definition->definition_content : ' '}}" placeholder="www.example.com">
+		@else
+			<textarea name="definition" class="definition" value="{{isset($definition) ? $definition->definition_content : ' '}}" placeholder="Une définition">{{isset($definition) ? $definition->definition_content : ""}} </textarea>
+		@endif
 
-        <label for="note" class="col-md-6 col-form-label text-md-right">Note:</label>
-		<input name="note" class="note" type="text" value="{{isset($note) ? $note->description : ' '}}"/>
+		<label for="note" class="col-md-6 col-form-label text-md-right">Note:</label>
+		<input name="note" class="note" type="text" value="{{isset($note) ? $note->description : ' '}}" @if ($card->isSignedLanguage())
+			placeholder="www.example.com"
+		@else
+			placeholder="Une note"
+		@endif/>
+		
 
 		<label for="context" class="col-md-6 col-form-label text-md-right">Contexte:</label>
-		<textarea name="context" class="context" value="{{isset($context) ? $context->context_to_string : ' '}}">{{isset($context) ? $context->context_to_string : ""}}</textarea>
-
+		@if ($card->isSignedLanguage())
+			<input name="context" class="context" type="text" value="{{isset($context) ? $context->context_to_string : ' '}}" placeholder="www.example.com">
+		@else
+			<textarea name="context" class="context" value="{{isset($context) ? $context->context_to_string : ' '}}">{{isset($context) ? $context->context_to_string : ""}}</textarea>
+		@endif
         <br>
-		<button type="submit" class="btn btn-primary"> Edit Card</button>
+		<button type="submit" class="btn btn-primary">Sauvegarder</button>
 
     </form>
 

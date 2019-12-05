@@ -46,8 +46,8 @@ class CardController extends Controller
     public function create()
     {
         return view('card.create', [
-            'domain' 	=> Domain::getInstances(),
-            'subdomain' => Subdomain::getInstances(),
+            'domains' 	=> Domain::getInstances(),
+            'subdomains' => Subdomain::getInstances(),
 			'languages' => Auth::user()->getLanguages()
         ]);
     }
@@ -177,7 +177,7 @@ class CardController extends Controller
     {
         if(Auth::user()->id == $card->owner_id) {
             $card->update($request->all());
-            return redirect()->action('CardController@show', [$card]);
+            return redirect()->action('CardController@showCard', [$card]);
         } else {
             $request->merge([
                 'owner_id' => Auth::user()->id,
@@ -185,7 +185,7 @@ class CardController extends Controller
 
             $cardVersion = $this->create_card($request);
             $card->versions()->save($cardVersion);
-            return redirect()->action('CardController@show', [$cardVersion]);
+            return redirect()->action('CardController@showCard', [$cardVersion]);
         }
     }
 
