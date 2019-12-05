@@ -173,6 +173,102 @@ class CardTest extends TestCase
         ]);
     }
 
+
+     /**
+     * Test if the updated card without validation throw an exception.
+     * @return void
+     * @author 49222, 44424
+     * @test
+     */
+    public function editCardWithoutValidationNotOKTest()
+    {
+		$owner = new User([
+			'name'		=> 'Test',
+			'email'		=> 'tttttesttttt@test.com',
+			'password'	=> 'test',
+        ]);
+        $owner->save();
+        $validation = new Validation();
+        $validation->save();
+		$card = new Card();
+		$card->heading = 'hello';
+		$card->phonetic_id = NULL;
+		$card->domain_id = 'Legal';
+		$card->subdomain_id = 'Justice';
+        $card->definition_id = NULL;
+        $card->context_id = NULL;
+        $card->note_id = NULL;
+        $card->language_id = 'ARA';
+        $card->owner_id = User::where('email', $owner->email)->first()->id;
+        $card->validation_id = $validation->id; 
+        $card->save();
+        $card->validation_id = NULL;
+        $this->expectException(QueryException::class);
+        $card->update();
+        
+        $this->assertDatabaseHas('cards', [
+            'id'			=> $card->id,
+            'heading'		=> $card->heading,
+            'phonetic_id'	=> $card->phonetic_id,
+            'domain_id'		=> strval($card->domain_id),
+            'subdomain_id'	=> strval($card->subdomain_id),
+            'definition_id' => $card->definition_id,
+            'note_id'		=> $card->note_id,
+            'context_id'	=> $card->context_id,
+            'language_id'	=> strval('ARA'),
+            'owner_id'		=> $card->owner_id,
+            'validation_id' => $validation->id,
+        ]);
+    }
+
+     /**
+     * Test if the updated card without validation throw an exception.
+     * @return void
+     * @author 49222, 44424
+     * @test
+     */
+    public function editCardWithValidationOKTest()
+    {
+		$owner = new User([
+			'name'		=> 'Test',
+			'email'		=> 'tttttesttttt@test.com',
+			'password'	=> 'test',
+        ]);
+        $owner->save();
+        $validation = new Validation();
+        $validation->save();
+        $validationB = new Validation();
+        $validationB->save();
+		$card = new Card();
+		$card->heading = 'hello';
+		$card->phonetic_id = NULL;
+		$card->domain_id = 'Legal';
+		$card->subdomain_id = 'Justice';
+        $card->definition_id = NULL;
+        $card->context_id = NULL;
+        $card->note_id = NULL;
+        $card->language_id = 'ARA';
+        $card->owner_id = User::where('email', $owner->email)->first()->id;
+        $card->validation_id = $validation->id; 
+        $card->save();
+        $card->validation_id = $validationB->id;
+        $card->update();
+        
+        $this->assertDatabaseHas('cards', [
+            'id'			=> $card->id,
+            'heading'		=> $card->heading,
+            'phonetic_id'	=> $card->phonetic_id,
+            'domain_id'		=> strval($card->domain_id),
+            'subdomain_id'	=> strval($card->subdomain_id),
+            'definition_id' => $card->definition_id,
+            'note_id'		=> $card->note_id,
+            'context_id'	=> $card->context_id,
+            'language_id'	=> strval('ARA'),
+            'owner_id'		=> $card->owner_id,
+            'validation_id' => $validationB->id,
+        ]);
+    }
+
      /**
      * Test if the updated card without owner throw an exception.
      * @return void
@@ -220,6 +316,9 @@ class CardTest extends TestCase
             'validation_id' => $card->validation_id,
         ]);
     }
+
+
+
 
     /**
      * Test if the card's new values has been correctly updated in DB, and checks if all data are filled.
@@ -396,6 +495,51 @@ class CardTest extends TestCase
         
         $this->expectException(QueryException::class);
         $card->save();
+    }
+
+
+    /**
+     * Test if the created card without validation_id throw an exception.
+     * @return void
+     * @author 49222, 44424
+     * @test
+     */
+    public function createCardWithoutValidationNotOKTest()
+    {
+		$owner = new User([
+			'name'		=> 'Test',
+			'email'		=> 'tttttesttttt@test.com',
+			'password'	=> 'test',
+        ]);
+        $owner->save();
+		$card = new Card();
+		$card->heading = NULL;
+		$card->phonetic_id = NULL;
+		$card->domain_id = 'Legal';
+		$card->subdomain_id = 'Justice';
+        $card->definition_id = NULL;
+        $card->context_id = NULL;
+        $card->note_id = NULL;
+        $card->language_id = 'ARA';
+        $card->owner_id = User::where('email', $owner->email)->first()->id;
+        $card->validation_id = NULL;
+        
+        $this->expectException(QueryException::class);
+        $card->save();
+
+        $this->assertDatabaseMissing('cards', [
+            'id'			=> $card->id,
+            'heading'		=> $card->heading,
+            'phonetic_id'	=> $card->phonetic_id,
+            'domain_id'		=> strval($card->domain_id),
+            'subdomain_id'	=> strval($card->subdomain_id),
+            'definition_id' => $card->definition_id,
+            'note_id'		=> $card->note_id,
+            'context_id'	=> $card->context_id,
+            'language_id'	=> strval($card->language_id),
+            'owner_id'		=> $card->owner_id,
+            'validation_id' => $card->validation_id,
+        ]);
     }
 
  /**
