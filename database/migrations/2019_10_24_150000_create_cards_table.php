@@ -41,7 +41,7 @@ class CreateCardsTable extends Migration
 			$table->unsignedBigInteger('phonetic_id')->nullable();
 
             /**
-             * LIST OF ALTER TABLE
+             * LIST OF ALTER TABLE *
              */
             $table->foreign('owner_id')->references('id')->on('users');
             $table->foreign('context_id')->references('id')->on('contexts')->onDelete('cascade');
