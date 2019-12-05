@@ -3,16 +3,13 @@
 @section('card-header')
 
 	Card
-    
 @endsection
-
 @section('card-body')
-
 <label class="col-md-6 col-form-label text-md-right"> Vedette : </label>
 <label>{{$card->heading}}</label> 
 
 <label  class="col-md-6 col-form-label text-md-right"> Langue : </label>
-<label>{{$card->language_id}}</label>   
+<label>{{$languages->content}}</label>
 
 @if (isset($card->phonetic))
 <label  class="col-md-6 col-form-label text-md-right"> Phonetique : </label>
@@ -21,22 +18,22 @@
 
 @if (isset($card->domain_id))
 <label  class="col-md-6 col-form-label text-md-right"> Domaine : </label>
-<label>{{$card->domain_id}}</label> 
+<label>{{$domain->content}}</label>
 @endif
 
 @if (isset($card->subdomain_id))
 <label  class="col-md-6 col-form-label text-md-right"> Sous-Domaine : </label>
-<label>{{$card->subdomain_id}}</label> 
+<label>{{$subdomain->content}}</label>
 @endif
 
 @if (isset($card->definition_id))
 <label  class="col-md-6 col-form-label text-md-right"> Definition : </label>
-<label>{{$definition->definition_content}}</label> 
+<label>{{$definition->definition_content}}</label>
 @endif
 
 @if (isset($card->context_id))
 <label  class="col-md-6 col-form-label text-md-right"> Contexte : </label>
-<label>{{$context->context_to_string}}</label> 
+<label>{{$context->context_to_string}}</label>
 @endif
 
 @if (isset($card->note_id))

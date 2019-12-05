@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Language;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use App\Enums\Language;
 use App\SpokenLanguages;
 use Illuminate\Support\Facades\DB;
 
@@ -104,12 +104,7 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
-        $languages = array();
-        $cpt = 0;
-        foreach(Language::getKeys() as $key) {
-            $languages[$cpt] = [$key, Language::getDescription($key)];
-            $cpt++;
-        }
+        $languages = Language::all();
         return view('auth.register', compact('languages'));
     }
 }
