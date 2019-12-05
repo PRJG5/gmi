@@ -41,9 +41,9 @@
 <label>{{$note->description}}</label>
 @endif
 
-@if (isset($card->nbVotes))
+@if (isset($card->count_vote))
 <label  class="col-md-6 col-form-label text-md-right"> Nombre de vote : </label>
-<label>{{$card->nbVotes}}</label>
+<label>{{$card->count_vote}}</label>
 @endif
 
 <div>

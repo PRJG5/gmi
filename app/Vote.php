@@ -29,7 +29,6 @@ class Vote extends Model
 	protected $guarded = [
         'id',
 	];
-
 }
 
 ?>
