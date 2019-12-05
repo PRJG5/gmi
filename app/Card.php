@@ -144,7 +144,7 @@ class Card extends Model
 
 
     public function getCountVoteAttribute() {
-        return Vote::where(['card_id','=',$this->id])->count();
+        return Vote::where('card_id','=',$this->id)->count();
     }
 
 
