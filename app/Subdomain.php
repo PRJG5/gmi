@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Subdomain extends Model
 {
-    //
+    public $timestamps = false;
 }
