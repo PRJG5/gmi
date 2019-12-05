@@ -49,14 +49,20 @@
 <label>{{$card->nbVotes}}</label>
 @endif
 
-<form action='/cards/{{$card->id}}/edit' method="get">
-    @csrf
-    <button type="submit" class="btn btn-primary">Edit</button>
-</form>
+<div>
+        <form action='/cards/vote/{{$card->id}}' method="get">
+        @csrf
+            <button type="submit" class="btn btn-primary">Vote</button>
+        </form>
+    @if(in_array($card->language_id,Auth::user()->getLanguagesKeyArray()))
+        <form action='/cards/{{$card->id}}/edit' method="get" style="display: inline-block;">
+            @csrf
+            <button type="submit" class="btn btn-primary">Edit</button>
+        </form>
 
-<form action='/cards/vote/{{$card->id}}' method="get">
-    @csrf
-    <button type="submit" class="btn btn-primary">Vote</button>
-</form>
-
+        @if(Auth::user()->role != \App\Enums\Roles::USERS)
+            <button class="btn btn-danger float-right" style="">Supprimer</button>
+        @endif
+    @endif
+</div>
 @endsection

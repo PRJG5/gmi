@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<h1> Mes Fiches </h1>
+<h1>Une carte</h1>
 
-@include('card.index', $cards)
-
+@include('card.show', $card)
+    
 @endsection

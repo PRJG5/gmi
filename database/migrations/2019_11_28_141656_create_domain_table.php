@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSubdomainsTable extends Migration
+class CreateDomainTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateSubdomainsTable extends Migration
      */
     public function up()
     {
-        Schema::create('subdomains', function (Blueprint $table) {
+        Schema::create('domains', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('content')->unique();
         });
@@ -26,6 +26,6 @@ class CreateSubdomainsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subdomains');
+        Schema::dropIfExists('domains');
     }
 }

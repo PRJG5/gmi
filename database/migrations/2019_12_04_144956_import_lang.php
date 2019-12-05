@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSubdomainsTable extends Migration
+class ImportLang extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,8 @@ class CreateSubdomainsTable extends Migration
      * @return void
      */
     public function up()
-    {
-        Schema::create('subdomains', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('content')->unique();
-        });
+    { 
+        App\Http\Controllers\LanguageController::importFile(resource_path('lang/Langues.xlsx'));
     }
 
     /**
@@ -26,6 +23,6 @@ class CreateSubdomainsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subdomains');
+        //
     }
 }
