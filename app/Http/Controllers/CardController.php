@@ -224,7 +224,8 @@ class CardController extends Controller
             if(Phonetic::find($card->phonetic_id) != null) {
                 Phonetic::find($card->phonetic_id)->delete();
             }
-            Vote::where('card_id', $card->id)->delete();$card->delete();
+            //Vote::where('card_id', $card->id)->delete();
+            $card->delete();
         } catch(\Exception $exception) {
             echo $exception;
         }
