@@ -21,6 +21,7 @@ class CreateLanguagesTable extends Migration
             $table->string('content')->unique();
             $table->string('slug')->unique();
         });
+
     }
 
     /**
