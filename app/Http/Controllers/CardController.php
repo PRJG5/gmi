@@ -7,15 +7,19 @@ define("FORMAT_DESCRIPTION", "Pour consulter votre carte, veuillez suivre ce lie
 
 
 use App\Card;
-use App\Enums\Domain;
+use App\Domain;
+use App\Language;
 use App\Phonetic;
+use App\Link;
 use App\Note;
 use App\Context;
 use App\Definition;
+use App\Subdomain;
 use App\User;
 use App\Link;
-use App\Enums\Language;
-use App\Enums\Subdomain;
+use App\vote;
+use App\Validation;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -36,7 +40,7 @@ class CardController extends Controller
      */
     public function index()
     {
-        return view('card.index',['cards' => Card::all()]);
+        return view('allCards',['cards' => Card::orderBy('heading', 'ASC')->get()]);
     }
 
     /**
@@ -47,26 +51,17 @@ class CardController extends Controller
     public function create()
     {
         return view('card.create', [
-            'domain' 	=> Domain::getInstances(),
-            'subdomain' => Subdomain::getInstances(),
-			'languages' => Language::getInstances(), //Language::all()
-		]);
+            'domain' 	=> Domain::all(),
+            'subdomain' => Subdomain::all(),
+			'languages' => Auth::user()->getLanguages()
+        ]);
     }
 
-    /**
-     * Stores a newly created card in the database.
-     * @param  Request  $request the incoming request.
-     * @return Request the view with the newly created card.
-     * @author 44422
+     /**
+     * @author 49762 49262
+     * 
      */
-    public function store(Request $request)
-    {
-		if(!Auth::user()) { // TODO replace with authorize method
-			abort(403, 'Unauthorized action. You must be logged in to create a card.');
-        }
-		$request->merge([
-            'owner_id' => Auth::user()->id,
-        ]);
+    private function create_card(Request $request){
         if(isset($request['phonetic']) && strlen($request['phonetic']) > 0){
             $phonetic = Phonetic::create([
                 'textDescription' => $request['phonetic'],
@@ -83,7 +78,7 @@ class CardController extends Controller
             ]);
             $note->save();
             $request->merge([
-                'note_id'=> $note->id,  
+                'note_id'=> $note->id,
             ]);
         }
 
@@ -93,7 +88,7 @@ class CardController extends Controller
             ]);
             $context->save();
             $request->merge([
-                'context_id'=> $context->id,  
+                'context_id'=> $context->id,
             ]);
         }
 
@@ -103,11 +98,37 @@ class CardController extends Controller
             ]);
             $note->save();
             $request->merge([
-                'definition_id'=> $note->id,  
+                'definition_id'=> $note->id,
             ]);
         }
+
+        {
+            $validation = Validation::create();
+            $request->merge(['validation_id' => $validation->id]);
+        }
+
         $card = Card::create($this->validateData($request, true));
 		$card->save();
+        return $card;
+    }
+
+    /**
+     * Stores a newly created card in the database.
+     * @param  Request  $request the incoming request.
+     * @return Request the view with the newly created card.
+     * @author 44422
+     */
+    public function store(Request $request)
+    {
+		if(!Auth::user()) { // TODO replace with authorize method
+			abort(403, 'Unauthorized action. You must be logged in to create a card.');
+        }
+		$request->merge([
+            'owner_id' => Auth::user()->id,
+        ]);
+
+        $card = $this->create_card($request);
+
         return redirect()->action('CardController@show', [$card]);
     }
 
@@ -121,9 +142,9 @@ class CardController extends Controller
     {
         return view('card.show', [
 			'card' 		=> $card,
-			'domain' 	=> Domain::getInstances(),
-			'languages' => DB::table("cards")->where('language_id',$card->language_id),
-			'subdomain' => Subdomain::getInstances(),
+			'domain' 	=> Domain::all()->where('id',$card->domain_id)->first(),
+			'languages' => Language::all()->where('slug',$card->language_id)->first(),
+			'subdomain' => Subdomain::all()->where('id',$card->subdomain_id)->first(),
             'owner' 	=> User::find($card->owner_id),
 		]);
     }
@@ -138,11 +159,12 @@ class CardController extends Controller
     {
         $subject = sprintf(FORMAT_SUBJECT, $card->heading);
         $description = sprintf(FORMAT_DESCRIPTION, $_SERVER['HTTP_HOST'], $card->card_id);
+
         return view('card.edit', [
             'mail'      => ["subject" => urlencode($subject),'description' => urlencode($description)],
             'card' 		=> $card,
 			'domain' 	=> Domain::getInstances(),
-			'languages' => DB::table("cards")->where('id',$card->language_id),
+			'languages' => DB::table("cards")->where('id',$card->language_id)->first(),
 			'subdomain' => Subdomain::getInstances(),
             'owner' 	=> User::find($card->owner_id),
             'phonetic'  => $card->getPhonetic(),
@@ -161,8 +183,18 @@ class CardController extends Controller
      */
     public function update(Request $request, Card $card)
     {
-		$card->update($this->validateData($request, false));
-        return redirect()->action('CardController@show', [$card]);
+        if(Auth::user()->id == $card->owner_id) {
+            $card->update($request->all());
+            return redirect()->action('CardController@show', [$card]);
+        } else {
+            $request->merge([
+                'owner_id' => Auth::user()->id,
+            ]);
+
+            $cardVersion = $this->create_card($request);
+            $card->versions()->save($cardVersion);
+            return redirect()->action('CardController@show', [$cardVersion]);
+        }
     }
 
     /**
@@ -174,10 +206,25 @@ class CardController extends Controller
      */
     public function destroy(Card $card)
     {
-        try {
+        try { 
+            Link::where('cardA', $card->id)->orWhere('cardB', $card->id)->delete();
+
+            if(Context::find($card->context_id) != null) {
+                Context::find($card->context_id)->delete();
+            }
+            if(Definition::find($card->definition_id) != null) {
+                Definition::find($card->definition_id)->delete();
+            }
+            if(Note::find($card->note_id) != null) {
+                Note::find($card->note_id)->delete();
+            }
+            if(Phonetic::find($card->phonetic_id) != null) {
+                Phonetic::find($card->phonetic_id)->delete();
+            }
+            // VOTE possède un ondelete cascade sur cardId donc si carte se supprime, vote se supprime !
             $card->delete();
         } catch(\Exception $exception) {
-
+            echo $exception;
         }
         return redirect()->action('CardController@index');
     }
@@ -205,6 +252,7 @@ class CardController extends Controller
             'note_id'		=> '',
             'note'          => '',
             'owner_id'	    => 'required',
+            'validation_id' => 'required',
 		];
 		if(!$creating) {
 			array_merge($tab, [
@@ -225,7 +273,7 @@ class CardController extends Controller
 	public function authorize($ability, $arguments) {
 		return true; // TODO
 	}
-    
+
     /**
      * Return all cards from an user
      * @param int userId The user id
@@ -243,11 +291,6 @@ class CardController extends Controller
             'userOrigin' => DB::table('users')->where('id', $cardOrigin->owner_id)->first(),
 		]);
     }
-
-    public function linkListCard(Card $card){
-        
-    }
-
     public function linkToAnotherCard(Request $request){
         $request->validate([
             'cardOrigin' => 'required',
@@ -259,6 +302,18 @@ class CardController extends Controller
     return redirect()->back();
     }
 
+   public function showCard($id) {
+        $card = Card::find($id);
+       return view('card.show', [
+           'card' => $card,
+            'phonetic'  => DB::table('phonetics')->where('id', $card->phonetic_id)->first(),
+            'note'      => DB::table('notes')->where('id', $card->note_id)->first(),
+            'context'   => DB::table('contexts')->where('id',$card->context_id)->first(),
+            'definition'=> DB::table('definitions')->where('id',$card->definition_id)->first(),
+            'domain' 	=> Domain::all()->where('id',$card->domain_id)->first(),
+           'languages' => Language::all()->where('slug',$card->language_id)->first(),
+           'subdomain' => Subdomain::all()->where('id',$card->subdomain_id)->first(),
+       ]);
+   }
 
-    
 }

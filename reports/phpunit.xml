@@ -1,0 +1,1092 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+<<<<<<< HEAD
+  <testsuite name="" tests="57" assertions="60" errors="4" warnings="0" failures="0" skipped="0" time="26.829906">
+    <testsuite name="Unit" tests="56" assertions="60" errors="3" warnings="0" failures="0" skipped="0" time="26.085713">
+      <testsuite name="Tests\Unit\CardTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\CardTest.php" tests="14" assertions="15" errors="1" warnings="0" failures="0" skipped="0" time="23.791019">
+        <testcase name="editCardOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\CardTest.php" line="28" assertions="2" time="22.837990">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="editCardWithoutHeadingNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\CardTest.php" line="88" assertions="1" time="0.092156">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="editCardWithoutLanguageNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\CardTest.php" line="135" assertions="1" time="0.031914">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="editCardWithoutValidationNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\CardTest.php" line="183" assertions="1" time="0.049534">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="editCardWithValidationOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\CardTest.php" line="230" assertions="1" time="0.050225">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="editCardWithoutOwnerNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\CardTest.php" line="278" assertions="1" time="0.047725">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="editCardWithAllValuesSetOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\CardTest.php" line="329" assertions="2" time="0.140011">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="createCardWithAllValuesSetOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\CardTest.php" line="409" assertions="1" time="0.097578">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="createCardWithoutHeadingNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\CardTest.php" line="474" assertions="1" time="0.057237">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="createCardWithoutValidationNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\CardTest.php" line="507" assertions="1" time="0.048113">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="createCardWithoutLanguageNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\CardTest.php" line="551" assertions="1" time="0.032217">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="createCardWithoutOwnerNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\CardTest.php" line="582" assertions="1" time="0.024505">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="deleteOKCardTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\CardTest.php" line="610" assertions="1" time="0.172481">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="deleteNotExistingCardNotOkTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\CardTest.php" line="655" assertions="0" time="0.109333">
+          <error type="PHPUnit\Framework\RiskyTestError">Risky Test
+=======
+  <testsuite name="" tests="51" assertions="31" errors="27" warnings="0" failures="1" skipped="0" time="3.092832">
+    <testsuite name="Unit" tests="50" assertions="25" errors="27" warnings="0" failures="0" skipped="0" time="3.018389">
+      <testsuite name="Tests\Unit\CardTest" file="C:\wamp64\www\gmi\tests\Unit\CardTest.php" tests="11" assertions="3" errors="9" warnings="0" failures="0" skipped="0" time="2.558047">
+        <testcase name="editCardOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\wamp64\www\gmi\tests\Unit\CardTest.php" line="27" assertions="2" time="2.440134">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="editCardWithoutHeadingNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\wamp64\www\gmi\tests\Unit\CardTest.php" line="81" assertions="0" time="0.013473">
+          <error type="Illuminate\Database\QueryException">Tests\Unit\CardTest::editCardWithoutHeadingNotOKTest
+Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'tttttesttttt@test.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (Test, tttttesttttt@test.com, ?, test, ?, 2019-12-05 16:20:33, 2019-12-05 16:20:33))
+
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:669
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:629
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:464
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:416
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
+C:\wamp64\www\gmi\tests\Unit\CardTest.php:88
+</error>
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="editCardWithoutLanguageNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\wamp64\www\gmi\tests\Unit\CardTest.php" line="124" assertions="0" time="0.010985">
+          <error type="Illuminate\Database\QueryException">Tests\Unit\CardTest::editCardWithoutLanguageNotOKTest
+Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'tttttesttttt@test.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (Test, tttttesttttt@test.com, ?, test, ?, 2019-12-05 16:20:33, 2019-12-05 16:20:33))
+
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:669
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:629
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:464
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:416
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
+C:\wamp64\www\gmi\tests\Unit\CardTest.php:131
+</error>
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="editCardWithoutOwnerNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\wamp64\www\gmi\tests\Unit\CardTest.php" line="167" assertions="0" time="0.010820">
+          <error type="Illuminate\Database\QueryException">Tests\Unit\CardTest::editCardWithoutOwnerNotOKTest
+Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'tttttesttttt@test.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (Test, tttttesttttt@test.com, ?, test, ?, 2019-12-05 16:20:33, 2019-12-05 16:20:33))
+
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:669
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:629
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:464
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:416
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
+C:\wamp64\www\gmi\tests\Unit\CardTest.php:174
+</error>
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="editCardWithAllValuesSetOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\wamp64\www\gmi\tests\Unit\CardTest.php" line="211" assertions="0" time="0.014193">
+          <error type="Illuminate\Database\QueryException">Tests\Unit\CardTest::editCardWithAllValuesSetOKTest
+Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'tttttesttttt@test.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (Test, tttttesttttt@test.com, ?, test, ?, 2019-12-05 16:20:33, 2019-12-05 16:20:33))
+
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:669
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:629
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:464
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:416
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
+C:\wamp64\www\gmi\tests\Unit\CardTest.php:219
+</error>
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="createCardWithAllValuesSetOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\wamp64\www\gmi\tests\Unit\CardTest.php" line="286" assertions="0" time="0.011595">
+          <error type="Illuminate\Database\QueryException">Tests\Unit\CardTest::createCardWithAllValuesSetOKTest
+Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'tttttesttttt@test.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (Test, tttttesttttt@test.com, ?, test, ?, 2019-12-05 16:20:33, 2019-12-05 16:20:33))
+
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:669
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:629
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:464
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:416
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
+C:\wamp64\www\gmi\tests\Unit\CardTest.php:294
+</error>
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="createCardWithoutHeadingNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\wamp64\www\gmi\tests\Unit\CardTest.php" line="346" assertions="0" time="0.011026">
+          <error type="Illuminate\Database\QueryException">Tests\Unit\CardTest::createCardWithoutHeadingNotOKTest
+Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'tttttesttttt@test.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (Test, tttttesttttt@test.com, ?, test, ?, 2019-12-05 16:20:33, 2019-12-05 16:20:33))
+
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:669
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:629
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:464
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:416
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
+C:\wamp64\www\gmi\tests\Unit\CardTest.php:353
+</error>
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="createCardWithoutLanguageNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\wamp64\www\gmi\tests\Unit\CardTest.php" line="375" assertions="0" time="0.011098">
+          <error type="Illuminate\Database\QueryException">Tests\Unit\CardTest::createCardWithoutLanguageNotOKTest
+Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'tttttesttttt@test.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (Test, tttttesttttt@test.com, ?, test, ?, 2019-12-05 16:20:33, 2019-12-05 16:20:33))
+
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:669
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:629
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:464
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:416
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
+C:\wamp64\www\gmi\tests\Unit\CardTest.php:382
+</error>
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="createCardWithoutOwnerNotOKTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\wamp64\www\gmi\tests\Unit\CardTest.php" line="403" assertions="1" time="0.012252">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="deleteOKCardTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\wamp64\www\gmi\tests\Unit\CardTest.php" line="428" assertions="0" time="0.011294">
+          <error type="Illuminate\Database\QueryException">Tests\Unit\CardTest::deleteOKCardTest
+Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'tttttesttttt@test.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (Test, tttttesttttt@test.com, ?, test, ?, 2019-12-05 16:20:33, 2019-12-05 16:20:33))
+
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:669
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:629
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:464
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:416
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
+C:\wamp64\www\gmi\tests\Unit\CardTest.php:435
+</error>
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="deleteNotExistingCardNotOkTest" class="Tests\Unit\CardTest" classname="Tests.Unit.CardTest" file="C:\wamp64\www\gmi\tests\Unit\CardTest.php" line="469" assertions="0" time="0.011177">
+          <error type="Illuminate\Database\QueryException">Tests\Unit\CardTest::deleteNotExistingCardNotOkTest
+Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'tttttesttttt@test.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (Test, tttttesttttt@test.com, ?, test, ?, 2019-12-05 16:20:33, 2019-12-05 16:20:33))
+
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:669
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:629
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:464
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:416
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
+C:\wamp64\www\gmi\tests\Unit\CardTest.php:476
+>>>>>>> 49923-REMOVE_ENUM
+</error>
+          <system-out>&#13;
+</system-out>
+        </testcase>
+      </testsuite>
+<<<<<<< HEAD
+      <testsuite name="Tests\Unit\ContextTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\ContextTest.php" tests="4" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.153474">
+        <testcase name="testValidInsertion" class="Tests\Unit\ContextTest" classname="Tests.Unit.ContextTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\ContextTest.php" line="18" assertions="1" time="0.039799">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testInsertNullDescription" class="Tests\Unit\ContextTest" classname="Tests.Unit.ContextTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\ContextTest.php" line="36" assertions="1" time="0.016559">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testIfDeleted" class="Tests\Unit\ContextTest" classname="Tests.Unit.ContextTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\ContextTest.php" line="45" assertions="1" time="0.032261">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testToString" class="Tests\Unit\ContextTest" classname="Tests.Unit.ContextTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\ContextTest.php" line="60" assertions="1" time="0.064855">
+=======
+      <testsuite name="Tests\Unit\ContextTest" file="C:\wamp64\www\gmi\tests\Unit\ContextTest.php" tests="4" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.051753">
+        <testcase name="testValidInsertion" class="Tests\Unit\ContextTest" classname="Tests.Unit.ContextTest" file="C:\wamp64\www\gmi\tests\Unit\ContextTest.php" line="18" assertions="1" time="0.016838">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testInsertNullDescription" class="Tests\Unit\ContextTest" classname="Tests.Unit.ContextTest" file="C:\wamp64\www\gmi\tests\Unit\ContextTest.php" line="36" assertions="1" time="0.011100">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testIfDeleted" class="Tests\Unit\ContextTest" classname="Tests.Unit.ContextTest" file="C:\wamp64\www\gmi\tests\Unit\ContextTest.php" line="45" assertions="1" time="0.011252">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testToString" class="Tests\Unit\ContextTest" classname="Tests.Unit.ContextTest" file="C:\wamp64\www\gmi\tests\Unit\ContextTest.php" line="60" assertions="1" time="0.012563">
+>>>>>>> 49923-REMOVE_ENUM
+          <system-out>&#13;
+</system-out>
+        </testcase>
+      </testsuite>
+<<<<<<< HEAD
+      <testsuite name="Tests\Unit\DefinitionTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\DefinitionTest.php" tests="4" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.251845">
+        <testcase name="testDefinitionWithContent" class="Tests\Unit\DefinitionTest" classname="Tests.Unit.DefinitionTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\DefinitionTest.php" line="15" assertions="1" time="0.082156">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testDefinitionWithId" class="Tests\Unit\DefinitionTest" classname="Tests.Unit.DefinitionTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\DefinitionTest.php" line="30" assertions="1" time="0.056059">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testDefinitionMissing" class="Tests\Unit\DefinitionTest" classname="Tests.Unit.DefinitionTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\DefinitionTest.php" line="45" assertions="1" time="0.064777">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testDefinitionToString" class="Tests\Unit\DefinitionTest" classname="Tests.Unit.DefinitionTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\DefinitionTest.php" line="59" assertions="1" time="0.048853">
+=======
+      <testsuite name="Tests\Unit\DefinitionTest" file="C:\wamp64\www\gmi\tests\Unit\DefinitionTest.php" tests="4" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.068979">
+        <testcase name="testDefinitionWithContent" class="Tests\Unit\DefinitionTest" classname="Tests.Unit.DefinitionTest" file="C:\wamp64\www\gmi\tests\Unit\DefinitionTest.php" line="15" assertions="1" time="0.023796">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testDefinitionWithId" class="Tests\Unit\DefinitionTest" classname="Tests.Unit.DefinitionTest" file="C:\wamp64\www\gmi\tests\Unit\DefinitionTest.php" line="30" assertions="1" time="0.012448">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testDefinitionMissing" class="Tests\Unit\DefinitionTest" classname="Tests.Unit.DefinitionTest" file="C:\wamp64\www\gmi\tests\Unit\DefinitionTest.php" line="45" assertions="1" time="0.011742">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testDefinitionToString" class="Tests\Unit\DefinitionTest" classname="Tests.Unit.DefinitionTest" file="C:\wamp64\www\gmi\tests\Unit\DefinitionTest.php" line="59" assertions="1" time="0.020993">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Unit\DomainTest" file="C:\wamp64\www\gmi\tests\Unit\DomainTest.php" tests="2" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.025644">
+        <testcase name="testDomainInsert" class="Tests\Unit\DomainTest" classname="Tests.Unit.DomainTest" file="C:\wamp64\www\gmi\tests\Unit\DomainTest.php" line="13" assertions="1" time="0.012874">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testDomainDelete" class="Tests\Unit\DomainTest" classname="Tests.Unit.DomainTest" file="C:\wamp64\www\gmi\tests\Unit\DomainTest.php" line="24" assertions="1" time="0.012770">
+>>>>>>> 49923-REMOVE_ENUM
+          <system-out>&#13;
+</system-out>
+        </testcase>
+      </testsuite>
+<<<<<<< HEAD
+      <testsuite name="Tests\Unit\DomainTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\DomainTest.php" tests="2" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.190554">
+        <testcase name="testDomainInsert" class="Tests\Unit\DomainTest" classname="Tests.Unit.DomainTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\DomainTest.php" line="13" assertions="1" time="0.074329">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testDomainDelete" class="Tests\Unit\DomainTest" classname="Tests.Unit.DomainTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\DomainTest.php" line="24" assertions="1" time="0.116225">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Unit\EnumDomainTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\EnumDomainTest.php" tests="3" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.201153">
+        <testcase name="testGetKEYOne" class="Tests\Unit\EnumDomainTest" classname="Tests.Unit.EnumDomainTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\EnumDomainTest.php" line="24" assertions="1" time="0.055681">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testGetKeyTwo" class="Tests\Unit\EnumDomainTest" classname="Tests.Unit.EnumDomainTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\EnumDomainTest.php" line="32" assertions="1" time="0.005054">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testGetDescription" class="Tests\Unit\EnumDomainTest" classname="Tests.Unit.EnumDomainTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\EnumDomainTest.php" line="37" assertions="1" time="0.140418">
+=======
+      <testsuite name="Tests\Unit\EnumDomainTest" file="C:\wamp64\www\gmi\tests\Unit\EnumDomainTest.php" tests="3" assertions="0" errors="3" warnings="0" failures="0" skipped="0" time="0.022299">
+        <testcase name="testGetKEYOne" class="Tests\Unit\EnumDomainTest" classname="Tests.Unit.EnumDomainTest" file="C:\wamp64\www\gmi\tests\Unit\EnumDomainTest.php" line="24" assertions="0" time="0.007556">
+          <error type="Error">Tests\Unit\EnumDomainTest::testGetKEYOne
+Error: Class 'App\Enums\Domain' not found
+
+C:\wamp64\www\gmi\tests\Unit\EnumDomainTest.php:26
+</error>
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testGetKeyTwo" class="Tests\Unit\EnumDomainTest" classname="Tests.Unit.EnumDomainTest" file="C:\wamp64\www\gmi\tests\Unit\EnumDomainTest.php" line="32" assertions="0" time="0.006430">
+          <error type="Error">Tests\Unit\EnumDomainTest::testGetKeyTwo
+Error: Class 'App\Enums\Domain' not found
+
+C:\wamp64\www\gmi\tests\Unit\EnumDomainTest.php:34
+</error>
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testGetDescription" class="Tests\Unit\EnumDomainTest" classname="Tests.Unit.EnumDomainTest" file="C:\wamp64\www\gmi\tests\Unit\EnumDomainTest.php" line="37" assertions="0" time="0.008313">
+          <error type="Error">Tests\Unit\EnumDomainTest::testGetDescription
+Error: Class 'App\Enums\Domain' not found
+
+C:\wamp64\www\gmi\tests\Unit\EnumDomainTest.php:40
+</error>
+>>>>>>> 49923-REMOVE_ENUM
+          <system-out>&#13;
+</system-out>
+        </testcase>
+      </testsuite>
+<<<<<<< HEAD
+      <testsuite name="Tests\Unit\EnumLanguageTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\EnumLanguageTest.php" tests="4" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.075926">
+        <testcase name="TestSizeLanguage" class="Tests\Unit\EnumLanguageTest" classname="Tests.Unit.EnumLanguageTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\EnumLanguageTest.php" line="17" assertions="1" time="0.062495">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="TestFindLanguage" class="Tests\Unit\EnumLanguageTest" classname="Tests.Unit.EnumLanguageTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\EnumLanguageTest.php" line="28" assertions="1" time="0.005029">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="TestNumberLanguage" class="Tests\Unit\EnumLanguageTest" classname="Tests.Unit.EnumLanguageTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\EnumLanguageTest.php" line="38" assertions="1" time="0.004084">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="LanguageDescriptionTest" class="Tests\Unit\EnumLanguageTest" classname="Tests.Unit.EnumLanguageTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\EnumLanguageTest.php" line="48" assertions="1" time="0.004318">
+=======
+      <testsuite name="Tests\Unit\EnumLanguageTest" file="C:\wamp64\www\gmi\tests\Unit\EnumLanguageTest.php" tests="4" assertions="0" errors="4" warnings="0" failures="0" skipped="0" time="0.028961">
+        <testcase name="TestSizeLanguage" class="Tests\Unit\EnumLanguageTest" classname="Tests.Unit.EnumLanguageTest" file="C:\wamp64\www\gmi\tests\Unit\EnumLanguageTest.php" line="17" assertions="0" time="0.008065">
+          <error type="Error">Tests\Unit\EnumLanguageTest::TestSizeLanguage
+Error: Class 'App\Enums\Language' not found
+
+C:\wamp64\www\gmi\tests\Unit\EnumLanguageTest.php:19
+</error>
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="TestFindLanguage" class="Tests\Unit\EnumLanguageTest" classname="Tests.Unit.EnumLanguageTest" file="C:\wamp64\www\gmi\tests\Unit\EnumLanguageTest.php" line="28" assertions="0" time="0.006931">
+          <error type="Error">Tests\Unit\EnumLanguageTest::TestFindLanguage
+Error: Class 'App\Enums\Language' not found
+
+C:\wamp64\www\gmi\tests\Unit\EnumLanguageTest.php:30
+</error>
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="TestNumberLanguage" class="Tests\Unit\EnumLanguageTest" classname="Tests.Unit.EnumLanguageTest" file="C:\wamp64\www\gmi\tests\Unit\EnumLanguageTest.php" line="38" assertions="0" time="0.007238">
+          <error type="Error">Tests\Unit\EnumLanguageTest::TestNumberLanguage
+Error: Class 'App\Enums\Language' not found
+
+C:\wamp64\www\gmi\tests\Unit\EnumLanguageTest.php:40
+</error>
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="LanguageDescriptionTest" class="Tests\Unit\EnumLanguageTest" classname="Tests.Unit.EnumLanguageTest" file="C:\wamp64\www\gmi\tests\Unit\EnumLanguageTest.php" line="48" assertions="0" time="0.006727">
+          <error type="Error">Tests\Unit\EnumLanguageTest::LanguageDescriptionTest
+Error: Class 'App\Enums\Language' not found
+
+C:\wamp64\www\gmi\tests\Unit\EnumLanguageTest.php:51
+</error>
+>>>>>>> 49923-REMOVE_ENUM
+          <system-out>&#13;
+</system-out>
+        </testcase>
+      </testsuite>
+<<<<<<< HEAD
+      <testsuite name="Tests\Unit\EnumSubdomainTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\EnumSubdomainTest.php" tests="3" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.012569">
+        <testcase name="testGetKEYOne" class="Tests\Unit\EnumSubdomainTest" classname="Tests.Unit.EnumSubdomainTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\EnumSubdomainTest.php" line="24" assertions="1" time="0.004232">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testGetKeyTwo" class="Tests\Unit\EnumSubdomainTest" classname="Tests.Unit.EnumSubdomainTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\EnumSubdomainTest.php" line="32" assertions="1" time="0.003940">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testGetDescription" class="Tests\Unit\EnumSubdomainTest" classname="Tests.Unit.EnumSubdomainTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\EnumSubdomainTest.php" line="37" assertions="1" time="0.004397">
+=======
+      <testsuite name="Tests\Unit\EnumSubdomainTest" file="C:\wamp64\www\gmi\tests\Unit\EnumSubdomainTest.php" tests="3" assertions="0" errors="3" warnings="0" failures="0" skipped="0" time="0.022011">
+        <testcase name="testGetKEYOne" class="Tests\Unit\EnumSubdomainTest" classname="Tests.Unit.EnumSubdomainTest" file="C:\wamp64\www\gmi\tests\Unit\EnumSubdomainTest.php" line="24" assertions="0" time="0.007405">
+          <error type="Error">Tests\Unit\EnumSubdomainTest::testGetKEYOne
+Error: Class 'App\Enums\Subdomain' not found
+
+C:\wamp64\www\gmi\tests\Unit\EnumSubdomainTest.php:26
+</error>
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testGetKeyTwo" class="Tests\Unit\EnumSubdomainTest" classname="Tests.Unit.EnumSubdomainTest" file="C:\wamp64\www\gmi\tests\Unit\EnumSubdomainTest.php" line="32" assertions="0" time="0.006876">
+          <error type="Error">Tests\Unit\EnumSubdomainTest::testGetKeyTwo
+Error: Class 'App\Enums\Subdomain' not found
+
+C:\wamp64\www\gmi\tests\Unit\EnumSubdomainTest.php:34
+</error>
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testGetDescription" class="Tests\Unit\EnumSubdomainTest" classname="Tests.Unit.EnumSubdomainTest" file="C:\wamp64\www\gmi\tests\Unit\EnumSubdomainTest.php" line="37" assertions="0" time="0.007730">
+          <error type="Error">Tests\Unit\EnumSubdomainTest::testGetDescription
+Error: Class 'App\Enums\Subdomain' not found
+
+C:\wamp64\www\gmi\tests\Unit\EnumSubdomainTest.php:40
+</error>
+>>>>>>> 49923-REMOVE_ENUM
+          <system-out>&#13;
+</system-out>
+        </testcase>
+      </testsuite>
+<<<<<<< HEAD
+      <testsuite name="Tests\Unit\LinkTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\LinkTest.php" tests="3" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.383833">
+        <testcase name="linkOkTest" class="Tests\Unit\LinkTest" classname="Tests.Unit.LinkTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\LinkTest.php" line="21" assertions="1" time="0.288004">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="linkWithSameCardTest" class="Tests\Unit\LinkTest" classname="Tests.Unit.LinkTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\LinkTest.php" line="43" assertions="1" time="0.047007">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="twoSameLinksNotOKTest" class="Tests\Unit\LinkTest" classname="Tests.Unit.LinkTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\LinkTest.php" line="60" assertions="1" time="0.048822">
+=======
+      <testsuite name="Tests\Unit\LinkTest" file="C:\wamp64\www\gmi\tests\Unit\LinkTest.php" tests="3" assertions="1" errors="2" warnings="0" failures="0" skipped="0" time="0.037916">
+        <testcase name="linkOkTest" class="Tests\Unit\LinkTest" classname="Tests.Unit.LinkTest" file="C:\wamp64\www\gmi\tests\Unit\LinkTest.php" line="20" assertions="1" time="0.016172">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="linkWithSameCardTest" class="Tests\Unit\LinkTest" classname="Tests.Unit.LinkTest" file="C:\wamp64\www\gmi\tests\Unit\LinkTest.php" line="40" assertions="0" time="0.011188">
+          <error type="Illuminate\Database\QueryException">Tests\Unit\LinkTest::linkWithSameCardTest
+Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'tester@test.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (Tester, tester@test.com, ?, tested, ?, 2019-12-05 16:20:33, 2019-12-05 16:20:33))
+
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:669
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:629
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:464
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:416
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:749
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Support\helpers.php:422
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:750
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php:23
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1618
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1630
+C:\wamp64\www\gmi\tests\Unit\LinkTest.php:42
+</error>
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="twoSameLinksNotOKTest" class="Tests\Unit\LinkTest" classname="Tests.Unit.LinkTest" file="C:\wamp64\www\gmi\tests\Unit\LinkTest.php" line="56" assertions="0" time="0.010556">
+          <error type="Illuminate\Database\QueryException">Tests\Unit\LinkTest::twoSameLinksNotOKTest
+Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'tester@test.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (Tester, tester@test.com, ?, tested, ?, 2019-12-05 16:20:33, 2019-12-05 16:20:33))
+
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:669
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:629
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:464
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:416
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:749
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Support\helpers.php:422
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:750
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php:23
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1618
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1630
+C:\wamp64\www\gmi\tests\Unit\LinkTest.php:58
+</error>
+>>>>>>> 49923-REMOVE_ENUM
+          <system-out>&#13;
+</system-out>
+        </testcase>
+      </testsuite>
+<<<<<<< HEAD
+      <testsuite name="Tests\Unit\NoteTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\NoteTest.php" tests="4" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.319457">
+        <testcase name="testRegisterNullDescription" class="Tests\Unit\NoteTest" classname="Tests.Unit.NoteTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\NoteTest.php" line="13" assertions="1" time="0.072394">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testRegisterWithDescription" class="Tests\Unit\NoteTest" classname="Tests.Unit.NoteTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\NoteTest.php" line="26" assertions="1" time="0.057513">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testIfDeleted" class="Tests\Unit\NoteTest" classname="Tests.Unit.NoteTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\NoteTest.php" line="40" assertions="1" time="0.109132">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testToString" class="Tests\Unit\NoteTest" classname="Tests.Unit.NoteTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\NoteTest.php" line="52" assertions="1" time="0.080418">
+=======
+      <testsuite name="Tests\Unit\NoteTest" file="C:\wamp64\www\gmi\tests\Unit\NoteTest.php" tests="4" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.060159">
+        <testcase name="testRegisterNullDescription" class="Tests\Unit\NoteTest" classname="Tests.Unit.NoteTest" file="C:\wamp64\www\gmi\tests\Unit\NoteTest.php" line="13" assertions="1" time="0.011980">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testRegisterWithDescription" class="Tests\Unit\NoteTest" classname="Tests.Unit.NoteTest" file="C:\wamp64\www\gmi\tests\Unit\NoteTest.php" line="26" assertions="1" time="0.012321">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testIfDeleted" class="Tests\Unit\NoteTest" classname="Tests.Unit.NoteTest" file="C:\wamp64\www\gmi\tests\Unit\NoteTest.php" line="40" assertions="1" time="0.023808">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testToString" class="Tests\Unit\NoteTest" classname="Tests.Unit.NoteTest" file="C:\wamp64\www\gmi\tests\Unit\NoteTest.php" line="52" assertions="1" time="0.012050">
+>>>>>>> 49923-REMOVE_ENUM
+          <system-out>&#13;
+</system-out>
+        </testcase>
+      </testsuite>
+<<<<<<< HEAD
+      <testsuite name="Tests\Unit\PhoneticTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\PhoneticTest.php" tests="3" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.178823">
+        <testcase name="testInsertDb" class="Tests\Unit\PhoneticTest" classname="Tests.Unit.PhoneticTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\PhoneticTest.php" line="16" assertions="1" time="0.079972">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testInsertDbSpecialChar" class="Tests\Unit\PhoneticTest" classname="Tests.Unit.PhoneticTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\PhoneticTest.php" line="32" assertions="1" time="0.049282">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testDeleteDb" class="Tests\Unit\PhoneticTest" classname="Tests.Unit.PhoneticTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\PhoneticTest.php" line="43" assertions="2" time="0.049569">
+=======
+      <testsuite name="Tests\Unit\PhoneticTest" file="C:\wamp64\www\gmi\tests\Unit\PhoneticTest.php" tests="3" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.037849">
+        <testcase name="testInsertDb" class="Tests\Unit\PhoneticTest" classname="Tests.Unit.PhoneticTest" file="C:\wamp64\www\gmi\tests\Unit\PhoneticTest.php" line="16" assertions="1" time="0.012764">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testInsertDbSpecialChar" class="Tests\Unit\PhoneticTest" classname="Tests.Unit.PhoneticTest" file="C:\wamp64\www\gmi\tests\Unit\PhoneticTest.php" line="32" assertions="1" time="0.012197">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testDeleteDb" class="Tests\Unit\PhoneticTest" classname="Tests.Unit.PhoneticTest" file="C:\wamp64\www\gmi\tests\Unit\PhoneticTest.php" line="43" assertions="2" time="0.012888">
+>>>>>>> 49923-REMOVE_ENUM
+          <system-out>&#13;
+</system-out>
+        </testcase>
+      </testsuite>
+<<<<<<< HEAD
+      <testsuite name="Tests\Unit\SpokenLanguageTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\SpokenLanguageTest.php" tests="4" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.195586">
+        <testcase name="add_user_one_lang_ok" class="Tests\Unit\SpokenLanguageTest" classname="Tests.Unit.SpokenLanguageTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\SpokenLanguageTest.php" line="17" assertions="1" time="0.074690">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="add_user_with_two_lang_ok" class="Tests\Unit\SpokenLanguageTest" classname="Tests.Unit.SpokenLanguageTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\SpokenLanguageTest.php" line="39" assertions="2" time="0.047343">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="add_two_users_with_same_lang" class="Tests\Unit\SpokenLanguageTest" classname="Tests.Unit.SpokenLanguageTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\SpokenLanguageTest.php" line="70" assertions="2" time="0.033135">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="add_user_with_two_same_lang" class="Tests\Unit\SpokenLanguageTest" classname="Tests.Unit.SpokenLanguageTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\SpokenLanguageTest.php" line="107" assertions="1" time="0.040418">
+=======
+      <testsuite name="Tests\Unit\SpokenLanguageTest" file="C:\wamp64\www\gmi\tests\Unit\SpokenLanguageTest.php" tests="4" assertions="1" errors="3" warnings="0" failures="0" skipped="0" time="0.048647">
+        <testcase name="add_user_one_lang_ok" class="Tests\Unit\SpokenLanguageTest" classname="Tests.Unit.SpokenLanguageTest" file="C:\wamp64\www\gmi\tests\Unit\SpokenLanguageTest.php" line="17" assertions="1" time="0.016315">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="add_user_with_two_lang_ok" class="Tests\Unit\SpokenLanguageTest" classname="Tests.Unit.SpokenLanguageTest" file="C:\wamp64\www\gmi\tests\Unit\SpokenLanguageTest.php" line="39" assertions="0" time="0.010411">
+          <error type="Illuminate\Database\QueryException">Tests\Unit\SpokenLanguageTest::add_user_with_two_lang_ok
+Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'user@example.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (user, user@example.com, ?, userPassword, ?, 2019-12-05 16:20:33, 2019-12-05 16:20:33))
+
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:669
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:629
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:464
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:416
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
+C:\wamp64\www\gmi\tests\Unit\SpokenLanguageTest.php:46
+</error>
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="add_two_users_with_same_lang" class="Tests\Unit\SpokenLanguageTest" classname="Tests.Unit.SpokenLanguageTest" file="C:\wamp64\www\gmi\tests\Unit\SpokenLanguageTest.php" line="70" assertions="0" time="0.010856">
+          <error type="Illuminate\Database\QueryException">Tests\Unit\SpokenLanguageTest::add_two_users_with_same_lang
+Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'user@example.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (user, user@example.com, ?, userPassword, ?, 2019-12-05 16:20:33, 2019-12-05 16:20:33))
+
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:669
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:629
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:464
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:416
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
+C:\wamp64\www\gmi\tests\Unit\SpokenLanguageTest.php:75
+</error>
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="add_user_with_two_same_lang" class="Tests\Unit\SpokenLanguageTest" classname="Tests.Unit.SpokenLanguageTest" file="C:\wamp64\www\gmi\tests\Unit\SpokenLanguageTest.php" line="107" assertions="0" time="0.011065">
+          <error type="Illuminate\Database\QueryException">Tests\Unit\SpokenLanguageTest::add_user_with_two_same_lang
+Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'user@example.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (user, user@example.com, ?, userPassword, ?, 2019-12-05 16:20:33, 2019-12-05 16:20:33))
+
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:669
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:629
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:464
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:416
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
+C:\wamp64\www\gmi\tests\Unit\SpokenLanguageTest.php:113
+</error>
+>>>>>>> 49923-REMOVE_ENUM
+          <system-out>&#13;
+</system-out>
+        </testcase>
+      </testsuite>
+<<<<<<< HEAD
+      <testsuite name="Tests\Unit\UserTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\UserTest.php" tests="3" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.105767">
+        <testcase name="add_user_ok" class="Tests\Unit\UserTest" classname="Tests.Unit.UserTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\UserTest.php" line="15" assertions="1" time="0.032336">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="add_user_email_already_used" class="Tests\Unit\UserTest" classname="Tests.Unit.UserTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\UserTest.php" line="31" assertions="1" time="0.032141">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="add_user_name_too_short" class="Tests\Unit\UserTest" classname="Tests.Unit.UserTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\UserTest.php" line="48" assertions="1" time="0.041290">
+=======
+      <testsuite name="Tests\Unit\UserTest" file="C:\wamp64\www\gmi\tests\Unit\UserTest.php" tests="3" assertions="0" errors="3" warnings="0" failures="0" skipped="0" time="0.031559">
+        <testcase name="add_user_ok" class="Tests\Unit\UserTest" classname="Tests.Unit.UserTest" file="C:\wamp64\www\gmi\tests\Unit\UserTest.php" line="15" assertions="0" time="0.010719">
+          <error type="Illuminate\Database\QueryException">Tests\Unit\UserTest::add_user_ok
+Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'user@example.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (user, user@example.com, ?, userPassword, ?, 2019-12-05 16:20:33, 2019-12-05 16:20:33))
+
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:669
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:629
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:464
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:416
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
+C:\wamp64\www\gmi\tests\Unit\UserTest.php:21
+</error>
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="add_user_email_already_used" class="Tests\Unit\UserTest" classname="Tests.Unit.UserTest" file="C:\wamp64\www\gmi\tests\Unit\UserTest.php" line="31" assertions="0" time="0.010612">
+          <error type="Illuminate\Database\QueryException">Tests\Unit\UserTest::add_user_email_already_used
+Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'user@example.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (user, user@example.com, ?, userPassword, ?, 2019-12-05 16:20:33, 2019-12-05 16:20:33))
+
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:669
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:629
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:464
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:416
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
+C:\wamp64\www\gmi\tests\Unit\UserTest.php:37
+</error>
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="add_user_name_too_short" class="Tests\Unit\UserTest" classname="Tests.Unit.UserTest" file="C:\wamp64\www\gmi\tests\Unit\UserTest.php" line="48" assertions="0" time="0.010228">
+          <error type="Illuminate\Database\QueryException">Tests\Unit\UserTest::add_user_name_too_short
+Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ 'user@example.com' pour la clef 'users_email_unique' (SQL: insert into `users` (`name`, `email`, `email_verified_at`, `password`, `remember_token`, `updated_at`, `created_at`) values (, user@example.com, ?, userPassword, ?, 2019-12-05 16:20:33, 2019-12-05 16:20:33))
+
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:669
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:629
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:464
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:416
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
+C:\wamp64\www\gmi\tests\Unit\UserTest.php:55
+</error>
+>>>>>>> 49923-REMOVE_ENUM
+          <system-out>&#13;
+</system-out>
+        </testcase>
+      </testsuite>
+<<<<<<< HEAD
+      <testsuite name="Tests\Unit\ValidationTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\ValidationTest.php" tests="3" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="0.103100">
+        <testcase name="createValidation" class="Tests\Unit\ValidationTest" classname="Tests.Unit.ValidationTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\ValidationTest.php" line="22" assertions="1" time="0.037722">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="updateValidation" class="Tests\Unit\ValidationTest" classname="Tests.Unit.ValidationTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\ValidationTest.php" line="38" assertions="2" time="0.033263">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="deleteValidation" class="Tests\Unit\ValidationTest" classname="Tests.Unit.ValidationTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\ValidationTest.php" line="58" assertions="2" time="0.032115">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Unit\VoteTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\VoteTest.php" tests="2" assertions="0" errors="2" warnings="0" failures="0" skipped="0" time="0.122608">
+        <testcase name="testVoteInsert" class="Tests\Unit\VoteTest" classname="Tests.Unit.VoteTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\VoteTest.php" line="15" assertions="0" time="0.074942">
+          <error type="Illuminate\Database\QueryException">Tests\Unit\VoteTest::testVoteInsert
+Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`gmi`.`votes`, CONSTRAINT `votes_card_id_foreign` FOREIGN KEY (`card_id`) REFERENCES `cards` (`id`)) (SQL: insert into `votes` (`user_id`, `card_id`) values (1, 7))
+
+C:\Users\g44424\Desktop\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:669
+C:\Users\g44424\Desktop\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:629
+C:\Users\g44424\Desktop\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:464
+C:\Users\g44424\Desktop\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:416
+C:\Users\g44424\Desktop\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
+C:\Users\g44424\Desktop\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
+C:\Users\g44424\Desktop\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
+C:\Users\g44424\Desktop\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
+C:\Users\g44424\Desktop\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
+C:\Users\g44424\Desktop\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
+C:\Users\g44424\Desktop\gmi\tests\Unit\VoteTest.php:20
+</error>
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testVoteDelete" class="Tests\Unit\VoteTest" classname="Tests.Unit.VoteTest" file="C:\Users\g44424\Desktop\gmi\tests\Unit\VoteTest.php" line="27" assertions="0" time="0.047666">
+          <error type="Illuminate\Database\QueryException">Tests\Unit\VoteTest::testVoteDelete
+Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`gmi`.`votes`, CONSTRAINT `votes_card_id_foreign` FOREIGN KEY (`card_id`) REFERENCES `cards` (`id`)) (SQL: insert into `votes` (`user_id`, `card_id`) values (2, 8))
+
+C:\Users\g44424\Desktop\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:669
+C:\Users\g44424\Desktop\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:629
+C:\Users\g44424\Desktop\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:464
+C:\Users\g44424\Desktop\gmi\vendor\laravel\framework\src\Illuminate\Database\Connection.php:416
+C:\Users\g44424\Desktop\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
+C:\Users\g44424\Desktop\gmi\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:2670
+C:\Users\g44424\Desktop\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1350
+C:\Users\g44424\Desktop\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:839
+C:\Users\g44424\Desktop\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:804
+C:\Users\g44424\Desktop\gmi\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:667
+C:\Users\g44424\Desktop\gmi\tests\Unit\VoteTest.php:31
+</error>
+          <system-out>&#13;
+</system-out>
+        </testcase>
+      </testsuite>
+    </testsuite>
+    <testsuite name="Feature" tests="1" assertions="0" errors="1" warnings="0" failures="0" skipped="0" time="0.744193">
+      <testsuite name="Tests\Feature\SearchCardTest" file="C:\Users\g44424\Desktop\gmi\tests\Feature\SearchCardTest.php" tests="1" assertions="0" errors="1" warnings="0" failures="0" skipped="0" time="0.744193">
+        <testcase name="test1" class="Tests\Feature\SearchCardTest" classname="Tests.Feature.SearchCardTest" file="C:\Users\g44424\Desktop\gmi\tests\Feature\SearchCardTest.php" line="20" assertions="0" time="0.744193">
+          <error type="RuntimeException">Tests\Feature\SearchCardTest::test1
+RuntimeException: No application encryption key has been specified.
+
+C:\Users\g44424\Desktop\gmi\vendor\laravel\framework\src\Illuminate\Encryption\EncryptionServiceProvider.php:44
+C:\Users\g44424\Desktop\gmi\vendor\laravel\framework\src\Illuminate\Support\helpers.php:422
+C:\Users\g44424\Desktop\gmi\vendor\laravel\framework\src\Illuminate\Encryption\EncryptionServiceProvider.php:48
+C:\Users\g44424\Desktop\gmi\vendor\laravel\framework\src\Illuminate\Encryption\EncryptionServiceProvider.php:24
+C:\Users\g44424\Desktop\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:799
+C:\Users\g44424\Desktop\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:681
+C:\Users\g44424\Desktop\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:629
+C:\Users\g44424\Desktop\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Application.php:769
+C:\Users\g44424\Desktop\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:945
+C:\Users\g44424\Desktop\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:873
+C:\Users\g44424\Desktop\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:834
+C:\Users\g44424\Desktop\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:681
+C:\Users\g44424\Desktop\gmi\vendor\laravel\framework\src\Illuminate\Container\Container.php:629
+C:\Users\g44424\Desktop\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Application.php:769
+C:\Users\g44424\Desktop\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php:216
+C:\Users\g44424\Desktop\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php:190
+C:\Users\g44424\Desktop\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php:441
+C:\Users\g44424\Desktop\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php:224
+C:\Users\g44424\Desktop\gmi\tests\Feature\SearchCardTest.php:50
+</error>
+=======
+      <testsuite name="Tests\Unit\VoteTest" file="C:\wamp64\www\gmi\tests\Unit\VoteTest.php" tests="2" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.024566">
+        <testcase name="testVoteInsert" class="Tests\Unit\VoteTest" classname="Tests.Unit.VoteTest" file="C:\wamp64\www\gmi\tests\Unit\VoteTest.php" line="15" assertions="1" time="0.012487">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+        <testcase name="testVoteDelete" class="Tests\Unit\VoteTest" classname="Tests.Unit.VoteTest" file="C:\wamp64\www\gmi\tests\Unit\VoteTest.php" line="27" assertions="1" time="0.012079">
+          <system-out>&#13;
+</system-out>
+        </testcase>
+      </testsuite>
+    </testsuite>
+    <testsuite name="Feature" tests="1" assertions="6" errors="0" warnings="0" failures="1" skipped="0" time="0.074443">
+      <testsuite name="Tests\Feature\SearchCardTest" file="C:\wamp64\www\gmi\tests\Feature\SearchCardTest.php" tests="1" assertions="6" errors="0" warnings="0" failures="1" skipped="0" time="0.074443">
+        <testcase name="test1" class="Tests\Feature\SearchCardTest" classname="Tests.Feature.SearchCardTest" file="C:\wamp64\www\gmi\tests\Feature\SearchCardTest.php" line="19" assertions="6" time="0.074443">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Feature\SearchCardTest::test1
+Failed asserting that '\r\n
+\r\n
+\r\n
+    \r\n
+    \r\n
+\r\n
+    \r\n
+    \r\n
+\r\n
+    Laravel\r\n
+\r\n
+    \r\n
+    \r\n
+    \r\n
+    \r\n
+    \r\n
+\r\n
+    \r\n
+    \r\n
+    \r\n
+\r\n
+    \r\n
+    \r\n
+\r\n
+\r\n
+    \r\n
+        \r\n
+            \r\n
+                \r\n
+                    Laravel\r\n
+                \r\n
+        \r\n
+        \r\n
+                \r\n
+                                        Mes Fiches\r\n
+                \r\n
+          \r\n
+\r\n
+        \r\n
+        \r\n
+          Recherche par \r\n
+        \r\n
+        \r\n
+          Auteur\r\n
+      \r\n
+\r\n
+           \r\n
+                \r\n
+                    \r\n
+                \r\n
+\r\n
+                \r\n
+                    \r\n
+                    \r\n
+\r\n
+                    \r\n
+\r\n
+                    \r\n
+                    \r\n
+                        \r\n
+                                                    \r\n
+                                \r\n
+                                     : lolo \r\n
+                                \r\n
+\r\n
+\r\n
+                                \r\n
+                                    \r\n
+                                        Logout\r\n
+                                    \r\n
+                                    Recherche fiche par auteur\r\n
+                                    \r\n
+                                        Mes Fiches\r\n
+                                    \r\n
+                                                                            \r\n
+                                            Roles\r\n
+                                        \r\n
+                                        \r\n
+                                            Ajout domaines/sous-domaines/langues\r\n
+                                        \r\n
+                                                                        Chercher fiche\r\n
+\r\n
+                                    \r\n
+                                                                            \r\n
+\r\n
+                                    \r\n
+                                                                            \r\n
+                                \r\n
+                            \r\n
+                                            \r\n
+                \r\n
+            \r\n
+        \r\n
+\r\n
+        \r\n
+            \r\n
+                        \r\n
+Research Card\r\n
+\r\n
+    \r\n
+        \r\n
+        \r\n
+            All\r\n
+                    \r\n
+        \r\n
+            Search\r\n
+        \r\n
+    \r\n
+\r\n
+\r\n
+\r\n
+\r\n
+        \r\n
+                \r\n
+                        \r\n
+                                    Fiches\r\n
+\r\n
+                                \r\n
+\r\n
+    \r\n
+            \r\n
+            \r\n
+        \r\n
+            My New Card\r\n
+            \r\n
+                                Show\r\n
+            \r\n
+        \r\n
+        \r\n
+        \r\n
+            test1\r\n
+            \r\n
+                                Show\r\n
+            \r\n
+        \r\n
+        \r\n
+        \r\n
+            test2\r\n
+            \r\n
+                                Show\r\n
+            \r\n
+        \r\n
+        \r\n
+        \r\n
+            Persona\r\n
+            \r\n
+                                Show\r\n
+            \r\n
+        \r\n
+        \r\n
+        \r\n
+            Shadow\r\n
+            \r\n
+                                Show\r\n
+            \r\n
+        \r\n
+        \r\n
+        \r\n
+            \r\n
+            \r\n
+                                Show\r\n
+            \r\n
+        \r\n
+        \r\n
+        \r\n
+            Hello\r\n
+            \r\n
+                                Show\r\n
+            \r\n
+        \r\n
+        \r\n
+        \r\n
+            \r\n
+            \r\n
+                                Show\r\n
+            \r\n
+        \r\n
+        \r\n
+        \r\n
+            Heyololo\r\n
+            \r\n
+                                Show\r\n
+            \r\n
+        \r\n
+        \r\n
+        \r\n
+            \r\n
+            \r\n
+                                Show\r\n
+            \r\n
+        \r\n
+        \r\n
+        \r\n
+            Pouloulou\r\n
+            \r\n
+                                Show\r\n
+            \r\n
+        \r\n
+        \r\n
+        \r\n
+            \r\n
+            \r\n
+                                Show\r\n
+            \r\n
+        \r\n
+    \r\n
+\r\n
+    \r\n
+                add Card\r\n
+    \r\n
+\r\n
+    \r\n
+    \r\n
+\r\n
+                        \r\n
+                \r\n
+        \r\n
+;\r\n
+\r\n
+            \r\n
+        \r\n
+    \r\n
+\r\n
+\r\n
+' contains "FR".
+
+C:\wamp64\www\gmi\vendor\laravel\framework\src\Illuminate\Foundation\Testing\TestResponse.php:421
+C:\wamp64\www\gmi\tests\Feature\SearchCardTest.php:50
+</failure>
+>>>>>>> 49923-REMOVE_ENUM
+          <system-out>&#13;
+</system-out>
+        </testcase>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>

@@ -40,14 +40,15 @@
                                         {{ __('Mes Fiches') }}
                 </a>
         </li>  
+		@if(Auth::user() && Auth::user()->role == \App\Enums\Roles::ADMIN)
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Recherche par</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" href="/searchByUser">Auteur</a>
+				</div>
+			</li>
+	  	@endif
 
-        <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Recherche par 
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/searchByUser">Auteur</a>
-      </li>
         </ul>   
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -92,13 +93,15 @@
                                     </a>
                                     @if (Auth::user()->role == \App\Enums\Roles::ADMIN)
                                         <a class="dropdown-item" href="{{ route('ListingUsers') }}">
-                                            {{ __('Utilisateurs') }}
+                                            {{ __('Roles') }}
+                                        </a>
+                                        <a class="dropdown-item" href="{{ route('basicData') }}">
+                                            Ajout domaines/sous-domaines/langues
                                         </a>
                                     @endif
+                                    <a class="dropdown-item" href="/searchCard">Chercher fiche</a>
 
-                                    <a class="dropdown-item" href="/addLanguage">Ajout domaine/sous-domaine/langues</a>
-
-                                    <form id="mesFiches-form" action="{{ route('mesFiches') }}" method="POST" style="display: none;">
+                                    <form id="mesFiches-form" action="{{ route('mesFiches') }}" method="GET" style="display: none;">
                                         @csrf
                                     </form>
 
@@ -114,7 +117,7 @@
         </nav>
 
         <main class="py-4">
-            <div class="container">
+            <div class="container" style="max-width: 960px">
                         @yield('content')
             </div>
         </main>

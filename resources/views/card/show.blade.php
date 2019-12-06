@@ -1,18 +1,17 @@
+
 @extends('layouts.card')
+@extends('layouts.app')
 
 @section('card-header')
 
 	Card
-    
 @endsection
-
 @section('card-body')
-
 <label class="col-md-6 col-form-label text-md-right"> Vedette : </label>
 <label>{{$card->heading}}</label> 
 
 <label  class="col-md-6 col-form-label text-md-right"> Langue : </label>
-<label>{{$card->language_id}}</label>   
+<label>{{$languages->content}}</label>
 
 @if (isset($card->phonetic))
 <label  class="col-md-6 col-form-label text-md-right"> Phonetique : </label>
@@ -21,12 +20,12 @@
 
 @if (isset($card->domain_id))
 <label  class="col-md-6 col-form-label text-md-right"> Domaine : </label>
-<label>{{$card->domain_id}}</label> 
+<label>{{$domain->content}}</label>
 @endif
 
 @if (isset($card->subdomain_id))
 <label  class="col-md-6 col-form-label text-md-right"> Sous-Domaine : </label>
-<label>{{$card->subdomain_id}}</label> 
+<label>{{$subdomain->content}}</label>
 @endif
 
 @if (isset($card->definition_id))
@@ -44,18 +43,41 @@
 <label>{{$card->getNote()->description}}</label>
 @endif
 
-<form action='/cards/{{$card->id}}/edit' method="get">
-    @csrf
-    <button type="submit" class="btn btn-primary">Modifier</button>
-</form>
+@if (isset($card->count_vote))
+<label  class="col-md-6 col-form-label text-md-right"> Nombre de vote : </label>
+<label>{{$card->count_vote}}</label>
+@endif
 
-<form action='/cards/{{$card->id}}/linkList' method="get">
-    @csrf
-    <button type="submit" class="btn btn-primary">Liste des liens</button>
-</form>
+<div>
+        <form action='/cards/vote/{{$card->id}}' method="get">
+        @csrf
+            <button type="submit" class="btn btn-primary">Vote</button>
+        </form>
+    @if(in_array($card->language_id,Auth::user()->getLanguagesKeyArray()))
+        <form action='/cards/{{$card->id}}/edit' method="get" style="display: inline-block;">
+            @csrf
+            <button type="submit" class="btn btn-primary">Edit</button>
+        </form>
 
-<form action='/cards/{{$card->id}}/link' method="get">
-    @csrf
-    <button type="submit" class="btn btn-primary">Faire un lien</button>
-</form>
+        <form action='/cards/{{$card->id}}/linkList' method="get">
+            @csrf
+            <button type="submit" class="btn btn-primary">Liste des liens</button>
+        </form>
+
+        <form action='/cards/{{$card->id}}/link' method="get">
+            @csrf
+            <button type="submit" class="btn btn-primary">Faire un lien</button>
+        </form>
+
+        @if(Auth::user()->role != \App\Enums\Roles::USERS)
+		<form style="display:inline;" action="{{ route('cards.destroy', $card) }}" method="POST">
+			@csrf
+			@method('DELETE')
+			<button class="btn btn-danger float-right">Delete</button>
+		</form>
+        @endif
+
+        
+    @endif
+</div>
 @endsection

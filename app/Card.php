@@ -4,11 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\Auth;
 
 
 
 
+=======
+use App\Vote;
+>>>>>>> master
 /**
  * Represents a Card (usually referred as "Fiche")
  * Each Card only has one and only one "idea",
@@ -98,7 +102,7 @@ class Card extends Model
         'context_id'	=> NULL,
         'note_id'		=> NULL,
 		'language_id'	=> '',
-		'owner_id'		=> 1,
+        'owner_id'		=> 1,
     ];
 
     /**
@@ -115,6 +119,7 @@ class Card extends Model
         'note_id',
         'language_id',
         'owner_id',
+        'validation_id',
     ];
 
     /**
@@ -140,10 +145,30 @@ class Card extends Model
 			"\tcontext_id: "	. $this->context_id		. "\n" .
 			"\tnote_id: "		. $this->note_id		. "\n" .
 			"\tlanguage_id: "	. $this->language_id	. "\n" .
-			"\towner_id: "		. $this->owner_id		. "\n" .
+            "\towner_id: "		. $this->owner_id		. "\n" .
+            "\tvalidation_id "  . $this->validation_id  . "\n" .
 		"}";
     }
 
+
+    public function getCountVoteAttribute() {
+        return Vote::where('card_id','=',$this->id)->count();
+    }
+
+
+    public function getDefinition(){
+        if($this->definition_id != null){
+            $def = Definition::where('id','=',$this->definition_id)->get();
+       return $def[0]->definition_content;
+        }
+        return "";
+        
+   }
+    public function getLanguage(){
+         $langs = Language::where('slug','=',$this->language_id)->get();
+        return $langs[0]->content;
+         
+    }
 
 	/*
 	 * Returns all links referring to this card in an array.
@@ -154,6 +179,7 @@ class Card extends Model
         return DB::table('links')->select('*')->where(['cardA', '=', $this->id])->orWhere(['cardB', '=', $this->id])->get();
     }
 
+<<<<<<< HEAD
     public function getPhonetic(){
         return DB::table('phonetics')->where('id', $this->phonetic_id)->first();
     }
@@ -205,4 +231,10 @@ class Card extends Model
                
     
 
+=======
+    public function versions(){
+
+        return $this->belongsToMany('App\Card' ,'card_card' , 'cardOrigin' , 'cardVersion');
+    }
+>>>>>>> master
 }

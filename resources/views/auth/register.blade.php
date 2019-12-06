@@ -67,7 +67,7 @@
                             <div class="col-md-6">
                                 <select id="languages" class="form-control @error('languages') is-invalid @enderror" name="languages[]" required multiple>
                                     @foreach ($languages as $language)
-                                        <option value="{{$language[0]}}">{{$language[1]}}</option>
+                                        <option value="{{$language->slug}}">{{$language->content}}</option>
                                     @endforeach
                                 </select>
 

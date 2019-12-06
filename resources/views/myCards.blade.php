@@ -2,7 +2,7 @@
 
 @section('content')
 <h1> Mes Fiches </h1>
-@foreach ($cards as $card)
-    @include('card.show')
-@endforeach
-@endsection 
+
+@include('card.index', $cards)
+
+@endsection

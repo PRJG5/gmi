@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Card;
+use App\Language;
+use Illuminate\Http\Request;
 use App\User;
 
 class HomeController extends Controller
@@ -24,6 +27,43 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    /**
+     * Show the search cards virw
+     */
+    public function getSearchView()
+    {
+        $cards = Card::orderBy('heading', 'ASC')->get();
+        return view('searchCard', ["cards" => $cards]);
+    }
+
+    public function searchCard(Request $request)
+    {
+        $search = $request->get('search');
+        $language = $request->get('languages');
+        $cards = null;
+
+        if ($search == "" && ($language == "All" || $language == "")) {
+            $cards = Card::orderBy('heading', 'ASC')->get();
+        } else if ($language == "All") {
+            
+            $cards = Card::where('heading', 'like', $search."%")
+                    ->orderBy('nbVotes', 'DESC')
+                    ->get();
+
+        } else if ($search == "") {
+            $cards = Card::where('language_id', '=', $language)
+                    ->orderBy('heading', 'ASC')
+                    ->get();
+        }else {
+            $cards = Card::where('heading', 'like', $search."%")
+                            ->where('language_id',  $language)
+                            ->orderBy('nbVotes', 'DESC')
+                            ->get();
+        }
+    
+        return view('searchCard', ['cards' => $cards, 'languages' => Language::all()]);
     }
 
     public function indexUsers(){
