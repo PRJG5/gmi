@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 
 
+
 /**
  * Represents a Card (usually referred as "Fiche")
  * Each Card only has one and only one "idea",
@@ -169,20 +170,10 @@ class Card extends Model
         return DB::table('definitions')->where('id',$this->definition_id)->first();
     }
 
-    
-
     public function getLinkedCard(){
         $cardBtemp =Link::select('cardB')->where('cardA','=',$this->id);
         $cardAtemp =Link::select('cardA')->where('CardB','=',$this->id);
         return Card::whereIn($cardAtemp)->whereIn($cardBtemp)->get();
-    }
-
-    private function getCardbyLanguage($languages){
-        return Card::where('languages_id',$languages);
-    }
-
-    public function getCardForLanguageAuth(User $user){
-        
     }
 
     public function  getCardFilterByLanguage(){
@@ -198,10 +189,7 @@ class Card extends Model
         dd(Card::whereIn('language_id',$varTemp)->where('id','!=',$this->id)->whereNotIn('id',$cardsLinked)->get());
     }
 
-
-
-
-
+    
 
 //         SELECT * 
 // FROM `cards` 
