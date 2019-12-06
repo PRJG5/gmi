@@ -1,4 +1,6 @@
+
 @extends('layouts.card')
+@extends('layouts.app')
 
 @section('card-header')
 
