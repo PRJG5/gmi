@@ -299,7 +299,7 @@ class CardController extends Controller
 
    public function showCard($id) {
         $card = Card::find($id);
-       return view('card', [
+       return view('card.show', [
            'card' => $card,
             'phonetic'  => DB::table('phonetics')->where('id', $card->phonetic_id)->first(),
             'note'      => DB::table('notes')->where('id', $card->note_id)->first(),
