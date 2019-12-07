@@ -37,14 +37,14 @@
                                         {{ __('Mes Fiches') }}
                 </a>
         </li>  
-
-        <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Recherche par 
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/searchByUser">Auteur</a>
-      </li>
+		@if(Auth::user() && Auth::user()->role == \App\Enums\Roles::ADMIN)
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Recherche par</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" href="/searchByUser">Auteur</a>
+				</div>
+			</li>
+	  	@endif
 
         </ul>   
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

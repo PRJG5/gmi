@@ -39,7 +39,7 @@ class CardController extends Controller
      */
     public function index()
     {
-        return view('allCards',['cards' => Card::all()]);
+        return view('allCards',['cards' => Card::orderBy('heading', 'ASC')->get()]);
     }
 
     /**
@@ -210,9 +210,7 @@ class CardController extends Controller
     public function destroy(Card $card)
     {
         try { 
-            Link::where('cardA',
-                $card->id)->orWhere('cardB',
-                $card->id)->delete();
+            Link::where('cardA', $card->id)->orWhere('cardB', $card->id)->delete();
 
             if(Context::find($card->context_id) != null) {
                 Context::find($card->context_id)->delete();
@@ -226,11 +224,10 @@ class CardController extends Controller
             if(Phonetic::find($card->phonetic_id) != null) {
                 Phonetic::find($card->phonetic_id)->delete();
             }
-            Vote::where('card_id',
-                $card->id)->delete();
+            // VOTE possède un ondelete cascade sur cardId donc si carte se supprime, vote se supprime !
             $card->delete();
         } catch(\Exception $exception) {
-
+            echo $exception;
         }
         return redirect()->action('CardController@index');
     }
@@ -302,7 +299,7 @@ class CardController extends Controller
 
    public function showCard($id) {
         $card = Card::find($id);
-       return view('card', [
+       return view('card.show', [
            'card' => $card,
             'phonetic'  => DB::table('phonetics')->where('id', $card->phonetic_id)->first(),
             'note'      => DB::table('notes')->where('id', $card->note_id)->first(),

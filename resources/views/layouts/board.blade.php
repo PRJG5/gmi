@@ -1,6 +1,5 @@
 @extends('layouts.card')
 
-
 @section('card-body')
 
 

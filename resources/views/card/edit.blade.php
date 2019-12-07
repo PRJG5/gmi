@@ -1,5 +1,6 @@
 @extends('layouts.card')
-
+@extends('layouts.app')
+@section('content')
 @section('card-header')
 
     Edit Card
@@ -59,5 +60,6 @@
 		<a href="mailto:{{$owner->email}}?subject={{$mail['subject']}}&body={{$mail['description']}}" class="buttonLike">Send mail</a>
 	@endif
 	@extends('layouts.error')
+@endsection
 @endsection
 

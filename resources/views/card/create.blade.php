@@ -1,5 +1,6 @@
 @extends('layouts.card')
-
+@extends('layouts.app')
+@section('content')
 @section('card-header')
 
     Register Card
@@ -64,4 +65,5 @@
 
     </form>
     @extends('layouts.error')
+@endsection
 @endsection

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-
+use App\Vote;
 /**
  * Represents a Card (usually referred as "Fiche")
  * Each Card only has one and only one "idea",
@@ -95,7 +95,6 @@ class Card extends Model
         'note_id'		=> NULL,
 		'language_id'	=> '',
         'owner_id'		=> 1,
-        'nbVotes'       => 0,
     ];
 
     /**
@@ -112,7 +111,6 @@ class Card extends Model
         'note_id',
         'language_id',
         'owner_id',
-        'nbVotes',
         'validation_id',
     ];
 
@@ -140,10 +138,15 @@ class Card extends Model
 			"\tnote_id: "		. $this->note_id		. "\n" .
 			"\tlanguage_id: "	. $this->language_id	. "\n" .
             "\towner_id: "		. $this->owner_id		. "\n" .
-            "\tnbVotes: "       . $this->nbVotes        . "\n" .
             "\tvalidation_id "  . $this->validation_id  . "\n" .
 		"}";
     }
+
+
+    public function getCountVoteAttribute() {
+        return Vote::where('card_id','=',$this->id)->count();
+    }
+
 
     public function getDefinition(){
         if($this->definition_id != null){

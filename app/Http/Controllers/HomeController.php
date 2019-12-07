@@ -34,7 +34,7 @@ class HomeController extends Controller
      */
     public function getSearchView()
     {
-        $cards = Card::all();
+        $cards = Card::orderBy('heading', 'ASC')->get();
         return view('searchCard', ["cards" => $cards]);
     }
 
@@ -45,15 +45,22 @@ class HomeController extends Controller
         $cards = null;
 
         if ($search == "" && ($language == "All" || $language == "")) {
-            $cards = Card::all();
+            $cards = Card::orderBy('heading', 'ASC')->get();
         } else if ($language == "All") {
             
-            $cards = Card::where('heading', 'like', $search."%")->get();
+            $cards = Card::where('heading', 'like', $search."%")
+                    ->orderBy('nbVotes', 'DESC')
+                    ->get();
 
         } else if ($search == "") {
-            $cards = Card::where('language_id', '=', $language)->get();
+            $cards = Card::where('language_id', '=', $language)
+                    ->orderBy('heading', 'ASC')
+                    ->get();
         }else {
-            $cards = Card::where('heading', 'like', $search."%")->where('language_id',  $language)->get();
+            $cards = Card::where('heading', 'like', $search."%")
+                            ->where('language_id',  $language)
+                            ->orderBy('nbVotes', 'DESC')
+                            ->get();
         }
     
         return view('searchCard', ['cards' => $cards, 'languages' => Language::all()]);

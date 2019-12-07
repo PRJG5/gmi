@@ -41,13 +41,13 @@ class CreateCardsTable extends Migration
 			$table->unsignedBigInteger('phonetic_id')->nullable();
 
             /**
-             * LIST OF ALTER TABLE
+             * LIST OF ALTER TABLE *
              */
             $table->foreign('owner_id')->references('id')->on('users');
-            $table->foreign('context_id')->references('id')->on('contexts');
-            $table->foreign('definition_id')->references('id')->on('definitions');
-            $table->foreign('note_id')->references('id')->on('notes');
-            $table->foreign('phonetic_id')->references('id')->on('phonetics');
+            $table->foreign('context_id')->references('id')->on('contexts')->onDelete('cascade');
+            $table->foreign('definition_id')->references('id')->on('definitions')->onDelete('cascade');
+            $table->foreign('note_id')->references('id')->on('notes')->onDelete('cascade');
+            $table->foreign('phonetic_id')->references('id')->on('phonetics')->onDelete('cascade');
         });
  }
 
