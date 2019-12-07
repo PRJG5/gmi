@@ -10,18 +10,24 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <link href="{{asset('css/addons/datatables.min.css')}}" rel="stylesheet">
+
     <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" defer></script>
+    
     <script src="{{ asset('js/Bootstrap/bootstrap.min.js') }}" defer></script>
     <script src="{{ asset('js/Bootstrap/bootstrap.bundle.min.js') }}" defer></script>
     <script src="{{ asset('js/mdb.js') }}" defer></script> 
+    <script src="{{ asset('js/datatables.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
+    
     <link href="{{ asset('css/Bootstrap/bootstrap.css') }}" rel="stylesheet">
     <link href="{{asset('css/mdb.css')}}" rel="stylesheet">
 </head>
@@ -127,5 +133,5 @@
         </main>
     </div>
 </body>
-
+@yield("script")
 </html>

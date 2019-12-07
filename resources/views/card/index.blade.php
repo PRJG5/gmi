@@ -1,23 +1,20 @@
-
-
-
 @if ($cards->isEmpty())
-    <p>Pas de fiche</p>
+<p>Pas de fiche</p>
 @else
-        
-<table class="table">
-<thead>
+
+<table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+  <thead>
     <tr>
-      <th scope="col" class="order-1">Vedette</th>
-      <th scope="col">Langue</th>
-      <th scope="col">Definition</th>
-      <th scope="col">Votes</th>
-      <th scope="col"></th>
+      <th th-sm>Vedette</th>
+      <th th-sm>Langue</th>
+      <th th-sm>Definition</th>
+      <th th-sm>Votes</th>
+
     </tr>
   </thead>
-    @foreach ($cards as $card)
-        
-  
+  @foreach ($cards as $card)
+
+
   <tbody>
     <tr>
       <th scope="row">{{$card->heading}}</th>
@@ -25,25 +22,25 @@
       <td>{{$card->getDefinition()}}</td>
       <td>{{$card->count_vote}}</td>
       <td>
-          <form action='/card/{{$card->id}}' method="get">
-              @csrf
-              <button type="submit" class="btn btn-primary">Show</button>
-          </form>
+        <form action='/card/{{$card->id}}' method="get">
+          @csrf
+          <button type="submit" class="btn btn-primary">Show</button>
+        </form>
       </td>
     </tr>
-    
+
   </tbody>
 
-    @endforeach
+  @endforeach
 
-    </table>
+</table>
 @endif
 
 <div class="row">
-    <form action={{route('cards.create')}} method="get">
-        @csrf
-        <button type="submit" class="btn btn-primary">add Card</button>
-    </form>
+  <form action={{route('cards.create')}} method="get">
+    @csrf
+    <button type="submit" class="btn btn-primary">add Card</button>
+  </form>
 
 </div>
-    
+
