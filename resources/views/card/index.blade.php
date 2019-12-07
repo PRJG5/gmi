@@ -3,7 +3,7 @@
 @else
 
 <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
-  <thead class="thead-dark">
+  <thead>
     <tr>
       <th th-sm>Vedette</th>
       <th th-sm>Langue</th>

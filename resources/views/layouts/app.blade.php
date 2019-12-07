@@ -10,7 +10,7 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <link href="{{asset('css/addons/datatables.min.css')}}" rel="stylesheet">
+    
 
     <!-- Scripts -->
     <script type="text/javascript" src="{{ asset('js/jquery.js') }}"  ></script>
@@ -24,13 +24,15 @@
    
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+   <!-- <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> -->
 
     <!-- Styles -->
 
     <link href="{{ asset('css/Bootstrap/bootstrap.css') }}" rel="stylesheet">
     <link href="{{asset('css/mdb.css')}}" rel="stylesheet">
+    <link href="{{asset('css/addons/datatables.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/addons/datatables-select.min.css')}}" rel="stylesheet">
 </head>
 
 <body>

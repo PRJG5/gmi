@@ -3,6 +3,7 @@
 @section('content')
 
 <h1>Research Card</h1>
+
 <form action="/searchCard" method="get">
     <div class="input-group">
         <input type="search" name="search" class="form-control">

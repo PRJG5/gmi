@@ -3,7 +3,7 @@
     <div class="container">
         <tr class="row justify-content-center">
             <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%" style="text-align:center">
-                <thead class="thead-dark">
+                <thead>
                 <tr>
                     <th th-sm>Name</th>
                     <th th-sm>Email</th>
