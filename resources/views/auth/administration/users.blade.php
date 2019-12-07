@@ -2,12 +2,12 @@
 @section('content')
     <div class="container">
         <tr class="row justify-content-center">
-            <table class="table" style="text-align:center">
+            <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%" style="text-align:center">
                 <thead class="thead-dark">
                 <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Role</th>
+                    <th th-sm>Name</th>
+                    <th th-sm>Email</th>
+                    <th th-sm>Role</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -61,5 +61,9 @@
                 }
             });
         }
+        
     </script>
+<script src="{{ asset('js/data.js') }}" ></script>
+
+    
 @endsection

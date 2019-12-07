@@ -3,21 +3,22 @@
 @else
 
 <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
-  <thead>
+  <thead class="thead-dark">
     <tr>
       <th th-sm>Vedette</th>
       <th th-sm>Langue</th>
       <th th-sm>Definition</th>
       <th th-sm>Votes</th>
-
+      <th th-sm>Montrez la carte</th>
     </tr>
   </thead>
-  @foreach ($cards as $card)
+
 
 
   <tbody>
+    @foreach ($cards as $card)
     <tr>
-      <th scope="row">{{$card->heading}}</th>
+      <td>{{$card->heading}}</td>
       <td>{{$card->getLanguage()}}</td>
       <td>{{$card->getDefinition()}}</td>
       <td>{{$card->count_vote}}</td>
@@ -29,9 +30,10 @@
       </td>
     </tr>
 
-  </tbody>
 
-  @endforeach
+
+    @endforeach
+  </tbody>
 
 </table>
 @endif
@@ -44,3 +46,4 @@
 
 </div>
 
+<script src="{{ asset('js/data.js') }}"></script>
