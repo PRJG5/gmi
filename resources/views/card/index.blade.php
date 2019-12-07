@@ -23,20 +23,12 @@
       <th scope="row">{{$card->heading}}</th>
       <td>{{$card->getLanguage()}}</td>
       <td>{{$card->getDefinition()}}</td>
-<<<<<<< HEAD
-      <td>
-        <form action='/card/{{$card->id}}' method="get">
-            @csrf
-            <button type="submit" class="btn btn-primary">Show</button>
-        </form> 
-=======
       <td>{{$card->count_vote}}</td>
       <td>
           <form action='/card/{{$card->id}}' method="get">
               @csrf
               <button type="submit" class="btn btn-primary">Show</button>
           </form>
->>>>>>> master
       </td>
     </tr>
     
