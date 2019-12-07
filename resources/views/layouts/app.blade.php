@@ -14,6 +14,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" defer></script>
     <script src="{{ asset('js/Bootstrap/bootstrap.min.js') }}" defer></script>
     <script src="{{ asset('js/Bootstrap/bootstrap.bundle.min.js') }}" defer></script>
+    <script src="{{ asset('js/mdb.js') }}" defer></script> 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
     <!-- Fonts -->
@@ -22,6 +23,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/Bootstrap/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{asset('css/mdb.css')}}" rel="stylesheet">
 </head>
 
 <body>
