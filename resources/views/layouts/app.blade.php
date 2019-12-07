@@ -86,7 +86,9 @@
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
+                                @if(Auth::user() && Auth::user()->role == \App\Enums\Roles::ADMIN)
                                 <a class="dropdown-item" href="/searchByUser">Recherche fiche par auteur</a>
+                                @endif
                                 <a class="dropdown-item" href="{{ route('mesFiches') }}" onclick="event.preventDefault();
                                                      document.getElementById('mesFiches-form').submit();">
                                     {{ __('Mes Fiches') }}
