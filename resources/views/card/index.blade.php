@@ -9,6 +9,7 @@
       <th th-sm>Langue</th>
       <th th-sm>Definition</th>
       <th th-sm>Votes</th>
+      <th th-sm>Validation</th>
       <th th-sm>Montrez la carte</th>
     </tr>
   </thead>
@@ -23,7 +24,14 @@
       <td>{{$card->getDefinition()}}</td>
       <td>{{$card->count_vote}}</td>
       <td>
-        <form action='/card/{{$card->id}}' method="get">
+            @if(isset($card->validation_id))
+                <i class="fa fa-check text-success"></i>
+            @else
+                <i class="fa fa-times text-danger"></i>
+            @endif
+        </td>
+      <td>
+        <form action='/cards/{{$card->id}}' method="get">
           @csrf
           <button type="submit" class="btn btn-primary">Show</button>
         </form>

@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
 use App\Vote;
 /**
  * Represents a Card (usually referred as "Fiche")
@@ -95,6 +97,7 @@ class Card extends Model
         'note_id'		=> NULL,
 		'language_id'	=> '',
         'owner_id'		=> 1,
+        'validation_id' => NULL,
     ];
 
     /**
@@ -142,11 +145,161 @@ class Card extends Model
 		"}";
     }
 
+    /**
+     * auto relation beetwen foreign-key
+     * Doc : https://laravel.com/docs/6.x/eloquent-relationships
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @author  49923 : Quentin Gosset
+     */
+    public function domain()
+    {
+        return $this->belongsTo('App\Domain');
+    }
 
-    public function getCountVoteAttribute() {
+    /**
+     * auto relation beetwen foreign-key
+     * Doc : https://laravel.com/docs/6.x/eloquent-relationships
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @author  49923 : Quentin Gosset
+     */
+    public function subdomain()
+    {
+        return $this->belongsTo('App\Subdomain');
+    }
+
+    /**
+     * auto relation beetwen foreign-key
+     * Doc : https://laravel.com/docs/6.x/eloquent-relationships
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @author  49923 : Quentin Gosset
+     */
+    public function context()
+    {
+        return $this->belongsTo('App\Context');
+    }
+
+    /**
+     * auto relation beetwen foreign-key
+     * Doc : https://laravel.com/docs/6.x/eloquent-relationships
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @author  49923 : Quentin Gosset
+     */
+    public function definition()
+    {
+        return $this->belongsTo('App\Definition');
+    }
+
+    /**
+     * auto relation beetwen foreign-key
+     * Doc : https://laravel.com/docs/6.x/eloquent-relationships
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @author  49923 : Quentin Gosset
+     */
+    public function note()
+    {
+        return $this->belongsTo('App\Note');
+    }
+
+    /**
+     * auto relation beetwen foreign-key
+     * Doc : https://laravel.com/docs/6.x/eloquent-relationships
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @author  49923 : Quentin Gosset
+     */
+    public function phonetic()
+    {
+        return $this->belongsTo('App\Phonetic');
+    }
+
+    /**
+     * auto relation beetwen foreign-key
+     * Doc : https://laravel.com/docs/6.x/eloquent-relationships
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @author  49923 : Quentin Gosset
+     */
+    public function validation()
+    {
+        return $this->belongsTo('App\Validation');
+    }
+
+    /**
+     * auto relation beetwen foreign-key
+     * Doc : https://laravel.com/docs/6.x/eloquent-relationships
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @author  49923 : Quentin Gosset
+     */
+    public function owner()
+    {
+        return $this->belongsTo('App\User','owner_id');
+    }
+
+    /**
+     * This method is a computer attribute and count the number of vote
+     * this methode can be direct called by $this->count_vote
+     * https://laravel.com/docs/5.7/eloquent-mutators
+     * @return int : number of vote
+     * @author 49923 : Quentin Gosset
+     */
+    public function getCountVoteAttribute(): int {
         return Vote::where('card_id','=',$this->id)->count();
     }
 
+    /**
+     * This method return true if the card is valided
+     * @return bool : status of the validation card
+     * @author 49923 : Quentin Gosset
+     */
+    public function isValided(): bool{
+        return isset($this->validation_id);
+    }
+
+    /**
+     * This method return true if the card has been validate
+     * @return bool : status if the card has been validate
+     * @author 49923 : Quentin Gosset
+     */
+    public function validate(): bool{
+        if(!$this->isValided()){
+            /**
+             * @YOURI mettre l'algo ici et mettre le resultat de ton algo dans $result
+             */
+            $resul = true;
+            if($resul){
+                // create the validation object
+                $validation = Validation::create([
+                    'voteNb' => 0,
+                    'userNb' => 0,
+                    'validationRate' => 0,
+                    'validated_at' => date('Y-m-d')
+                ]);
+                $this->validation_id = $validation->id;
+                $this->save();
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return true;
+        }
+    }
+
+    /**
+     * This method return true or false if the validation card has been removed
+     * @return bool : status if the validation card has been removed
+     * @author 49923 : Quentin Gosset
+     */
+    public function removeValidation(): bool{
+        if($this->isValided()){
+            // we remove the validation
+            $validation = Validation::where('id','=',$this->validation_id);
+            $validation->delete();
+            $this->validation_id = null;
+            $this->save();
+            return true;
+        }else{
+            return false;
+        }
+    }
 
     public function getDefinition(){
         if($this->definition_id != null){
@@ -156,10 +309,54 @@ class Card extends Model
         return "";
         
    }
+
+   public function getDomain(){
+    if($this->definition_id != null){
+        $dom= Domain::where('id','=',$this->domain_id)->first();
+        return $dom->content;
+        }
+        return "";
+    }
+
+    public function getSubDomain(){
+        if($this->definition_id != null){
+            $subdom= Subdomain::where('id','=',$this->subdomain_id)->first();
+            return $subdom->content;
+        }
+            return "";
+    }
+
     public function getLanguage(){
          $langs = Language::where('slug','=',$this->language_id)->get();
         return $langs[0]->content;
-         
+    }
+
+    public function getNote(){
+        if($this->note_id !=null){
+            $note = Note::where('id',$this->note_id)->get();
+        return $note[0]->description;
+        }
+        return "";
+    }
+
+    public function getContext(){
+        if($this->context_id !=null){
+            $cont = Context::where('id',$this->context_id)->first();
+            return $cont->context_to_string;
+        }
+        return "";
+    }
+
+    public function getPhonetic(){
+        if($this->phonetic_id != null){
+            $pho = Phonetic::where('id',$this->phonetic_id)->first();
+            return $pho->textDescription;
+        }
+        return "";
+    }
+
+    public function getHeading(){
+        return $this->heading;
     }
 
 	/*
@@ -170,6 +367,69 @@ class Card extends Model
         //TODO: Trouver le fonctionnement du hasManyThrough ----> return $this->hasManyThrough('\App\Card','App\Link');
         return DB::table('links')->select('*')->where(['cardA', '=', $this->id])->orWhere(['cardB', '=', $this->id])->get();
     }
+
+    public function getLinkedCard(){
+        $cardAid = collect();
+        $cardBid = collect();
+        $cardBtemp =Link::select('cardB')->where('cardA','=',$this->id)->get();
+        $cardAtemp =Link::select('cardA')->where('CardB','=',$this->id)->get();
+
+        foreach($cardBtemp as $idB){
+            $cardBid->push($idB->cardB);
+        }
+
+        foreach($cardAtemp as $idA){
+            $cardAid->push($idA->cardA);
+        }
+
+         return Card::whereIn('id',$cardAid)->orwhereIn('id',$cardBid)->get();
+    }
+
+    public function  getCardFilterByLanguage(){
+        $user= Auth::user();
+        $varTemp = collect();
+        $collectCard = collect();
+        $cardsLinked = collect();
+
+        foreach($user->getLanguagesKeyArray() as $lang){
+            $temp = Card::where('language_id',$lang)->get();
+            if(!$temp->first()==null){
+                //Faire une collection de collection 
+                $varTemp->prepend(Card::where('language_id',$lang)->get());
+            }
+        }
+
+        //Ici on va tout mettre dans une collection 
+        foreach($varTemp as $collection){
+            foreach($collection as $collectionitem){
+                $collectCard->push($collectionitem->id);
+            }
+        }
+
+        $cardsLinked = Card::getLinkedCard();
+        //1. On prend toutes les cartes qui sont de la langues de l'utilisateur.
+        //2. On prend pas toutes les cartes liés a la carte courantes 
+        //3. On prend pas la carte courante 
+        //4. On prend pas les cartes de la langues de la carte courante 
+
+        return Card::whereIn('id',$collectCard)->whereNotIn('id',$cardsLinked->pluck('id'))->where('id','!=',$this->id)->where('language_id','!=',$this->language_id)->get();
+    }
+
+    
+
+//         SELECT * 
+// FROM `cards` 
+// WHERE language_id != "BUL" 
+// AND id != 1 
+// AND id NOT IN ( SELECT cardB 
+//                	FROM links 
+//                 WHERE cardA = 1)
+                
+// AND id NOT IN (SELECT cardA
+//                FROM links
+//                WHERE cardB=1);
+               
+    
 
     public function versions(){
 

@@ -21,7 +21,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/searchCard' , 'HomeController@searchCard')->middleware('auth');
 Route::get('/mesFiches', 'MyCardController@index')->name('mesFiches')->middleware('auth');
-Route::get('/users','HomeController@indexUsers')->name('ListingUsers')->middleware('auth');
+Route::get('/users','HomeController@indexUsers')->name('ListingUsers')->middleware(['auth','admin']);
 
 
 /**
@@ -34,6 +34,8 @@ Route::get('/users','HomeController@indexUsers')->name('ListingUsers')->middlewa
  * @author 44422
  */
 Route::resource('cards', 'CardController')->middleware('auth');
+Route::post('cards/{id}/removeValidation', 'CardController@removeValidation')->middleware('auth')->name('cards.removeValidation');
+
 
 /**
  * Route to display a page to search all cards from an user
@@ -55,10 +57,10 @@ Route::get('/searchByUser', function () {
  */
 Route::get('/searchByUser/{id}', 'CardController@getCardsByUser')->middleware('auth');
 
-/**
- * Return the view to display one card
- */
-Route::get("/card/{id}", 'CardController@showCard')->middleware('auth');
+// /**
+//  * Return the view to display one card
+//  */
+// Route::get("/card/{id}", 'CardController@showCard')->middleware('auth');
 
 /**
  * Route to return all cards from an user in JSON
@@ -66,12 +68,24 @@ Route::get("/card/{id}", 'CardController@showCard')->middleware('auth');
  */
 Route::get('api/getAllCardsFromUsers/{id}', 'CardController@getCardsByUser')->middleware('auth');
 
-Route::get('cards/{cardOrigin}/{cardLinked}/link','CardController@linkCard')->name('link')->middleware('auth');
+Route::get('cards/{card_id}/link','CardController@linkCard')->name('link')->middleware('auth');
 
 Route::get('api/addsubdomain/{name}', 'BasicDataController@addSubdomain')->middleware('auth');
+
+Route::get('/addLanguage','LanguageController@importView')->middleware('auth');
+
+Route::get('cards/{card}/{cardOrigin}/link','cardController@linkToAnotherCard')->middleware('auth');
+
 Route::get('api/addlanguage/{name}/code/{iso}', 'BasicDataController@addLanguage')->middleware('auth');
+
 Route::get('api/adddomain/{name}', 'BasicDataController@addDomain')->middleware('auth');
+
 Route::get('/addbasicdata', 'LanguageController@index')->name('basicData')->middleware('auth');
+
 Route::get('cards/vote/{card}','VoteController@voteCard')->name('voteCard')->middleware('auth');
+
+Route::get('cards/{card}/{cardOrigin}/link','cardController@linkToAnotherCard')->middleware('auth');
+
+Route::get('cards/{card_id}/linkList', 'CardController@linkList')->middleware('auth');
 ?>
 
