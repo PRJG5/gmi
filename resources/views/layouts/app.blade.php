@@ -11,10 +11,11 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="{{ asset('js/Bootstrap/bootstrap.min.js') }}" defer></script>
     <script src="{{ asset('js/Bootstrap/bootstrap.bundle.min.js') }}" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    @yield("myScripts")
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">

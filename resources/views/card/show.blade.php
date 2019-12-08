@@ -19,12 +19,12 @@
 
 @if (isset($card->phonetic) && (!$card->isSignedLanguage()))
 <label  class="col-md-6 col-form-label text-md-right"> Phonetique : </label>
-<label>{{$phonetic->textDescription}}</label> 
+<label>{{$card->phonetic->textDescription}}</label> 
 @endif
 
 @if (isset($card->domain_id))
 <label  class="col-md-6 col-form-label text-md-right"> Domaine : </label>
-<label>{{$domain->content}}</label>
+<label>{{$card->domain->content}}</label>
 @endif
 
 @if (isset($card->subdomain_id))
