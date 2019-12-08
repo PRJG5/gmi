@@ -144,6 +144,94 @@ class Card extends Model
     }
 
     /**
+     * auto relation beetwen foreign-key
+     * Doc : https://laravel.com/docs/6.x/eloquent-relationships
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @author  49923 : Quentin Gosset
+     */
+    public function domain()
+    {
+        return $this->belongsTo('App\Domain');
+    }
+
+    /**
+     * auto relation beetwen foreign-key
+     * Doc : https://laravel.com/docs/6.x/eloquent-relationships
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @author  49923 : Quentin Gosset
+     */
+    public function subdomain()
+    {
+        return $this->belongsTo('App\Subdomain');
+    }
+
+    /**
+     * auto relation beetwen foreign-key
+     * Doc : https://laravel.com/docs/6.x/eloquent-relationships
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @author  49923 : Quentin Gosset
+     */
+    public function context()
+    {
+        return $this->belongsTo('App\Context');
+    }
+
+    /**
+     * auto relation beetwen foreign-key
+     * Doc : https://laravel.com/docs/6.x/eloquent-relationships
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @author  49923 : Quentin Gosset
+     */
+    public function definition()
+    {
+        return $this->belongsTo('App\Definition');
+    }
+
+    /**
+     * auto relation beetwen foreign-key
+     * Doc : https://laravel.com/docs/6.x/eloquent-relationships
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @author  49923 : Quentin Gosset
+     */
+    public function note()
+    {
+        return $this->belongsTo('App\Note');
+    }
+
+    /**
+     * auto relation beetwen foreign-key
+     * Doc : https://laravel.com/docs/6.x/eloquent-relationships
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @author  49923 : Quentin Gosset
+     */
+    public function phonetic()
+    {
+        return $this->belongsTo('App\Phonetic');
+    }
+
+    /**
+     * auto relation beetwen foreign-key
+     * Doc : https://laravel.com/docs/6.x/eloquent-relationships
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @author  49923 : Quentin Gosset
+     */
+    public function validation()
+    {
+        return $this->belongsTo('App\Validation');
+    }
+
+    /**
+     * auto relation beetwen foreign-key
+     * Doc : https://laravel.com/docs/6.x/eloquent-relationships
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @author  49923 : Quentin Gosset
+     */
+    public function owner()
+    {
+        return $this->belongsTo('App\User','owner_id');
+    }
+
+    /**
      * This method is a computer attribute and count the number of vote
      * this methode can be direct called by $this->count_vote
      * https://laravel.com/docs/5.7/eloquent-mutators
@@ -168,18 +256,18 @@ class Card extends Model
      * @return bool : status if the card has been validate
      * @author 49923 : Quentin Gosset
      */
-    public function validation(): bool{
+    public function validate(): bool{
         if(!$this->isValided()){
             /**
-             * @YOURI mettre l'algo ici
+             * @YOURI mettre l'algo ici et mettre le resultat de ton algo dans $result
              */
             $resul = true;
             if($resul){
                 // create the validation object
                 $validation = Validation::create([
-                    'voteNb' => 20,
-                    'userNb' => 69,
-                    'validationRate' => 80,
+                    'voteNb' => 0,
+                    'userNb' => 0,
+                    'validationRate' => 0,
                     'validated_at' => date('Y-m-d')
                 ]);
                 $this->validation_id = $validation->id;
@@ -210,6 +298,7 @@ class Card extends Model
             return false;
         }
     }
+
     public function getDefinition(){
         if($this->definition_id != null){
             $def = Definition::where('id','=',$this->definition_id)->get();
@@ -221,7 +310,6 @@ class Card extends Model
     public function getLanguage(){
          $langs = Language::where('slug','=',$this->language_id)->get();
         return $langs[0]->content;
-         
     }
 
 	/*

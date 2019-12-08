@@ -48,24 +48,31 @@
 <label>{{$card->count_vote}}</label>
 @endif
 
-<div>
+<div style="display:flex;justify-content: space-evenly;">
         <form action='/cards/vote/{{$card->id}}' method="get">
         @csrf
             <button type="submit" class="btn btn-primary">Vote</button>
         </form>
     @if(in_array($card->language_id,Auth::user()->getLanguagesKeyArray()))
-        <form action='/cards/{{$card->id}}/edit' method="get" style="display: inline-block;">
-            @csrf
-            <button type="submit" class="btn btn-primary">Edit</button>
-        </form>
-
-        @if(Auth::user()->role != \App\Enums\Roles::USERS)
-		<form style="display:inline;" action="{{ route('cards.destroy', $card) }}" method="POST">
-			@csrf
-			@method('DELETE')
-			<button class="btn btn-danger float-right">Delete</button>
-		</form>
+        @if(!isset($card->validation_id))
+            <form action='/cards/{{$card->id}}/edit' method="get">
+                @csrf
+                <button type="submit" class="btn btn-primary">Edit</button>
+            </form>
         @endif
+        @if(Auth::user()->role == \App\Enums\Roles::ADMIN && isset($card->validation_id))
+                <form action="{{ route('cards.removeValidation', $card) }}" method="POST">
+                    @csrf
+                    <button class="btn btn-warning float-right">Remove validation</button>
+                </form>
+        @endif
+         @if(Auth::user()->role != \App\Enums\Roles::USERS)
+                <form action="{{ route('cards.destroy', $card) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-danger float-right">Delete</button>
+                </form>
+         @endif
     @endif
 </div>
 @endsection
