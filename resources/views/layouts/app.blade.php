@@ -15,8 +15,8 @@
     <!-- Scripts -->
     <script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-    <script src="{{ asset('js/Bootstrap/bootstrap.min.js') }}"></script>
+    <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script> -->
+   <!-- <script src="{{ asset('js/Bootstrap/bootstrap.min.js') }}"></script> -->
     <script src="{{ asset('js/Bootstrap/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('js/mdb.js') }}"></script>
     <script src="{{ asset('js/addons/datatables.min.js') }}"></script>
