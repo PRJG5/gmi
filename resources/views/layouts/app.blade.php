@@ -8,23 +8,23 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'GMI') }}</title>
 
-    
+
 
     <!-- Scripts -->
-    <script type="text/javascript" src="{{ asset('js/jquery.js') }}"  ></script>
+    <script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" ></script>
-<script src="{{ asset('js/Bootstrap/bootstrap.min.js') }}" ></script>
-<script src="{{ asset('js/Bootstrap/bootstrap.bundle.min.js') }}" ></script>
-<script src="{{ asset('js/mdb.js') }}" ></script>
-<script src="{{ asset('js/addons/datatables.min.js') }}" ></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-   
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="{{ asset('js/Bootstrap/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/Bootstrap/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('js/mdb.js') }}"></script>
+    <script src="{{ asset('js/addons/datatables.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
 
     <!-- Fonts -->
-   <!-- <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <!-- <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> -->
 
     <!-- Styles -->
@@ -135,7 +135,7 @@
             </div>
         </main>
     </div>
-  <!-- 
+    <!-- 
    <script>
         jQuery(document).ready(function() {
             $('#dtBasicExample').DataTable();
@@ -146,7 +146,7 @@
 
 
 
-     
+
 
 </body>
 
