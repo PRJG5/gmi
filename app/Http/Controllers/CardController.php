@@ -16,7 +16,6 @@ use App\Context;
 use App\Definition;
 use App\Subdomain;
 use App\User;
-use App\Link;
 use App\vote;
 use App\Validation;
 
@@ -138,14 +137,22 @@ class CardController extends Controller
      * @return Response the view of the card.
      * @author 44422
      */
-    public function show(Card $card)
+    public function show(int $card_id)
     {
+        $card = Card::find($card_id);
         return view('card.show', [
-			'card' 		=> $card,
-			'domain' 	=> Domain::all()->where('id',$card->domain_id)->first(),
-			'languages' => Language::all()->where('slug',$card->language_id)->first(),
-			'subdomain' => Subdomain::all()->where('id',$card->subdomain_id)->first(),
+            'card_id'   => $card_id,
+            'vote_count'=> $card->getCountVoteAttribute(),
+            'domain' 	=> $card->getDomain(),
+            'heading'   => $card->getHeading(),
+            'languages' => $card->getLanguage(),
+            'phonetic'  => $card->getPhonetic(),
+            'note'      => $card->getNote(),
+            'context'   => $card->getContext(),
+            'definition'=> $card->getDefinition(),
+			'subdomain' => $card->getSubdomain(),
             'owner' 	=> User::find($card->owner_id),
+            'language_id' =>$card->language_id,
 		]);
     }
 
@@ -163,9 +170,9 @@ class CardController extends Controller
         return view('card.edit', [
             'mail'      => ["subject" => urlencode($subject),'description' => urlencode($description)],
             'card' 		=> $card,
-			'domain' 	=> Domain::getInstances(),
+			'domain' 	=> Domain::all(),
 			'languages' => DB::table("cards")->where('id',$card->language_id)->first(),
-			'subdomain' => Subdomain::getInstances(),
+			'subdomain' => Subdomain::all(),
             'owner' 	=> User::find($card->owner_id),
             'phonetic'  => $card->getPhonetic(),
             'note'      => $card->getNote(),
@@ -204,8 +211,9 @@ class CardController extends Controller
      * @throws Exception if card to delete cannot be found
      * @author 44422
      */
-    public function destroy(Card $card)
+    public function destroy(int $card_id)
     {
+        $card =Card::find($card_id);
         try { 
             Link::where('cardA', $card->id)->orWhere('cardB', $card->id)->delete();
 
@@ -239,6 +247,7 @@ class CardController extends Controller
      */
     private function validateData(Request $request, bool $creating) {
 		$tab = [
+            'card_id'       => '',
             'heading'		=> 'required',
             'language_id'	=> 'required',
             'phonetic'		=> '',
@@ -253,6 +262,7 @@ class CardController extends Controller
             'note'          => '',
             'owner_id'	    => 'required',
             'validation_id' => 'required',
+            'vote_count'    => '',
 		];
 		if(!$creating) {
 			array_merge($tab, [
@@ -283,11 +293,11 @@ class CardController extends Controller
         return view('card.index',['cards' => Card::where('owner_id',$userId)->get()]);
     }
 
-    public function linkCard(Card $cardOrigin){
+    public function linkCard(int $card_id){
+        $cardOrigin = Card::find($card_id);
         return view('card.link', [
             'cardOrigin' => $cardOrigin,
             'cardLinked' => $cardOrigin->getCardFilterByLanguage(),
-			'languages' => Language::getInstances(),
             'userOrigin' => DB::table('users')->where('id', $cardOrigin->owner_id)->first(),
 		]);
     }
@@ -301,19 +311,4 @@ class CardController extends Controller
     $l =Link::create(compact('cardA','cardB'));
     return redirect()->back();
     }
-
-   public function showCard($id) {
-        $card = Card::find($id);
-       return view('card.show', [
-           'card' => $card,
-            'phonetic'  => DB::table('phonetics')->where('id', $card->phonetic_id)->first(),
-            'note'      => DB::table('notes')->where('id', $card->note_id)->first(),
-            'context'   => DB::table('contexts')->where('id',$card->context_id)->first(),
-            'definition'=> DB::table('definitions')->where('id',$card->definition_id)->first(),
-            'domain' 	=> Domain::all()->where('id',$card->domain_id)->first(),
-           'languages' => Language::all()->where('slug',$card->language_id)->first(),
-           'subdomain' => Subdomain::all()->where('id',$card->subdomain_id)->first(),
-       ]);
-   }
-
 }

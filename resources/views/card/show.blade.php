@@ -7,70 +7,71 @@
 	Card
 @endsection
 @section('card-body')
+
 <label class="col-md-6 col-form-label text-md-right"> Vedette : </label>
-<label>{{$card->heading}}</label> 
+<label>{{$heading}}</label> 
 
 <label  class="col-md-6 col-form-label text-md-right"> Langue : </label>
-<label>{{$languages->content}}</label>
+<label>{{$languages}}</label>
 
-@if (isset($card->phonetic))
+@if (isset($phonetic))
 <label  class="col-md-6 col-form-label text-md-right"> Phonetique : </label>
-<label>{{$card->getPhonetic()}}</label> 
+<label>{{$phonetic}}</label>    
 @endif
 
-@if (isset($card->domain_id))
+@if (isset($domain))
 <label  class="col-md-6 col-form-label text-md-right"> Domaine : </label>
-<label>{{$domain->content}}</label>
+<label>{{$domain}}</label>
 @endif
 
-@if (isset($card->subdomain_id))
+@if (isset($subdomain))
 <label  class="col-md-6 col-form-label text-md-right"> Sous-Domaine : </label>
-<label>{{$subdomain->content}}</label>
+<label>{{$subdomain}}</label>
 @endif
 
-@if (isset($card->definition_id))
+@if (isset($definition))
 <label  class="col-md-6 col-form-label text-md-right"> Definition : </label>
-<label>{{$card->getDefinition()->definition_content}}</label> 
+<label>{{$definition}}</label> 
 @endif
 
-@if (isset($card->context_id))
+@if (isset($context))
 <label  class="col-md-6 col-form-label text-md-right"> Contexte : </label>
-<label>{{$card->getContext()->context_to_string}}</label> 
+<label>{{$context}}</label> 
 @endif
 
-@if (isset($card->note_id))
+@if (isset($note) )
 <label  class="col-md-6 col-form-label text-md-right"> Note : </label>
-<label>{{$card->getNote()->description}}</label>
+<label>{{$note}}</label>
 @endif
 
-@if (isset($card->count_vote))
+@if (isset($vote_count))
 <label  class="col-md-6 col-form-label text-md-right"> Nombre de vote : </label>
-<label>{{$card->count_vote}}</label>
+<label>{{$vote_count}}</label>
 @endif
 
 <div>
-        <form action='/cards/vote/{{$card->id}}' method="get">
+        <form action='/cards/vote/{{$card_id}}' method="get">
         @csrf
             <button type="submit" class="btn btn-primary">Vote</button>
         </form>
-    @if(in_array($card->language_id,Auth::user()->getLanguagesKeyArray()))
-        <form action='/cards/{{$card->id}}/edit' method="get" style="display: inline-block;">
+    @if(in_array($language_id,Auth::user()->getLanguagesKeyArray()))
+        <form action='/cards/{{$card_id}}/edit' method="get" style="display: inline-block;">
             @csrf
             <button type="submit" class="btn btn-primary">Edit</button>
         </form>
 
-        <form action='/cards/{{$card->id}}/linkList' method="get">
+        <form action='/cards/{{$card_id}}/linkList' method="get">
             @csrf
             <button type="submit" class="btn btn-primary">Liste des liens</button>
         </form>
 
-        <form action='/cards/{{$card->id}}/link' method="get">
+        <form action='/cards/{{$card_id}}/link' method="get">
             @csrf
             <button type="submit" class="btn btn-primary">Faire un lien</button>
         </form>
 
         @if(Auth::user()->role != \App\Enums\Roles::USERS)
-		<form style="display:inline;" action="{{ route('cards.destroy', $card) }}" method="POST">
+		<form style="display:inline;" action="{{ route('cards.destroy', $card_id) }}" method="POST">
 			@csrf
 			@method('DELETE')
 			<button class="btn btn-danger float-right">Delete</button>

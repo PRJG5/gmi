@@ -21,7 +21,7 @@
         <input type="hidden" name="owner" value="{{ isset($owner) ? $owner->name : '' }}" disabled/>
 
 		<label for="phonetic" class="col-md-6 col-form-label text-md-right">Phonetic:</label>
-		<input name="phonetic" class="phonetic" type="text" placeholder="Phonetic" value="{{isset($phonetic) ? $phonetic->textDescription : ' '}}" title="Phonetic"/>
+		<input name="phonetic" class="phonetic" type="text" placeholder="Phonetic" value="{{isset($phonetic) ? $phonetic: ' '}}" title="Phonetic"/>
 
         <!--METTRE LES VALEURS PAR DEFAUT A DOMAIN ET SUBDOMAIN-->
         <label for="domain_id" class="col-md-6 col-form-label text-md-right">Domain:</label>
@@ -40,13 +40,13 @@
 
 
 		<label for="definition" class="col-md-6 col-form-label text-md-right">Definition:</label>
-		<textarea name="definition" class="definition" value="{{isset($definition) ? $definition->definition_content : ' '}}">{{isset($definition) ? $definition->definition_content : ""}}</textarea>
+		<textarea name="definition" class="definition" value="{{isset($definition) ? $definition : ' '}}">{{isset($definition) ? $definition : ""}}</textarea>
 
         <label for="note" class="col-md-6 col-form-label text-md-right">Note:</label>
-		<input name="note" class="note" type="text" value="{{isset($note) ? $note->description : ' '}}"/>
+		<input name="note" class="note" type="text" value="{{isset($note) ? $note : ' '}}"/>
 
 		<label for="context" class="col-md-6 col-form-label text-md-right">Contexte:</label>
-		<textarea name="context" class="context" value="{{isset($context) ? $context->context_to_string : ' '}}">{{isset($context) ? $context->context_to_string : ""}}</textarea>
+		<textarea name="context" class="context" value="{{isset($context) ? $context : ' '}}">{{isset($context) ? $context: ""}}</textarea>
 
         <br>
 		<button type="submit" class="btn btn-primary"> Validate </button>

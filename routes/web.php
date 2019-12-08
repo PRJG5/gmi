@@ -55,10 +55,10 @@ Route::get('/searchByUser', function () {
  */
 Route::get('/searchByUser/{id}', 'CardController@getCardsByUser')->middleware('auth');
 
-/**
- * Return the view to display one card
- */
-Route::get("/card/{id}", 'CardController@showCard')->middleware('auth');
+// /**
+//  * Return the view to display one card
+//  */
+// Route::get("/card/{id}", 'CardController@showCard')->middleware('auth');
 
 /**
  * Route to return all cards from an user in JSON
@@ -66,7 +66,7 @@ Route::get("/card/{id}", 'CardController@showCard')->middleware('auth');
  */
 Route::get('api/getAllCardsFromUsers/{id}', 'CardController@getCardsByUser')->middleware('auth');
 
-Route::get('cards/{cardOrigin}/link','CardController@getCardFilterByLanguage')->name('link')->middleware('auth');
+Route::get('cards/{card_id}/link','CardController@linkCard')->name('link')->middleware('auth');
 
 Route::get('api/addsubdomain/{name}', 'BasicDataController@addSubdomain')->middleware('auth');
 

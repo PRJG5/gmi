@@ -126,14 +126,5 @@
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
 
-<script>
-    $('.my-slider').slick({
-      centerMode: true,
-      slidesToShow: 1,
-      infinite: true,
-      nextArrow: $('.la.la-angle-right.arrow-slider'),
-      prevArrow: $('.la.la-angle-left.arrow-slider'), 
-    });
-    </script>
 </body>
 </html>

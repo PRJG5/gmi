@@ -4,15 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-<<<<<<< HEAD
 use Illuminate\Support\Facades\Auth;
 
-
-
-
-=======
 use App\Vote;
->>>>>>> master
 /**
  * Represents a Card (usually referred as "Fiche")
  * Each Card only has one and only one "idea",
@@ -155,7 +149,6 @@ class Card extends Model
         return Vote::where('card_id','=',$this->id)->count();
     }
 
-
     public function getDefinition(){
         if($this->definition_id != null){
             $def = Definition::where('id','=',$this->definition_id)->get();
@@ -164,10 +157,55 @@ class Card extends Model
         return "";
         
    }
+
+   public function getDomain(){
+    if($this->definition_id != null){
+        $dom= Domain::where('id','=',$this->domain_id)->first();
+        return $dom->content;
+        }
+        return "";
+    }
+
+    public function getSubDomain(){
+        if($this->definition_id != null){
+            $subdom= Subdomain::where('id','=',$this->subdomain_id)->first();
+            return $subdom->content;
+        }
+            return "";
+    }
+
     public function getLanguage(){
          $langs = Language::where('slug','=',$this->language_id)->get();
         return $langs[0]->content;
          
+    }
+
+    public function getNote(){
+        if($this->note_id !=null){
+            $note = Note::where('id',$this->note_id)->get();
+        return $note[0]->description;
+        }
+        return "";
+    }
+
+    public function getContext(){
+        if($this->context_id !=null){
+            $cont = Context::where('id',$this->context_id)->first();
+            return $cont->context_to_string;
+        }
+        return "";
+    }
+
+    public function getPhonetic(){
+        if($this->phonetic_id != null){
+            $pho = Phonetic::where('id',$this->phonetic_id)->first();
+            return $pho->textDescription;
+        }
+        return "";
+    }
+
+    public function getHeading(){
+        return $this->heading;
     }
 
 	/*
@@ -179,40 +217,51 @@ class Card extends Model
         return DB::table('links')->select('*')->where(['cardA', '=', $this->id])->orWhere(['cardB', '=', $this->id])->get();
     }
 
-<<<<<<< HEAD
-    public function getPhonetic(){
-        return DB::table('phonetics')->where('id', $this->phonetic_id)->first();
-    }
-
-    public function getNote(){
-        return DB::table('notes')->where('id', $this->note_id)->first();
-    }
-
-    public function getContext(){
-        return DB::table('contexts')->where('id',$this->context_id)->first();
-    }
-
-    public function getDefinition(){
-        return DB::table('definitions')->where('id',$this->definition_id)->first();
-    }
-
     public function getLinkedCard(){
-        $cardBtemp =Link::select('cardB')->where('cardA','=',$this->id);
-        $cardAtemp =Link::select('cardA')->where('CardB','=',$this->id);
-        return Card::whereIn($cardAtemp)->whereIn($cardBtemp)->get();
+        $cardAid = collect();
+        $cardBid = collect();
+        $cardBtemp =Link::select('cardB')->where('cardA','=',$this->id)->get();
+        $cardAtemp =Link::select('cardA')->where('CardB','=',$this->id)->get();
+
+        foreach($cardBtemp as $idB){
+            $cardBid->push($idB->cardB);
+        }
+
+        foreach($cardAtemp as $idA){
+            $cardAid->push($idA->cardA);
+        }
+
+         return Card::whereIn('id',$cardAid)->orwhereIn('id',$cardBid)->get();
     }
 
     public function  getCardFilterByLanguage(){
-
         $user= Auth::user();
         $varTemp = collect();
-        
-        foreach($user->getLanguages() as $lang){
-            $varTemp->prepend(Card::where('language_id',$lang->languageISO)->get());
+        $collectCard = collect();
+        $cardsLinked = collect();
 
+        foreach($user->getLanguagesKeyArray() as $lang){
+            $temp = Card::where('language_id',$lang)->get();
+            if(!$temp->first()==null){
+                //Faire une collection de collection 
+                $varTemp->prepend(Card::where('language_id',$lang)->get());
+            }
         }
+
+        //Ici on va tout mettre dans une collection 
+        foreach($varTemp as $collection){
+            foreach($collection as $collectionitem){
+                $collectCard->push($collectionitem->id);
+            }
+        }
+
         $cardsLinked = Card::getLinkedCard();
-        dd(Card::whereIn('language_id',$varTemp)->where('id','!=',$this->id)->whereNotIn('id',$cardsLinked)->get());
+        //1. On prend toutes les cartes qui sont de la langues de l'utilisateur.
+        //2. On prend pas toutes les cartes liés a la carte courantes 
+        //3. On prend pas la carte courante 
+        //4. On prend pas les cartes de la langues de la carte courante 
+
+        return Card::whereIn('id',$collectCard)->whereNotIn('id',$cardsLinked->pluck('id'))->where('id','!=',$this->id)->where('language_id','!=',$this->language_id)->get();
     }
 
     
@@ -231,10 +280,8 @@ class Card extends Model
                
     
 
-=======
     public function versions(){
 
         return $this->belongsToMany('App\Card' ,'card_card' , 'cardOrigin' , 'cardVersion');
     }
->>>>>>> master
 }

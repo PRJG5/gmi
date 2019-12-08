@@ -19,6 +19,7 @@ class VoteController extends Controller
         if(Vote::where([['user_id','=',$vote->user_id], ['card_id','=',$vote->card_id]])->doesntExist()){ /* verif if the vote not exist */
             $vote->save();
         }
-        return redirect()->action('CardController@show', [$card_id]);
+        #return redirect()->action('CardController@show', [Card::find($card_id)]);
+        return redirect()->back();
     }
 }

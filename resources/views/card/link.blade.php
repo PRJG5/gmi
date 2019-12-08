@@ -1,18 +1,19 @@
-@extends('layouts.card')
 
+@extends('layouts.card')
+@extends ('layouts.app')
 @section('card-header')
 
-Card origin
+La carte d'origine
     
 @endsection
 
 
 @section('card-body')
 <label class="col-md-6 col-form-label text-md-right"> Vedette : </label>
-<label>{{$cardOrigin->heading}}</label> 
+<label>{{$cardOrigin->getHeading()}}</label> 
 
 <label  class="col-md-6 col-form-label text-md-right"> Langue : </label>
-<label>{{$cardOrigin->language_id}}</label>   
+<label>{{$cardOrigin->getLanguage()}}</label>   
 
 @if (isset($cardOrigin->phonetic))
 <label  class="col-md-6 col-form-label text-md-right"> Phonetique : </label>
@@ -21,47 +22,47 @@ Card origin
 
 @if (isset($cardOrigin->domain_id))
 <label  class="col-md-6 col-form-label text-md-right"> Domaine : </label>
-<label>{{$cardOrigin->domain_id}}</label> 
+<label>{{$cardOrigin->getDomain()}}</label> 
 @endif
 
 @if (isset($cardOrigin->subdomain_id))
 <label  class="col-md-6 col-form-label text-md-right"> Sous-Domaine : </label>
-<label>{{$cardOrigin->subdomain_id}}</label> 
+<label>{{$cardOrigin->getSubdomain()}}</label> 
 @endif
 
 @if (isset($cardOrigin->definition_id))
 <label  class="col-md-6 col-form-label text-md-right"> Definition : </label>
-<label>{{$cardOrigin->getDefinition()->definition_content}}</label> 
+<label>{{$cardOrigin->getDefinition()}}</label> 
 @endif
 
 @if (isset($cardOrigin->context_id))
 <label  class="col-md-6 col-form-label text-md-right"> Contexte : </label>
-<label>{{$cardOrigin->getContext()->context_to_string}}</label> 
+<label>{{$cardOrigin->getContext()}}</label> 
 @endif
 
 @if (isset($cardOrigin->note_id))
 <label  class="col-md-6 col-form-label text-md-right"> Note : </label>
-<label>{{$cardOrigin->getNote()->description}}</label>
+<label>{{$cardOrigin->getNote()}}</label>
 @endif
 
 @endsection
 @section("under-card")
 
-<div class="my-slider" >                      
+<div class="my-slider" >                    
     @foreach ($cardLinked as $card)
     <div class="container">
     <div class="row justify-content-center">
             <div class="col-md-8">
                     <div class="card">
-                            <div class="card-header">SALUT</div>
+                            <div class="card-header">Les autres cartes </div>
                             <div class="card-body">
 
     <div class="block center">
     <label class="col-md-6 col-form-label text-md-right"> Vedette: </label>
-    <label>{{$card->heading}}</label> 
+    <label>{{$card->getHeading()}}</label> 
 
     <label class="col-md-6 col-form-label text-md-right"> Langue : </label>
-    <label>{{$card->language_id}}</label>   
+    <label>{{$card->getLanguage()}}</label>   
 
     @if (isset($card->phonetic))
     <label class="col-md-6 col-form-label text-md-right"> Phonetique : </label>
@@ -70,28 +71,32 @@ Card origin
 
     @if (isset($card->domain_id))
     <label class="col-md-6 col-form-label text-md-right"> Domaine : </label>
-    <label>{{$card->domain_id}}</label> 
+    <label>{{$card->getDomain()}}</label> 
     @endif
 
     @if (isset($card->subdomain_id))
     <label class="col-md-6 col-form-label text-md-right"> Sous-Domaine : </label>
-    <label>{{$card->subdomain_id}}</label> 
+    <label>{{$card->getSubdomain()}}</label> 
     @endif
 
     @if (isset($card->definition_id))
     <label class="col-md-6 col-form-label text-md-right"> Definition : </label>
-    <label>{{$card->getDefinition()->definition_content}}</label> 
+    <label>{{$card->getDefinition()}}</label> 
     @endif
 
     @if (isset($card->context_id))
     <label class="col-md-6 col-form-label text-md-right"> Contexte : </label>
-    <label>{{$card->getContext()->context_to_string}}</label> 
+    <label>{{$card->getContext()}}</label> 
     @endif
 
     @if (isset($card->note_id))
     <label class="col-md-6 col-form-label text-md-right"> Note : </label>
-    <label>{{$card->getNote()->description}}</label>
+    <label>{{$card->getNote()}}</label>
     @endif
+
+    <label  class="col-md-6 col-form-label text-md-right"> Nombre de vote : </label>
+    <label>{{$card->getCountVoteAttribute()}}</label>
+
     </div>
     </div>
     <form action='{{$card->id}}/link' method="get">
@@ -113,5 +118,17 @@ Card origin
 @endsection
 
 @include("layouts.error")
+
+@section("script")
+<script>
+    $('.my-slider').slick({
+      centerMode: true,
+      slidesToShow: 1,
+      infinite: true,
+      nextArrow: $('.la.la-angle-right.arrow-slider'),
+      prevArrow: $('.la.la-angle-left.arrow-slider'), 
+    });
+    </script>
+@endsection
 
 
