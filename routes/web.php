@@ -21,7 +21,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/searchCard' , 'HomeController@searchCard')->middleware('auth');
 Route::get('/mesFiches', 'MyCardController@index')->name('mesFiches')->middleware('auth');
-Route::get('/users','HomeController@indexUsers')->name('ListingUsers')->middleware('auth');
+Route::get('/users','HomeController@indexUsers')->name('ListingUsers')->middleware(['auth','admin']);
 
 
 /**

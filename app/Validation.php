@@ -6,20 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Validation extends Model
 {
-
-
     protected $fillable = [
         'voteNb',
         'userNb',
         'validationRate',
         'validated_at'
 	];
-    
-
-    
-
-    
-
 
     public function __toString(){
         return $this->id

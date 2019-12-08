@@ -101,11 +101,6 @@ class CardController extends Controller
             ]);
         }
 
-        {
-            $validation = Validation::create();
-            $request->merge(['validation_id' => $validation->id]);
-        }
-
         $card = Card::create($this->validateData($request, true));
 		$card->save();
         return $card;
@@ -255,7 +250,6 @@ class CardController extends Controller
             'note_id'		=> '',
             'note'          => '',
             'owner_id'	    => 'required',
-            'validation_id' => 'required',
 		];
 		if(!$creating) {
 			array_merge($tab, [
