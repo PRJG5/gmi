@@ -101,11 +101,6 @@ class CardController extends Controller
             ]);
         }
 
-        {
-            $validation = Validation::create();
-            $request->merge(['validation_id' => $validation->id]);
-        }
-
         $card = Card::create($this->validateData($request, true));
 		$card->save();
         return $card;
@@ -164,21 +159,25 @@ class CardController extends Controller
      */
     public function edit(Card $card)
     {
-        $subject = sprintf(FORMAT_SUBJECT, $card->heading);
-        $description = sprintf(FORMAT_DESCRIPTION, $_SERVER['HTTP_HOST'], $card->card_id);
+            $subject = sprintf(FORMAT_SUBJECT, $card->heading);
+            $description = sprintf(FORMAT_DESCRIPTION, $_SERVER['HTTP_HOST'], $card->card_id);
 
-        return view('card.edit', [
-            'mail'      => ["subject" => urlencode($subject),'description' => urlencode($description)],
-            'card' 		=> $card,
-			'domain' 	=> Domain::all(),
-			'languages' => DB::table("cards")->where('id',$card->language_id)->first(),
-			'subdomain' => Subdomain::all(),
-            'owner' 	=> User::find($card->owner_id),
-            'phonetic'  => $card->getPhonetic(),
-            'note'      => $card->getNote(),
-            'context'   => $card->getContext(),
-            'definition'=> $card->getDefinition()
-		]);
+            return view('card.edit', [
+                'mail'      => ["subject" => urlencode($subject),'description' => urlencode($description)],
+                'card' 		=> $card,
+                'domain' 	=> Domain::all(),
+                'languages' => DB::table("cards")->where('id',$card->language_id)->first(),
+                'subdomain' => Subdomain::all(),
+                'owner' 	=> $card->owner,
+                'phonetic'  => $card->phonetic,
+                'note'      => $card->note,
+                'context'   => $card->context,
+                'definition'=> $card->definition
+                // 'phonetic'  => $card->getPhonetic(),
+                // 'note'      => $card->getNote(),
+                // 'context'   => $card->getContext(),
+                // 'definition'=> $card->getDefinition()
+            ]);
     }
 
     /**
@@ -190,17 +189,27 @@ class CardController extends Controller
      */
     public function update(Request $request, Card $card)
     {
-        if(Auth::user()->id == $card->owner_id) {
-            $card->update($request->all());
-            return redirect()->action('CardController@show', [$card]);
-        } else {
-            $request->merge([
-                'owner_id' => Auth::user()->id,
-            ]);
+        if(!isset($card->validation_id)){
+            if (Auth::user()->id == $card->owner_id) {
+                $card->update($request->all());
+                $card->definition->definition_content = $request->definition;
+                $card->definition->save();
+                $card->note->description = $request->note;
+                $card->note->save();
+                $card->context->context_to_string = $request->context;
+                $card->context->save();
+                $card->phonetic->textDescription = $request->phonetic;
+                $card->phonetic->save();
+                return redirect()->action('CardController@show', [$card]);
+            } else {
+                $request->merge([
+                    'owner_id' => Auth::user()->id,
+                ]);
 
-            $cardVersion = $this->create_card($request);
-            $card->versions()->save($cardVersion);
-            return redirect()->action('CardController@show', [$cardVersion]);
+                $cardVersion = $this->create_card($request);
+                $card->versions()->save($cardVersion);
+                return redirect()->action('CardController@show', [$cardVersion]);
+            }
         }
     }
 
@@ -284,6 +293,13 @@ class CardController extends Controller
 		return true; // TODO
 	}
 
+	public function removeValidation(Card $card){
+	    echo "not working yet, todo";
+	    exit;
+        $card->removeValidation();
+        $this->show($card);
+    }
+
     /**
      * Return all cards from an user
      * @param int userId The user id
@@ -311,4 +327,18 @@ class CardController extends Controller
     $l =Link::create(compact('cardA','cardB'));
     return redirect()->back();
     }
+
+   public function showCard($id) {
+        $card = Card::find($id);
+       return view('card.show', [
+           'card' => $card,
+            'phonetic'  => $card->phonetic,
+            'note'      => $card->note,
+            'context'   => $card->context,
+            'definition'=> $card->definition,
+            'domain' 	=> $card->domain,
+            'languages' => Language::all()->where('slug',$card->language_id)->first(),
+            'subdomain' => $card->subdomain,
+       ]);
+   }
 }

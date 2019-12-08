@@ -97,6 +97,7 @@ class Card extends Model
         'note_id'		=> NULL,
 		'language_id'	=> '',
         'owner_id'		=> 1,
+        'validation_id' => NULL,
     ];
 
     /**
@@ -144,9 +145,160 @@ class Card extends Model
 		"}";
     }
 
+    /**
+     * auto relation beetwen foreign-key
+     * Doc : https://laravel.com/docs/6.x/eloquent-relationships
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @author  49923 : Quentin Gosset
+     */
+    public function domain()
+    {
+        return $this->belongsTo('App\Domain');
+    }
 
-    public function getCountVoteAttribute() {
+    /**
+     * auto relation beetwen foreign-key
+     * Doc : https://laravel.com/docs/6.x/eloquent-relationships
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @author  49923 : Quentin Gosset
+     */
+    public function subdomain()
+    {
+        return $this->belongsTo('App\Subdomain');
+    }
+
+    /**
+     * auto relation beetwen foreign-key
+     * Doc : https://laravel.com/docs/6.x/eloquent-relationships
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @author  49923 : Quentin Gosset
+     */
+    public function context()
+    {
+        return $this->belongsTo('App\Context');
+    }
+
+    /**
+     * auto relation beetwen foreign-key
+     * Doc : https://laravel.com/docs/6.x/eloquent-relationships
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @author  49923 : Quentin Gosset
+     */
+    public function definition()
+    {
+        return $this->belongsTo('App\Definition');
+    }
+
+    /**
+     * auto relation beetwen foreign-key
+     * Doc : https://laravel.com/docs/6.x/eloquent-relationships
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @author  49923 : Quentin Gosset
+     */
+    public function note()
+    {
+        return $this->belongsTo('App\Note');
+    }
+
+    /**
+     * auto relation beetwen foreign-key
+     * Doc : https://laravel.com/docs/6.x/eloquent-relationships
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @author  49923 : Quentin Gosset
+     */
+    public function phonetic()
+    {
+        return $this->belongsTo('App\Phonetic');
+    }
+
+    /**
+     * auto relation beetwen foreign-key
+     * Doc : https://laravel.com/docs/6.x/eloquent-relationships
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @author  49923 : Quentin Gosset
+     */
+    public function validation()
+    {
+        return $this->belongsTo('App\Validation');
+    }
+
+    /**
+     * auto relation beetwen foreign-key
+     * Doc : https://laravel.com/docs/6.x/eloquent-relationships
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @author  49923 : Quentin Gosset
+     */
+    public function owner()
+    {
+        return $this->belongsTo('App\User','owner_id');
+    }
+
+    /**
+     * This method is a computer attribute and count the number of vote
+     * this methode can be direct called by $this->count_vote
+     * https://laravel.com/docs/5.7/eloquent-mutators
+     * @return int : number of vote
+     * @author 49923 : Quentin Gosset
+     */
+    public function getCountVoteAttribute(): int {
         return Vote::where('card_id','=',$this->id)->count();
+    }
+
+    /**
+     * This method return true if the card is valided
+     * @return bool : status of the validation card
+     * @author 49923 : Quentin Gosset
+     */
+    public function isValided(): bool{
+        return isset($this->validation_id);
+    }
+
+    /**
+     * This method return true if the card has been validate
+     * @return bool : status if the card has been validate
+     * @author 49923 : Quentin Gosset
+     */
+    public function validate(): bool{
+        if(!$this->isValided()){
+            /**
+             * @YOURI mettre l'algo ici et mettre le resultat de ton algo dans $result
+             */
+            $resul = true;
+            if($resul){
+                // create the validation object
+                $validation = Validation::create([
+                    'voteNb' => 0,
+                    'userNb' => 0,
+                    'validationRate' => 0,
+                    'validated_at' => date('Y-m-d')
+                ]);
+                $this->validation_id = $validation->id;
+                $this->save();
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return true;
+        }
+    }
+
+    /**
+     * This method return true or false if the validation card has been removed
+     * @return bool : status if the validation card has been removed
+     * @author 49923 : Quentin Gosset
+     */
+    public function removeValidation(): bool{
+        if($this->isValided()){
+            // we remove the validation
+            $validation = Validation::where('id','=',$this->validation_id);
+            $validation->delete();
+            $this->validation_id = null;
+            $this->save();
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public function getDefinition(){
@@ -177,7 +329,6 @@ class Card extends Model
     public function getLanguage(){
          $langs = Language::where('slug','=',$this->language_id)->get();
         return $langs[0]->content;
-         
     }
 
     public function getNote(){

@@ -12,7 +12,7 @@ class AddValidationToCard extends Migration
     public function up()
     {
         Schema::table('cards', function (Blueprint $table) {
-            $table->unsignedBigInteger('validation_id');
+            $table->unsignedBigInteger('validation_id')->nullable();
             $table->foreign('validation_id')->references('id')->on('validations')->onDelete('cascade');
         });
     }
