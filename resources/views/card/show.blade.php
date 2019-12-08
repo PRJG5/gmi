@@ -3,50 +3,67 @@
 
 @section('card-header')
 
-Card
+Carte
 @endsection
 @section('card-body')
 
-<label class="col-md-6 col-form-label text-md-right"> Vedette : </label>
-<label>{{$heading}}</label>
 
-<label class="col-md-6 col-form-label text-md-right"> Langue : </label>
-<label>{{$languages}}</label>
+<table class="table">
+    <tbody>
+        <tr>
+            <th scope="row" class="text-center">Vedette : </th>
+            <td class="text-left">{{$heading}}</td>
+        </tr>
+        <tr>
+            <th scope="row" class="text-center">Langue : </th>
+            <td class="text-left">{{$languages}}</td>
+        </tr>
 
-@if (isset($phonetic))
-<label class="col-md-6 col-form-label text-md-right"> Phonetique : </label>
-<label>{{$phonetic}}</label>
-@endif
+        @if(isset($phonetic))
+        <tr>
 
-@if (isset($domain))
-<label class="col-md-6 col-form-label text-md-right"> Domaine : </label>
-<label>{{$domain}}</label>
-@endif
+            <th scope="row" class="text-center">Phonétique : </th>
+            <td class="text-left">{{$phonetic}}</td>
+        </tr>
+        @endif
+        @if(isset($domain))
+        <tr>
 
-@if (isset($subdomain))
-<label class="col-md-6 col-form-label text-md-right"> Sous-Domaine : </label>
-<label>{{$subdomain}}</label>
-@endif
+            <th scope="row" class="text-center">Domaine : </th>
+            <td class="text-left">{{$domain}}</td>
+        </tr>
+        @endif
+        @if(isset($subdomain))
+        <tr>
 
-@if (isset($definition))
-<label class="col-md-6 col-form-label text-md-right"> Definition : </label>
-<label>{{$definition}}</label>
-@endif
+            <th scope="row" class="text-center">Sous domaine : </th>
+            <td class="text-left">{{$subdomain}}</td>
+        </tr>
+        @endif
+        @if(isset($context))
+        <tr>
 
-@if (isset($context))
-<label class="col-md-6 col-form-label text-md-right"> Contexte : </label>
-<label>{{$context}}</label>
-@endif
+            <th scope="row" class="text-center">Contexte : </th>
+            <td class="text-left">{{$context}}</td>
+        </tr>
+        @endif
+        @if(isset($note))
+        <tr>
 
-@if (isset($note) )
-<label class="col-md-6 col-form-label text-md-right"> Note : </label>
-<label>{{$note}}</label>
-@endif
+            <th scope="row" class="text-center">Note : </th>
+            <td class="text-left">{{$note}}</td>
+        </tr>
+        @endif
+        @if(isset($vote_count))
+        <tr>
+            <th scope="row" class="text-center">Nombre de vote : </th>
+            <td class="text-left">{{$vote_count}}</td>
+        </tr>
+        @endif
 
-@if (isset($vote_count))
-<label class="col-md-6 col-form-label text-md-right"> Nombre de vote : </label>
-<label>{{$vote_count}}</label>
-@endif
+
+    </tbody>
+</table>
 
 <div style="display:flex;justify-content: space-evenly;">
     <form action='/cards/vote/{{$card->id}}' method="get">
@@ -88,4 +105,47 @@ Card
     @endif
     @endif
 </div>
+
+<!-- <label class="col-md-6 col-form-label text-md-right"> Vedette : </label>
+<label>{{$heading}}</label>
+
+<label class="col-md-6 col-form-label text-md-right"> Langue : </label>
+<label>{{$languages}}</label>
+
+@if (isset($phonetic))
+<label class="col-md-6 col-form-label text-md-right"> Phonetique : </label>
+<label>{{$phonetic}}</label>
+@endif
+
+@if (isset($domain))
+<label class="col-md-6 col-form-label text-md-right"> Domaine : </label>
+<label>{{$domain}}</label>
+@endif
+
+@if (isset($subdomain))
+<label class="col-md-6 col-form-label text-md-right"> Sous-Domaine : </label>
+<label>{{$subdomain}}</label>
+@endif
+
+@if (isset($definition))
+<label class="col-md-6 col-form-label text-md-right"> Definition : </label>
+<label>{{$definition}}</label>
+@endif
+
+@if (isset($context))
+<label class="col-md-6 col-form-label text-md-right"> Contexte : </label>
+<label>{{$context}}</label>
+@endif
+
+@if (isset($note) )
+<label class="col-md-6 col-form-label text-md-right"> Note : </label>
+<label>{{$note}}</label>
+@endif
+
+@if (isset($vote_count))
+<label class="col-md-6 col-form-label text-md-right"> Nombre de vote : </label>
+<label>{{$vote_count}}</label>
+@endif -->
+
+
 @endsection
