@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddNbvoteInCards extends Migration
+class ImportDomain extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,7 @@ class AddNbvoteInCards extends Migration
      */
     public function up()
     {
-        Schema::table('cards', function (Blueprint $table) {
-            $table->unsignedInteger('nbVotes')->default(0);
-        });
+        App\Http\Controllers\DomainController::importFile(resource_path('excels/Domains.xlsx'));
     }
 
     /**
@@ -25,5 +23,6 @@ class AddNbvoteInCards extends Migration
      */
     public function down()
     {
+        //
     }
 }

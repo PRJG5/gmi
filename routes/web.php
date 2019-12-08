@@ -21,7 +21,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/searchCard' , 'HomeController@searchCard')->middleware('auth');
 Route::get('/mesFiches', 'MyCardController@index')->name('mesFiches')->middleware('auth');
-Route::get('/users','HomeController@indexUsers')->name('ListingUsers')->middleware('auth');
+Route::get('/users','HomeController@indexUsers')->name('ListingUsers')->middleware(['auth','admin']);
 
 
 /**
@@ -34,6 +34,8 @@ Route::get('/users','HomeController@indexUsers')->name('ListingUsers')->middlewa
  * @author 44422
  */
 Route::resource('cards', 'CardController')->middleware('auth');
+Route::post('cards/{id}/removeValidation', 'CardController@removeValidation')->middleware('auth')->name('cards.removeValidation');
+
 
 /**
  * Route to display a page to search all cards from an user

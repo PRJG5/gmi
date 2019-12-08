@@ -1,13 +1,12 @@
+
 @extends('layouts.card')
+@extends('layouts.app')
 
 @section('card-header')
 
 	Card
-    
 @endsection
-
 @section('card-body')
-
 <label class="col-md-6 col-form-label text-md-right"> Vedette : </label>
 <label>{{$card->heading}}</label> 
 
@@ -16,7 +15,7 @@
 @endif
 
 <label  class="col-md-6 col-form-label text-md-right"> Langue : </label>
-<label>{{$card->language_id}}</label>   
+<label>{{$languages->content}}</label>
 
 @if (isset($card->phonetic) && (!$card->isSignedLanguage()))
 <label  class="col-md-6 col-form-label text-md-right"> Phonetique : </label>
@@ -25,12 +24,12 @@
 
 @if (isset($card->domain_id))
 <label  class="col-md-6 col-form-label text-md-right"> Domaine : </label>
-<label>{{$card->domain_id}}</label> 
+<label>{{$domain->content}}</label>
 @endif
 
 @if (isset($card->subdomain_id))
 <label  class="col-md-6 col-form-label text-md-right"> Sous-Domaine : </label>
-<label>{{$card->subdomain_id}}</label> 
+<label>{{$subdomain->content}}</label>
 @endif
 
 @if (isset($card->definition_id))
@@ -60,29 +59,36 @@
     @endif
 @endif
 
-@if (isset($card->nbVotes))
+@if (isset($card->count_vote))
 <label  class="col-md-6 col-form-label text-md-right"> Nombre de vote : </label>
-<label>{{$card->nbVotes}}</label>
+<label>{{$card->count_vote}}</label>
 @endif
 
-<div>
+<div style="display:flex;justify-content: space-evenly;">
         <form action='/cards/vote/{{$card->id}}' method="get">
         @csrf
             <button type="submit" class="btn btn-primary">Vote</button>
         </form>
     @if(in_array($card->language_id,Auth::user()->getLanguagesKeyArray()))
-        <form action='/cards/{{$card->id}}/edit' method="get" style="display: inline-block;">
-            @csrf
-            <button type="submit" class="btn btn-primary">Edit</button>
-        </form>
-
-        @if(Auth::user()->role != \App\Enums\Roles::USERS)
-		<form style="display:inline;" action="{{ route('cards.destroy', $card) }}" method="POST">
-			@csrf
-			@method('DELETE')
-			<button class="btn btn-danger float-right">Delete</button>
-		</form>
+        @if(!isset($card->validation_id))
+            <form action='/cards/{{$card->id}}/edit' method="get">
+                @csrf
+                <button type="submit" class="btn btn-primary">Edit</button>
+            </form>
         @endif
+        @if(Auth::user()->role == \App\Enums\Roles::ADMIN && isset($card->validation_id))
+                <form action="{{ route('cards.removeValidation', $card) }}" method="POST">
+                    @csrf
+                    <button class="btn btn-warning float-right">Remove validation</button>
+                </form>
+        @endif
+         @if(Auth::user()->role != \App\Enums\Roles::USERS)
+                <form action="{{ route('cards.destroy', $card) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-danger float-right">Delete</button>
+                </form>
+         @endif
     @endif
 </div>
 @endsection

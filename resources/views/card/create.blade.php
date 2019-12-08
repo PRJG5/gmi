@@ -1,5 +1,6 @@
 @extends('layouts.card')
-
+@extends('layouts.app')
+@section('content')
 @section('card-header')
 
     Register Card
@@ -76,20 +77,4 @@
     </form>
     @extends('layouts.error')
 @endsection
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script>
-
-<script>
-	$( document ).ready(function(){
-		$("#selectLanguage").change(function() {
-			if ($("#selectLanguage").val() == "ILS" //TODO: no hard code
-				|| $("#selectLanguage").val() == "LSF"
-				|| $("#selectLanguage").val() == "???") {
-					$("#formHeadingURL").show();
-					$("#formPhonetic").hide();
-				} else {
-
-				}
-		});
-	});
-</script>
+@endsection
