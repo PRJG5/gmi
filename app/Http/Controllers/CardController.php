@@ -136,6 +136,7 @@ class CardController extends Controller
     {
         $card = Card::find($card_id);
         return view('card.show', [
+            'card'      => $card,
             'card_id'   => $card_id,
             'vote_count'=> $card->getCountVoteAttribute(),
             'domain' 	=> $card->getDomain(),
@@ -270,7 +271,7 @@ class CardController extends Controller
             'note_id'		=> '',
             'note'          => '',
             'owner_id'	    => 'required',
-            'validation_id' => 'required',
+            'validation_id' => '',
             'vote_count'    => '',
 		];
 		if(!$creating) {
@@ -300,6 +301,7 @@ class CardController extends Controller
         $this->show($card);
     }
 
+
     /**
      * Return all cards from an user
      * @param int userId The user id
@@ -317,6 +319,7 @@ class CardController extends Controller
             'userOrigin' => DB::table('users')->where('id', $cardOrigin->owner_id)->first(),
 		]);
     }
+
     public function linkToAnotherCard(Request $request){
         $request->validate([
             'cardOrigin' => 'required',
@@ -340,5 +343,12 @@ class CardController extends Controller
             'languages' => Language::all()->where('slug',$card->language_id)->first(),
             'subdomain' => $card->subdomain,
        ]);
+   }
+
+   public function linkList(){
+     echo "not working yet, todo";
+    exit;
+    //UTILISER DANS LE FICHIER CARD LA FONCTION getLinkedCard qui retourne les id de toutes les cartes 
+    //NE PAS TOUCHER A LA FONCTION SI BESOIN --> 49778
    }
 }

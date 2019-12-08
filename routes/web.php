@@ -85,5 +85,7 @@ Route::get('/addbasicdata', 'LanguageController@index')->name('basicData')->midd
 Route::get('cards/vote/{card}','VoteController@voteCard')->name('voteCard')->middleware('auth');
 
 Route::get('cards/{card}/{cardOrigin}/link','cardController@linkToAnotherCard')->middleware('auth');
+
+Route::get('cards/{card_id}/linkList', 'CardController@linkList')->middleware('auth');
 ?>
 
