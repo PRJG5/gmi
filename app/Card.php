@@ -99,7 +99,7 @@ class Card extends Model
 		'language_id'	=> '',
         'owner_id'		=> 1,
         'validation_id' => NULL,
-        'validationRate'=>70,
+        'validation_rate'=>70,
     ];
 
     /**
@@ -117,7 +117,7 @@ class Card extends Model
         'language_id',
         'owner_id',
         'validation_id',
-        'validationRate',
+        'validation_rate',
     ];
 
     /**
@@ -268,13 +268,13 @@ class Card extends Model
              */
             $userNb = SpokenLanguages::where('languageISO', '=', $this->language_id)->count();
             $voteNb = $this->getCountVoteAttribute();
-            $resul = ($voteNb/$userNb)*100>=$this->validationRate;
+            $resul = ($voteNb/$userNb)*100>=$this->validation_rate;
             if($resul){
                 // create the validation object
                 $validation = Validation::create([
                     'voteNb' => $voteNb,
                     'userNb' => $userNb,
-                    'validationRate' => $this->validationRate,
+                    'validationRate' => $this->validation_rate,
                     'validated_at' => date('Y-m-d')
                 ]);
                 $this->validation_id = $validation->id;
@@ -413,7 +413,7 @@ class Card extends Model
 
         $cardsLinked = Card::getLinkedCard();
         //1. On prend toutes les cartes qui sont de la langues de l'utilisateur.
-        //2. On prend pas toutes les cartes liés a la ca rte courantes 
+        //2. On prend pas toutes les cartes liés a la carte courantes 
         //3. On prend pas la carte courante 
         //4. On prend pas les cartes de la langues de la carte courante 
 

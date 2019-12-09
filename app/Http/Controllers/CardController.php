@@ -273,7 +273,7 @@ class CardController extends Controller
             'owner_id'	    => 'required',
             'validation_id' => '',
             'vote_count'    => '',
-            'validationRate'=> 'digits_between:0,100',
+            'validation_rate'=> 'digits_between:0,100',
 		];
 		if(!$creating) {
 			array_merge($tab, [
