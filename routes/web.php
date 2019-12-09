@@ -22,7 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/searchCard' , 'HomeController@searchCard')->middleware('auth');
 Route::get('/mesFiches', 'MyCardController@index')->name('mesFiches')->middleware('auth');
 Route::get('/users','HomeController@indexUsers')->name('ListingUsers')->middleware(['auth','admin']);
-
+Route::get('/modifyProfile', 'HomeController@modifyProfile')->name('Modifier son profil')->middleware('auth');
 
 /**
  * Cards shouldn't be accessible directly from the web

@@ -119,6 +119,8 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
                             <h6 class="dropdown-header">{{ \App\Enums\Roles::getDescription(Auth::user()->role) }} : {{ Auth::user()->name }}</h6>
+                            
+                            <a class="dropdown-item" href="/modifyProfile">Modifier son profil</a>
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}

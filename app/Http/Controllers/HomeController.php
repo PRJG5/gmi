@@ -6,6 +6,7 @@ use App\Card;
 use App\Language;
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -69,4 +70,13 @@ class HomeController extends Controller
     public function indexUsers(){
         return view('auth.administration.users')->with(['users'=> User::all()]);
     }
+
+    //A placer dans auth
+     public function modifyProfile(){
+        $languages = Language::all();
+        // $user = Auth::user();
+        // $user.getLanguagesKeyArray();
+        // $languages = $languages->except(Auth::user()getLanguagesKeyArray())
+         return view('auth.modifyProfile',  compact('languages'));
+     }
 }
