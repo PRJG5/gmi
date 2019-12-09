@@ -107,11 +107,18 @@ La carte d'origine
 
 
 
-<div class="container p-4">
-  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false">
+<div class="container p-4" >
+  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false" >
 
 
-
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" style="margin-top: 20em">
+      <span class="carousel-control-prev-icon" aria-hidden="true" style="background-color:black;"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next" style="margin-top: 20em; ">
+      <span class="carousel-control-next-icon" style="background-color:black;"></span>
+      <span class="sr-only" style="color:black;">Next</span>
+    </a>
     @foreach ($cardLinked as $card)
 
     @if($loop->first)
@@ -120,7 +127,7 @@ La carte d'origine
       <div class="carousel-item">
         @endif
 
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" style="margin-bottom: 1.5em;">
           <div class="col-md-8">
             <div class="card">
               <div class="card-header blue white-text text-center">Les autres cartes </div>
@@ -171,7 +178,7 @@ La carte d'origine
                       <td class="text-left">{{$card->getNote()}}</td>
                     </tr>
                     @endif
-                   
+
                     <!-- @if(isset($vote_count))
         <tr>
             <th scope="row" class="text-center">Nombre de vote : </th>
@@ -229,23 +236,19 @@ La carte d'origine
                   @csrf
                   <input value="{{$card->id}}" type="hidden" name="card">
                   <input value="{{$cardOrigin->id}}" type="hidden" name="cardOrigin">
-                  <button type="submit" class="btn btn-primary">Link</button>
+                  <button type="submit" class="btn btn-primary" style="margin-bottom:1.2em">Link</button>
                 </form>
               </div>
             </div>
           </div>
         </div>
       </div>
+
       @endforeach
-      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true" style="background-color:black;"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" style="background-color:black;"></span>
-        <span class="sr-only" style="color:black;">Next</span>
-      </a>
+
+
     </div>
+
   </div>
   <!-- <div class="my-slider">
   @foreach ($cardLinked as $card)
