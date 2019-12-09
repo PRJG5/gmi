@@ -130,7 +130,7 @@ La carte d'origine
         <div class="row justify-content-center" style="margin-bottom: 1.5em;">
           <div class="col-md-8">
             <div class="card">
-              <div class="card-header blue white-text text-center">Les autres cartes </div>
+              <div class="card-header blue white-text text-center">Carte à lier : {{$card->getHeading()}} </div>
               <div class="card-body">
                 <table class="table">
                   <tbody>
