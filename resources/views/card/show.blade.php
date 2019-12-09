@@ -66,11 +66,13 @@ Carte
 </table>
 
 <div style="display:flex;justify-content: space-evenly;">
+    
+    @if(Auth::user()->id!=$card->owner_id)
     <form action='/cards/vote/{{$card->id}}' method="get">
         @csrf
         <button type="submit" class="btn btn-primary">Vote</button>
     </form>
-
+    @endif
     <!-- A VERIFIER L EMPLACEMENT  -->
     <form action='/cards/{{$card_id}}/linkList' method="get">
         @csrf
