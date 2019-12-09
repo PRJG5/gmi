@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 use App\Vote;
+use App\SpokenLanguages;
 /**
  * Represents a Card (usually referred as "Fiche")
  * Each Card only has one and only one "idea",
@@ -98,6 +99,7 @@ class Card extends Model
 		'language_id'	=> '',
         'owner_id'		=> 1,
         'validation_id' => NULL,
+        'validationRate'=>70,
     ];
 
     /**
@@ -115,6 +117,7 @@ class Card extends Model
         'language_id',
         'owner_id',
         'validation_id',
+        'validationRate',
     ];
 
     /**
@@ -263,13 +266,15 @@ class Card extends Model
             /**
              * @YOURI mettre l'algo ici et mettre le resultat de ton algo dans $result
              */
-            $resul = true;
+            $userNb = SpokenLanguages::where('languageISO', '=', $this->language_id)->count();
+            $voteNb = $this->getCountVoteAttribute();
+            $resul = ($voteNb/$userNb)*100>=$this->validationRate;
             if($resul){
                 // create the validation object
                 $validation = Validation::create([
-                    'voteNb' => 0,
-                    'userNb' => 0,
-                    'validationRate' => 0,
+                    'voteNb' => $voteNb,
+                    'userNb' => $userNb,
+                    'validationRate' => $this->validationRate,
                     'validated_at' => date('Y-m-d')
                 ]);
                 $this->validation_id = $validation->id;
@@ -408,7 +413,7 @@ class Card extends Model
 
         $cardsLinked = Card::getLinkedCard();
         //1. On prend toutes les cartes qui sont de la langues de l'utilisateur.
-        //2. On prend pas toutes les cartes liés a la carte courantes 
+        //2. On prend pas toutes les cartes liés a la ca rte courantes 
         //3. On prend pas la carte courante 
         //4. On prend pas les cartes de la langues de la carte courante 
 
