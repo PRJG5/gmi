@@ -222,23 +222,29 @@ class CardController extends Controller
     public function destroy(int $card_id)
     {
         $card =Card::find($card_id);
-        try { 
-            Link::where('cardA', $card->id)->orWhere('cardB', $card->id)->delete();
+        try {
+            // SI LA CARTE EST PAS VALIDER ON LA SUPPRIMER PHYSIQUEMENT
+            if(!$card->isValided()){
+                Link::where('cardA', $card->id)->orWhere('cardB', $card->id)->delete();
 
-            if(Context::find($card->context_id) != null) {
-                Context::find($card->context_id)->delete();
+                if(Context::find($card->context_id) != null) {
+                    Context::find($card->context_id)->delete();
+                }
+                if(Definition::find($card->definition_id) != null) {
+                    Definition::find($card->definition_id)->delete();
+                }
+                if(Note::find($card->note_id) != null) {
+                    Note::find($card->note_id)->delete();
+                }
+                if(Phonetic::find($card->phonetic_id) != null) {
+                    Phonetic::find($card->phonetic_id)->delete();
+                }
+                // VOTE possède un ondelete cascade sur cardId donc si carte se supprime, vote se supprime !
+                $card->delete();
+            }else{
+                $card->delete = 1;
+                $card->save();
             }
-            if(Definition::find($card->definition_id) != null) {
-                Definition::find($card->definition_id)->delete();
-            }
-            if(Note::find($card->note_id) != null) {
-                Note::find($card->note_id)->delete();
-            }
-            if(Phonetic::find($card->phonetic_id) != null) {
-                Phonetic::find($card->phonetic_id)->delete();
-            }
-            // VOTE possède un ondelete cascade sur cardId donc si carte se supprime, vote se supprime !
-            $card->delete();
         } catch(\Exception $exception) {
             echo $exception;
         }
@@ -293,11 +299,10 @@ class CardController extends Controller
 		return true; // TODO
 	}
 
-	public function removeValidation(Card $card){
-	    echo "not working yet, todo";
-	    exit;
+	public function removeValidation(Request $request){
+        $card = Card::where('id',$request->id)->first();
         $card->removeValidation();
-        $this->show($card);
+        return redirect()->back();
     }
 
 

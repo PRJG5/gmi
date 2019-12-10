@@ -100,6 +100,7 @@ class Card extends Model
         'owner_id'		=> 1,
         'validation_id' => NULL,
         'validation_rate'=>70,
+        'delete' => 0,
     ];
 
     /**
@@ -118,6 +119,7 @@ class Card extends Model
         'owner_id',
         'validation_id',
         'validation_rate',
+        'delete',
     ];
 
     /**
@@ -296,8 +298,7 @@ class Card extends Model
     public function removeValidation(): bool{
         if($this->isValided()){
             // we remove the validation
-            $validation = Validation::where('id','=',$this->validation_id);
-            $validation->delete();
+            $this->validation->delete();
             $this->validation_id = null;
             $this->save();
             return true;

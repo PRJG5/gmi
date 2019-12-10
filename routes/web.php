@@ -22,7 +22,6 @@ Route::middleware(['auth'])->group(function() {
 
 	Route::get('/cards/vote/{card}','VoteController@voteCard')->name('voteCard');
 	Route::resource('cards', 'CardController');
-	Route::post('/cards/{id}/removeValidation', 'CardController@removeValidation')->name('cards.removeValidation');
 	Route::get('/cards/{card_id}/link','CardController@linkCard')->name('link');
 	Route::get('/cards/{card}/{cardOrigin}/link','cardController@linkToAnotherCard');
 	Route::get('/cards/{card}/{cardOrigin}/link','cardController@linkToAnotherCard');
@@ -36,7 +35,9 @@ Route::middleware(['auth'])->group(function() {
 
 	Route::middleware(['admin'])->group(function() {
 
-		Route::get('/users','HomeController@indexUsers')->name('ListingUsers');
+        Route::post('/cards/{id}/removeValidation', 'CardController@removeValidation')->name('cards.removeValidation');
+
+        Route::get('/users','HomeController@indexUsers')->name('ListingUsers');
 		
 		Route::post('updateRole','UserController@updateRole')->name('admin.updateRole');
 	});
