@@ -8,7 +8,7 @@
 	@endsection
 
 	@section('card-body')
-		<form action="{{route('cards.store')}}" method="POST">
+		<form action="{{route('cards.store')}}" id="createForm" method="POST">
 
 			@csrf
 			
@@ -16,7 +16,7 @@
 
 			<div class="form-group row">
 				<label for="heading" class="col-md-6 col-form-label text-md-right">@lang('cards.heading') :</label>
-				<input name="heading" type="text" placeholder="@lang('cards.heading')" title="@lang('cards.heading')" value="{{ old('heading') }}">
+				<input name="heading" class="heading" type="text" placeholder="@lang('cards.heading')" title="@lang('cards.heading')" value="{{ old('heading') }}">
 				@error('heading')
 					<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
 				@enderror
@@ -98,11 +98,52 @@
 		
 			<div class="form-group row">
 				<div style="margin:auto;">
-					<input type="submit" class="btn btn-primary" value="@lang('cards.createCard')"/>
+					<input type="submit" class="submitButton btn btn-primary" value="@lang('cards.createCard')"/>
 				</div>
 			</div>
 
 		</form>
+		<script>
+			$('.submitButton').click(function(e){
+				e.preventDefault();
+				$.ajax({
+					url: '{{ route('cards.checkvedette') }}',
+					headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+					},
+					type: "post",
+					data: {
+						vedette: $('.heading').val(),
+					},
+					success: function (data) {
+						if(data.status == "SUCCESS"){
+							$( "#createForm" ).submit();
+						}else{
+							Swal.fire({
+								title: 'Vedette déjà existante',
+								text: "Une fiche validé avec la même vedette est déjà existante, que voulez-vous faire ?",
+								icon: 'warning',
+								showCancelButton: true,
+								confirmButtonColor: '#3085d6',
+								cancelButtonColor: '#d33',
+								confirmButtonText: 'Consulter',
+								cancelButtonText: 'Créer une nouvelle fiche quand même'
+							}).then((result) => {
+								if (result.value) {
+									window.location.href = "/cards/"+data.id;
+								}else if (result.dismiss === Swal.DismissReason.cancel) {
+									$("#createForm").submit();
+								}
+							});
+							console.log(data.id);
+						}
+					},
+					error: function () {
+						alert('failure');
+					}
+				});
+			});
+		</script>
 		@extends('layouts.error')
 
 	@endsection

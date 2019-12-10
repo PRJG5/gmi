@@ -35,7 +35,7 @@ class CardController extends Controller
     public function index()
     {
         return view('allCards', [
-			'cards' => Card::orderBy('heading', 'ASC')->get(),
+			'cards' => Card::orderBy('heading', 'ASC')->where('delete','=','0')->get(),
 		]);
     }
 

@@ -401,7 +401,7 @@ class Card extends Model
             $temp = Card::where('language_id',$lang)->get();
             if(!$temp->first()==null){
                 //Faire une collection de collection 
-                $varTemp->prepend(Card::where('language_id',$lang)->get());
+                $varTemp->prepend(Card::where('language_id',$lang)->where('delete','=','0')->get());
             }
         }
 

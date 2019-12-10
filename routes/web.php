@@ -33,7 +33,9 @@ Route::middleware(['auth'])->group(function() {
 
 	Route::get('/searchByUser/{id}', 'CardController@getCardsByUser');
 
-	Route::middleware(['admin'])->group(function() {
+    Route::post('/checkVedette','BasicDataController@checkVedette')->name('cards.checkvedette');
+
+    Route::middleware(['admin'])->group(function() {
 
         Route::post('/cards/{id}/removeValidation', 'CardController@removeValidation')->name('cards.removeValidation');
 
