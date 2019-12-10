@@ -2,152 +2,122 @@
 @extends('layouts.app')
 
 @section('card-header')
-
-Carte
+@lang('cards.card') : {{$heading}}
 @endsection
 @section('card-body')
 
+	<table class="table">
+		<tbody>
+			<tr>
+				<th scope="row" class="text-center">@lang('cards.heading') :</th>
+				<td class="text-left">{{$heading}}</td>
+			</tr>
+			
+			@if(isset($phonetic))
+				<tr>
+					<th scope="row" class="text-center">@lang('cards.phonetic') :</th>
+					<td class="text-left">{{$phonetic}}</td>
+				</tr>
+			@endif
 
-<table class="table">
-    <tbody>
-        <tr>
-            <th scope="row" class="text-center">Vedette : </th>
-            <td class="text-left">{{$heading}}</td>
-        </tr>
-        <tr>
-            <th scope="row" class="text-center">Langue : </th>
-            <td class="text-left">{{$languages}}</td>
-        </tr>
+			<tr>
+				<th scope="row" class="text-center">@lang('cards.language') :</th>
+				<td class="text-left">{{$languages}}</td>
+			</tr>
+			
+			@if(isset($domain))
+				<tr>
+					<th scope="row" class="text-center">@lang('cards.domain') :</th>
+					<td class="text-left">{{$domain}}</td>
+				</tr>
+			@endif
+			
+			@if(isset($subdomain))
+				<tr>
+					<th scope="row" class="text-center">@lang('cards.subdomain') :</th>
+					<td class="text-left">{{$subdomain}}</td>
+				</tr>
+			@endif
+			
+			@if(isset($note))
+				<tr>
+					<th scope="row" class="text-center">@lang('cards.note') :</th>
+					<td class="text-left">{{$note}}</td>
+				</tr>
+			@endif
 
-        @if(isset($phonetic))
-        <tr>
+			@if(isset($context))
+				<tr>
+					<th scope="row" class="text-center">@lang('cards.context') :</th>
+					<td class="text-left">{{$context}}</td>
+				</tr>
+			@endif
 
-            <th scope="row" class="text-center">Phonétique : </th>
-            <td class="text-left">{{$phonetic}}</td>
-        </tr>
-        @endif
-        @if(isset($domain))
-        <tr>
+			@if(isset($definition))
+				<tr>
+					<th scope="row" class="text-center">@lang('cards.definition') :</th>
+					<td class="text-left">{{$definition}}</td>
+				</tr>
+			@endif
+			
+			@if(isset($vote_count))
+				<tr>
+					<th scope="row" class="text-center">@lang('cards.voteCount') :</th>
+					<td class="text-left">{{$vote_count}}</td>
+				</tr>
+			@endif
 
-            <th scope="row" class="text-center">Domaine : </th>
-            <td class="text-left">{{$domain}}</td>
-        </tr>
-        @endif
-        @if(isset($subdomain))
-        <tr>
+		</tbody>
+	</table>
 
-            <th scope="row" class="text-center">Sous domaine : </th>
-            <td class="text-left">{{$subdomain}}</td>
-        </tr>
-        @endif
-        @if(isset($context))
-        <tr>
+	<hr>
 
-            <th scope="row" class="text-center">Contexte : </th>
-            <td class="text-left">{{$context}}</td>
-        </tr>
-        @endif
-        @if(isset($note))
-        <tr>
+	<section>
 
-            <th scope="row" class="text-center">Note : </th>
-            <td class="text-left">{{$note}}</td>
-        </tr>
-        @endif
-        @if(isset($vote_count))
-        <tr>
-            <th scope="row" class="text-center">Nombre de vote : </th>
-            <td class="text-left">{{$vote_count}}</td>
-        </tr>
-        @endif
+		<h4>Basic Actions</h4>
+		
+		@if(Auth::user()->id != $card->owner_id)
+			<a href="/cards/vote/{{$card->id}}" class="btn btn-primary">@lang('cards.voteForCard')</a>
+		@endif
 
+		<a href="/cards/{{$card_id}}/linkList" class="btn btn-primary">@lang('cards.seeLinkedCards')</a>
 
-    </tbody>
-</table>
+		<a href="/cards/{{$card_id}}/link" class="btn btn-primary">@lang('cards.linkCard')</a>
+	</section>
 
-<div style="display:flex;justify-content: space-evenly;">
-    
-    @if(Auth::user()->id!=$card->owner_id)
-    <form action='/cards/vote/{{$card->id}}' method="get">
-        @csrf
-        <button type="submit" class="btn btn-primary">Vote</button>
-    </form>
-    @endif
-    <!-- A VERIFIER L EMPLACEMENT  -->
-    <form action='/cards/{{$card_id}}/linkList' method="get">
-        @csrf
-        <button type="submit" class="btn btn-primary">Liste des liens</button>
-    </form>
+	@if(in_array($card->language_id, Auth::user()->getLanguagesKeyArray()))
 
-    <form action='/cards/{{$card_id}}/link' method="get">
-        @csrf
-        <button type="submit" class="btn btn-primary">Faire un lien</button>
-    </form>
+		<hr>
+	
+		<section>
 
-    @if(in_array($card->language_id,Auth::user()->getLanguagesKeyArray()))
-    @if(!isset($card->validation_id))
-    <form action='/cards/{{$card->id}}/edit' method="get">
-        @csrf
-        <button type="submit" class="btn btn-primary">Edit</button>
-    </form>
-    @endif
-    @if(Auth::user()->role == \App\Enums\Roles::ADMIN && isset($card->validation_id))
-    <form action="{{ route('cards.removeValidation', $card) }}" method="POST">
-        @csrf
-        <button class="btn btn-warning float-right">Remove validation</button>
-    </form>
-    @endif
-    @if(Auth::user()->role != \App\Enums\Roles::USERS)
-    <!-- <form action="{{ route('cards.destroy', $card) }}" method="POST"> -->
-    <form action="{{ route('cards.destroy', $card_id) }}" method="POST">
-        @csrf
-        @method('DELETE')
-        <button class="btn btn-danger float-right">Delete</button>
-    </form>
-    @endif
-    @endif
-</div>
+			<h4>Danger Zone</h4>
 
-<!-- <label class="col-md-6 col-form-label text-md-right"> Vedette : </label>
-<label>{{$heading}}</label>
+			@if(!isset($card->validation_id))
+				<a href="/cards/{{$card->id}}/edit" class="btn btn-primary">@lang('cards.editCard')</a>
+			@endif
+			
+			@if(Auth::user()->role == \App\Enums\Roles::ADMIN && isset($card->validation_id))
+				<form action="{{ route('cards.removeValidation', $card) }}" method="POST" style="margin: 0; width: fit-content; display: inline-block;">
 
-<label class="col-md-6 col-form-label text-md-right"> Langue : </label>
-<label>{{$languages}}</label>
+					@csrf
 
-@if (isset($phonetic))
-<label class="col-md-6 col-form-label text-md-right"> Phonetique : </label>
-<label>{{$phonetic}}</label>
-@endif
+					<button class="btn btn-warning">Remove validation</button>
+				</form>
+			@endif
 
-@if (isset($domain))
-<label class="col-md-6 col-form-label text-md-right"> Domaine : </label>
-<label>{{$domain}}</label>
-@endif
+			@if(Auth::user()->role != \App\Enums\Roles::USERS)
+				<form action="{{ route('cards.destroy', $card_id) }}" method="POST" style="margin: 0; width: fit-content; display: inline-block;">
 
-@if (isset($subdomain))
-<label class="col-md-6 col-form-label text-md-right"> Sous-Domaine : </label>
-<label>{{$subdomain}}</label>
-@endif
+					@csrf
 
-@if (isset($definition))
-<label class="col-md-6 col-form-label text-md-right"> Definition : </label>
-<label>{{$definition}}</label>
-@endif
+					@method('DELETE')
 
-@if (isset($context))
-<label class="col-md-6 col-form-label text-md-right"> Contexte : </label>
-<label>{{$context}}</label>
-@endif
+					<button class="btn btn-danger">@lang('cards.deleteCard')</button>
+				</form>
+			@endif
 
-@if (isset($note) )
-<label class="col-md-6 col-form-label text-md-right"> Note : </label>
-<label>{{$note}}</label>
-@endif
-
-@if (isset($vote_count))
-<label class="col-md-6 col-form-label text-md-right"> Nombre de vote : </label>
-<label>{{$vote_count}}</label>
-@endif -->
-
+		</section>
+	@endif
 
 @endsection

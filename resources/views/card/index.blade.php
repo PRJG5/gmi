@@ -1,59 +1,43 @@
 @if ($cards->isEmpty())
-<p>Pas de fiche</p>
+	<p>@lang('cards.noCards')</p>
 @else
 
 <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
-  <thead>
-    <tr>
-      <th th-sm>Vedette</th>
-      <th th-sm>Langue</th>
-      <th th-sm>Definition</th>
-      <th th-sm>Votes</th>
-      <th th-sm>Validation</th>
-      <th th-sm>Montrez la carte</th>
-    </tr>
-  </thead>
-
-
-
-  <tbody>
-    @foreach ($cards as $card)
-    <tr>
-      <td>{{$card->heading}}</td>
-      <td>{{$card->getLanguage()}}</td>
-      <td>{{$card->getDefinition()}}</td>
-      <td>{{$card->count_vote}}</td>
-       <td>
-       
-            @if(isset($card->validation_id))
-                <i class="fas fa-check text-success"></i>
-            @else
-                <i class="fas fa-times text-danger"></i>
-            @endif
-        </td>
-        
-      <td> 
-        <form action='/cards/{{$card->id}}' method="get">
-          @csrf
-          <button type="submit" class="btn btn-primary">Show</button>
-        </form>
-      </td>
-    </tr>
-
-
-
-    @endforeach
-  </tbody>
-
+	<thead>
+		<tr>
+			<th class="th-sm" title="@lang('cards.heading')">@lang('cards.heading')</th>
+			<th class="th-sm" title="@lang('cards.language')">@lang('cards.language')</th>
+			<th class="th-sm" title="@lang('cards.definition')">@lang('cards.definition')</th>
+			<th class="th-sm" title="@lang('cards.voteCount')">@lang('cards.voteCount')</th>
+			<th class="th-sm" title="@lang('cards.validated')">@lang('cards.validated')</th>
+			<th class="th-sm" title="@lang('cards.viewDetails')">@lang('cards.viewDetails')</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach ($cards as $card)
+			<tr>
+				<td title="{{$card->heading}}">{{$card->heading}}</td>
+				<td title="{{$card->getLanguage()}}">{{$card->getLanguage()}}</td>
+				<td title="{{$card->getDefinition()}}">{{$card->getDefinition()}}</td>
+				<td title="{{$card->count_vote}}">{{$card->count_vote}}</td>
+				<td>
+					@if(isset($card->validation_id))
+						<i class="fas fa-check text-success" title="@lang('cards.validated')"></i>
+					@else
+						<i class="fas fa-times text-danger" title="@lang('cards.notValidated')"></i>
+					@endif
+				</td>
+				<td>
+					<a href="/cards/{{$card->id}}" class="btn btn-primary">@lang('cards.viewDetails')</a>
+				</td>
+			</tr>
+		@endforeach
+	</tbody>
 </table>
 @endif
 
 <div class="row">
-  <form action={{route('cards.create')}} method="get">
-    @csrf
-    <button type="submit" class="btn btn-primary">add Card</button>
-  </form>
-
+	<a href="{{route('cards.create')}}" class="btn btn-primary">@lang('cards.createCard')</a>
 </div>
 
 <script src="{{ asset('js/data.js') }}"></script>
