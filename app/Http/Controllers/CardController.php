@@ -1,11 +1,6 @@
 <?php
 namespace App\Http\Controllers;
 
-//TODO: pour ceux qui devront traduire, Remplacer le contenu de ces constantes
-define("FORMAT_SUBJECT", "Remarque concernant votre carte %s");
-define("FORMAT_DESCRIPTION", "Pour consulter votre carte, veuillez suivre ce lien: %s/cards/%s");
-
-
 use App\Card;
 use App\Domain;
 use App\Language;
@@ -16,7 +11,7 @@ use App\Context;
 use App\Definition;
 use App\Subdomain;
 use App\User;
-use App\vote;
+use App\Vote;
 use App\Validation;
 
 use Illuminate\Http\Request;
@@ -39,7 +34,9 @@ class CardController extends Controller
      */
     public function index()
     {
-        return view('allCards',['cards' => Card::orderBy('heading', 'ASC')->get()]);
+        return view('allCards', [
+			'cards' => Card::orderBy('heading', 'ASC')->get(),
+		]);
     }
 
     /**
@@ -52,7 +49,7 @@ class CardController extends Controller
         return view('card.create', [
             'domain' 	=> Domain::all(),
             'subdomain' => Subdomain::all(),
-			'languages' => Auth::user()->getLanguages()
+			'languages' => Auth::user()->getLanguages(),
         ]);
     }
 
@@ -116,7 +113,8 @@ class CardController extends Controller
     {
 		if(!Auth::user()) { // TODO replace with authorize method
 			abort(403, 'Unauthorized action. You must be logged in to create a card.');
-        }
+		}
+		
 		$request->merge([
             'owner_id' => Auth::user()->id,
         ]);
@@ -160,11 +158,11 @@ class CardController extends Controller
      */
     public function edit(Card $card)
     {
-            $subject = sprintf(FORMAT_SUBJECT, $card->heading);
-            $description = sprintf(FORMAT_DESCRIPTION, $_SERVER['HTTP_HOST'], $card->card_id);
-
             return view('card.edit', [
-                'mail'      => ["subject" => urlencode($subject),'description' => urlencode($description)],
+                'mail'      => [
+					'subject' => trans('cards.mail.remark', ['cardName' => $card->heading]),
+					'description' => trans('cards.mail.visit', ['cardLink' => route('cards.show', $card->id)]),
+				],
                 'card' 		=> $card,
                 'domain' 	=> Domain::all(),
                 'languages' => DB::table("cards")->where('id',$card->language_id)->first(),
