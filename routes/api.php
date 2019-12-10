@@ -17,3 +17,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('addlanguage/{name}/code/{iso}', 'BasicDataController@addLanguage');
+
+Route::get('adddomain/{name}', 'BasicDataController@addDomain');
+
+Route::get('addsubdomain/{name}', 'BasicDataController@addSubdomain');
+
+/**
+ * Route to return all cards from an user in JSON
+ * @param id The user id
+ */
+Route::get('getAllCardsFromUsers/{id}', 'CardController@getCardsByUser');
