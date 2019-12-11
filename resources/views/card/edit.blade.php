@@ -13,10 +13,6 @@
 			@method('PUT')
 
 			@csrf
-
-			{{-- AUTHOR --}}
-			{{-- TODO: what is it ? --}}
-			<input type="hidden" name="owner" value="{{ isset($card->owner) ? $card->owner->name : '' }}" disabled/>
 	   
 			{{-- HEADING --}}
 			<div class="form-group row">
@@ -26,7 +22,7 @@
 			{{-- HEADING URL --}}
 			@if ($card->language->isSigned)
 				<div class="form-group row">
-					<label for="headingURL" class="col-md-6 col-form-label text-md-right">@lang('cards.headingURL') : </label>
+					<label for="headingURL" class="col-md-6 col-form-label text-md-right">@lang('cards.headingURL') :</label>
 					<input type="text" name="headingURL" id="headingURL" value="{{$card->headingURL}}" title="@lang('cards.headingURL')" placeholder="www.example.com">
 				</div>
 			@endif
@@ -161,7 +157,7 @@
 
 			{{-- DEFINITION --}}
 			<div class="form-group row">
-				<label for="definition" class="col-md-6 col-form-label text-md-right">@lang('cards.definition') : </label>
+				<label for="definition" class="col-md-6 col-form-label text-md-right">@lang('cards.definition') :</label>
 				@php $def = $card->definition @endphp
 				@if ($card->language->isSigned)
 					<input name="definition" value="{{isset($def) ? $def->definition_content : ''}}" title="@lang('cards.definition')" placeholder="www.example.com">
