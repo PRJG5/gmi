@@ -59,15 +59,15 @@
 							<div class="tab-content card" id="myClassicTabContentOrange">
 								<div class="tab-pane fade active show" id="phonetic_img" role="tabpanel" aria-labelledby="profile-tab-classic-orange">
 									<label for="phonetic_img" class="col-md-6 col-form-label text-md-right">@lang('cards.phonetic_img') :</label>
-									<input name="phonetic_img" type="url" placeholder="www.example.com" title="@lang('cards.phonetic_img')" value="{{ $card->phonetic->image }}"/>
+									<input name="phonetic_img" type="url" placeholder="www.example.com" title="@lang('cards.phonetic_img')" value="{{isset($card->phonetic) ?$card->phonetic->image : ''}}"/>
 								</div>
 								<div class="tab-pane fade" id="phonetic_link" role="tabpanel" aria-labelledby="follow-tab-classic-orange">
 									<label for="phonetic_link" class="col-md-6 col-form-label text-md-right">@lang('cards.phonetic_link') :</label>
-									<input name="phonetic_link" type="url" placeholder="www.example.com" title="@lang('cards.phonetic_link')" value="{{ $card->phonetic->url }}"/>
+									<input name="phonetic_link" type="url" placeholder="www.example.com" title="@lang('cards.phonetic_link')" value="{{isset($card->phonetic) ?$card->phonetic->url : ''}}"/>
 								</div>
 								<div class="tab-pane fade" id="phonetic_music" role="tabpanel" aria-labelledby="contact-tab-classic-orange">
 									<label for="phonetic_music" class="col-md-6 col-form-label text-md-right">@lang('cards.phonetic_music') :</label>
-									<input name="phonetic_music" type="url" placeholder="www.example.com" title="@lang('cards.phonetic_music')" value="{{ $card->phonetic->son }}"/>
+									<input name="phonetic_music" type="url" placeholder="www.example.com" title="@lang('cards.phonetic_music')" value="{{isset($card->phonetic) ?$card->phonetic->url : ''}}"/>
 								</div>
 							</div>
 
