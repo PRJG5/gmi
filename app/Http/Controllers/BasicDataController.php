@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Card;
 use Illuminate\Http\Request;
 use App\Subdomain;
 use App\Language;
@@ -9,6 +10,15 @@ use App\Domain;
 
 class BasicDataController extends Controller
 {
+
+    public function checkVedette(Request $request){
+        $card = Card::where('heading','=',$request->vedette)->where('delete','=','0')->whereNotNull('validation_id')->first();
+        if($card != null){
+            return $card;
+        }else{
+            return ["status" => "SUCCESS", "type" => "", "message" => "" ];
+        }
+    }
 
     public function addSubdomain($name)
     {

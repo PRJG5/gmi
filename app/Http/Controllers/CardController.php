@@ -1,11 +1,6 @@
 <?php
 namespace App\Http\Controllers;
 
-//TODO: pour ceux qui devront traduire, Remplacer le contenu de ces constantes
-define("FORMAT_SUBJECT", "Remarque concernant votre carte %s");
-define("FORMAT_DESCRIPTION", "Pour consulter votre carte, veuillez suivre ce lien: %s/cards/%s");
-
-
 use App\Card;
 use App\Domain;
 use App\Language;
@@ -16,7 +11,7 @@ use App\Context;
 use App\Definition;
 use App\Subdomain;
 use App\User;
-use App\vote;
+use App\Vote;
 use App\Validation;
 
 use Illuminate\Http\Request;
@@ -39,7 +34,9 @@ class CardController extends Controller
      */
     public function index()
     {
-        return view('allCards',['cards' => Card::orderBy('heading', 'ASC')->get()]);
+        return view('allCards', [
+			'cards' => Card::orderBy('heading', 'ASC')->where('delete','=','0')->get(),
+		]);
     }
 
     /**
@@ -50,8 +47,8 @@ class CardController extends Controller
     public function create()
     {
         return view('card.create', [
-            'domain' 	=> Domain::all(),
-            'subdomain' => Subdomain::all(),
+            'domains' 	=> Domain::all(),
+            'subdomains' => Subdomain::all(),
 			'languages' => Auth::user()->getLanguages()
         ]);
     }
@@ -64,6 +61,9 @@ class CardController extends Controller
         if(isset($request['phonetic']) && strlen($request['phonetic']) > 0){
             $phonetic = Phonetic::create([
                 'textDescription' => $request['phonetic'],
+                'image' => $request->phonetic_img,
+                'url' => $request->phonetic_link,
+                'son' => $request->phonetic_music,
             ]);
             $phonetic->save();
             $request->merge([
@@ -74,6 +74,9 @@ class CardController extends Controller
         if(isset($request['note']) && strlen($request['note']) > 0){
             $note = Note::create([
                 'description' => $request['note'],
+                'image' => $request->note_img,
+                'url' => $request->note_link,
+                'son' => $request->note_music,
             ]);
             $note->save();
             $request->merge([
@@ -84,6 +87,17 @@ class CardController extends Controller
         if(isset($request['context']) && strlen($request['context']) > 0){
             $context = Context::create([
                 'context_to_string' => $request['context'],
+                'image' => $request->context_img,
+                'url' => $request->context_link,
+                'son' => $request->context_music,
+            ]);
+            $context->save();
+            $request->merge([
+                'context_id'=> $context->id,
+            ]);
+        } else if(isset($request['contextURL']) && strlen($request['contextURL']) > 0){
+            $context = Context::create([
+                'context_to_string' => $request['context'],
             ]);
             $context->save();
             $request->merge([
@@ -92,6 +106,14 @@ class CardController extends Controller
         }
 
         if(isset($request['definition']) && strlen($request['definition']) > 0){
+            $note = Definition::create([
+                'definition_content' => $request['definition'],
+            ]);
+            $note->save();
+            $request->merge([
+                'definition_id'=> $note->id,
+            ]);
+        } else if(isset($request['definitionURL']) && strlen($request['definitionURL']) > 0){
             $note = Definition::create([
                 'definition_content' => $request['definition'],
             ]);
@@ -116,7 +138,8 @@ class CardController extends Controller
     {
 		if(!Auth::user()) { // TODO replace with authorize method
 			abort(403, 'Unauthorized action. You must be logged in to create a card.');
-        }
+		}
+		
 		$request->merge([
             'owner_id' => Auth::user()->id,
         ]);
@@ -137,18 +160,7 @@ class CardController extends Controller
         $card = Card::find($card_id);
         return view('card.show', [
             'card'      => $card,
-            'card_id'   => $card_id,
-            'vote_count'=> $card->getCountVoteAttribute(),
-            'domain' 	=> $card->getDomain(),
-            'heading'   => $card->getHeading(),
-            'languages' => $card->getLanguage(),
-            'phonetic'  => $card->getPhonetic(),
-            'note'      => $card->getNote(),
-            'context'   => $card->getContext(),
-            'definition'=> $card->getDefinition(),
-			'subdomain' => $card->getSubdomain(),
-            'owner' 	=> User::find($card->owner_id),
-            'language_id' =>$card->language_id,
+            'owner' 	=> User::find($card->owner_id)
 		]);
     }
 
@@ -160,24 +172,14 @@ class CardController extends Controller
      */
     public function edit(Card $card)
     {
-            $subject = sprintf(FORMAT_SUBJECT, $card->heading);
-            $description = sprintf(FORMAT_DESCRIPTION, $_SERVER['HTTP_HOST'], $card->card_id);
-
             return view('card.edit', [
-                'mail'      => ["subject" => urlencode($subject),'description' => urlencode($description)],
+                'mail'      => [
+					'subject' => trans('cards.mail.remark', ['cardName' => $card->heading]),
+					'description' => trans('cards.mail.visit', ['cardLink' => route('cards.show', $card->id)]),
+				],
                 'card' 		=> $card,
-                'domain' 	=> Domain::all(),
-                'languages' => DB::table("cards")->where('id',$card->language_id)->first(),
-                'subdomain' => Subdomain::all(),
-                'owner' 	=> $card->owner,
-                'phonetic'  => $card->phonetic,
-                'note'      => $card->note,
-                'context'   => $card->context,
-                'definition'=> $card->definition
-                // 'phonetic'  => $card->getPhonetic(),
-                // 'note'      => $card->getNote(),
-                // 'context'   => $card->getContext(),
-                // 'definition'=> $card->getDefinition()
+                'domains' 	=> Domain::all(),
+                'subdomains' => Subdomain::all(),
             ]);
     }
 
@@ -193,14 +195,104 @@ class CardController extends Controller
         if(!isset($card->validation_id)){
             if (Auth::user()->id == $card->owner_id) {
                 $card->update($request->all());
-                $card->definition->definition_content = $request->definition;
-                $card->definition->save();
-                $card->note->description = $request->note;
-                $card->note->save();
-                $card->context->context_to_string = $request->context;
-                $card->context->save();
-                $card->phonetic->textDescription = $request->phonetic;
-                $card->phonetic->save();
+                // DEFINITION
+                if(!isset($card->definition)){ // si definition c'est vide de base
+                    if(!empty($request->definition)){ // et si le champs definition a été completer alors on va créer
+                        $definition = Definition::create([
+                            'definition_content' => $request->definition,
+                        ]);
+                        $definition->save();
+                        $card->definition_id = $definition->id;
+                        $card->save();
+                    }
+                }else{
+                    if(!empty($request->definition)){ // si y a une definition, on enregistre
+                        $card->definition->definition_content = $request->definition;
+                        $card->definition->save();
+                    }else{ // on supprime ce qui a été linked
+                        $card->definition->delete();
+                        $card->definition_id = null;
+                        $card->save();
+                    }
+                }
+                // NOTE
+                if(!isset($card->note)){ // si c'est vide de base
+                    if(!empty($request->note)){ // et si le champs note a été completer alors on va créer
+                        $note = Note::create([
+                            'description' => $request->note,
+                            'image' => $request->note_img,
+                            'url' => $request->note_link,
+                            'son' => $request->note_music,
+                        ]);
+                        $note->save();
+                        $card->note_id = $note->id;
+                        $card->save();
+                    }
+                }else{
+                    if(!empty($request->note)){ // si y a une note, on enregistre
+                        $card->note->description = $request->note;
+                        $card->note->image = $request->note_img;
+                        $card->note->url = $request->note_link;
+                        $card->note->son = $request->note_music;
+                        $card->note->save();
+                    }else{ // on supprime ce qui a été linked
+                        $card->note->delete();
+                        $card->note_id = null;
+                        $card->save();
+                    }
+                }
+                // CONTEXT
+                if(!isset($card->context)){ // si c'est vide de base
+                    if(!empty($request->context)){ // et si le champs context a été completer alors on va créer
+                        $context = Context::create([
+                            'context_to_string' => $request->context,
+                            'image' => $request->context_img,
+                            'url' => $request->context_link,
+                            'son' => $request->context_music,
+                        ]);
+                        $context->save();
+                        $card->context_id = $context->id;
+                        $card->save();
+                    }
+                }else{
+                    if(!empty($request->context)){ // si y a un context, on enregistre
+                        $card->context->context_to_string = $request->context;
+                        $card->context->image = $request->context_img;
+                        $card->context->url = $request->context_link;
+                        $card->context->son = $request->context_music;
+                        $card->context->save();
+                    }else{ // on supprime ce qui a été linked
+                        $card->context->delete();
+                        $card->context_id = null;
+                        $card->save();
+                    }
+                }
+                // PHONETIC
+                if(!isset($card->phonetic)){ // si c'est vide de base
+                    if(!empty($request->phonetic)){ // et si le champs context a été completer alors on va créer
+                        $phonetic = Phonetic::create([
+                            'textDescription' => $request->phonetic,
+                            'image' => $request->phonetic_img,
+                            'url' => $request->phonetic_link,
+                            'son' => $request->phonetic_music,
+                        ]);
+                        $phonetic->save();
+                        $card->phonetic_id = $phonetic->id;
+                        $card->save();
+                    }
+                }else{
+                    if(!empty($request->phonetic)){ // si y a un phonetic, on enregistre
+                        $card->phonetic->textDescription = $request->phonetic;
+                        $card->phonetic->image = $request->phonetic_img;
+                        $card->phonetic->url = $request->phonetic_link;
+                        $card->phonetic->son = $request->phonetic_music;
+                        $card->phonetic->save();
+                    }else{ // on supprime ce qui a été linked
+                        $card->phonetic->delete();
+                        $card->phonetic_id = null;
+                        $card->save();
+                    }
+                }
                 return redirect()->action('CardController@show', [$card]);
             } else {
                 $request->merge([
@@ -224,23 +316,29 @@ class CardController extends Controller
     public function destroy(int $card_id)
     {
         $card =Card::find($card_id);
-        try { 
-            Link::where('cardA', $card->id)->orWhere('cardB', $card->id)->delete();
+        try {
+            // SI LA CARTE EST PAS VALIDER ON LA SUPPRIMER PHYSIQUEMENT
+            if(!$card->isValided()){
+                Link::where('cardA', $card->id)->orWhere('cardB', $card->id)->delete();
 
-            if(Context::find($card->context_id) != null) {
-                Context::find($card->context_id)->delete();
+                if(Context::find($card->context_id) != null) {
+                    Context::find($card->context_id)->delete();
+                }
+                if(Definition::find($card->definition_id) != null) {
+                    Definition::find($card->definition_id)->delete();
+                }
+                if(Note::find($card->note_id) != null) {
+                    Note::find($card->note_id)->delete();
+                }
+                if(Phonetic::find($card->phonetic_id) != null) {
+                    Phonetic::find($card->phonetic_id)->delete();
+                }
+                // VOTE possède un ondelete cascade sur cardId donc si carte se supprime, vote se supprime !
+                $card->delete();
+            }else{
+                $card->delete = 1;
+                $card->save();
             }
-            if(Definition::find($card->definition_id) != null) {
-                Definition::find($card->definition_id)->delete();
-            }
-            if(Note::find($card->note_id) != null) {
-                Note::find($card->note_id)->delete();
-            }
-            if(Phonetic::find($card->phonetic_id) != null) {
-                Phonetic::find($card->phonetic_id)->delete();
-            }
-            // VOTE possède un ondelete cascade sur cardId donc si carte se supprime, vote se supprime !
-            $card->delete();
         } catch(\Exception $exception) {
             echo $exception;
         }
@@ -259,6 +357,7 @@ class CardController extends Controller
 		$tab = [
             'card_id'       => '',
             'heading'		=> 'required',
+            'headingURL'    => '',
             'language_id'	=> 'required',
             'phonetic'		=> '',
             'phonetic_id'   => '',
@@ -273,6 +372,7 @@ class CardController extends Controller
             'owner_id'	    => 'required',
             'validation_id' => '',
             'vote_count'    => '',
+            'validation_rate'=> 'digits_between:0,100',
 		];
 		if(!$creating) {
 			array_merge($tab, [
@@ -294,11 +394,10 @@ class CardController extends Controller
 		return true; // TODO
 	}
 
-	public function removeValidation(Card $card){
-	    echo "not working yet, todo";
-	    exit;
+	public function removeValidation(Request $request){
+        $card = Card::where('id',$request->id)->first();
         $card->removeValidation();
-        $this->show($card);
+        return redirect()->back();
     }
 
 

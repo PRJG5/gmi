@@ -9,88 +9,59 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return redirect('/home');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/searchCard' , 'HomeController@searchCard')->middleware('auth');
-Route::get('/mesFiches', 'MyCardController@index')->name('mesFiches')->middleware('auth');
-Route::get('/users','HomeController@indexUsers')->name('ListingUsers')->middleware(['auth','admin']);
-Route::get('/modifyProfile', 'HomeController@modifyProfile')->name('Modifier son profil')->middleware('auth');
-Route::post('/modifyMail', 'UserController@modifyMail')->name('modifyMail')->middleware('auth');
-Route::post('/modifyLanguages', 'UserController@modifyLanguages')->name('modifyLanguages')->middleware('auth');
-Route::post('/modifyPassword', 'UserController@modifyPassword')->name('modifyPassword')->middleware('auth');
+Route::middleware(['auth'])->group(function () {
 
+    Route::get('/', 'HomeController@index');
+    Route::get('/home', 'HomeController@index')->name('home');
 
-/**
- * Cards shouldn't be accessible directly from the web
- * and should only be called trough a view
- * If you still want to access the cards for testing purposes i.e
- * then uncomment the next line
- * // TODO
- * This should ideally be removed
- * @author 44422
- */
-Route::resource('cards', 'CardController')->middleware('auth');
-Route::post('cards/{id}/removeValidation', 'CardController@removeValidation')->middleware('auth')->name('cards.removeValidation');
+    Route::get('/cards/vote/{card}', 'VoteController@voteCard')->name('voteCard');
+    Route::resource('cards', 'CardController');
+    Route::get('/cards/{card_id}/link', 'CardController@linkCard')->name('link');
+    Route::get('/cards/{card}/{cardOrigin}/link', 'cardController@linkToAnotherCard');
+    Route::get('/cards/{card}/{cardOrigin}/link', 'cardController@linkToAnotherCard');
+    Route::get('/cards/{card_id}/linkList', 'CardController@linkList');
 
+    Route::get('/mesFiches', 'MyCardController@index')->name('mesFiches');
 
-/**
- * Route to display a page to search all cards from an user
- */
-Route::name('admin.')->group(function () {
-    Route::post('updateRole','UserController@updateRole')->name('updateRole');
+    Route::get('/searchCard', 'HomeController@searchCard')->name('searchCard');
+
+    Route::get('/searchByUser/{id}', 'CardController@getCardsByUser');
+
+    Route::post('/checkVedette', 'BasicDataController@checkVedette')->name('cards.checkvedette');
+    Route::get('/modifyProfile', 'HomeController@modifyProfile')->name('Modifier son profil')->middleware('auth');
+    Route::post('/modifyMail', 'UserController@modifyMail')->name('modifyMail')->middleware('auth');
+    Route::post('/modifyLanguages', 'UserController@modifyLanguages')->name('modifyLanguages')->middleware('auth');
+    Route::post('/modifyPassword', 'UserController@modifyPassword')->name('modifyPassword')->middleware('auth');
+    Route::middleware(['admin'])->group(function () {
+
+        Route::post('/cards/{id}/removeValidation', 'CardController@removeValidation')->name('cards.removeValidation');
+
+        Route::get('/users', 'HomeController@indexUsers')->name('ListingUsers');
+
+        Route::post('updateRole', 'UserController@updateRole')->name('admin.updateRole');
+    });
 });
+
 
 /**
  * Route to get the view to search all cards from a user.
  */
 Route::get('/searchByUser', function () {
     return view('searchByAuthor', array("authors" => User::all()));
-})->middleware('auth');
-
-/**
- * Return a part of HTML to display all cards from the user
- * @param id the id of the user 
- */
-Route::get('/searchByUser/{id}', 'CardController@getCardsByUser')->middleware('auth');
+})->name('searchByUser');
 
 // /**
 //  * Return the view to display one card
 //  */
-// Route::get("/card/{id}", 'CardController@showCard')->middleware('auth');
+// Route::get("/card/{id}", 'CardController@showCard');
 
-/**
- * Route to return all cards from an user in JSON
- * @param id The user id
- */
-Route::get('api/getAllCardsFromUsers/{id}', 'CardController@getCardsByUser')->middleware('auth');
+Route::get('/addLanguage', 'LanguageController@importView');
 
-Route::get('cards/{card_id}/link','CardController@linkCard')->name('link')->middleware('auth');
-
-Route::get('api/addsubdomain/{name}', 'BasicDataController@addSubdomain')->middleware('auth');
-
-Route::get('/addLanguage','LanguageController@importView')->middleware('auth');
-
-Route::get('cards/{card}/{cardOrigin}/link','cardController@linkToAnotherCard')->middleware('auth');
-
-Route::get('api/addlanguage/{name}/code/{iso}', 'BasicDataController@addLanguage')->middleware('auth');
-
-Route::get('api/adddomain/{name}', 'BasicDataController@addDomain')->middleware('auth');
-
-Route::get('/addbasicdata', 'LanguageController@index')->name('basicData')->middleware('auth');
-
-Route::get('cards/vote/{card}','VoteController@voteCard')->name('voteCard')->middleware('auth');
-
-Route::get('cards/{card}/{cardOrigin}/link','cardController@linkToAnotherCard')->middleware('auth');
-
-Route::get('cards/{card_id}/linkList', 'CardController@linkList')->middleware('auth');
-?>
-
+Route::get('/addbasicdata', 'LanguageController@index')->name('basicData');

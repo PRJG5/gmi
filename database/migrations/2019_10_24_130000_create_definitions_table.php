@@ -27,7 +27,7 @@ class CreateDefinitionsTable extends Migration
                 /*
                 The content of the definition
                 */
-                $table->string('definition_content');
+                $table->longtext('definition_content');
 
             });
         

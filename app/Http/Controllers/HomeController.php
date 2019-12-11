@@ -50,8 +50,7 @@ class HomeController extends Controller
         } else if ($language == "All") {
             
             $cards = Card::where('heading', 'like', $search."%")
-                    ->orderBy('nbVotes', 'DESC')
-                    ->get();
+                    ->get()->sortByDesc('count_vote');
 
         } else if ($search == "") {
             $cards = Card::where('language_id', '=', $language)
@@ -60,8 +59,7 @@ class HomeController extends Controller
         }else {
             $cards = Card::where('heading', 'like', $search."%")
                             ->where('language_id',  $language)
-                            ->orderBy('nbVotes', 'DESC')
-                            ->get();
+                            ->get()->sortByDesc('count_vote');
         }
     
         return view('searchCard', ['cards' => $cards, 'languages' => Language::all()]);

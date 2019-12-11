@@ -2,152 +2,169 @@
 @extends('layouts.app')
 
 @section('card-header')
-
-Carte
+@lang('cards.card') : {{$card->heading}}
 @endsection
 @section('card-body')
 
+	<table class="table">
+		<tbody>
+			{{-- HEADING + HEADING URL --}}
+			<tr>
+				<th scope="row" class="text-center">@lang('cards.heading') :</th>
+				<td class="text-left">
+					@if ($card->language->isSigned && isset($card->headingURL))
+						<a href="$card->headingURL" target="_blank">{{$card->heading}}</a>
+					@else
+						{{$card->heading}}
+					@endif
+				</td>
+			</tr>
+			
+			{{-- PHONETIC --}}
+			@if(isset($card->phonetic) && (!$card->language->isSigned))
+				<tr>
+					<th scope="row" class="text-center">@lang('cards.phonetic') :<br>
+						@if(isset($card->phonetic->image))<a href="{{$card->phonetic->image}}" target="_blank"><i class="fas fa-image pr-2"></i></a>@endif
+						@if(isset($card->phonetic->url))<a href="{{$card->phonetic->url}}" target="_blank"><i class="fas fa-link pr-2"></i></a>@endif
+						@if(isset($card->phonetic->son))<a href="{{$card->phonetic->son}}" target="_blank"><i class="fas fa-music pr-2"></i></a>@endif
+					</th>
+					<td class="text-left">{{$card->phonetic->textDescription}}</td>
+				</tr>
+			@endif
 
-<table class="table">
-    <tbody>
-        <tr>
-            <th scope="row" class="text-center">Vedette : </th>
-            <td class="text-left">{{$heading}}</td>
-        </tr>
-        <tr>
-            <th scope="row" class="text-center">Langue : </th>
-            <td class="text-left">{{$languages}}</td>
-        </tr>
+			{{-- LANGUAGE --}}
+			<tr>
+				<th scope="row" class="text-center">@lang('cards.language') :</th>
+				<td class="text-left">{{$card->language->content}}</td>
+			</tr>
 
-        @if(isset($phonetic))
-        <tr>
+			{{-- DOMAIN --}}
+			@if(isset($card->domain))
+				<tr>
+					<th scope="row" class="text-center">@lang('cards.domain') :</th>
+					<td class="text-left">{{$card->domain->content}}</td>
+				</tr>
+			@endif
 
-            <th scope="row" class="text-center">Phonétique : </th>
-            <td class="text-left">{{$phonetic}}</td>
-        </tr>
-        @endif
-        @if(isset($domain))
-        <tr>
+			{{-- SUBDOMAIN --}}
+			@if(isset($card->subdomain))
+				<tr>
+					<th scope="row" class="text-center">@lang('cards.subdomain') :</th>
+					<td class="text-left">{{$card->subdomain->content}}</td>
+				</tr>
+			@endif
 
-            <th scope="row" class="text-center">Domaine : </th>
-            <td class="text-left">{{$domain}}</td>
-        </tr>
-        @endif
-        @if(isset($subdomain))
-        <tr>
+			{{-- CONTEXT --}}
+			@if(isset($card->context))
+				<tr>
+					<th scope="row" class="text-center">@lang('cards.context') :
+						<br>
+						@if(isset($card->context->image))<a href="{{$card->context->image}}" target="_blank"><i class="fas fa-image pr-2"></i></a>@endif
+						@if(isset($card->context->url))<a href="{{$card->context->url}}" target="_blank"><i class="fas fa-link pr-2"></i></a>@endif
+						@if(isset($card->context->son))<a href="{{$card->context->son}}" target="_blank"><i class="fas fa-music pr-2"></i></a>@endif
+					</th>
+					<td class="text-left">
+						@if ($card->language->isSigned)
+							<a href="{{$card->context->context_to_string}}" target="_blank">@lang('cards.video')</a>
+							{{-- TODO: i18n --}}
+						@else
+							<label>{{$card->context->context_to_string}}</label>
+						@endif
+					</td>
+				</tr>
+			@endif
 
-            <th scope="row" class="text-center">Sous domaine : </th>
-            <td class="text-left">{{$subdomain}}</td>
-        </tr>
-        @endif
-        @if(isset($context))
-        <tr>
+			{{-- DEFINITION --}}
+			@if(isset($card->definition))
+				<tr>
+					<th scope="row" class="text-center">@lang('cards.definition') :</th>
+					<td class="text-left">
+						@if ($card->language->isSigned)
+							<a href="{{$card->definition->definition_content}}" target="_blank">@lang('cards.video')</a>
+							{{-- TODO: i18n --}}
+						@else
+							<label>{{$card->definition->definition_content}}</label>
+						@endif
+					</td>
+				</tr>
+			@endif
 
-            <th scope="row" class="text-center">Contexte : </th>
-            <td class="text-left">{{$context}}</td>
-        </tr>
-        @endif
-        @if(isset($note))
-        <tr>
+			{{-- NOTE --}}
+			@if(isset($card->note))
+				<tr>
+					<th scope="row" class="text-center">@lang('cards.note') :<br>
+						@if(isset($card->note->image))<a href="{{$card->note->image}}" target="_blank"><i class="fas fa-image pr-2"></i></a>@endif
+						@if(isset($card->note->url))<a href="{{$card->note->url}}" target="_blank"><i class="fas fa-link pr-2"></i></a>@endif
+						@if(isset($card->note->son))<a href="{{$card->note->son}}" target="_blank"><i class="fas fa-music pr-2"></i></a>@endif
+					</th>
+					<td class="text-left">
+						@if ($card->language->isSigned)
+							<a href="{{$card->note->description}}" target="_blank">Vidéo</a> 
+							{{-- TODO: i18n --}}
+						@else
+							{{$card->note->description}}
+						@endif
+					</td>
+				</tr>
+			@endif
 
-            <th scope="row" class="text-center">Note : </th>
-            <td class="text-left">{{$note}}</td>
-        </tr>
-        @endif
-        @if(isset($vote_count))
-        <tr>
-            <th scope="row" class="text-center">Nombre de vote : </th>
-            <td class="text-left">{{$vote_count}}</td>
-        </tr>
-        @endif
+			{{-- NB VOTE --}}
+			<tr>
+				<th scope="row" class="text-center">@lang('cards.voteCount') :</th>
+				<td class="text-left">{{$card->getCountVoteAttribute()}}</td>
+			</tr>
 
+		</tbody>
+	</table>
 
-    </tbody>
-</table>
+	<hr>
 
-<div style="display:flex;justify-content: space-evenly;">
-    
-    @if(Auth::user()->id!=$card->owner_id)
-    <form action='/cards/vote/{{$card->id}}' method="get">
-        @csrf
-        <button type="submit" class="btn btn-primary">Vote</button>
-    </form>
-    @endif
-    <!-- A VERIFIER L EMPLACEMENT  -->
-    <form action='/cards/{{$card_id}}/linkList' method="get">
-        @csrf
-        <button type="submit" class="btn btn-primary">Liste des liens</button>
-    </form>
+	<section>
 
-    <form action='/cards/{{$card_id}}/link' method="get">
-        @csrf
-        <button type="submit" class="btn btn-primary">Faire un lien</button>
-    </form>
+		<h4>Basic Actions</h4>
 
-    @if(in_array($card->language_id,Auth::user()->getLanguagesKeyArray()))
-    @if(!isset($card->validation_id))
-    <form action='/cards/{{$card->id}}/edit' method="get">
-        @csrf
-        <button type="submit" class="btn btn-primary">Edit</button>
-    </form>
-    @endif
-    @if(Auth::user()->role == \App\Enums\Roles::ADMIN && isset($card->validation_id))
-    <form action="{{ route('cards.removeValidation', $card) }}" method="POST">
-        @csrf
-        <button class="btn btn-warning float-right">Remove validation</button>
-    </form>
-    @endif
-    @if(Auth::user()->role != \App\Enums\Roles::USERS)
-    <!-- <form action="{{ route('cards.destroy', $card) }}" method="POST"> -->
-    <form action="{{ route('cards.destroy', $card_id) }}" method="POST">
-        @csrf
-        @method('DELETE')
-        <button class="btn btn-danger float-right">Delete</button>
-    </form>
-    @endif
-    @endif
-</div>
+		@if(Auth::user()->id != $card->owner_id)
+			<a href="/cards/vote/{{$card->id}}" class="btn btn-primary">@lang('cards.voteForCard')</a>
+		@endif
 
-<!-- <label class="col-md-6 col-form-label text-md-right"> Vedette : </label>
-<label>{{$heading}}</label>
+		<a href="/cards/{{$card->id}}/linkList" class="btn btn-primary">@lang('cards.seeLinkedCards')</a>
 
-<label class="col-md-6 col-form-label text-md-right"> Langue : </label>
-<label>{{$languages}}</label>
+		<a href="/cards/{{$card->id}}/link" class="btn btn-primary">@lang('cards.linkCard')</a>
+	</section>
 
-@if (isset($phonetic))
-<label class="col-md-6 col-form-label text-md-right"> Phonetique : </label>
-<label>{{$phonetic}}</label>
-@endif
+	@if(in_array($card->language_id, Auth::user()->getLanguagesKeyArray()))
 
-@if (isset($domain))
-<label class="col-md-6 col-form-label text-md-right"> Domaine : </label>
-<label>{{$domain}}</label>
-@endif
+		<hr>
 
-@if (isset($subdomain))
-<label class="col-md-6 col-form-label text-md-right"> Sous-Domaine : </label>
-<label>{{$subdomain}}</label>
-@endif
+		<section>
 
-@if (isset($definition))
-<label class="col-md-6 col-form-label text-md-right"> Definition : </label>
-<label>{{$definition}}</label>
-@endif
+			<h4>Danger Zone</h4>
 
-@if (isset($context))
-<label class="col-md-6 col-form-label text-md-right"> Contexte : </label>
-<label>{{$context}}</label>
-@endif
+			@if(!isset($card->validation_id))
+				<a href="/cards/{{$card->id}}/edit" class="btn btn-primary">@lang('cards.editCard')</a>
+			@endif
 
-@if (isset($note) )
-<label class="col-md-6 col-form-label text-md-right"> Note : </label>
-<label>{{$note}}</label>
-@endif
+			@if(Auth::user()->role == \App\Enums\Roles::ADMIN && isset($card->validation_id))
+				<form action="{{ route('cards.removeValidation', $card) }}" method="POST" style="margin: 0; width: fit-content; display: inline-block;">
 
-@if (isset($vote_count))
-<label class="col-md-6 col-form-label text-md-right"> Nombre de vote : </label>
-<label>{{$vote_count}}</label>
-@endif -->
+					@csrf
 
+					<button class="btn btn-warning">Remove validation</button>
+				</form>
+			@endif
+
+			@if(Auth::user()->role != \App\Enums\Roles::USERS)
+				<form action="{{ route('cards.destroy', $card->id) }}" method="POST" style="margin: 0; width: fit-content; display: inline-block;">
+
+					@csrf
+
+					@method('DELETE')
+
+					<button class="btn btn-danger">@lang('cards.deleteCard')</button>
+				</form>
+			@endif
+
+		</section>
+	@endif
 
 @endsection

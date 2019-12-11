@@ -5,6 +5,4 @@
         @yield('header')
     </div>
     @yield('body')
-    
 @endsection
-

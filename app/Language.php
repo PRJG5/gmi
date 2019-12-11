@@ -8,7 +8,8 @@ class Language extends Model
 {
     protected $fillable = [
         'content',
-        'slug'
+        'slug',
+        'isSigned'
     ];
 
     public $timestamps = false;

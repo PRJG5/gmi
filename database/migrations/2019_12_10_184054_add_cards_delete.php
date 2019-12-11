@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateContextsTable extends Migration
+class AddCardsDelete extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateContextsTable extends Migration
      */
     public function up()
     {
-        Schema::create('contexts', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->longtext('context_to_string');
-            $table->timestamps();
+        Schema::table('cards', function (Blueprint $table) {
+            $table->unsignedInteger('delete')->default(0);
         });
     }
 
@@ -27,6 +25,6 @@ class CreateContextsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contexts');
+        //
     }
 }

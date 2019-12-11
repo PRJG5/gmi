@@ -25,7 +25,7 @@ class MyCardController extends Controller
      */
     public function index()
     {
-        $cards = Card::where('owner_id', Auth::user()->id)->get();
+        $cards = Card::where('owner_id', Auth::user()->id)->where('delete','=','0')->get();
         return view('myCards', compact('cards'));
     }
 }

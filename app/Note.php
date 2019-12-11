@@ -19,6 +19,9 @@ class Note extends Model
 	];
     protected $fillable = [
 		'description',
+        'image',
+        'url',
+        'son',
 	];
 	protected $guarded = [
         'id',

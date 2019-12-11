@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>@lang('cards.card')</h1>
+<h1>Créer une carte</h1>
 
-@include('card.show', $card)
+@include('card.edit', $card)
     
 @endsection

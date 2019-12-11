@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 use App\Vote;
+use App\SpokenLanguages;
 /**
  * Represents a Card (usually referred as "Fiche")
  * Each Card only has one and only one "idea",
@@ -89,6 +90,7 @@ class Card extends Model
      */
     protected $attributes = [
         'heading'		=> '',
+        'headingURL'    => NULL,
         'phonetic_id'	=> NULL,
         'domain_id'		=> '',
         'subdomain_id'	=> '',
@@ -98,6 +100,8 @@ class Card extends Model
 		'language_id'	=> '',
         'owner_id'		=> 1,
         'validation_id' => NULL,
+        'validation_rate'=>70,
+        'delete' => 0,
     ];
 
     /**
@@ -106,6 +110,7 @@ class Card extends Model
      */
     protected $fillable = [
         'heading',
+        'headingURL',
         'phonetic_id',
         'domain_id',
         'subdomain_id',
@@ -115,6 +120,8 @@ class Card extends Model
         'language_id',
         'owner_id',
         'validation_id',
+        'validation_rate',
+        'delete',
     ];
 
     /**
@@ -134,6 +141,7 @@ class Card extends Model
 		"{ Card\n" .
 			"\tid: "			. $this->id				. "\n" .
 			"\theading:"		. $this->heading		. "\n" .
+			"\theadingURL:"		. $this->headingURL		. "\n" .
 			"\tphonetic_id: "	. $this->phonetic_id	. "\n" .
 			"\tdomain_id:"		. $this->domain_id		. "\n" .
 			"\tdefinition_id: "	. $this->definition_id	. "\n" .
@@ -233,6 +241,19 @@ class Card extends Model
         return $this->belongsTo('App\User','owner_id');
     }
 
+    
+    /**
+     * auto relation beetwen foreign-key
+     * Doc : https://laravel.com/docs/6.x/eloquent-relationships
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function language()
+    {
+        return $this->hasOne('App\Language', 'slug', 'language_id');
+    }
+
+    
+
     /**
      * This method is a computer attribute and count the number of vote
      * this methode can be direct called by $this->count_vote
@@ -263,13 +284,15 @@ class Card extends Model
             /**
              * @YOURI mettre l'algo ici et mettre le resultat de ton algo dans $result
              */
-            $resul = true;
+            $userNb = SpokenLanguages::where('languageISO', '=', $this->language_id)->count();
+            $voteNb = $this->getCountVoteAttribute();
+            $resul = ($voteNb/$userNb)*100>=$this->validation_rate;
             if($resul){
                 // create the validation object
                 $validation = Validation::create([
-                    'voteNb' => 0,
-                    'userNb' => 0,
-                    'validationRate' => 0,
+                    'voteNb' => $voteNb,
+                    'userNb' => $userNb,
+                    'validationRate' => $this->validation_rate,
                     'validated_at' => date('Y-m-d')
                 ]);
                 $this->validation_id = $validation->id;
@@ -291,8 +314,7 @@ class Card extends Model
     public function removeValidation(): bool{
         if($this->isValided()){
             // we remove the validation
-            $validation = Validation::where('id','=',$this->validation_id);
-            $validation->delete();
+            $this->validation->delete();
             $this->validation_id = null;
             $this->save();
             return true;
@@ -395,7 +417,7 @@ class Card extends Model
             $temp = Card::where('language_id',$lang)->get();
             if(!$temp->first()==null){
                 //Faire une collection de collection 
-                $varTemp->prepend(Card::where('language_id',$lang)->get());
+                $varTemp->prepend(Card::where('language_id',$lang)->where('delete','=','0')->get());
             }
         }
 
