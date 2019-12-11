@@ -36,6 +36,43 @@
 				<div class="form-group row">
 					<label for="phonetic" class="col-md-6 col-form-label text-md-right">@lang('cards.phonetic') :</label>
 					<input name="phonetic" class="phonetic" type="text" placeholder="@lang('cards.phonetic')" value="{{isset($card->phonetic) ? $card->phonetic->textDescription : ''}}" title="@lang('cards.phonetic')"/>
+					<!-- Classic tabs -->
+						<div class="classic-tabs mx-2" id="phoneticDiv" style="width:100%;">
+							<ul class="nav tabs-orange" id="myClassicTabOrange" role="tablist">
+								<li class="nav-item">
+									<a class="nav-link  waves-light active show" id="profile-tab-classic-orange" data-toggle="tab" href="#phonetic_img"
+									   role="tab" aria-controls="profile-classic-orange" aria-selected="true"><i class="fas fa-image"
+																												 aria-hidden="true"></i></a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link waves-light" id="follow-tab-classic-orange" data-toggle="tab" href="#phonetic_link"
+									   role="tab" aria-controls="follow-classic-orange" aria-selected="false"><i class="fas fa-link"
+																												 aria-hidden="true"></i></a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link waves-light" id="contact-tab-classic-orange" data-toggle="tab" href="#phonetic_music"
+									   role="tab" aria-controls="contact-classic-orange" aria-selected="false"><i class="fas fa-music"
+																												  aria-hidden="true"></i></a>
+								</li>
+							</ul>
+
+							<div class="tab-content card" id="myClassicTabContentOrange">
+								<div class="tab-pane fade active show" id="phonetic_img" role="tabpanel" aria-labelledby="profile-tab-classic-orange">
+									<label for="phonetic_img" class="col-md-6 col-form-label text-md-right">@lang('cards.phonetic_img') :</label>
+									<input name="phonetic_img" type="text" placeholder="www.example.com" title="@lang('cards.phonetic_img')" value="{{ $card->phonetic->image }}"/>
+								</div>
+								<div class="tab-pane fade" id="phonetic_link" role="tabpanel" aria-labelledby="follow-tab-classic-orange">
+									<label for="phonetic_link" class="col-md-6 col-form-label text-md-right">@lang('cards.phonetic_link') :</label>
+									<input name="phonetic_link" type="text" placeholder="www.example.com" title="@lang('cards.phonetic_link')" value="{{ $card->phonetic->url }}"/>
+								</div>
+								<div class="tab-pane fade" id="phonetic_music" role="tabpanel" aria-labelledby="contact-tab-classic-orange">
+									<label for="phonetic_music" class="col-md-6 col-form-label text-md-right">@lang('cards.phonetic_music') :</label>
+									<input name="phonetic_music" type="text" placeholder="www.example.com" title="@lang('cards.phonetic_music')" value="{{ $card->phonetic->son }}"/>
+								</div>
+							</div>
+
+						</div>
+						<!-- Classic tabs -->
 				</div>
 			@endif
 			
@@ -75,18 +112,55 @@
 			{{-- CONTEXT --}}
 			<div class="form-group row">
 				<label for="context" class="col-md-6 col-form-label text-md-right">@lang('cards.context') :</label>
-				{{$context = $card->context}}
+				@php $context = $card->context @endphp
 				@if ($card->language->isSigned)
 					<input name="context" value="{{isset($context) ? $context->context_to_string : ''}}" placeholder="www.example.com" title="@lang('cards.context')" >
 				@else
 					<textarea name="context" value="{{isset($context) ? $context->context_to_string : ''}}" title="@lang('cards.context')" placeholder="@lang('cards.context')">{{isset($context) ? $context->context_to_string : ""}}</textarea>
 				@endif
+				<!-- Classic tabs -->
+					<div class="classic-tabs mx-2" id="contextDiv" style="width:100%;">
+					<ul class="nav tabs-orange" id="myClassicTabOrange" role="tablist">
+						<li class="nav-item">
+							<a class="nav-link  waves-light active show" id="profile-tab-classic-orange" data-toggle="tab" href="#context_img"
+							   role="tab" aria-controls="profile-classic-orange" aria-selected="true"><i class="fas fa-image"
+																										 aria-hidden="true"></i></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link waves-light" id="follow-tab-classic-orange" data-toggle="tab" href="#context_link"
+							   role="tab" aria-controls="follow-classic-orange" aria-selected="false"><i class="fas fa-link"
+																										 aria-hidden="true"></i></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link waves-light" id="contact-tab-classic-orange" data-toggle="tab" href="#context_music"
+							   role="tab" aria-controls="contact-classic-orange" aria-selected="false"><i class="fas fa-music"
+																										  aria-hidden="true"></i></a>
+						</li>
+					</ul>
+
+					<div class="tab-content card" id="myClassicTabContentOrange">
+						<div class="tab-pane fade active show" id="context_img" role="tabpanel" aria-labelledby="profile-tab-classic-orange">
+							<label for="context_img" class="col-md-6 col-form-label text-md-right">@lang('cards.context_img') :</label>
+							<input name="context_img" type="text" placeholder="www.example.com" title="@lang('cards.context_img')" value="{{ $context->image }}"/>
+						</div>
+						<div class="tab-pane fade" id="context_link" role="tabpanel" aria-labelledby="follow-tab-classic-orange">
+							<label for="context_link" class="col-md-6 col-form-label text-md-right">@lang('cards.context_link') :</label>
+							<input name="context_link" type="text" placeholder="www.example.com" title="@lang('cards.context_link')" value="{{ $context->url }}"/>
+						</div>
+						<div class="tab-pane fade" id="context_music" role="tabpanel" aria-labelledby="contact-tab-classic-orange">
+							<label for="context_music" class="col-md-6 col-form-label text-md-right">@lang('cards.context_music') :</label>
+							<input name="context_music" type="text" placeholder="www.example.com" title="@lang('cards.context_music')" value="{{ $context->son }}"/>
+						</div>
+					</div>
+
+				</div>
+				<!-- Classic tabs -->
 			</div>
 
 			{{-- DEFINITION --}}
 			<div class="form-group row">
 				<label for="definition" class="col-md-6 col-form-label text-md-right">@lang('cards.definition') : </label>
-				{{$def = $card->definition}}
+				@php $def = $card->definition @endphp
 				@if ($card->language->isSigned)
 					<input name="definition" value="{{isset($def) ? $def->definition_content : ''}}" title="@lang('cards.definition')" placeholder="www.example.com">
 				@else
@@ -97,7 +171,45 @@
 			{{-- NOTE --}}
 			<div class="form-group row">
 				<label for="note" class="col-md-6 col-form-label text-md-right">@lang('cards.note') :</label>
-				<input name="note" type="text" placeholder="@lang('cards.note')" title="@lang('cards.note')" value="{{isset($note) ? $note->description : ' '}}"/>
+				<input name="note" type="text" placeholder="@lang('cards.note')" title="@lang('cards.note')" value="{{isset($card->note) ? $card->note->description : ' '}}"/>
+					<!-- Classic tabs -->
+					<div class="classic-tabs mx-2" id="noteDiv" style="width:100%;">
+						<ul class="nav tabs-orange" id="myClassicTabOrange" role="tablist">
+							<li class="nav-item">
+								<a class="nav-link  waves-light active show" id="profile-tab-classic-orange" data-toggle="tab" href="#note_img"
+								   role="tab" aria-controls="profile-classic-orange" aria-selected="true"><i class="fas fa-image"
+																											 aria-hidden="true"></i></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link waves-light" id="follow-tab-classic-orange" data-toggle="tab" href="#note_link"
+								   role="tab" aria-controls="follow-classic-orange" aria-selected="false"><i class="fas fa-link"
+																											 aria-hidden="true"></i></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link waves-light" id="contact-tab-classic-orange" data-toggle="tab" href="#note_music"
+								   role="tab" aria-controls="contact-classic-orange" aria-selected="false"><i class="fas fa-music"
+																											  aria-hidden="true"></i></a>
+							</li>
+						</ul>
+
+						<div class="tab-content card" id="myClassicTabContentOrange">
+							<div class="tab-pane fade active show" id="note_img" role="tabpanel" aria-labelledby="profile-tab-classic-orange">
+								<label for="note_img" class="col-md-6 col-form-label text-md-right">@lang('cards.note_img') :</label>
+								<input name="note_img" type="text" placeholder="www.example.com" title="@lang('cards.note_img')" value="{{ $card->note->image }}"/>
+							</div>
+							<div class="tab-pane fade" id="note_link" role="tabpanel" aria-labelledby="follow-tab-classic-orange">
+								<label for="note_link" class="col-md-6 col-form-label text-md-right">@lang('cards.note_link') :</label>
+								<input name="note_link" type="text" placeholder="www.example.com" title="@lang('cards.note_link')" value="{{ $card->note->url }}"/>
+							</div>
+							<div class="tab-pane fade" id="note_music" role="tabpanel" aria-labelledby="contact-tab-classic-orange">
+								<label for="note_music" class="col-md-6 col-form-label text-md-right">@lang('cards.note_music') :</label>
+								<input name="note_music" type="text" placeholder="www.example.com" title="@lang('cards.note_music')" value="{{ $card->note->son }}"/>
+							</div>
+						</div>
+
+					</div>
+					<!-- Classic tabs -->
+
 			</div>
 
 			<div class="form-group row">

@@ -182,10 +182,19 @@ class CardController extends Controller
                 $card->definition->definition_content = $request->definition;
                 $card->definition->save();
                 $card->note->description = $request->note;
+                $card->note->image = $request->note_img;
+                $card->note->url = $request->note_link;
+                $card->note->son = $request->note_music;
                 $card->note->save();
                 $card->context->context_to_string = $request->context;
+                $card->context->image = $request->context_img;
+                $card->context->url = $request->context_link;
+                $card->context->son = $request->context_music;
                 $card->context->save();
                 $card->phonetic->textDescription = $request->phonetic;
+                $card->phonetic->image = $request->phonetic_img;
+                $card->phonetic->url = $request->phonetic_link;
+                $card->phonetic->son = $request->phonetic_music;
                 $card->phonetic->save();
                 return redirect()->action('CardController@show', [$card]);
             } else {
