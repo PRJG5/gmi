@@ -66,7 +66,7 @@
 			@endif
 
 			{{-- DEFINITION --}}
-			@if(isset($definition))
+			@if(isset($card->definition))
 				<tr>
 					<th scope="row" class="text-center">@lang('cards.definition') :</th>
 					<td class="text-left">
@@ -86,7 +86,7 @@
 					<th scope="row" class="text-center">@lang('cards.note') :</th>
 					<td class="text-left">
 						@if ($card->language->isSigned)
-							<a href="{{$note->description}}" target="_blank">Vidéo</a> 
+							<a href="{{$card->note->description}}" target="_blank">Vidéo</a> 
 							{{-- TODO: i18n --}}
 						@else
 							{{$card->note->description}}

@@ -75,7 +75,9 @@
 			{{-- CONTEXT --}}
 			<div class="form-group row">
 				<label for="context" class="col-md-6 col-form-label text-md-right">@lang('cards.context') :</label>
-				{{$context = $card->context}}
+				@php
+					$context = $card->context
+				@endphp
 				@if ($card->language->isSigned)
 					<input name="context" value="{{isset($context) ? $context->context_to_string : ''}}" placeholder="www.example.com" title="@lang('cards.context')" >
 				@else
@@ -86,7 +88,9 @@
 			{{-- DEFINITION --}}
 			<div class="form-group row">
 				<label for="definition" class="col-md-6 col-form-label text-md-right">@lang('cards.definition') : </label>
-				{{$def = $card->definition}}
+				@php
+					$def = $card->definition
+				@endphp 
 				@if ($card->language->isSigned)
 					<input name="definition" value="{{isset($def) ? $def->definition_content : ''}}" title="@lang('cards.definition')" placeholder="www.example.com">
 				@else
