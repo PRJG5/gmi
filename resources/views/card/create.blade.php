@@ -168,7 +168,7 @@
 			<div class="form-group row" id="formDefinition">
 				<label for="definition" class="col-md-6 col-form-label text-md-right">@lang('cards.definition') : </label>
 				<textarea id="definition" name="definition" class="context" placeholder="@lang('cards.definition')" value="" title="@lang('cards.definition')">{{ old('definition') }}</textarea>
-				<input type="text" name="#" id="definitionURL" placeholder="www.example.com" style="display:none;">
+				<input type="text" name="definitionURL" id="definitionURL" placeholder="www.example.com" style="display:none;">
 				@error('definition')
 					<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
 				@enderror

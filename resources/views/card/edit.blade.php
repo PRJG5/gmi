@@ -112,7 +112,9 @@
 			{{-- CONTEXT --}}
 			<div class="form-group row">
 				<label for="context" class="col-md-6 col-form-label text-md-right">@lang('cards.context') :</label>
-				@php $context = $card->context @endphp
+				@php
+					$context = $card->context
+				@endphp
 				@if ($card->language->isSigned)
 					<input name="context" value="{{isset($context) ? $context->context_to_string : ''}}" placeholder="www.example.com" title="@lang('cards.context')" >
 				@else
