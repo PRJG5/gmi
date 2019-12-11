@@ -32,6 +32,8 @@ return [
 		'visit' => 'Pour consulter votre fiche, rendez-vous sur :cardLink',
 	],
 	'listLinkedCards'=>'Fiches liées',
+	'linkAndCreate'=>'Créer & Lier (sachez que cette fiche sera liée automatiquement à la fiche courante et ce bouton devra etre magnifique)',
+	'createdAndLinked'=>'votre fiche a été créée et liée',
 	'myCards' => 'Mes fiches',
 	'noCards' => 'Pas de fiches',
 	'note' => 'Note',

@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 
+
 /**
  * Handles the different CRUD action about the cards.
  * @author 44422
@@ -49,7 +50,7 @@ class CardController extends Controller
         return view('card.create', [
             'domain' 	=> Domain::all(),
             'subdomain' => Subdomain::all(),
-			'languages' => Auth::user()->getLanguages(),
+            'languages' => Auth::user()->getLanguages(),
         ]);
     }
 
@@ -120,6 +121,11 @@ class CardController extends Controller
         ]);
 
         $card = $this->create_card($request);
+        if(isset($request->cardOriginId)){
+            $cardOrigin = Card::find($request->cardOriginId);
+            Link::create(['cardA'=>$card->id,'cardB'=>$cardOrigin->id]);
+            return redirect()->action('CardController@show', [$card])->with('success','votre fiche a été créée et liée');
+        }
 
         return redirect()->action('CardController@show', [$card]);
     }
@@ -320,7 +326,7 @@ class CardController extends Controller
         return view('card.link', [
             'cardOrigin' => $cardOrigin,
             'cardLinked' => $cardOrigin->getCardFilterByLanguage(),
-            'userOrigin' => DB::table('users')->where('id', $cardOrigin->owner_id)->first(),
+            'userOrigin' => Auth::user(),
 		]);
     }
 
@@ -353,5 +359,15 @@ class CardController extends Controller
      $card = Card::find($id);
      
      return view('listLinkedCards')->with('cards',$card->getLinkedCard());
+   }
+
+   public function createAndLink($id){
+       return view('card.create', [
+        'domain' 	=> Domain::all(),
+        'subdomain' => Subdomain::all(),
+        'languages' => Auth::user()->getLanguages(),
+        'cardOriginId'=>$id,
+    ]);
+
    }
 }

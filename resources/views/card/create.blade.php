@@ -95,12 +95,21 @@
 					<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
 				@enderror
 			</div>
+			@if(isset($cardOriginId))
+			<div class="form-group row">
+				
+					<input type="hidden"  name= "cardOriginId" value="{{$cardOriginId}}"/>
+				
+			</div>
+			@endif
 		
 			<div class="form-group row">
 				<div style="margin:auto;">
 					<input type="submit" class="submitButton btn btn-primary" value="@lang('cards.createCard')"/>
 				</div>
 			</div>
+
+			
 
 		</form>
 		<script>

@@ -69,6 +69,15 @@
 			@endif
 			--}}
 
+			
+				<tr>
+					<form action="{{route('createAndLink',$cardOrigin->id)}}">
+						@csrf
+						<button type ='submit' class="btn btn-primary"> @lang('cards.linkAndCreate')</button>
+					</form>
+				</tr>
+			
+
 		</tbody>
 	</table>
 @endsection
