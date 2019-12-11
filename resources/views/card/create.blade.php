@@ -85,7 +85,7 @@
 			<div class="form-group row" id="formContexte">
 				<label for="context" class="col-md-6 col-form-label text-md-right">@lang('cards.context') : </label>
 				<textarea id="context" name="context" class="context" value="" title="@lang('cards.context')" placeholder="@lang('cards.context')">{{ old('context') }}</textarea>
-				<input type="text" name="context" id="contextURL" placeholder="www.example.com" style="display:none;">
+				<input type="text" name="contextURL" id="contextURL" placeholder="www.example.com" style="display:none;">
 				@error('context')
 					<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
 				@enderror
@@ -95,7 +95,7 @@
 			<div class="form-group row" id="formDefinition">
 				<label for="definition" class="col-md-6 col-form-label text-md-right">@lang('cards.definition') : </label>
 				<textarea id="definition" name="definition" class="context" placeholder="@lang('cards.definition')" value="" title="@lang('cards.definition')">{{ old('definition') }}</textarea>
-				<input type="text" name="definition" id="definitionURL" placeholder="www.example.com" style="display:none;">
+				<input type="text" name="definitionURL" id="definitionURL" placeholder="www.example.com" style="display:none;">
 				@error('definition')
 					<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
 				@enderror

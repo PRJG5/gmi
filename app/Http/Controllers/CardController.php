@@ -86,9 +86,25 @@ class CardController extends Controller
             $request->merge([
                 'context_id'=> $context->id,
             ]);
+        } else if(isset($request['contextURL']) && strlen($request['contextURL']) > 0){
+            $context = Context::create([
+                'context_to_string' => $request['context'],
+            ]);
+            $context->save();
+            $request->merge([
+                'context_id'=> $context->id,
+            ]);
         }
 
         if(isset($request['definition']) && strlen($request['definition']) > 0){
+            $note = Definition::create([
+                'definition_content' => $request['definition'],
+            ]);
+            $note->save();
+            $request->merge([
+                'definition_id'=> $note->id,
+            ]);
+        } else if(isset($request['definitionURL']) && strlen($request['definitionURL']) > 0){
             $note = Definition::create([
                 'definition_content' => $request['definition'],
             ]);
