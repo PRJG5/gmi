@@ -57,5 +57,6 @@ return [
     'phonetic_music' => 'Son pour phonétique',
     'context_img' => 'Note pour contexte',
     'context_link' => 'Lien pour contexte',
-    'context_music' => 'Son pour contexte',
+	'context_music' => 'Son pour contexte',
+	'video' => 'Vidéo',
 ];

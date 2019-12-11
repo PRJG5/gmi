@@ -58,4 +58,5 @@ return [
     'context_img' => 'Picture for context',
     'context_link' => 'Link for context',
     'context_music' => 'Song for context',
+	'video' => 'Video',
 ];

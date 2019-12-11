@@ -65,7 +65,7 @@
 					</th>
 					<td class="text-left">
 						@if ($card->language->isSigned)
-							<a href="{{$card->context->context_to_string}}" target="_blank">Vidéo</a>
+							<a href="{{$card->context->context_to_string}}" target="_blank">@lang('cards.video')</a>
 							{{-- TODO: i18n --}}
 						@else
 							<label>{{$card->context->context_to_string}}</label>
@@ -80,7 +80,7 @@
 					<th scope="row" class="text-center">@lang('cards.definition') :</th>
 					<td class="text-left">
 						@if ($card->language->isSigned)
-							<a href="{{$card->definition->definition_content}}" target="_blank">Vidéo</a>
+							<a href="{{$card->definition->definition_content}}" target="_blank">@lang('cards.video')</a>
 							{{-- TODO: i18n --}}
 						@else
 							<label>{{$card->definition->definition_content}}</label>
