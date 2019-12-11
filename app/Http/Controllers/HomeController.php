@@ -73,10 +73,12 @@ class HomeController extends Controller
 
     //A placer dans auth
      public function modifyProfile(){
-        $languages = Language::all();
-        // $user = Auth::user();
-        // $user.getLanguagesKeyArray();
-        // $languages = $languages->except(Auth::user()getLanguagesKeyArray())
+        $Alllanguages = Language::all();
+        $user = User::find(Auth::user()->id);
+        $languagesUser=$user->getLanguages();
+         $languages = $Alllanguages->whereNotIn('id', $languagesUser->pluck('id'));
+        
+         
          return view('auth.modifyProfile',  compact('languages'));
      }
 }

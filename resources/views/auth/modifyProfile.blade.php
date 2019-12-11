@@ -54,7 +54,7 @@
                             <div class="col-md-6">
 
 
-                                <input id="oldPassword" type="password" class="form-control @error('oldPassword') is-invalid @enderror" name="oldPassword">
+                                <input id="oldPassword" type="password" class="form-control @error('oldPassword') is-invalid @enderror" name="oldPassword" required>
 
                                 @error('oldPassword')
                                 <span class="invalid-feedback" role="alert">
@@ -69,7 +69,7 @@
                             <div class="col-md-6">
 
 
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="passwordConfirm">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required >
 
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -81,10 +81,10 @@
 
 
                         <div class="form-group row">
-                            <label for="passwordConfirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                            <label for="password_confirmation" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="passwordConfirm" type="password" class="form-control" name="passwordConfirm" >
+                                <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -103,7 +103,7 @@
                                 @endif
                                
                                 @if(session()->has('Passwordsuccess'))
-                                <!-- <span class="valid-feedback" role="alert">
+                                <!-- <span class="invalid-feedback" role="alert">
                                     <strong></strong>
                                 </span> -->
                                 <div class="alert alert-success">
@@ -114,8 +114,10 @@
                         </div>
                     </form>
                    
+                    @if(!Auth::user()->role == \App\Enums\Roles::ADMIN)
                     <!--  </div> -->
                     <form method="POST" action="{{ route('modifyLanguages') }}">
+                    @csrf
                         <div class="form-group row">
                             <label for="languages" class="col-md-4 col-form-label text-md-right">{{ __('Langues parlées') }}</label>
 
@@ -126,11 +128,19 @@
                                     @endforeach
                                 </select>
 
-                                @error('languages')
+                                @error('ErrorLanguages')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
+                                @if(session()->has('ValidAddLang'))
+                                <!-- <span class="invalid-feedback" role="alert">
+                                    <strong></strong>
+                                </span> -->
+                                <div class="alert alert-success">
+                                    {{ session()->get('ValidAddLang') }}
+                                </div>
+                                @endif
 
                             </div>
                             <button type="submit" class="btn btn-primary">
@@ -138,15 +148,8 @@
                             </button>
 
                         </div>
-                    </form>
-                    <div class="form-group row mb-0">
-                        <div class="col-md-6 offset-md-4">
-                            <button type="submit" class="btn btn-primary">
-                                {{ __('Register') }}
-                            </button>
-                        </div>
-                    </div>
-                    </form>
+                    
+                    @endif
                 </div>
             </div>
         </div>
