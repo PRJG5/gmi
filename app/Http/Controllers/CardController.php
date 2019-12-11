@@ -195,23 +195,88 @@ class CardController extends Controller
         if(!isset($card->validation_id)){
             if (Auth::user()->id == $card->owner_id) {
                 $card->update($request->all());
-                $card->definition->definition_content = $request->definition;
-                $card->definition->save();
-                $card->note->description = $request->note;
-                $card->note->image = $request->note_img;
-                $card->note->url = $request->note_link;
-                $card->note->son = $request->note_music;
-                $card->note->save();
-                $card->context->context_to_string = $request->context;
-                $card->context->image = $request->context_img;
-                $card->context->url = $request->context_link;
-                $card->context->son = $request->context_music;
-                $card->context->save();
-                $card->phonetic->textDescription = $request->phonetic;
-                $card->phonetic->image = $request->phonetic_img;
-                $card->phonetic->url = $request->phonetic_link;
-                $card->phonetic->son = $request->phonetic_music;
-                $card->phonetic->save();
+                // DEFINITION
+                if(!isset($card->definition)){ // si definition c'est vide de base
+                    if(!empty($request->definition)){ // et si le champs definition a été completer alors on va créer
+                        $definition = Definition::create([
+                            'definition_content' => $request->definition,
+                        ]);
+                        $definition->save();
+                        $card->definition_id = $definition->id;
+                        $card->save();
+                    }
+                }else{
+                    if(!empty($request->definition)){ // si y a une definition, on enregistre
+                        $card->definition->definition_content = $request->definition;
+                        $card->definition->save();
+                    }
+                }
+                // NOTE
+                if(!isset($card->note)){ // si c'est vide de base
+                    if(!empty($request->note)){ // et si le champs note a été completer alors on va créer
+                        $note = Note::create([
+                            'description' => $request->note,
+                            'image' => $request->note_img,
+                            'url' => $request->note_link,
+                            'son' => $request->note_music,
+                        ]);
+                        $note->save();
+                        $card->note_id = $note->id;
+                        $card->save();
+                    }
+                }else{
+                    if(!empty($request->note)){ // si y a une note, on enregistre
+                        $card->note->description = $request->note;
+                        $card->note->image = $request->note_img;
+                        $card->note->url = $request->note_link;
+                        $card->note->son = $request->note_music;
+                        $card->note->save();
+                    }
+                }
+                // CONTEXT
+                if(!isset($card->context)){ // si c'est vide de base
+                    if(!empty($request->context)){ // et si le champs context a été completer alors on va créer
+                        $context = Context::create([
+                            'context_to_string' => $request->context,
+                            'image' => $request->context_img,
+                            'url' => $request->context_link,
+                            'son' => $request->context_music,
+                        ]);
+                        $context->save();
+                        $card->context_id = $context->id;
+                        $card->save();
+                    }
+                }else{
+                    if(!empty($request->note)){ // si y a un context, on enregistre
+                        $card->context->context_to_string = $request->context;
+                        $card->context->image = $request->context_img;
+                        $card->context->url = $request->context_link;
+                        $card->context->son = $request->context_music;
+                        $card->context->save();
+                    }
+                }
+                // PHONETIC
+                if(!isset($card->phonetic)){ // si c'est vide de base
+                    if(!empty($request->phonetic)){ // et si le champs context a été completer alors on va créer
+                        $phonetic = Phonetic::create([
+                            'textDescription' => $request->phonetic,
+                            'image' => $request->phonetic_img,
+                            'url' => $request->phonetic_link,
+                            'son' => $request->phonetic_music,
+                        ]);
+                        $phonetic->save();
+                        $card->phonetic_id = $phonetic->id;
+                        $card->save();
+                    }
+                }else{
+                    if(!empty($request->phonetic)){ // si y a un context, on enregistre
+                        $card->phonetic->textDescription = $request->phonetic;
+                        $card->phonetic->image = $request->phonetic_img;
+                        $card->phonetic->url = $request->phonetic_link;
+                        $card->phonetic->son = $request->phonetic_music;
+                        $card->phonetic->save();
+                    }
+                }
                 return redirect()->action('CardController@show', [$card]);
             } else {
                 $request->merge([

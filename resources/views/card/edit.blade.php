@@ -59,15 +59,15 @@
 							<div class="tab-content card" id="myClassicTabContentOrange">
 								<div class="tab-pane fade active show" id="phonetic_img" role="tabpanel" aria-labelledby="profile-tab-classic-orange">
 									<label for="phonetic_img" class="col-md-6 col-form-label text-md-right">@lang('cards.phonetic_img') :</label>
-									<input name="phonetic_img" type="text" placeholder="www.example.com" title="@lang('cards.phonetic_img')" value="{{ $card->phonetic->image }}"/>
+									<input name="phonetic_img" type="url" placeholder="www.example.com" title="@lang('cards.phonetic_img')" value="{{ $card->phonetic->image }}"/>
 								</div>
 								<div class="tab-pane fade" id="phonetic_link" role="tabpanel" aria-labelledby="follow-tab-classic-orange">
 									<label for="phonetic_link" class="col-md-6 col-form-label text-md-right">@lang('cards.phonetic_link') :</label>
-									<input name="phonetic_link" type="text" placeholder="www.example.com" title="@lang('cards.phonetic_link')" value="{{ $card->phonetic->url }}"/>
+									<input name="phonetic_link" type="url" placeholder="www.example.com" title="@lang('cards.phonetic_link')" value="{{ $card->phonetic->url }}"/>
 								</div>
 								<div class="tab-pane fade" id="phonetic_music" role="tabpanel" aria-labelledby="contact-tab-classic-orange">
 									<label for="phonetic_music" class="col-md-6 col-form-label text-md-right">@lang('cards.phonetic_music') :</label>
-									<input name="phonetic_music" type="text" placeholder="www.example.com" title="@lang('cards.phonetic_music')" value="{{ $card->phonetic->son }}"/>
+									<input name="phonetic_music" type="url" placeholder="www.example.com" title="@lang('cards.phonetic_music')" value="{{ $card->phonetic->son }}"/>
 								</div>
 							</div>
 
@@ -143,15 +143,15 @@
 					<div class="tab-content card" id="myClassicTabContentOrange">
 						<div class="tab-pane fade active show" id="context_img" role="tabpanel" aria-labelledby="profile-tab-classic-orange">
 							<label for="context_img" class="col-md-6 col-form-label text-md-right">@lang('cards.context_img') :</label>
-							<input name="context_img" type="text" placeholder="www.example.com" title="@lang('cards.context_img')" value="{{ $context->image }}"/>
+							<input name="context_img" type="url" placeholder="www.example.com" title="@lang('cards.context_img')" value="{{ isset($context->image)? $context->image : '' }}"/>
 						</div>
 						<div class="tab-pane fade" id="context_link" role="tabpanel" aria-labelledby="follow-tab-classic-orange">
 							<label for="context_link" class="col-md-6 col-form-label text-md-right">@lang('cards.context_link') :</label>
-							<input name="context_link" type="text" placeholder="www.example.com" title="@lang('cards.context_link')" value="{{ $context->url }}"/>
+							<input name="context_link" type="url" placeholder="www.example.com" title="@lang('cards.context_link')" value="{{ isset( $context->url)?  $context->url : '' }}"/>
 						</div>
 						<div class="tab-pane fade" id="context_music" role="tabpanel" aria-labelledby="contact-tab-classic-orange">
 							<label for="context_music" class="col-md-6 col-form-label text-md-right">@lang('cards.context_music') :</label>
-							<input name="context_music" type="text" placeholder="www.example.com" title="@lang('cards.context_music')" value="{{ $context->son }}"/>
+							<input name="context_music" type="url" placeholder="www.example.com" title="@lang('cards.context_music')" value="{{ isset( $context->son)?  $context->son : '' }}"/>
 						</div>
 					</div>
 
@@ -197,15 +197,15 @@
 						<div class="tab-content card" id="myClassicTabContentOrange">
 							<div class="tab-pane fade active show" id="note_img" role="tabpanel" aria-labelledby="profile-tab-classic-orange">
 								<label for="note_img" class="col-md-6 col-form-label text-md-right">@lang('cards.note_img') :</label>
-								<input name="note_img" type="text" placeholder="www.example.com" title="@lang('cards.note_img')" value="{{ $card->note->image }}"/>
+								<input name="note_img" type="url" placeholder="www.example.com" title="@lang('cards.note_img')" value="{{ isset( $card->note->image)?   $card->note->image : '' }}"/>
 							</div>
 							<div class="tab-pane fade" id="note_link" role="tabpanel" aria-labelledby="follow-tab-classic-orange">
 								<label for="note_link" class="col-md-6 col-form-label text-md-right">@lang('cards.note_link') :</label>
-								<input name="note_link" type="text" placeholder="www.example.com" title="@lang('cards.note_link')" value="{{ $card->note->url }}"/>
+								<input name="note_link" type="url" placeholder="www.example.com" title="@lang('cards.note_link')" value="{{ isset( $card->note->url)?   $card->note->url : '' }}"/>
 							</div>
 							<div class="tab-pane fade" id="note_music" role="tabpanel" aria-labelledby="contact-tab-classic-orange">
 								<label for="note_music" class="col-md-6 col-form-label text-md-right">@lang('cards.note_music') :</label>
-								<input name="note_music" type="text" placeholder="www.example.com" title="@lang('cards.note_music')" value="{{ $card->note->son }}"/>
+								<input name="note_music" type="url" placeholder="www.example.com" title="@lang('cards.note_music')" value="{{ isset( $card->note->son)?   $card->note->son : '' }}"/>
 							</div>
 						</div>
 
