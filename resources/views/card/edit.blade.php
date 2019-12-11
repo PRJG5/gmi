@@ -14,55 +14,90 @@
 
 			@csrf
 
-			<input type="hidden" name="owner" value="{{ isset($owner) ? $owner->name : '' }}" disabled/>
-
+			{{-- AUTHOR --}}
+			{{-- TODO: what is it ? --}}
+			<input type="hidden" name="owner" value="{{ isset($card->owner) ? $card->owner->name : '' }}" disabled/>
+	   
+			{{-- HEADING --}}
 			<div class="form-group row">
 				<label for="heading" class="col-md-6 col-form-label text-md-right">@lang('cards.heading') :</label>
-				<input name="heading" type="text" placeholder="@lang('cards.heading')" title="@lang('cards.heading')" value="{{$card->heading}}" readonly>
+				<input type="text" name="heading" id="heading" placeholder="@lang('cards.heading')" title="@lang('cards.heading')" value="{{$card->heading}}" readonly>
 			</div>
-
-			<div class="form-group row">
-				<label for="phonetic" class="col-md-6 col-form-label text-md-right">@lang('cards.phonetic') :</label>
-				<input name="phonetic" type="text" placeholder="@lang('cards.phonetic')" title="@lang('cards.phonetic')" value="{{isset($phonetic) ? $phonetic->textDescription : '' }}"/>
-			</div>
-
+			{{-- HEADING URL --}}
+			@if ($card->language->isSigned)
+				<div class="form-group row">
+					<label for="headingURL" class="col-md-6 col-form-label text-md-right">@lang('cards.headingURL') : </label>
+					<input type="text" name="headingURL" id="headingURL" value="{{$card->headingURL}}" title="@lang('cards.headingURL')" placeholder="www.example.com">
+				</div>
+			@endif
+			
+			{{-- PHONETIC --}}
+			@if (!$card->language->isSigned)
+				<div class="form-group row">
+					<label for="phonetic" class="col-md-6 col-form-label text-md-right">@lang('cards.phonetic') :</label>
+					<input name="phonetic" class="phonetic" type="text" placeholder="@lang('cards.phonetic')" value="{{isset($card->phonetic) ? $card->phonetic->textDescription : ''}}" title="@lang('cards.phonetic')"/>
+				</div>
+			@endif
+			
+			{{-- LANGUAGE --}}
 			<div class="form-group row">
 				<label for="language_id" class="col-md-6 col-form-label text-md-right">@lang('cards.language') :</label> 
 				<input name="language_id" type="text" placeholder="@lang('cards.language')" title="@lang('cards.language')" value="{{$card->language_id}}" readonly>
 			</div>
 
 			<!--METTRE LES VALEURS PAR DEFAUT A DOMAIN ET SUBDOMAIN-->
+			{{-- DOMAIN --}}
 			<div class="form-group row">
 				<label for="domain_id" class="col-md-6 col-form-label text-md-right">@lang('cards.domain') :</label>
 				<select name="domain_id" title="@lang('cards.domain')">
-					@foreach($domain as $dom)
-					<option value="{{ $dom->id}}" title="{{ $dom->content }}" {{ (isset($card) && ($card->domain_id == $dom->id)) ? 'selected' : ''}}>{{ $dom->content }}</option>
+					@if (!isset($card->domain))
+						<option value="" >----</option>
+					@endif
+					@foreach($domains as $dom)
+						<option value="{{ $dom->id}}" {{ (isset($card) && ($card->domain_id == $dom->id)) ? 'selected' : ''}} title="{{ $dom->content }}" >{{ $dom->content }}</option>
 					@endforeach
 				</select>
 			</div>
 
+			{{-- SUBDOMAIN --}}
 			<div class="form-group row">
 				<label for="subdomain_id" class="col-md-6 col-form-label text-md-right">@lang('cards.subdomain') :</label>
 				<select name="subdomain_id" title="@lang('cards.subdomain')">
-					@foreach($subdomain as $subdom)
-					<option value="{{ $subdom->id}}" title="{{ $subdom->content }}" {{ (isset($card) && ($card->subdomain_id == $subdom->id)) ? 'selected' : ''}}>{{ $subdom->content }}</option>
+					@if (!isset($card->subdomain))
+						<option value="" >----</option>
+					@endif
+					@foreach($subdomains as $subdom)
+						<option value="{{ $subdom->id}}" title="{{ $subdom->content }}" {{ (isset($card) && ($card->subdomain_id == $subdom->id)) ? 'selected' : ''}}>{{ $subdom->content }}</option>
 					@endforeach
 				</select>
 			</div>
+			
+			{{-- CONTEXT --}}
+			<div class="form-group row">
+				<label for="context" class="col-md-6 col-form-label text-md-right">@lang('cards.context') :</label>
+				{{$context = $card->context}}
+				@if ($card->language->isSigned)
+					<input name="context" value="{{isset($context) ? $context->context_to_string : ''}}" placeholder="www.example.com" title="@lang('cards.context')" >
+				@else
+					<textarea name="context" value="{{isset($context) ? $context->context_to_string : ''}}" title="@lang('cards.context')" placeholder="@lang('cards.context')">{{isset($context) ? $context->context_to_string : ""}}</textarea>
+				@endif
+			</div>
 
+			{{-- DEFINITION --}}
+			<div class="form-group row">
+				<label for="definition" class="col-md-6 col-form-label text-md-right">@lang('cards.definition') : </label>
+				{{$def = $card->definition}}
+				@if ($card->language->isSigned)
+					<input name="definition" value="{{isset($def) ? $def->definition_content : ''}}" title="@lang('cards.definition')" placeholder="www.example.com">
+				@else
+					<textarea name="definition" value="{{isset($def) ? $def->definition_content : ''}}" title="@lang('cards.definition')" placeholder="@lang('cards.definition')">{{isset($def) ? $def->definition_content : ""}}</textarea>
+				@endif
+			</div>
+
+			{{-- NOTE --}}
 			<div class="form-group row">
 				<label for="note" class="col-md-6 col-form-label text-md-right">@lang('cards.note') :</label>
 				<input name="note" type="text" placeholder="@lang('cards.note')" title="@lang('cards.note')" value="{{isset($note) ? $note->description : ' '}}"/>
-			</div>
-			
-			<div class="form-group row">
-				<label for="context" class="col-md-6 col-form-label text-md-right">@lang('cards.context') :</label>
-				<textarea name="context" type="text" placeholder="@lang('cards.context')" title="@lang('cards.context')">{{isset($context) ? $context->context_to_string : ''}}</textarea>
-			</div>
-
-			<div class="form-group row">
-				<label for="definition" class="col-md-6 col-form-label text-md-right">@lang('cards.definition') :</label>
-				<textarea name="definition" type="text" placeholder="@lang('cards.definition')" title="@lang('cards.definition')">{{isset($definition) ? $definition->definition_content : ''}}</textarea>
 			</div>
 
 			<div class="form-group row">
@@ -74,7 +109,7 @@
 			@if(Auth::user()->role == \App\Enums\Roles::ADMIN)
 				<div class="form-group row">
 					<div style="margin:auto;">
-						<a href="mailto:{{$owner->name}}<{{$owner->email}}>;?subject={{$mail['subject']}}&body={{$mail['description']}}">@lang('cards.contactOwner')</a>
+						<a href="mailto:{{$card->owner->name}}<{{$card->owner->email}}>;?subject={{$mail['subject']}}&body={{$mail['description']}}">@lang('cards.contactOwner')</a>
 					</div>
 				</div>
 			@endif
@@ -82,6 +117,6 @@
 		</form>
 		@extends('layouts.error')
 
-	@endsection
+	@endsection {{-- Section card-body--}}
 
-@endsection
+@endsection {{-- Section content--}}
