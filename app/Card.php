@@ -231,6 +231,19 @@ class Card extends Model
         return $this->belongsTo('App\User','owner_id');
     }
 
+    
+    /**
+     * auto relation beetwen foreign-key
+     * Doc : https://laravel.com/docs/6.x/eloquent-relationships
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function language()
+    {
+        return $this->hasOne('App\Language', 'slug', 'language_id');
+    }
+
+    
+
     /**
      * This method is a computer attribute and count the number of vote
      * this methode can be direct called by $this->count_vote
@@ -324,15 +337,5 @@ class Card extends Model
     public function versions(){
 
         return $this->belongsToMany('App\Card' ,'card_card' , 'cardOrigin' , 'cardVersion');
-    }
-
-    /**
-     * Return true if the card's language is a signed language
-     * @return true if the card's language is a signed language
-     */
-    public function isSignedLanguage(){
-        return $this->language_id == "SFB"
-            || $this->language_id == "VGT"
-            || $this->language_id == "ILS";
     }
 }
