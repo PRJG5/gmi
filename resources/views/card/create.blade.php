@@ -68,14 +68,14 @@
 		<div class="form-group row" id="formContexte">
 			<label for="context" class="col-md-6 col-form-label text-md-right">Contexte : </label>
 			<textarea id="context" name="context" class="context" placeholder="Context" value="" title="Context" placeholder="Un contexte"></textarea>
-			<input type="text" name="contextURL" id="contextURL" placeholder="www.example.com" style="display:none;">
+			<input type="text" name="context" id="contextURL" placeholder="www.example.com" style="display:none;">
 		</div>
 
 		{{-- DEFINITION --}}
 		<div class="form-group row" id="formDefinition">
 			<label for="definition" class="col-md-6 col-form-label text-md-right">Definition : </label>
 			<textarea id="definition" name="definition" class="context" placeholder="Definition" value="" title="Definition" placeholder="Une définition"></textarea>
-			<input type="text" name="definitionURL" id="definitionURL" placeholder="www.example.com" style="display:none;">
+			<input type="text" name="definition" id="definitionURL" placeholder="www.example.com" style="display:none;">
 		</div>
 
 		{{-- NOTE --}}

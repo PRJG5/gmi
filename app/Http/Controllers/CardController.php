@@ -248,6 +248,7 @@ class CardController extends Controller
     private function validateData(Request $request, bool $creating) {
 		$tab = [
             'heading'		=> 'required',
+            'headingURL'    => '',
             'language_id'	=> 'required',
             'phonetic'		=> '',
             'phonetic_id'   => '',

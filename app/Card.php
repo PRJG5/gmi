@@ -87,6 +87,7 @@ class Card extends Model
      */
     protected $attributes = [
         'heading'		=> '',
+        'headingURL'    => NULL,
         'phonetic_id'	=> NULL,
         'domain_id'		=> '',
         'subdomain_id'	=> '',
@@ -104,6 +105,7 @@ class Card extends Model
      */
     protected $fillable = [
         'heading',
+        'headingURL',
         'phonetic_id',
         'domain_id',
         'subdomain_id',
@@ -132,6 +134,7 @@ class Card extends Model
 		"{ Card\n" .
 			"\tid: "			. $this->id				. "\n" .
 			"\theading:"		. $this->heading		. "\n" .
+			"\theadingURL:"		. $this->headingURL		. "\n" .
 			"\tphonetic_id: "	. $this->phonetic_id	. "\n" .
 			"\tdomain_id:"		. $this->domain_id		. "\n" .
 			"\tdefinition_id: "	. $this->definition_id	. "\n" .
