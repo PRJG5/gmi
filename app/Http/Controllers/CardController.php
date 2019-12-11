@@ -349,10 +349,9 @@ class CardController extends Controller
        ]);
    }
 
-   public function linkList(){
-     echo "not working yet, todo";
-    exit;
-    //UTILISER DANS LE FICHIER CARD LA FONCTION getLinkedCard qui retourne les id de toutes les cartes 
-    //NE PAS TOUCHER A LA FONCTION SI BESOIN --> 49778
+   public function linkList($id){
+     $card = Card::find($id);
+     
+     return view('listLinkedCards')->with('cards',$card->getLinkedCard());
    }
 }

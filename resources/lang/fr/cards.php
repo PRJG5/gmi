@@ -31,6 +31,7 @@ return [
 		'remark' => 'Remarque à props de votre fiche ":cardName"',
 		'visit' => 'Pour consulter votre fiche, rendez-vous sur :cardLink',
 	],
+	'listLinkedCards'=>'Fiches liées',
 	'myCards' => 'Mes fiches',
 	'noCards' => 'Pas de fiches',
 	'note' => 'Note',
