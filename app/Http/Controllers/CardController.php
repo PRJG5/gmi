@@ -121,7 +121,7 @@ class CardController extends Controller
 
         $card = $this->create_card($request);
 
-        return redirect()->action('CardController@showCard', [$card]);
+        return redirect()->action('CardController@show', [$card]);
     }
 
     /**

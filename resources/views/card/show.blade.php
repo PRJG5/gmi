@@ -2,7 +2,7 @@
 @extends('layouts.app')
 
 @section('card-header')
-@lang('cards.card') : {{$heading}}
+@lang('cards.card') : {{$card->heading}}
 @endsection
 @section('card-body')
 
@@ -96,12 +96,10 @@
 			@endif
 			
 			{{-- NB VOTE --}}
-			@if(isset($card->getCountVoteAttribute()))
-				<tr>
-					<th scope="row" class="text-center">@lang('cards.voteCount') :</th>
-					<td class="text-left">{{$card->getCountVoteAttribute()}}</td>
-				</tr>
-			@endif
+			<tr>
+				<th scope="row" class="text-center">@lang('cards.voteCount') :</th>
+				<td class="text-left">{{$card->getCountVoteAttribute()}}</td>
+			</tr>
 
 		</tbody>
 	</table>
@@ -116,9 +114,9 @@
 			<a href="/cards/vote/{{$card->id}}" class="btn btn-primary">@lang('cards.voteForCard')</a>
 		@endif
 
-		<a href="/cards/{{$card_id}}/linkList" class="btn btn-primary">@lang('cards.seeLinkedCards')</a>
+		<a href="/cards/{{$card->id}}/linkList" class="btn btn-primary">@lang('cards.seeLinkedCards')</a>
 
-		<a href="/cards/{{$card_id}}/link" class="btn btn-primary">@lang('cards.linkCard')</a>
+		<a href="/cards/{{$card->id}}/link" class="btn btn-primary">@lang('cards.linkCard')</a>
 	</section>
 
 	@if(in_array($card->language_id, Auth::user()->getLanguagesKeyArray()))
@@ -143,7 +141,7 @@
 			@endif
 
 			@if(Auth::user()->role != \App\Enums\Roles::USERS)
-				<form action="{{ route('cards.destroy', $card_id) }}" method="POST" style="margin: 0; width: fit-content; display: inline-block;">
+				<form action="{{ route('cards.destroy', $card->id) }}" method="POST" style="margin: 0; width: fit-content; display: inline-block;">
 
 					@csrf
 

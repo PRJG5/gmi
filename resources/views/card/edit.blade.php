@@ -109,7 +109,7 @@
 			@if(Auth::user()->role == \App\Enums\Roles::ADMIN)
 				<div class="form-group row">
 					<div style="margin:auto;">
-						<a href="mailto:{{$owner->name}}<{{$owner->email}}>;?subject={{$mail['subject']}}&body={{$mail['description']}}">@lang('cards.contactOwner')</a>
+						<a href="mailto:{{$card->owner->name}}<{{$card->owner->email}}>;?subject={{$mail['subject']}}&body={{$mail['description']}}">@lang('cards.contactOwner')</a>
 					</div>
 				</div>
 			@endif
