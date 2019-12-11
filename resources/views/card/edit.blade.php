@@ -17,7 +17,7 @@
 			<label for="heading" class="col-md-6 col-form-label text-md-right"> Vedette : </label>
 			<input type="text" name="heading" id="heading" value="{{$card->heading}}" readonly>
 		</div>
-		@if ($card->isSignedLanguage())
+		@if ($card->language->isSigned)
 			<div class="form-group row">
 				<label for="headingURL" class="col-md-6 col-form-label text-md-right"> Vedette URL : </label>
 				<input type="text" name="headingURL" id="headingURL" value="{{$card->headingURL}}" placeholder="www.example.com">
@@ -34,7 +34,7 @@
         <input type="hidden" name="owner" value="{{ isset($owner) ? $owner->name : '' }}" disabled/>
 
 		{{-- PHONETIC --}}
-		@if (!$card->isSignedLanguage())
+		@if (!$card->language->isSigned)
 			<div class="form-group row">
 				<label for="phonetic" class="col-md-6 col-form-label text-md-right">Phonetic:</label>
 				<input name="phonetic" class="phonetic" type="text" placeholder="Phonetic" value="{{isset($phonetic) ? $phonetic->textDescription : ''}}" title="Phonetic"/>
@@ -66,10 +66,10 @@
 		<div class="form-group row">
 			<label for="definition" class="col-md-6 col-form-label text-md-right">Definition:</label>
 			{{$def = $card->definition}}
-			@if ($card->isSignedLanguage())
+			@if ($card->language->isSigned)
 				<input name="definition" class="definition" type="text" value="{{isset($def) ? $def->definition_content : ''}}" placeholder="www.example.com">
 			@else
-				<textarea name="definition" class="definition" value="{{isset($def) ? $def->definition_content : ''}}" placeholder="Une définition">{{isset($def) ? $def->definition_content : ""}} </textarea>
+				<textarea name="definition" class="definition" value="{{isset($def) ? $def->definition_content : ''}}" placeholder="Une définition">{{isset($def) ? $def->definition_content : ""}}</textarea>
 			@endif
 		</div>
 
@@ -77,7 +77,7 @@
 		<div class="form-group row">
 			<label for="context" class="col-md-6 col-form-label text-md-right">Contexte:</label>
 			{{$context = $card->context}}
-			@if ($card->isSignedLanguage())
+			@if ($card->language->isSigned)
 				<input name="context" class="context" type="text" value="{{isset($context) ? $context->context_to_string : ''}}" placeholder="www.example.com">
 			@else
 				<textarea name="context" class="context" value="{{isset($context) ? $context->context_to_string : ''}}" placeholder="Un contexte">{{isset($context) ? $context->context_to_string : ""}}</textarea>
@@ -87,7 +87,7 @@
 		{{-- NOTE --}}
 		<div class="form-group row">
 			<label for="note" class="col-md-6 col-form-label text-md-right">Note:</label>
-			<input name="note" class="note" type="text" value="{{isset($note) ? $note->description : ''}}" placeholder="{{$card->isSignedLanguage() ? "www.example.com" : "Une note"}}"/>
+			<input name="note" class="note" type="text" value="{{isset($note) ? $note->description : ''}}" placeholder="{{$card->language->isSigned ? "www.example.com" : "Une note"}}"/>
 		</div>
 
         <br>

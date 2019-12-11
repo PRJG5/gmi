@@ -33,7 +33,7 @@
 			@if (count($languages) != 0)
 				<select id="selectLanguage" name="language_id" class="language_id" type="text" title="Language" required>
 					@foreach  ($languages as $lang)
-						<option value="{{ $lang->slug }}" title="{{ $lang->content }}" >{{ $lang->content }}</option>
+						<option value="{{ $lang->slug }}" title="{{ $lang->content }}" data-issigned={{$lang->isSigned}}>{{ $lang->content }}</option>
 					@endforeach
 				</select>
 			@else
@@ -96,9 +96,7 @@
 <script>
 $( document ).ready(function(){
 	$("#selectLanguage").change(function() {
-		if ($("#selectLanguage").val() == "SSI" //TODO: no hard code
-			|| $("#selectLanguage").val() == "LSBN"
-			|| $("#selectLanguage").val() == "LSBF") {
+		if ($("#selectLanguage").find(":selected").data("issigned")) {
 				$("#formHeadingURL").show();
 				$("#formPhonetic").hide();
 				$("#note").attr("placeholder", "wwww.example.com");
