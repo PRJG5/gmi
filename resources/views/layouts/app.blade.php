@@ -60,9 +60,6 @@
 							<a class="nav-link" href="{{ url('/') }}">@lang('home.home')</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="{{ route('mesFiches') }}">@lang('cards.myCards')</a>
-						</li>
-						<li class="nav-item">
 							<a class="nav-link" href="{{ route('cards.create') }}">@lang('cards.createCard')</a>
 						</li>
 					</ul>
@@ -93,6 +90,7 @@
 							<li class="nav-item dropdown">
 								<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-search"></i>@lang('cards.search')</a>
 								<div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
+									<a class="dropdown-item" href="{{ route('cards.index') }}">@lang('cards.allCards')</a>
 									<a class="dropdown-item" href="{{ route('mesFiches') }}">@lang('cards.myCards')</a>
 									@if(Auth::user() && Auth::user()->role == \App\Enums\Roles::ADMIN)
 										<a class="dropdown-item" href="/searchByUser">@lang('cards.searchCardByAuthor')</a>
