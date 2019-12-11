@@ -209,6 +209,10 @@ class CardController extends Controller
                     if(!empty($request->definition)){ // si y a une definition, on enregistre
                         $card->definition->definition_content = $request->definition;
                         $card->definition->save();
+                    }else{ // on supprime ce qui a été linked
+                        $card->definition->delete();
+                        $card->definition_id = null;
+                        $card->save();
                     }
                 }
                 // NOTE
@@ -231,6 +235,10 @@ class CardController extends Controller
                         $card->note->url = $request->note_link;
                         $card->note->son = $request->note_music;
                         $card->note->save();
+                    }else{ // on supprime ce qui a été linked
+                        $card->note->delete();
+                        $card->note_id = null;
+                        $card->save();
                     }
                 }
                 // CONTEXT
@@ -247,12 +255,16 @@ class CardController extends Controller
                         $card->save();
                     }
                 }else{
-                    if(!empty($request->note)){ // si y a un context, on enregistre
+                    if(!empty($request->context)){ // si y a un context, on enregistre
                         $card->context->context_to_string = $request->context;
                         $card->context->image = $request->context_img;
                         $card->context->url = $request->context_link;
                         $card->context->son = $request->context_music;
                         $card->context->save();
+                    }else{ // on supprime ce qui a été linked
+                        $card->context->delete();
+                        $card->context_id = null;
+                        $card->save();
                     }
                 }
                 // PHONETIC
@@ -275,6 +287,10 @@ class CardController extends Controller
                         $card->phonetic->url = $request->phonetic_link;
                         $card->phonetic->son = $request->phonetic_music;
                         $card->phonetic->save();
+                    }else{ // on supprime ce qui a été linked
+                        $card->phonetic->delete();
+                        $card->phonetic_id = null;
+                        $card->save();
                     }
                 }
                 return redirect()->action('CardController@show', [$card]);
