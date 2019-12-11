@@ -332,7 +332,7 @@ class CardController extends Controller
     $cardA = $request->cardOrigin;
     $cardB = $request->card;
     $l =Link::create(compact('cardA','cardB'));
-    return redirect()->back();
+    return redirect()->back()->with('success','votre carte a bien été liée');
     }
 
    public function showCard($id) {
