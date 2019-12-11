@@ -61,6 +61,9 @@ class CardController extends Controller
         if(isset($request['phonetic']) && strlen($request['phonetic']) > 0){
             $phonetic = Phonetic::create([
                 'textDescription' => $request['phonetic'],
+                'image' => $request->phonetic_img,
+                'url' => $request->phonetic_link,
+                'son' => $request->phonetic_music,
             ]);
             $phonetic->save();
             $request->merge([
@@ -71,6 +74,9 @@ class CardController extends Controller
         if(isset($request['note']) && strlen($request['note']) > 0){
             $note = Note::create([
                 'description' => $request['note'],
+                'image' => $request->note_img,
+                'url' => $request->note_link,
+                'son' => $request->note_music,
             ]);
             $note->save();
             $request->merge([
@@ -81,6 +87,9 @@ class CardController extends Controller
         if(isset($request['context']) && strlen($request['context']) > 0){
             $context = Context::create([
                 'context_to_string' => $request['context'],
+                'image' => $request->context_img,
+                'url' => $request->context_link,
+                'son' => $request->context_music,
             ]);
             $context->save();
             $request->merge([

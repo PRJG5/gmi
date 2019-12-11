@@ -15,7 +15,7 @@
 			
 			@if(isset($phonetic))
 				<tr>
-					<th scope="row" class="text-center">@lang('cards.phonetic') :</th>
+					<th scope="row" class="text-center">@lang('cards.phonetic') :<br><a href="" target="_blank"><i class="fas fa-image pr-2"></i></a><a href="" target="_blank"><i class="fas fa-link pr-2"></i></a><a href="" target="_blank"><i class="fas fa-music pr-2"></i></a></th>
 					<td class="text-left">{{$phonetic}}</td>
 				</tr>
 			@endif
@@ -41,14 +41,14 @@
 			
 			@if(isset($note))
 				<tr>
-					<th scope="row" class="text-center">@lang('cards.note') :</th>
+					<th scope="row" class="text-center">@lang('cards.note') :<br><a href="" target="_blank"><i class="fas fa-image pr-2"></i></a><a href="" target="_blank"><i class="fas fa-link pr-2"></i></a><a href="" target="_blank"><i class="fas fa-music pr-2"></i></a></th>
 					<td class="text-left">{{$note}}</td>
 				</tr>
 			@endif
 
 			@if(isset($context))
 				<tr>
-					<th scope="row" class="text-center">@lang('cards.context') :</th>
+					<th scope="row" class="text-center">@lang('cards.context') :<br><a href="" target="_blank"><i class="fas fa-image pr-2"></i></a><a href="" target="_blank"><i class="fas fa-link pr-2"></i></a><a href="" target="_blank"><i class="fas fa-music pr-2"></i></a></th>
 					<td class="text-left">{{$context}}</td>
 				</tr>
 			@endif
