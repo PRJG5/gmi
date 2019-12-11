@@ -281,7 +281,7 @@ class CardController extends Controller
                         $card->save();
                     }
                 }else{
-                    if(!empty($request->phonetic)){ // si y a un context, on enregistre
+                    if(!empty($request->phonetic)){ // si y a un phonetic, on enregistre
                         $card->phonetic->textDescription = $request->phonetic;
                         $card->phonetic->image = $request->phonetic_img;
                         $card->phonetic->url = $request->phonetic_link;
