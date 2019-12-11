@@ -53,7 +53,8 @@
 				<a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name', 'GMI') }}</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 				<div class="collapse navbar-collapse" id="navbarSupportedContent-4">
-					
+					@guest
+					@else
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item">
 							<a class="nav-link" href="{{ url('/') }}">@lang('home.home')</a>
@@ -65,7 +66,7 @@
 							<a class="nav-link" href="{{ route('cards.create') }}">@lang('cards.createCard')</a>
 						</li>
 					</ul>
-
+					@endguest
 					<ul class="navbar-nav ml-auto">
 
 						<li class="nav-item dropdown">

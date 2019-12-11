@@ -2,6 +2,7 @@
 	<p>@lang('cards.noCards')</p>
 @else
 
+<div class="table-responsive">
 <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
 	<thead>
 		<tr>
@@ -34,6 +35,7 @@
 		@endforeach
 	</tbody>
 </table>
+</div>
 @endif
 
 <div class="row">
