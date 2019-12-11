@@ -2,70 +2,104 @@
 @extends('layouts.app')
 
 @section('card-header')
-@lang('cards.card') : {{$heading}}
+@lang('cards.card') : {{$card->heading}}
 @endsection
 @section('card-body')
 
 	<table class="table">
 		<tbody>
+			{{-- HEADING + HEADING URL --}}
 			<tr>
 				<th scope="row" class="text-center">@lang('cards.heading') :</th>
-				<td class="text-left">{{$heading}}</td>
+				<td class="text-left">
+					@if ($card->language->isSigned && isset($card->headingURL))
+						<a href="$card->headingURL" target="_blank">{{$card->heading}}</a>
+					@else
+						{{$card->heading}}
+					@endif
+				</td>
 			</tr>
 			
-			@if(isset($phonetic))
+			{{-- PHONETIC --}}
+			@if(isset($card->phonetic) && (!$card->language->isSigned))
 				<tr>
 					<th scope="row" class="text-center">@lang('cards.phonetic') :</th>
-					<td class="text-left">{{$phonetic}}</td>
+					<td class="text-left">{{$card->phonetic->textDescription}}</td>
 				</tr>
 			@endif
 
+			{{-- LANGUAGE --}}
 			<tr>
 				<th scope="row" class="text-center">@lang('cards.language') :</th>
-				<td class="text-left">{{$languages}}</td>
+				<td class="text-left">{{$card->language->content}}</td>
 			</tr>
 			
-			@if(isset($domain))
+			{{-- DOMAIN --}}
+			@if(isset($card->domain))
 				<tr>
 					<th scope="row" class="text-center">@lang('cards.domain') :</th>
-					<td class="text-left">{{$domain}}</td>
+					<td class="text-left">{{$card->domain->content}}</td>
 				</tr>
 			@endif
 			
-			@if(isset($subdomain))
+			{{-- SUBDOMAIN --}}
+			@if(isset($card->subdomain))
 				<tr>
 					<th scope="row" class="text-center">@lang('cards.subdomain') :</th>
-					<td class="text-left">{{$subdomain}}</td>
-				</tr>
-			@endif
-			
-			@if(isset($note))
-				<tr>
-					<th scope="row" class="text-center">@lang('cards.note') :</th>
-					<td class="text-left">{{$note}}</td>
+					<td class="text-left">{{$card->subdomain->content}}</td>
 				</tr>
 			@endif
 
-			@if(isset($context))
+			{{-- CONTEXT --}}
+			@if(isset($card->context))
 				<tr>
 					<th scope="row" class="text-center">@lang('cards.context') :</th>
-					<td class="text-left">{{$context}}</td>
+					<td class="text-left">
+						@if ($card->language->isSigned)
+							<a href="{{$card->context->context_to_string}}" target="_blank">Vidéo</a>
+							{{-- TODO: i18n --}}
+						@else
+							<label>{{$card->context->context_to_string}}</label> 
+						@endif
+					</td>
 				</tr>
 			@endif
 
+			{{-- DEFINITION --}}
 			@if(isset($definition))
 				<tr>
 					<th scope="row" class="text-center">@lang('cards.definition') :</th>
-					<td class="text-left">{{$definition}}</td>
+					<td class="text-left">
+						@if ($card->language->isSigned)
+							<a href="{{$card->definition->definition_content}}" target="_blank">Vidéo</a>
+							{{-- TODO: i18n --}}
+						@else
+							<label>{{$card->definition->definition_content}}</label> 
+						@endif
+					</td>
 				</tr>
 			@endif
 			
-			@if(isset($vote_count))
+			{{-- NOTE --}}
+			@if(isset($card->note))
 				<tr>
-					<th scope="row" class="text-center">@lang('cards.voteCount') :</th>
-					<td class="text-left">{{$vote_count}}</td>
+					<th scope="row" class="text-center">@lang('cards.note') :</th>
+					<td class="text-left">
+						@if ($card->language->isSigned)
+							<a href="{{$note->description}}" target="_blank">Vidéo</a> 
+							{{-- TODO: i18n --}}
+						@else
+							{{$card->note->description}}
+						@endif
+					</td>
 				</tr>
 			@endif
+			
+			{{-- NB VOTE --}}
+			<tr>
+				<th scope="row" class="text-center">@lang('cards.voteCount') :</th>
+				<td class="text-left">{{$card->getCountVoteAttribute()}}</td>
+			</tr>
 
 		</tbody>
 	</table>
@@ -80,9 +114,9 @@
 			<a href="/cards/vote/{{$card->id}}" class="btn btn-primary">@lang('cards.voteForCard')</a>
 		@endif
 
-		<a href="/cards/{{$card_id}}/linkList" class="btn btn-primary">@lang('cards.seeLinkedCards')</a>
+		<a href="/cards/{{$card->id}}/linkList" class="btn btn-primary">@lang('cards.seeLinkedCards')</a>
 
-		<a href="/cards/{{$card_id}}/link" class="btn btn-primary">@lang('cards.linkCard')</a>
+		<a href="/cards/{{$card->id}}/link" class="btn btn-primary">@lang('cards.linkCard')</a>
 	</section>
 
 	@if(in_array($card->language_id, Auth::user()->getLanguagesKeyArray()))
@@ -107,7 +141,7 @@
 			@endif
 
 			@if(Auth::user()->role != \App\Enums\Roles::USERS)
-				<form action="{{ route('cards.destroy', $card_id) }}" method="POST" style="margin: 0; width: fit-content; display: inline-block;">
+				<form action="{{ route('cards.destroy', $card->id) }}" method="POST" style="margin: 0; width: fit-content; display: inline-block;">
 
 					@csrf
 

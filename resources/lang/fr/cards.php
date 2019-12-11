@@ -23,6 +23,7 @@ return [
 	'domainsName' => 'Nom du domaine',
 	'editCard' => 'Modifier la Fiche',
 	'heading' => 'Vedette',
+	'headingURL' => 'Vedette URL',
 	'language' => 'Langue',
 	'languagesISOCode' => 'Code ISO de la langue',
 	'languagesName' => 'Nom de la langue',

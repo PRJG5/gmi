@@ -14,7 +14,7 @@ class AddValidationRateToCardsTable extends Migration
     public function up()
     {
         Schema::table('cards', function (Blueprint $table) {
-            $table->unsignedInteger('validation_rate');
+            $table->unsignedInteger('validation_rate')->nullable();
         });
     }
 }

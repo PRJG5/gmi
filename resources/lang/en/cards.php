@@ -23,6 +23,7 @@ return [
 	'domainsName' => 'Domain\'s Name',
 	'editCard' => 'Edit Card',
 	'heading' => 'Heading',
+	'headingURL' => 'Heading URL',
 	'language' => 'Language',
 	'languagesISOCode' => 'Language\'s ISO Code',
 	'languagesName' => 'Language\'s Name',

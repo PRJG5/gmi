@@ -47,9 +47,9 @@ class CardController extends Controller
     public function create()
     {
         return view('card.create', [
-            'domain' 	=> Domain::all(),
-            'subdomain' => Subdomain::all(),
-			'languages' => Auth::user()->getLanguages(),
+            'domains' 	=> Domain::all(),
+            'subdomains' => Subdomain::all(),
+			'languages' => Auth::user()->getLanguages()
         ]);
     }
 
@@ -135,18 +135,7 @@ class CardController extends Controller
         $card = Card::find($card_id);
         return view('card.show', [
             'card'      => $card,
-            'card_id'   => $card_id,
-            'vote_count'=> $card->getCountVoteAttribute(),
-            'domain' 	=> $card->getDomain(),
-            'heading'   => $card->getHeading(),
-            'languages' => $card->getLanguage(),
-            'phonetic'  => $card->getPhonetic(),
-            'note'      => $card->getNote(),
-            'context'   => $card->getContext(),
-            'definition'=> $card->getDefinition(),
-			'subdomain' => $card->getSubdomain(),
-            'owner' 	=> User::find($card->owner_id),
-            'language_id' =>$card->language_id,
+            'owner' 	=> User::find($card->owner_id)
 		]);
     }
 
@@ -164,18 +153,8 @@ class CardController extends Controller
 					'description' => trans('cards.mail.visit', ['cardLink' => route('cards.show', $card->id)]),
 				],
                 'card' 		=> $card,
-                'domain' 	=> Domain::all(),
-                'languages' => DB::table("cards")->where('id',$card->language_id)->first(),
-                'subdomain' => Subdomain::all(),
-                'owner' 	=> $card->owner,
-                'phonetic'  => $card->phonetic,
-                'note'      => $card->note,
-                'context'   => $card->context,
-                'definition'=> $card->definition
-                // 'phonetic'  => $card->getPhonetic(),
-                // 'note'      => $card->getNote(),
-                // 'context'   => $card->getContext(),
-                // 'definition'=> $card->getDefinition()
+                'domains' 	=> Domain::all(),
+                'subdomains' => Subdomain::all(),
             ]);
     }
 
@@ -263,6 +242,7 @@ class CardController extends Controller
 		$tab = [
             'card_id'       => '',
             'heading'		=> 'required',
+            'headingURL'    => '',
             'language_id'	=> 'required',
             'phonetic'		=> '',
             'phonetic_id'   => '',
