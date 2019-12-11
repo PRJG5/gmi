@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Toutes les fiches</h1>
+<h1>@lang('cards.allCards')</h1>
 
 @include('card.index', $cards)
 

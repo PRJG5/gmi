@@ -21,6 +21,7 @@ class VoteController extends Controller
             // Execute the validation methode after each vote
             Card::where('id','=',$card_id)->first()->validate();
         }
-        return redirect()->action('CardController@show', [$card_id]);
+        #return redirect()->action('CardController@show', [Card::find($card_id)]);
+        return redirect()->back();
     }
 }

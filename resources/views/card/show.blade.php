@@ -1,94 +1,159 @@
-
 @extends('layouts.card')
 @extends('layouts.app')
 
 @section('card-header')
-
-	Card
+@lang('cards.card') : {{$heading}}
 @endsection
 @section('card-body')
-<label class="col-md-6 col-form-label text-md-right"> Vedette : </label>
-<label>{{$card->heading}}</label> 
 
-@if (isset($card->headingURL))
-    <a href="{{$card->headingURL}}" target="_blank">Vidéo</a>
-@endif
+	<table class="table">
+		<tbody>
+			{{-- HEADING + HEADING URL --}}
+			<tr>
+				<th scope="row" class="text-center">@lang('cards.heading') :</th>
+				<td class="text-left">
+					@if ($card->language->isSigned && isset($card->headingURL))
+						<a href="$card->headingURL" target="_blank">{{$card->heading}}</a>
+					@else
+						{{$card->heading}}
+					@endif
+				</td>
+			</tr>
+			
+			{{-- PHONETIC --}}
+			@if(isset($card->phonetic) && (!$card->language->isSigned))
+				<tr>
+					<th scope="row" class="text-center">@lang('cards.phonetic') :</th>
+					<td class="text-left">{{$card->phonetic->textDescription}}</td>
+				</tr>
+			@endif
 
-<label  class="col-md-6 col-form-label text-md-right"> Langue : </label>
-<label>{{$languages->content}}</label>
+			{{-- LANGUAGE --}}
+			<tr>
+				<th scope="row" class="text-center">@lang('cards.language') :</th>
+				<td class="text-left">{{$card->language->content}}</td>
+			</tr>
+			
+			{{-- DOMAIN --}}
+			@if(isset($card->domain))
+				<tr>
+					<th scope="row" class="text-center">@lang('cards.domain') :</th>
+					<td class="text-left">{{$card->domain->content}}</td>
+				</tr>
+			@endif
+			
+			{{-- SUBDOMAIN --}}
+			@if(isset($card->subdomain))
+				<tr>
+					<th scope="row" class="text-center">@lang('cards.subdomain') :</th>
+					<td class="text-left">{{$card->subdomain->content}}</td>
+				</tr>
+			@endif
 
-@if (isset($card->phonetic) && (!$card->language->isSigned))
-<label  class="col-md-6 col-form-label text-md-right"> Phonetique : </label>
-<label>{{$card->phonetic->textDescription}}</label> 
-@endif
+			{{-- CONTEXT --}}
+			@if(isset($card->context))
+				<tr>
+					<th scope="row" class="text-center">@lang('cards.context') :</th>
+					<td class="text-left">
+						@if ($card->language->isSigned)
+							<a href="{{$card->context->context_to_string}}" target="_blank">Vidéo</a>
+							{{-- TODO: i18n --}}
+						@else
+							<label>{{$card->context->context_to_string}}</label> 
+						@endif
+					</td>
+				</tr>
+			@endif
 
-@if (isset($card->domain_id))
-<label  class="col-md-6 col-form-label text-md-right"> Domaine : </label>
-<label>{{$card->domain->content}}</label>
-@endif
+			{{-- DEFINITION --}}
+			@if(isset($definition))
+				<tr>
+					<th scope="row" class="text-center">@lang('cards.definition') :</th>
+					<td class="text-left">
+						@if ($card->language->isSigned)
+							<a href="{{$card->definition->definition_content}}" target="_blank">Vidéo</a>
+							{{-- TODO: i18n --}}
+						@else
+							<label>{{$card->definition->definition_content}}</label> 
+						@endif
+					</td>
+				</tr>
+			@endif
+			
+			{{-- NOTE --}}
+			@if(isset($card->note))
+				<tr>
+					<th scope="row" class="text-center">@lang('cards.note') :</th>
+					<td class="text-left">
+						@if ($card->language->isSigned)
+							<a href="{{$note->description}}" target="_blank">Vidéo</a> 
+							{{-- TODO: i18n --}}
+						@else
+							{{$card->note->description}}
+						@endif
+					</td>
+				</tr>
+			@endif
+			
+			{{-- NB VOTE --}}
+			@if(isset($card->getCountVoteAttribute()))
+				<tr>
+					<th scope="row" class="text-center">@lang('cards.voteCount') :</th>
+					<td class="text-left">{{$card->getCountVoteAttribute()}}</td>
+				</tr>
+			@endif
 
-@if (isset($card->subdomain_id))
-<label  class="col-md-6 col-form-label text-md-right"> Sous-Domaine : </label>
-<label>{{$subdomain->content}}</label>
-@endif
+		</tbody>
+	</table>
 
-@if (isset($card->definition_id))
-    <label  class="col-md-6 col-form-label text-md-right"> Definition : </label>
-    @if ($card->language->isSigned)
-        <a href="{{$definition->definition_content}}" target="_blank">Vidéo</a>
-    @else
-        <label>{{$definition->definition_content}}</label> 
-    @endif
-@endif
+	<hr>
 
-@if (isset($card->context_id))
-    <label  class="col-md-6 col-form-label text-md-right"> Contexte : </label>
-    @if ($card->language->isSigned)
-        <a href="{{$context->context_to_string}}" target="_blank">Vidéo</a>
-    @else
-        <label>{{$context->context_to_string}}</label> 
-    @endif
-@endif
+	<section>
 
-@if (isset($card->note_id))
-    <label  class="col-md-6 col-form-label text-md-right"> Note : </label>
-    @if ($card->language->isSigned)
-        <a href="{{$note->description}}" target="_blank">Vidéo</a>
-    @else
-        <label>{{$note->description}}</label>
-    @endif
-@endif
+		<h4>Basic Actions</h4>
+		
+		@if(Auth::user()->id != $card->owner_id)
+			<a href="/cards/vote/{{$card->id}}" class="btn btn-primary">@lang('cards.voteForCard')</a>
+		@endif
 
-@if (isset($card->count_vote))
-<label  class="col-md-6 col-form-label text-md-right"> Nombre de vote : </label>
-<label>{{$card->count_vote}}</label>
-@endif
+		<a href="/cards/{{$card_id}}/linkList" class="btn btn-primary">@lang('cards.seeLinkedCards')</a>
 
-<div style="display:flex;justify-content: space-evenly;">
-        <form action='/cards/vote/{{$card->id}}' method="get">
-        @csrf
-            <button type="submit" class="btn btn-primary">Vote</button>
-        </form>
-    @if(in_array($card->language_id,Auth::user()->getLanguagesKeyArray()))
-        @if(!isset($card->validation_id))
-            <form action='/cards/{{$card->id}}/edit' method="get">
-                @csrf
-                <button type="submit" class="btn btn-primary">Edit</button>
-            </form>
-        @endif
-        @if(Auth::user()->role == \App\Enums\Roles::ADMIN && isset($card->validation_id))
-                <form action="{{ route('cards.removeValidation', $card) }}" method="POST">
-                    @csrf
-                    <button class="btn btn-warning float-right">Remove validation</button>
-                </form>
-        @endif
-         @if(Auth::user()->role != \App\Enums\Roles::USERS)
-                <form action="{{ route('cards.destroy', $card) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn btn-danger float-right">Delete</button>
-                </form>
-         @endif
-    @endif
-</div>
+		<a href="/cards/{{$card_id}}/link" class="btn btn-primary">@lang('cards.linkCard')</a>
+	</section>
+
+	@if(in_array($card->language_id, Auth::user()->getLanguagesKeyArray()))
+
+		<hr>
+	
+		<section>
+
+			<h4>Danger Zone</h4>
+
+			@if(!isset($card->validation_id))
+				<a href="/cards/{{$card->id}}/edit" class="btn btn-primary">@lang('cards.editCard')</a>
+			@endif
+			
+			@if(Auth::user()->role == \App\Enums\Roles::ADMIN && isset($card->validation_id))
+				<form action="{{ route('cards.removeValidation', $card) }}" method="POST" style="margin: 0; width: fit-content; display: inline-block;">
+
+					@csrf
+
+					<button class="btn btn-warning">Remove validation</button>
+				</form>
+			@endif
+
+			@if(Auth::user()->role != \App\Enums\Roles::USERS)
+				<form action="{{ route('cards.destroy', $card_id) }}" method="POST" style="margin: 0; width: fit-content; display: inline-block;">
+
+					@csrf
+
+					@method('DELETE')
+
+					<button class="btn btn-danger">@lang('cards.deleteCard')</button>
+				</form>
+			@endif
+
+		</section>
+	@endif
+
 @endsection

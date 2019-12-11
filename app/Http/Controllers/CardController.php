@@ -1,11 +1,6 @@
 <?php
 namespace App\Http\Controllers;
 
-//TODO: pour ceux qui devront traduire, Remplacer le contenu de ces constantes
-define("FORMAT_SUBJECT", "Remarque concernant votre carte %s");
-define("FORMAT_DESCRIPTION", "Pour consulter votre carte, veuillez suivre ce lien: %s/cards/%s");
-
-
 use App\Card;
 use App\Domain;
 use App\Language;
@@ -16,7 +11,7 @@ use App\Context;
 use App\Definition;
 use App\Subdomain;
 use App\User;
-use App\vote;
+use App\Vote;
 use App\Validation;
 
 use Illuminate\Http\Request;
@@ -39,7 +34,9 @@ class CardController extends Controller
      */
     public function index()
     {
-        return view('allCards',['cards' => Card::orderBy('heading', 'ASC')->get()]);
+        return view('allCards', [
+			'cards' => Card::orderBy('heading', 'ASC')->where('delete','=','0')->get(),
+		]);
     }
 
     /**
@@ -116,7 +113,8 @@ class CardController extends Controller
     {
 		if(!Auth::user()) { // TODO replace with authorize method
 			abort(403, 'Unauthorized action. You must be logged in to create a card.');
-        }
+		}
+		
 		$request->merge([
             'owner_id' => Auth::user()->id,
         ]);
@@ -132,18 +130,12 @@ class CardController extends Controller
      * @return Response the view of the card.
      * @author 44422
      */
-    public function show(Card $card)
+    public function show(int $card_id)
     {
+        $card = Card::find($card_id);
         return view('card.show', [
-			'card' 		=> $card,
-			'domain' 	=> $card->domain,
-			'languages' => Language::all()->where('slug',$card->language_id)->first(),
-			'subdomain' => $card->subdomain,
-            'owner' 	=> $card->owner,
-            'phonetic'  => $card->phonetic,
-            'note'      => $card->note,
-            'context'   => $card->context,
-            'definition'=>  $card->definition
+            'card'      => $card,
+            'owner' 	=> User::find($card->owner_id)
 		]);
     }
 
@@ -155,20 +147,14 @@ class CardController extends Controller
      */
     public function edit(Card $card)
     {
-            $subject = sprintf(FORMAT_SUBJECT, $card->heading);
-            $description = sprintf(FORMAT_DESCRIPTION, $_SERVER['HTTP_HOST'], $card->card_id);
-
             return view('card.edit', [
-                'mail'      => ["subject" => urlencode($subject),'description' => urlencode($description)],
+                'mail'      => [
+					'subject' => trans('cards.mail.remark', ['cardName' => $card->heading]),
+					'description' => trans('cards.mail.visit', ['cardLink' => route('cards.show', $card->id)]),
+				],
                 'card' 		=> $card,
-                'domain' 	=> Domain::all(),
-                'languages' => DB::table("cards")->where('id',$card->language_id)->first(),
-                'subdomain' => Subdomain::all(),
-                'owner' 	=> $card->owner,
-                'phonetic'  => $card->phonetic,
-                'note'      => $card->note,
-                'context'   => $card->context,
-                'definition'=> $card->definition
+                'domains' 	=> Domain::all(),
+                'subdomains' => Subdomain::all(),
             ]);
     }
 
@@ -212,25 +198,32 @@ class CardController extends Controller
      * @throws Exception if card to delete cannot be found
      * @author 44422
      */
-    public function destroy(Card $card)
+    public function destroy(int $card_id)
     {
-        try { 
-            Link::where('cardA', $card->id)->orWhere('cardB', $card->id)->delete();
+        $card =Card::find($card_id);
+        try {
+            // SI LA CARTE EST PAS VALIDER ON LA SUPPRIMER PHYSIQUEMENT
+            if(!$card->isValided()){
+                Link::where('cardA', $card->id)->orWhere('cardB', $card->id)->delete();
 
-            if(Context::find($card->context_id) != null) {
-                Context::find($card->context_id)->delete();
+                if(Context::find($card->context_id) != null) {
+                    Context::find($card->context_id)->delete();
+                }
+                if(Definition::find($card->definition_id) != null) {
+                    Definition::find($card->definition_id)->delete();
+                }
+                if(Note::find($card->note_id) != null) {
+                    Note::find($card->note_id)->delete();
+                }
+                if(Phonetic::find($card->phonetic_id) != null) {
+                    Phonetic::find($card->phonetic_id)->delete();
+                }
+                // VOTE possède un ondelete cascade sur cardId donc si carte se supprime, vote se supprime !
+                $card->delete();
+            }else{
+                $card->delete = 1;
+                $card->save();
             }
-            if(Definition::find($card->definition_id) != null) {
-                Definition::find($card->definition_id)->delete();
-            }
-            if(Note::find($card->note_id) != null) {
-                Note::find($card->note_id)->delete();
-            }
-            if(Phonetic::find($card->phonetic_id) != null) {
-                Phonetic::find($card->phonetic_id)->delete();
-            }
-            // VOTE possède un ondelete cascade sur cardId donc si carte se supprime, vote se supprime !
-            $card->delete();
         } catch(\Exception $exception) {
             echo $exception;
         }
@@ -247,6 +240,7 @@ class CardController extends Controller
      */
     private function validateData(Request $request, bool $creating) {
 		$tab = [
+            'card_id'       => '',
             'heading'		=> 'required',
             'headingURL'    => '',
             'language_id'	=> 'required',
@@ -261,6 +255,9 @@ class CardController extends Controller
             'note_id'		=> '',
             'note'          => '',
             'owner_id'	    => 'required',
+            'validation_id' => '',
+            'vote_count'    => '',
+            'validation_rate'=> 'digits_between:0,100',
 		];
 		if(!$creating) {
 			array_merge($tab, [
@@ -282,12 +279,12 @@ class CardController extends Controller
 		return true; // TODO
 	}
 
-	public function removeValidation(Card $card){
-	    echo "not working yet, todo";
-	    exit;
+	public function removeValidation(Request $request){
+        $card = Card::where('id',$request->id)->first();
         $card->removeValidation();
-        $this->show($card);
+        return redirect()->back();
     }
+
 
     /**
      * Return all cards from an user
@@ -298,15 +295,24 @@ class CardController extends Controller
         return view('card.index',['cards' => Card::where('owner_id',$userId)->get()]);
     }
 
-    public function linkCard(Card $cardOrigin, Card $cardLinked){
+    public function linkCard(int $card_id){
+        $cardOrigin = Card::find($card_id);
         return view('card.link', [
             'cardOrigin' => $cardOrigin,
-            'cardLinked' => $cardLinked,
-			'languages' => Language::all(),
+            'cardLinked' => $cardOrigin->getCardFilterByLanguage(),
             'userOrigin' => DB::table('users')->where('id', $cardOrigin->owner_id)->first(),
-			'userLinked' => DB::table('users')->where('id', $cardLinked->owner_id)->first(),
-
 		]);
+    }
+
+    public function linkToAnotherCard(Request $request){
+        $request->validate([
+            'cardOrigin' => 'required',
+            'card' => 'required',
+        ]);
+    $cardA = $request->cardOrigin;
+    $cardB = $request->card;
+    $l =Link::create(compact('cardA','cardB'));
+    return redirect()->back();
     }
 
    public function showCard($id) {
@@ -323,4 +329,10 @@ class CardController extends Controller
        ]);
    }
 
+   public function linkList(){
+     echo "not working yet, todo";
+    exit;
+    //UTILISER DANS LE FICHIER CARD LA FONCTION getLinkedCard qui retourne les id de toutes les cartes 
+    //NE PAS TOUCHER A LA FONCTION SI BESOIN --> 49778
+   }
 }

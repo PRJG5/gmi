@@ -2,24 +2,27 @@
 
 @section('content')
 
-<h1>Research Card</h1>
-<form action="/searchCard" method="get">
-    <div class="input-group">
-        <input type="search" name="search" class="form-control">
-        <SELECT name="languages" size="1">
-            <OPTION>All
-            @foreach($languages as $language)
-            <OPTION value="{{$language->slug}}">{{$language->content}}
-            @endforeach
-        </SELECT>
-        <span class="input-group-prepend">
-            <button type="submit" class="btn btn-primary">Search</button>
-        </span>
-    </div>
-</form>
+	<h1>@lang('cards.searchCardByHeadingOrLanguage')</h1>
 
+	<form class="form-inline" action="/searchCard" method="get">
 
-@include('card.index')
+		<div class="input-group mr-sm-2 w-50">
+			<input name="search" type="search" class="form-control" placeholder="@lang('cards.heading')"/>
+		</div>
+
+		<div class="input-group mr-sm-2 w-25">
+			<select name="languages" class="form-control">
+				<option>All</option>
+				@foreach($languages as $language)
+					<option value="{{$language->slug}}">{{$language->content}}</option>
+				@endforeach
+			</select>
+		</div>
+		<div class="input-group w-20">
+			<button type="submit" class="btn btn-primary">Search</button>
+		</div>
+	</form>
+
+	@include('card.index')
 
 @endsection
-

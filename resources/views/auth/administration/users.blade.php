@@ -1,40 +1,37 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
-        <tr class="row justify-content-center">
-            <table class="table" style="text-align:center">
-                <thead class="thead-dark">
+        <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%" style="text-align:center">
+            <thead>
                 <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Role</th>
+                    <th class="th-sm">@lang('users.name')</th>
+                    <th class="th-sm">@lang('users.email')</th>
+                    <th class="th-sm">@lang('users.role')</th>
                 </tr>
-                </thead>
-                <tbody>
+            </thead>
+            <tbody>
                 @foreach ($users as $user)
                     @if ($user->role == \App\Enums\Roles::ADMIN)<tr class="table-danger">
                     @elseif($user->role == \App\Enums\Roles::MOD)<tr class="table-warning">
                     @elseif($user->role == \App\Enums\Roles::USERS)<tr class="table-success">
-                    @else
-                    <tr>
+                    @else<tr>
                     @endif
-                        <th>{{$user->name}}</th>
+                        <td><strong>{{$user->name}}</strong></td>
                         <td>{{$user->email}}</td>
                         <td>
-                            <select id="authors" class="form-control" name="author" required="" onchange="updateRole({{$user->id}},this)">
+                            <select id="authors" class="form-control" name="author" required="" onchange="updateRole({{$user->id}}, this)">
                                 @foreach(\App\Enums\Roles::getValues() as $role)
-                                    <option value="{{$role}}" @if ($user->role == $role) selected @endif>{{\App\Enums\Roles::getDescription($role)}}</option>
+                                    <option value="{{$role}}" @if($user->role == $role) selected @endif>{{\App\Enums\Roles::getDescription($role)}}</option>
                                 @endforeach
                             </select>
                         </td>
                     </tr>
                 @endforeach
-                </tbody>
-            </table>
-        </div>
+            </tbody>
+        </table>
     </div>
     <script>
-        function updateRole(userId,event){
+        function updateRole(userId,event) {
             $.ajax({
                 url: '{{ route('admin.updateRole') }}',
                 headers: {
@@ -42,13 +39,13 @@
                 },
                 type: "post",
                 data: {
-                    userId : userId,
+                    userId: userId,
                     role: event.value,
                 },
-                success: function(data){
-                    if(data.status == "SUCCESS"){
-                       location.reload();
-                    }else{
+                success: function (data) {
+                    if (data.status == "SUCCESS") {
+                        location.reload();
+                    } else {
                         Swal.fire({
                             icon: 'error',
                             title: data.type,
@@ -56,10 +53,11 @@
                         })
                     }
                 },
-                error: function(){
+                error: function () {
                     alert('failure');
                 }
             });
         }
     </script>
+    <script src="{{ asset('js/data.js') }}" ></script>
 @endsection

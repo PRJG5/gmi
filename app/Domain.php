@@ -11,4 +11,5 @@ class Domain extends Model
     ];
 
     public $timestamps = false;
+
 }
