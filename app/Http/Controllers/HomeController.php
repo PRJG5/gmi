@@ -77,6 +77,6 @@ class HomeController extends Controller
          $languages = $Alllanguages->whereNotIn('id', $languagesUser->pluck('id'));
         
          
-         return view('auth.modifyProfile',  compact('languages'));
+         return view('auth.modifyProfile',  compact('languages','languagesUser'));
      }
 }

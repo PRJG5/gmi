@@ -113,13 +113,24 @@
                             </div>
                         </div>
                     </form>
-                   
+                    <div class="form-group row">
+                        <label for="languages" class="col-md-4 col-form-label text-md-right">@lang('users.spokenLanguages')</label>
+
+                        <div class="col-md-6">
+                            <select id="languages" class="form-control @error('languages') is-invalid @enderror" multiple>
+                                @foreach ($languagesUser as $language)
+                                    <option value="{{$language->slug}}">{{$language->content}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                    </div>
                     @if(!Auth::user()->role == \App\Enums\Roles::ADMIN)
                     <!--  </div> -->
                     <form method="POST" action="{{ route('modifyLanguages') }}">
                     @csrf
                         <div class="form-group row">
-                            <label for="languages" class="col-md-4 col-form-label text-md-right">{{ __('Langues parlées') }}</label>
+                            <label for="languages" class="col-md-4 col-form-label text-md-right">@lang('users.select_language')</label>
 
                             <div class="col-md-6">
                                 <select id="languages" class="form-control @error('languages') is-invalid @enderror" name="languages[]" required multiple>
@@ -127,7 +138,7 @@
                                     <option value="{{$language->slug}}">{{$language->content}}</option>
                                     @endforeach
                                 </select>
-
+                                <br>
                                 @error('ErrorLanguages')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

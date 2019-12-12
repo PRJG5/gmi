@@ -11,4 +11,5 @@ return [
 	'role' => 'Rôle',
 	'showingEntriesXToYOutOfZ' => 'Résultats :x à :y sur :z affichés',
 	'spokenLanguages' => 'Langues parlées',
+    'select_language' => 'Ajouter une langue',
 ];
