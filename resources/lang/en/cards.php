@@ -55,7 +55,7 @@ return [
     'note_music' => 'Sound for note',
     'phonetic_img' => 'Picture for phonetic',
     'phonetic_link' => 'Link for phonetic',
-    'phonetic_music' => 'Song for phonetic',
+    'phonetic_music' => 'Sound for phonetic',
     'context_img' => 'Picture for context',
     'context_link' => 'Link for context',
     'context_music' => 'Sound for context',
