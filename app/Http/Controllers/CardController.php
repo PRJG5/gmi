@@ -108,7 +108,7 @@ class CardController extends Controller
 
         if(isset($request['definition']) && strlen($request['definition']) > 0){
             $def = Definition::create([
-                'definition_content' => $request['definition'],
+                'definition_content' => $request->definition,
             ]);
             $def->save();
             $request->merge([
@@ -116,7 +116,7 @@ class CardController extends Controller
             ]);
         } else if(isset($request['definitionURL']) && strlen($request['definitionURL']) > 0){
             $def = Definition::create([
-                'definition_content' => $request['definitionURL'],
+                'definition_content' => $request->definitionURL,
             ]);
             $def->save();
             $request->merge([
