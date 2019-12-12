@@ -64,4 +64,6 @@ return [
     'context_link' => 'Lien pour contexte',
 	'context_music' => 'Son pour contexte',
 	'video' => 'Vidéo',
+    'notFoundOrDelete' => 'Fiche non trouvé ou supprimé',
+    'notFoundOrDeleteMessage' => 'Cette fiche a été supprimé',
 ];

@@ -164,11 +164,15 @@ class CardController extends Controller
     public function show(int $card_id)
     {
         $card = Card::find($card_id);
-        return view('card.show', [
-            'card'      => $card,
-            'owner' 	=> User::find($card->owner_id),
-            'hasVote'   => Vote::hasVote(Auth::user()->id,$card_id)
-		]);
+        if(isset($card)){
+            return view('card.show', [
+                'card'      => $card,
+                'owner' 	=> User::find($card->owner_id),
+                'hasVote'   => Vote::hasVote(Auth::user()->id,$card_id)
+            ]);
+        }else{
+            return view('errors.cardNotFound');
+        }
     }
 
     /**
@@ -340,6 +344,11 @@ class CardController extends Controller
                 if(Phonetic::find($card->phonetic_id) != null) {
                     Phonetic::find($card->phonetic_id)->delete();
                 }
+                /*if(($cardVersions = DB::table("card_card")->where('cardOrigin','=',$card->id)->get()) != null) {
+                    foreach($cardVersions as $cardVersion){
+                        $cardVersion->delete();
+                    }
+                }*/
                 // VOTE possède un ondelete cascade sur cardId donc si carte se supprime, vote se supprime !
                 $card->delete();
             }else{

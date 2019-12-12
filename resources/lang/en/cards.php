@@ -64,4 +64,6 @@ return [
     'context_link' => 'Link for context',
     'context_music' => 'Sound for context',
 	'video' => 'Video',
+    'notFoundOrDelete' => 'Cards not found or delete',
+    'notFoundOrDeleteMessage' => 'This card has been delete',
 ];
