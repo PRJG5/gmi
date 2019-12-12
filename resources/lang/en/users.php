@@ -11,4 +11,6 @@ return [
 	'role' => 'Role',
 	'showingEntriesXToYOutOfZ' => 'Showing entries :x to :y out of :z',
 	'spokenLanguages' => 'Spoken Languages',
+    'select_language' => 'Select a new language',
+
 ];
