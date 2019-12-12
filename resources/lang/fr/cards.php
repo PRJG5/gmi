@@ -42,7 +42,7 @@ return [
 	'searchCard' => 'Chercher une Fiche',
 	'searchCardByAuthor' => 'Chercher une Fiche par Auteur',
 	'searchCardByHeadingOrLanguage' => 'Chercher une Fiche par Vedette ou par Langue',
-	'seeLinkedCards' => 'Voire les fiches liées',
+	'seeLinkedCards' => 'Voir les fiches liées',
 	'subdomain' => 'Sous-Domaine',
 	'subdomainsName' => 'Nom du sous-domaine',
 	'validated' => 'Validée',
