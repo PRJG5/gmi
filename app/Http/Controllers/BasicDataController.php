@@ -31,7 +31,7 @@ class BasicDataController extends Controller
         return json_encode(array('success' => 'Save'));
     }
 
-    public function addLanguage($name, $iso) {
+    public function addLanguage($name, $iso, $isSigned) {
         if (Language::where('content', '=', $name)->count() > 0) {
             return json_encode(array('error' => 'Name already saved'));
         }
@@ -41,6 +41,7 @@ class BasicDataController extends Controller
         $language = new Language();
         $language->content = $name;
         $language->slug = $iso;
+        $language->isSigned = $isSigned;
         $language->save();
         return json_encode(array('success' => 'Save'));
     }
