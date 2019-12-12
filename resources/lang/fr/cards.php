@@ -37,6 +37,7 @@ return [
 	'note' => 'Note',
 	'notValidated' => 'Non Validée',
 	'phonetic' => 'Phonétique',
+	'removeValidation' => 'Retirer la validation',
 	'saveChanges' => 'Enregistrer les modifications',
 	'search' => 'Chercher',
 	'searchCard' => 'Chercher une Fiche',

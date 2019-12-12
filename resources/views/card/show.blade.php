@@ -121,7 +121,7 @@
 
 	<section>
 
-		<h4>Basic Actions</h4>
+		<h4>@lang('cards.basicActions')</h4>
 
 		@if(Auth::user()->id != $card->owner_id)
 			<a href="/cards/vote/{{$card->id}}" class="btn btn-primary">@lang('cards.voteForCard')</a>
@@ -138,7 +138,7 @@
 
 		<section>
 
-			<h4>Danger Zone</h4>
+			<h4>@lang('cards.dangerZone')</h4>
 
 			@if(!isset($card->validation_id))
 				<a href="/cards/{{$card->id}}/edit" class="btn btn-primary">@lang('cards.editCard')</a>
@@ -149,7 +149,7 @@
 
 					@csrf
 
-					<button class="btn btn-warning">Remove validation</button>
+					<button class="btn btn-warning">@lang('cards.removeValidation')</button>
 				</form>
 			@endif
 
