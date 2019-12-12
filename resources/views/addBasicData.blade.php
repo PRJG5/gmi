@@ -30,9 +30,9 @@
 			<input id="language" class="form-control" name="language" placeholder="@lang('cards.languagesName')" type="text">
 			<input id="codeIso" class="form-control" name="codeIso" placeholder="@lang('cards.languagesISOCode')" type="text">
 			<input type="radio" name="issigned" value="1" id="rbIsSigned" checked>
-			<label for="rbIsSigned">Is signed</label><br>
+			<label for="rbIsSigned">@lang('cards.is_signed')</label><br>
 			<input type="radio" name="issigned" value="0" id="rbIsNotSigned">
-			<label for="rbIsNotSigned">Is not signed</label><br>
+			<label for="rbIsNotSigned">@lang('cards.is_not_signed')</label><br>
 			<button onclick="addLanguage()" class="btn btn-primary">@lang('cards.addLanguage')</button>
 		</form>
 	</div>
