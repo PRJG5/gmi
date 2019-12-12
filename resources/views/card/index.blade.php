@@ -16,8 +16,9 @@
 	</thead>
 	<tbody>
 		@foreach ($cards as $card)
-
-		{{$lang = $card->getLanguage()}}
+		@php
+			$lang = $card->getLanguage()
+		@endphp
 			<tr>
 				<td title="{{$card->heading}}">{{$card->heading}}</td>
 				<td title="{{$lang }}">{{$lang}}</td>

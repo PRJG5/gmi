@@ -1,12 +1,9 @@
 @extends('layouts.card')
 @extends('layouts.app')
-
 @section('content')
-
 	@section('card-header')
 		@lang('cards.createCard')
 	@endsection
-
 	@section('card-body')
 		<form action="{{route('cards.store')}}" id="createForm" method="POST">
 
