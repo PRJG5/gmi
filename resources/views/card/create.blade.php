@@ -296,26 +296,26 @@
 			});
 
 			// CHANGE THE VIEW ACCORDING TO THE LANGUAGE
+			function switchSignedLanguage() {
+				if ($("#selectLanguage").find(":selected").data("issigned")) {
+						$("#formHeadingURL").show();
+						$("#formPhonetic").hide();
+						$("#note").attr("placeholder", "wwww.example.com");
+						$("#context").hide();
+						$("#contextURL").show();
+						$("#definition").hide();
+						$("#definitionURL").show();
+					} else {
+						$("#formHeadingURL").hide();
+						$("#formPhonetic").show();
+						$("#note").attr("placeholder", "Une note");
+						$("#context").show();
+						$("#contextURL").hide();
+						$("#definition").show();
+						$("#definitionURL").hide();
+					}
+			}
 			$( document ).ready(function(){
-				function switchSignedLanguage() {
-					if ($("#selectLanguage").find(":selected").data("issigned")) {
-							$("#formHeadingURL").show();
-							$("#formPhonetic").hide();
-							$("#note").attr("placeholder", "wwww.example.com");
-							$("#context").hide();
-							$("#contextURL").show();
-							$("#definition").hide();
-							$("#definitionURL").show();
-						} else {
-							$("#formHeadingURL").hide();
-							$("#formPhonetic").show();
-							$("#note").attr("placeholder", "Une note");
-							$("#context").show();
-							$("#contextURL").hide();
-							$("#definition").show();
-							$("#definitionURL").hide();
-						}
-				};
 				$("#selectLanguage").change(switchSignedLanguage); // Change the view when the language change
 				switchSignedLanguage(); // Change the view if the first language is signed
 			});

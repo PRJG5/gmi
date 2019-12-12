@@ -25,7 +25,7 @@ class AddSignedLanguageToLanguage extends Migration
         DB::table('languages')
             ->where('slug', 'SSI')
             ->orWhere('slug', 'LSBF')
-            ->orWhere('slug', 'LSBN')
+            ->orWhere('slug', 'VGT')
             ->update(['isSigned' => true]);
 
     }
