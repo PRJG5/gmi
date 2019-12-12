@@ -18,5 +18,5 @@ class AddConstraintLinksTableUniqueCardaCardb extends Migration
             $table->unique(['cardA' , 'cardB'])->change();
             DB::statement('ALTER TABLE links ADD CONSTRAINT chk_card_different CHECK (cardA <> cardB);');
         });
-    }
+    } 
 }
