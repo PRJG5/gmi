@@ -26,7 +26,7 @@ return [
 	'language' => 'Taal',
 	'languagesISOCode' => 'ISO-code van de kaart',
 	'languagesName' => 'Taal naam',
-	'linkCard' => 'Kart koppelen',
+	'linkCard' => 'Kaart koppelen',
 	'mail' => [
 		'remark' => 'Opmerkingen op uw kaart ":cardName"',
 		'visit' => 'Om uw kaart raad te plegen, ga op :cardLink',
@@ -48,4 +48,14 @@ return [
 	'viewDetails' => 'Detail zien',
 	'voteCount' => 'Aantal stemmen',
 	'voteForCard' => 'Stemmen voor de kaart',
+	'note_img' => 'Afbeelding notitie',
+    'note_link' => 'Bron notitie',
+    'note_music' => 'Geluid notitie',
+    'phonetic_img' => 'Afbeelding klankleer',
+    'phonetic_link' => 'Bron klankleer',
+    'phonetic_music' => 'Geluid klanleer',
+    'context_img' => 'Afbeelding context',
+    'context_link' => 'Bron context',
+	'context_music' => 'Geluid context',
+	'video' => 'Video',
 ];
