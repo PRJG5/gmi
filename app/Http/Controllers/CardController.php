@@ -106,20 +106,20 @@ class CardController extends Controller
         }
 
         if(isset($request['definition']) && strlen($request['definition']) > 0){
-            $note = Definition::create([
+            $def = Definition::create([
                 'definition_content' => $request['definition'],
             ]);
-            $note->save();
+            $def->save();
             $request->merge([
-                'definition_id'=> $note->id,
+                'definition_id'=> $def->id,
             ]);
         } else if(isset($request['definitionURL']) && strlen($request['definitionURL']) > 0){
-            $note = Definition::create([
-                'definition_content' => $request['definition'],
+            $def = Definition::create([
+                'definition_content' => $request['definitionURL'],
             ]);
-            $note->save();
+            $def->save();
             $request->merge([
-                'definition_id'=> $note->id,
+                'definition_id'=> $def->id,
             ]);
         }
 
