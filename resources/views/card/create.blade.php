@@ -289,8 +289,9 @@
 				});
 			});
 
+			// CHANGE THE VIEW ACCORDING TO THE LANGUAGE
 			$( document ).ready(function(){
-				$("#selectLanguage").change(function() {
+				function switchSignedLanguage() {
 					if ($("#selectLanguage").find(":selected").data("issigned")) {
 							$("#formHeadingURL").show();
 							$("#formPhonetic").hide();
@@ -308,8 +309,11 @@
 							$("#definition").show();
 							$("#definitionURL").hide();
 						}
-				});
-				});
+				};
+				$("#selectLanguage").change(switchSignedLanguage()); // Change the view when the language change
+				switchSignedLanguage(); // Change the view if the first language is signed
+			});
+
 		</script>
 		@extends('layouts.error')
 
