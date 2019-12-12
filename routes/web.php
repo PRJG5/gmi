@@ -27,6 +27,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/cards/{card}/{cardOrigin}/link', 'cardController@linkToAnotherCard');
     Route::get('/cards/{card}/{cardOrigin}/link', 'cardController@linkToAnotherCard');
     Route::get('/cards/{card_id}/linkList', 'CardController@linkList');
+	Route::get('/cards/{card_id}/createAndLink', 'CardController@createAndLink')->name('createAndLink');
+
 
     Route::get('/mesFiches', 'MyCardController@index')->name('mesFiches');
 

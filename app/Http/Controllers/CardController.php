@@ -458,8 +458,8 @@ class CardController extends Controller
 
    public function createAndLink($id){
        return view('card.create', [
-        'domain' 	=> Domain::all(),
-        'subdomain' => Subdomain::all(),
+        'domains' 	=> Domain::all(),
+        'subdomains' => Subdomain::all(),
         'languages' => Auth::user()->getLanguages(),
         'cardOriginId'=>$id,
     ]);
