@@ -120,7 +120,7 @@
 
 		<h4>@lang('cards.basicActions')</h4>
 
-		@if(Auth::user()->id != $card->owner_id && !$hasVote)
+		@if(Auth::user()->id != $card->owner_id && !$hasVote && in_array($card->language_id, Auth::user()->getLanguagesKeyArray()))
 			<a href="/cards/vote/{{$card->id}}" class="btn btn-primary">@lang('cards.voteForCard')</a>
 		@endif
 
