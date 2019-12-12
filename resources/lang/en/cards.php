@@ -2,7 +2,7 @@
 
 return [
 	'addDomain' => 'Add Domain',
-	'addDomainsSubdomainsLanguages' => 'Add Domains / Subdomains / Langauges',
+	'addDomainsSubdomainsLanguages' => 'Add Domains / Subdomains / Languages',
 	'addLanguage' => 'Add Language',
 	'addSubdomain' => 'Add Subdomain',
 	'allCards' => 'All Cards',
