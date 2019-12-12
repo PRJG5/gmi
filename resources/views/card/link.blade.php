@@ -69,6 +69,15 @@
 			@endif
 			--}}
 
+			
+				<tr>
+					<form action="{{route('createAndLink',$cardOrigin->id)}}">
+						@csrf
+						<button type ='submit' class="btn btn-primary"> @lang('cards.linkAndCreate')</button>
+					</form>
+				</tr>
+			
+
 		</tbody>
 	</table>
 @endsection
@@ -202,7 +211,7 @@
 										--}}
 									</div>
 									<div style="display:flex;justify-content:space-evenly;">
-										<form action='{{$card->id}}/link' method="get">
+										<form action="{{route('linktoanother',['cardOrigin'=>$cardOrigin->id,'card'=>$card->id])}}" method="get">
 											@csrf
 											<input value="{{$card->id}}" type="hidden" name="card">
 											<input value="{{$cardOrigin->id}}" type="hidden" name="cardOrigin">
@@ -224,3 +233,4 @@
 @endsection
 
 @include("layouts.error")
+@include("layouts.success")

@@ -165,3 +165,5 @@
 	@endif
 
 @endsection
+
+@include('layouts.success')

@@ -219,12 +219,21 @@
 				</div>
 				<!-- Classic tabs -->
 			</div>
+			@if(isset($cardOriginId))
+			<div class="form-group row">
+				
+					<input type="hidden"  name= "cardOriginId" value="{{$cardOriginId}}"/>
+				
+			</div>
+			@endif
 		
 			<div class="form-group row">
 				<div style="margin:auto;">
 					<input type="submit" class="submitButton btn btn-primary" value="@lang('cards.createCard')"/>
 				</div>
 			</div>
+
+			
 
 		</form>
 		<script>
@@ -289,8 +298,9 @@
 				});
 			});
 
+			// CHANGE THE VIEW ACCORDING TO THE LANGUAGE
 			$( document ).ready(function(){
-				$("#selectLanguage").change(function() {
+				function switchSignedLanguage() {
 					if ($("#selectLanguage").find(":selected").data("issigned")) {
 							$("#formHeadingURL").show();
 							$("#formPhonetic").hide();
@@ -308,8 +318,11 @@
 							$("#definition").show();
 							$("#definitionURL").hide();
 						}
-				});
-				});
+				};
+				$("#selectLanguage").change(switchSignedLanguage()); // Change the view when the language change
+				switchSignedLanguage(); // Change the view if the first language is signed
+			});
+
 		</script>
 		@extends('layouts.error')
 

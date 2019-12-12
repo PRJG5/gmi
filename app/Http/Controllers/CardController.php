@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 
+
 /**
  * Handles the different CRUD action about the cards.
  * @author 44422
@@ -106,20 +107,20 @@ class CardController extends Controller
         }
 
         if(isset($request['definition']) && strlen($request['definition']) > 0){
-            $note = Definition::create([
+            $def = Definition::create([
                 'definition_content' => $request['definition'],
             ]);
-            $note->save();
+            $def->save();
             $request->merge([
-                'definition_id'=> $note->id,
+                'definition_id'=> $def->id,
             ]);
         } else if(isset($request['definitionURL']) && strlen($request['definitionURL']) > 0){
-            $note = Definition::create([
-                'definition_content' => $request['definition'],
+            $def = Definition::create([
+                'definition_content' => $request['definitionURL'],
             ]);
-            $note->save();
+            $def->save();
             $request->merge([
-                'definition_id'=> $note->id,
+                'definition_id'=> $def->id,
             ]);
         }
 
@@ -145,6 +146,11 @@ class CardController extends Controller
         ]);
 
         $card = $this->create_card($request);
+        if(isset($request->cardOriginId)){
+            $cardOrigin = Card::find($request->cardOriginId);
+            Link::create(['cardA'=>$card->id,'cardB'=>$cardOrigin->id]);
+            return redirect()->action('CardController@show', [$card])->with('success','votre fiche a été créée et liée');
+        }
 
         return redirect()->action('CardController@show', [$card]);
     }
@@ -416,7 +422,7 @@ class CardController extends Controller
         return view('card.link', [
             'cardOrigin' => $cardOrigin,
             'cardLinked' => $cardOrigin->getCardFilterByLanguage(),
-            'userOrigin' => DB::table('users')->where('id', $cardOrigin->owner_id)->first(),
+            'userOrigin' => Auth::user(),
 		]);
     }
 
@@ -428,7 +434,7 @@ class CardController extends Controller
     $cardA = $request->cardOrigin;
     $cardB = $request->card;
     $l =Link::create(compact('cardA','cardB'));
-    return redirect()->back();
+    return redirect()->back()->with('success','votre carte a bien été liée');
     }
 
    public function showCard($id) {
@@ -445,10 +451,19 @@ class CardController extends Controller
        ]);
    }
 
-   public function linkList(){
-     echo "not working yet, todo";
-    exit;
-    //UTILISER DANS LE FICHIER CARD LA FONCTION getLinkedCard qui retourne les id de toutes les cartes 
-    //NE PAS TOUCHER A LA FONCTION SI BESOIN --> 49778
+   public function linkList($id){
+     $card = Card::find($id);
+     
+     return view('listLinkedCards')->with('cards',$card->getLinkedCard());
+   }
+
+   public function createAndLink($id){
+       return view('card.create', [
+        'domains' 	=> Domain::all(),
+        'subdomains' => Subdomain::all(),
+        'languages' => Auth::user()->getLanguages(),
+        'cardOriginId'=>$id,
+    ]);
+
    }
 }

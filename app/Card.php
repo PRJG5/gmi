@@ -349,8 +349,12 @@ class Card extends Model
     }
 
     public function getLanguage(){
-         $langs = Language::where('slug','=',$this->language_id)->get();
-        return $langs[0]->content;
+        $langs = Language::where('slug','=',$this->language_id)->get();
+        if(count($langs)>0)
+            return $langs[0]->content;
+        else{
+            return null;
+        }
     }
 
     public function getNote(){
