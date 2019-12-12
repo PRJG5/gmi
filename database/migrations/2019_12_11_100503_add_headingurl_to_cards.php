@@ -15,8 +15,9 @@ class AddHeadingurlToCards extends Migration
     public function up()
     {
         Schema::table('cards', function (Blueprint $table) {
-            $table->lineString('headingURL')->nullable();
+            $table->text('headingURL')->nullable();
             //Should set a trigger to check if 'headingURL' is empty if the language is not signed. But too complex to do it quick
+            //Should test if url like
         });
     }
 
