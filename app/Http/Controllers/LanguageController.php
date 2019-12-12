@@ -17,7 +17,7 @@ class LanguageController extends Controller
     public function index()
     {
         
-        return view("addBasicData")->with(['headers'=>['id','content','slug'],'bodies'=>Language::all()]);
+        return view("addBasicData")->with(['headers'=>['id','content','slug'],'bodies'=>Language::orderBy('content')->get()]);
     }
 
     public function importView(){

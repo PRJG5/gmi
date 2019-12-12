@@ -63,7 +63,7 @@ class HomeController extends Controller
                             ->get();
         }
     
-        return view('searchCard', ['cards' => $cards, 'languages' => Language::all()]);
+        return view('searchCard', ['cards' => $cards, 'languages' => Language::orderBy('content')->get()]);
     }
 
     public function indexUsers(){
