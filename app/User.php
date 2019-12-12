@@ -64,7 +64,7 @@ class User extends Authenticatable
     public function getLanguages(){
         $languages = [];
         if($this->role == Enums\Roles::ADMIN){
-            return Language::all();
+            return Language::orderBy('content')->get();
         }else{
 
             return SpokenLanguages::join('languages', 'spoken_languages.languageISO', '=', 'languages.slug')->where('user_id',$this->id)->get();
