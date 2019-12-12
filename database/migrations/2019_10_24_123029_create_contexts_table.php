@@ -15,7 +15,7 @@ class CreateContextsTable extends Migration
     {
         Schema::create('contexts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('context_to_string');
+            $table->longtext('context_to_string');
             $table->timestamps();
         });
     }

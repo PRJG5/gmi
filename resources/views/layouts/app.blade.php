@@ -53,19 +53,17 @@
 				<a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name', 'GMI') }}</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 				<div class="collapse navbar-collapse" id="navbarSupportedContent-4">
-					
+					@guest
+					@else
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item">
 							<a class="nav-link" href="{{ url('/') }}">@lang('home.home')</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="{{ route('mesFiches') }}">@lang('cards.myCards')</a>
-						</li>
-						<li class="nav-item">
 							<a class="nav-link" href="{{ route('cards.create') }}">@lang('cards.createCard')</a>
 						</li>
 					</ul>
-
+					@endguest
 					<ul class="navbar-nav ml-auto">
 
 						<li class="nav-item dropdown">
@@ -92,6 +90,7 @@
 							<li class="nav-item dropdown">
 								<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-search"></i>@lang('cards.search')</a>
 								<div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
+									<a class="dropdown-item" href="{{ route('cards.index') }}">@lang('cards.allCards')</a>
 									<a class="dropdown-item" href="{{ route('mesFiches') }}">@lang('cards.myCards')</a>
 									@if(Auth::user() && Auth::user()->role == \App\Enums\Roles::ADMIN)
 										<a class="dropdown-item" href="/searchByUser">@lang('cards.searchCardByAuthor')</a>
@@ -113,7 +112,8 @@
 							<li class="nav-item dropdown">
 								<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i>@lang('users.profile')</a>
 								<div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
-									<h5 class="dropdown-header">{{ \App\Enums\Roles::getDescription(Auth::user()->role) }} : {{ Auth::user()->name }}</h5>
+                                    <h5 class="dropdown-header">{{ \App\Enums\Roles::getDescription(Auth::user()->role) }} : {{ Auth::user()->name }}</h5>
+                                    <a class="dropdown-item" href="/modifyProfile">Modifier son profil</a>
 									<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">@lang('auth.logout')</a>
 									<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
 								</div>

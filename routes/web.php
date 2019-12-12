@@ -9,41 +9,44 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::middleware(['auth'])->group(function() {
+Route::middleware(['auth'])->group(function () {
 
-	Route::get('/', 'HomeController@index');
-	Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/', 'HomeController@index');
+    Route::get('/home', 'HomeController@index')->name('home');
 
-	Route::get('/cards/vote/{card}','VoteController@voteCard')->name('voteCard');
-	Route::resource('cards', 'CardController');
-	Route::get('/cards/{card_id}/link','CardController@linkCard')->name('link');
-	Route::get('/cards/{card}/{cardOrigin}/link','CardController@linkToAnotherCard')->name('linktoanother');
-	Route::get('/cards/{card_id}/linkList', 'CardController@linkList');
-	Route::get('/cards/{card_id}/createAndLink', 'CardController@createAndLink')->name('createAndLink');
+    Route::get('/cards/vote/{card}', 'VoteController@voteCard')->name('voteCard');
+    Route::resource('cards', 'CardController');
+    Route::get('/cards/{card_id}/link', 'CardController@linkCard')->name('link');
+    Route::get('/cards/{card}/{cardOrigin}/link', 'cardController@linkToAnotherCard');
+    Route::get('/cards/{card}/{cardOrigin}/link', 'cardController@linkToAnotherCard');
+    Route::get('/cards/{card_id}/linkList', 'CardController@linkList');
 
-	Route::get('/mesFiches', 'MyCardController@index')->name('mesFiches');
+    Route::get('/mesFiches', 'MyCardController@index')->name('mesFiches');
 
-	Route::get('/searchCard' , 'HomeController@searchCard')->name('searchCard');
+    Route::get('/searchCard', 'HomeController@searchCard')->name('searchCard');
 
-	Route::get('/searchByUser/{id}', 'CardController@getCardsByUser');
+    Route::get('/searchByUser/{id}', 'CardController@getCardsByUser');
 
-    Route::post('/checkVedette','BasicDataController@checkVedette')->name('cards.checkvedette');
-
-    Route::middleware(['admin'])->group(function() {
+    Route::post('/checkVedette', 'BasicDataController@checkVedette')->name('cards.checkvedette');
+    Route::get('/modifyProfile', 'HomeController@modifyProfile')->name('Modifier son profil')->middleware('auth');
+    Route::post('/modifyMail', 'UserController@modifyMail')->name('modifyMail')->middleware('auth');
+    Route::post('/modifyLanguages', 'UserController@modifyLanguages')->name('modifyLanguages')->middleware('auth');
+    Route::post('/modifyPassword', 'UserController@modifyPassword')->name('modifyPassword')->middleware('auth');
+    Route::middleware(['admin'])->group(function () {
 
         Route::post('/cards/{id}/removeValidation', 'CardController@removeValidation')->name('cards.removeValidation');
 
-        Route::get('/users','HomeController@indexUsers')->name('ListingUsers');
-		
-		Route::post('updateRole','UserController@updateRole')->name('admin.updateRole');
-	});
+        Route::get('/users', 'HomeController@indexUsers')->name('ListingUsers');
 
+        Route::post('updateRole', 'UserController@updateRole')->name('admin.updateRole');
+    });
 });
 
 
@@ -59,6 +62,6 @@ Route::get('/searchByUser', function () {
 //  */
 // Route::get("/card/{id}", 'CardController@showCard');
 
-Route::get('/addLanguage','LanguageController@importView');
+Route::get('/addLanguage', 'LanguageController@importView');
 
 Route::get('/addbasicdata', 'LanguageController@index')->name('basicData');

@@ -90,6 +90,7 @@ class Card extends Model
      */
     protected $attributes = [
         'heading'		=> '',
+        'headingURL'    => NULL,
         'phonetic_id'	=> NULL,
         'domain_id'		=> '',
         'subdomain_id'	=> '',
@@ -109,6 +110,7 @@ class Card extends Model
      */
     protected $fillable = [
         'heading',
+        'headingURL',
         'phonetic_id',
         'domain_id',
         'subdomain_id',
@@ -139,6 +141,7 @@ class Card extends Model
 		"{ Card\n" .
 			"\tid: "			. $this->id				. "\n" .
 			"\theading:"		. $this->heading		. "\n" .
+			"\theadingURL:"		. $this->headingURL		. "\n" .
 			"\tphonetic_id: "	. $this->phonetic_id	. "\n" .
 			"\tdomain_id:"		. $this->domain_id		. "\n" .
 			"\tdefinition_id: "	. $this->definition_id	. "\n" .
@@ -237,6 +240,19 @@ class Card extends Model
     {
         return $this->belongsTo('App\User','owner_id');
     }
+
+    
+    /**
+     * auto relation beetwen foreign-key
+     * Doc : https://laravel.com/docs/6.x/eloquent-relationships
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function language()
+    {
+        return $this->hasOne('App\Language', 'slug', 'language_id');
+    }
+
+    
 
     /**
      * This method is a computer attribute and count the number of vote

@@ -16,6 +16,9 @@ class Phonetic extends Model
 	];
 	protected $fillable = [
 		'textDescription',
+        'image',
+        'url',
+        'son',
 	];
 	protected $guarded = [
         'id',

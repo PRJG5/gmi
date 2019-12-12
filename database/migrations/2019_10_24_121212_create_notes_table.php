@@ -18,7 +18,7 @@ class CreateNotesTable extends Migration
             //Note's id
             $table->bigIncrements('id');
             //Note's description
-            $table->text('description')->nullable($value=True);
+            $table->longtext('description')->nullable($value=True);
             //Note creation and update
             $table->timestamps();
         });

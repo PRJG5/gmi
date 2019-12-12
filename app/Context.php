@@ -16,6 +16,9 @@ class Context extends Model
 	public $timestamps = false;
 	protected $fillable = [
 		'context_to_string',
+        'image',
+        'url',
+        'son',
 	];
 	protected $guarded = [
         'id',

@@ -6,6 +6,7 @@ use App\Card;
 use App\Language;
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -49,8 +50,7 @@ class HomeController extends Controller
         } else if ($language == "All") {
             
             $cards = Card::where('heading', 'like', $search."%")
-                    ->orderBy('nbVotes', 'DESC')
-                    ->get();
+                    ->get()->sortByDesc('count_vote');
 
         } else if ($search == "") {
             $cards = Card::where('language_id', '=', $language)
@@ -59,8 +59,7 @@ class HomeController extends Controller
         }else {
             $cards = Card::where('heading', 'like', $search."%")
                             ->where('language_id',  $language)
-                            ->orderBy('nbVotes', 'DESC')
-                            ->get();
+                            ->get()->sortByDesc('count_vote');
         }
     
         return view('searchCard', ['cards' => $cards, 'languages' => Language::all()]);
@@ -69,4 +68,15 @@ class HomeController extends Controller
     public function indexUsers(){
         return view('auth.administration.users')->with(['users'=> User::all()]);
     }
+
+    //A placer dans auth
+     public function modifyProfile(){
+        $Alllanguages = Language::all();
+        $user = User::find(Auth::user()->id);
+        $languagesUser=$user->getLanguages();
+         $languages = $Alllanguages->whereNotIn('id', $languagesUser->pluck('id'));
+        
+         
+         return view('auth.modifyProfile',  compact('languages'));
+     }
 }

@@ -43,11 +43,11 @@ class CreateCardsTable extends Migration
             /**
              * LIST OF ALTER TABLE *
              */
-            $table->foreign('owner_id')->references('id')->on('users');
-            $table->foreign('context_id')->references('id')->on('contexts')->onDelete('cascade');
-            $table->foreign('definition_id')->references('id')->on('definitions')->onDelete('cascade');
-            $table->foreign('note_id')->references('id')->on('notes')->onDelete('cascade');
-            $table->foreign('phonetic_id')->references('id')->on('phonetics')->onDelete('cascade');
+            $table->foreign('owner_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('context_id')->references('id')->on('contexts')->onDelete('SET NULL');
+            $table->foreign('definition_id')->references('id')->on('definitions')->onDelete('SET NULL');
+            $table->foreign('note_id')->references('id')->on('notes')->onDelete('SET NULL');
+            $table->foreign('phonetic_id')->references('id')->on('phonetics')->onDelete('SET NULL');
         });
  }
 

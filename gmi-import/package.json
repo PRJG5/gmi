@@ -1,0 +1,21 @@
+{
+  "name": "gmi-import",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./out/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/mysql": "^2.15.8",
+    "@types/node": "^12.12.17",
+    "tsc": "^1.20150623.0",
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.3"
+  },
+  "dependencies": {
+    "mysql": "^2.17.1"
+  }
+}
