@@ -46,7 +46,7 @@ return [
 	'subdomain' => 'Subdomain',
 	'subdomainsName' => 'Subdomain\'s Name',
 	'validated' => 'Validated',
-	'viewDetails' => 'View Detials',
+	'viewDetails' => 'View Details',
 	'voteCount' => 'Vote Count',
 	'voteForCard' => 'Vote for Card',
     'note_img' => 'Picture for note',
