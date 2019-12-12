@@ -24,10 +24,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/cards/vote/{card}', 'VoteController@voteCard')->name('voteCard');
     Route::resource('cards', 'CardController');
     Route::get('/cards/{card_id}/link', 'CardController@linkCard')->name('link');
-    Route::get('/cards/{card}/{cardOrigin}/link', 'cardController@linkToAnotherCard');
-    Route::get('/cards/{card}/{cardOrigin}/link', 'cardController@linkToAnotherCard');
+    Route::get('/cards/{card}/{cardOrigin}/link', 'CardController@linkToAnotherCard')->name('linktoanother');
     Route::get('/cards/{card_id}/linkList', 'CardController@linkList');
-	Route::get('/cards/{card_id}/createAndLink', 'CardController@createAndLink')->name('createAndLink');
+    Route::get('/cards/{card_id}/createAndLink', 'CardController@createAndLink')->name('createAndLink');
+    Route::get('/validatedCards','CardController@getValidatedCards')->name('validatedCard');
 
 
     Route::get('/mesFiches', 'MyCardController@index')->name('mesFiches');

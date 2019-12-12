@@ -25,12 +25,16 @@
 	<hr>
 
 	<div>
-		<div class="form-group">
+		<form class="form-group">
 			<label for="language">@lang('cards.language')</label>
 			<input id="language" class="form-control" name="language" placeholder="@lang('cards.languagesName')" type="text">
 			<input id="codeIso" class="form-control" name="codeIso" placeholder="@lang('cards.languagesISOCode')" type="text">
-		</div>
-		<button onclick="addLanguage()" class="btn btn-primary">@lang('cards.addLanguage')</button>
+			<input type="radio" name="issigned" value="1" id="rbIsSigned" checked>
+			<label for="rbIsSigned">Is signed</label><br>
+			<input type="radio" name="issigned" value="0" id="rbIsNotSigned">
+			<label for="rbIsNotSigned">Is not signed</label><br>
+			<button onclick="addLanguage()" class="btn btn-primary">@lang('cards.addLanguage')</button>
+		</form>
 	</div>
 
 	<script>
@@ -72,7 +76,8 @@
 			};
             const nameLanguage = $('#language').val();
             const codeIso = $("#codeIso").val();
-			xhttp.open("GET", "/api/addlanguage/" + nameLanguage + "/code/" + codeIso, true);
+			const isSigned = $("#rbIsSigned").prop('checked');
+			xhttp.open("GET", "/api/addlanguage/" + nameLanguage + "/code/" + codeIso + "/issigned/" + isSigned, true);
 			xhttp.send();
 		}
 

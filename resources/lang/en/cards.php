@@ -33,6 +33,7 @@ return [
 		'visit' => 'To check out your card, please go on :cardLink',
 	],
 	'listLinkedCards'=>'Linked Cards',
+	'listValidatedCards' => 'Validated Cards',
 	'linkAndCreate'=>'Create & auto-link',
 	'createdAndLinked'=>'your card has been created and linked',
 	'myCards' => 'My Cards',

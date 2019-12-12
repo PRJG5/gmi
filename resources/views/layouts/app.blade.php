@@ -62,6 +62,9 @@
 						<li class="nav-item">
 							<a class="nav-link" href="{{ route('cards.create') }}">@lang('cards.createCard')</a>
 						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{{ route('validatedCard') }}">@lang('cards.listValidatedCards')</a>
+						</li>
 					</ul>
 					@endguest
 					<ul class="navbar-nav ml-auto">

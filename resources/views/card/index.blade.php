@@ -16,11 +16,9 @@
 	</thead>
 	<tbody>
 		@foreach ($cards as $card)
-
-		{{$lang = $card->getLanguage()}}
 			<tr>
 				<td title="{{$card->heading}}">{{$card->heading}}</td>
-				<td title="{{$lang }}">{{$lang}}</td>
+				<td title="{{$card->getLanguage() }}">{{$card->getLanguage()}}</td>
 				<td title="{{$card->getDefinition()}}">{{$card->getDefinition()}}</td>
 				<td title="{{$card->count_vote}}">{{$card->count_vote}}</td>
 				<td>

@@ -48,8 +48,8 @@ class CardController extends Controller
     public function create()
     {
         return view('card.create', [
-            'domains' 	=> Domain::all(),
-            'subdomains' => Subdomain::all(),
+            'domains' 	=> Domain::orderBy('content')->get(),
+            'subdomains' => Subdomain::orderBy('content')->get(),
 			'languages' => Auth::user()->getLanguages()
         ]);
     }
@@ -185,8 +185,8 @@ class CardController extends Controller
 					'description' => trans('cards.mail.visit', ['cardLink' => route('cards.show', $card->id)]),
 				],
                 'card' 		=> $card,
-                'domains' 	=> Domain::all(),
-                'subdomains' => Subdomain::all(),
+                'domains' 	=> Domain::orderBy('content')->get(),
+                'subdomains' => Subdomain::orderBy('content')->get(),
             ]);
     }
 
@@ -465,5 +465,14 @@ class CardController extends Controller
         'cardOriginId'=>$id,
     ]);
 
+   }
+
+   public function getValidatedCards(){
+
+    $cards = Card::all()->reject(function($card){
+        return $card->isValided() === False;
+    });
+    
+        return view('listValidatedCards')->with('cards',$cards);
    }
 }
