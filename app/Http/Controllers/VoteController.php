@@ -16,7 +16,9 @@ class VoteController extends Controller
         $vote = new Vote();
         $vote->user_id= Auth::user()->id;
         $vote->card_id=$card_id;
-        if(Vote::where([['user_id','=',$vote->user_id], ['card_id','=',$vote->card_id]])->doesntExist()){ /* verif if the vote not exist */
+        $card = Card::where('id', $card_id)->first();
+        if(Vote::where([['user_id','=',$vote->user_id], ['card_id','=',$vote->card_id]])->doesntExist()
+            && $card->owner_id != Auth::user()->id){ /* verif if the vote not exist */
             $vote->save();
             // Execute the validation methode after each vote
             Card::where('id','=',$card_id)->first()->validate();

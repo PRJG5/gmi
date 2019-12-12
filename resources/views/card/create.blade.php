@@ -319,7 +319,7 @@
 							$("#definitionURL").hide();
 						}
 				};
-				$("#selectLanguage").change(switchSignedLanguage()); // Change the view when the language change
+				$("#selectLanguage").change(switchSignedLanguage); // Change the view when the language change
 				switchSignedLanguage(); // Change the view if the first language is signed
 			});
 
