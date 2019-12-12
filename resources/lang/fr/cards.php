@@ -66,4 +66,6 @@ return [
 	'video' => 'Vidéo',
 	'is_signed' => 'Langue vocale',
 	'is_not_signed' => 'Langue non vocale',
+    'notFoundOrDelete' => 'Fiche non trouvé ou supprimé',
+    'notFoundOrDeleteMessage' => 'Cette fiche a été supprimé',
 ];

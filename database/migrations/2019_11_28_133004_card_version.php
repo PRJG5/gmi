@@ -20,10 +20,6 @@ class CardVersion extends Migration
             $table->unsignedBigInteger("cardOrigin");
             //Foreign key to a card B
             $table->unsignedBigInteger("cardVersion");
-            
-            ##Their references
-            $table->foreign('cardOrigin')->references('id')->on('cards');
-            $table->foreign('cardVersion')->references('id')->on('cards');
         });
     }
 

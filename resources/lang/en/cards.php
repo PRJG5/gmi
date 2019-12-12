@@ -66,4 +66,6 @@ return [
 	'video' => 'Video',
 	'is_signed' => 'Vocal language',
 	'is_not_signed' => 'Non vocal language',
+    'notFoundOrDelete' => 'Cards not found or delete',
+    'notFoundOrDeleteMessage' => 'This card has been delete',
 ];
