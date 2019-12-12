@@ -15,7 +15,7 @@
 			{{-- VEDETTE --}}
 			<div class="form-group row">
 				<label for="heading" class="col-md-6 col-form-label text-md-right">@lang('cards.heading') :</label>
-				<input type="text" name="heading" id="heading" placeholder="@lang('cards.heading')" title="@lang('cards.heading')" value="{{ old('heading') }}" required>
+				<input type="text" name="heading" class="heading" id="heading" placeholder="@lang('cards.heading')" title="@lang('cards.heading')" value="{{ old('heading') }}" required>
 				@error('heading')
 					<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
 				@enderror
@@ -267,6 +267,7 @@
 						vedette: $('.heading').val(),
 					},
 					success: function (data) {
+
 						if(data.status == "SUCCESS"){
 							$( "#createForm" ).submit();
 						}else{
