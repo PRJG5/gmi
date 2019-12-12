@@ -1,5 +1,5 @@
 <?php
-
+//
 return [
 	'addDomain' => 'Add Domain',
 	'addDomainsSubdomainsLanguages' => 'Add Domains / Subdomains / Languages',
