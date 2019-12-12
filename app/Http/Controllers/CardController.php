@@ -160,7 +160,8 @@ class CardController extends Controller
         $card = Card::find($card_id);
         return view('card.show', [
             'card'      => $card,
-            'owner' 	=> User::find($card->owner_id)
+            'owner' 	=> User::find($card->owner_id),
+            'hasVote'   => Vote::hasVote(Auth::user()->id,$card_id)
 		]);
     }
 
@@ -339,10 +340,10 @@ class CardController extends Controller
                 $card->delete = 1;
                 $card->save();
             }
+            return redirect()->action('CardController@index');
         } catch(\Exception $exception) {
             echo $exception;
         }
-        return redirect()->action('CardController@index');
     }
 
     /**

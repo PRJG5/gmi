@@ -29,6 +29,11 @@ class Vote extends Model
 	protected $guarded = [
         'id',
 	];
+
+	static function hasVote($userId,$cardId){
+	    return Vote::where('user_id','=',$userId)->where('card_id','=',$cardId)->count();
+	}
+
 }
 
 ?>
