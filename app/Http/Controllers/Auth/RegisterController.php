@@ -104,7 +104,7 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
-        $languages = Language::all();
+        $languages = Language::orderBy('content')->get();
         return view('auth.register', compact('languages'));
     }
 }

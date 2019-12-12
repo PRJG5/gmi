@@ -62,7 +62,7 @@ class HomeController extends Controller
                             ->get()->sortByDesc('count_vote');
         }
     
-        return view('searchCard', ['cards' => $cards, 'languages' => Language::all()]);
+        return view('searchCard', ['cards' => $cards, 'languages' => Language::orderBy('content')->get()]);
     }
 
     public function indexUsers(){
