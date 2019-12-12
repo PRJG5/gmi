@@ -59,4 +59,6 @@ return [
     'context_link' => 'Lien pour contexte',
 	'context_music' => 'Son pour contexte',
 	'video' => 'Vidéo',
+	'is_signed' => 'Langue vocale',
+	'is_not_signed' => 'Langue non vocale',
 ];
