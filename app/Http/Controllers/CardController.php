@@ -465,4 +465,13 @@ class CardController extends Controller
     ]);
 
    }
+
+   public function getValidatedCards(){
+
+    $cards = Card::all()->reject(function($card){
+        return $card->isValided() === False;
+    });
+    
+        return view('listValidatedCards')->with('cards',$cards);
+   }
 }
