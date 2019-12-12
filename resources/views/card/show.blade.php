@@ -13,7 +13,7 @@
 				<th scope="row" class="text-center">@lang('cards.heading') :</th>
 				<td class="text-left">
 					@if ($card->language->isSigned && isset($card->headingURL))
-						<a href="$card->headingURL" target="_blank">{{$card->heading}}</a>
+						<a href="{{$card->headingURL}}" target="_blank">{{$card->heading}}</a>
 					@else
 						{{$card->heading}}
 					@endif
