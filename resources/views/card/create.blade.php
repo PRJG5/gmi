@@ -1,12 +1,9 @@
 @extends('layouts.card')
 @extends('layouts.app')
-
 @section('content')
-
 	@section('card-header')
 		@lang('cards.createCard')
 	@endsection
-
 	@section('card-body')
 		<form action="{{route('cards.store')}}" id="createForm" method="POST">
 
@@ -298,8 +295,9 @@
 				});
 			});
 
+			// CHANGE THE VIEW ACCORDING TO THE LANGUAGE
 			$( document ).ready(function(){
-				$("#selectLanguage").change(function() {
+				function switchSignedLanguage() {
 					if ($("#selectLanguage").find(":selected").data("issigned")) {
 							$("#formHeadingURL").show();
 							$("#formPhonetic").hide();
@@ -317,8 +315,11 @@
 							$("#definition").show();
 							$("#definitionURL").hide();
 						}
-				});
-				});
+				};
+				$("#selectLanguage").change(switchSignedLanguage); // Change the view when the language change
+				switchSignedLanguage(); // Change the view if the first language is signed
+			});
+
 		</script>
 		@extends('layouts.error')
 

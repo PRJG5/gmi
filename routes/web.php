@@ -18,8 +18,8 @@ Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('/', 'HomeController@index');
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/', 'CardController@index');
+    Route::get('/home', 'CardController@index')->name('home');
 
     Route::get('/cards/vote/{card}', 'VoteController@voteCard')->name('voteCard');
     Route::resource('cards', 'CardController');
@@ -41,6 +41,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/modifyMail', 'UserController@modifyMail')->name('modifyMail')->middleware('auth');
     Route::post('/modifyLanguages', 'UserController@modifyLanguages')->name('modifyLanguages')->middleware('auth');
     Route::post('/modifyPassword', 'UserController@modifyPassword')->name('modifyPassword')->middleware('auth');
+    /**
+     * Route to get the view to search all cards from a user.
+     */
+    Route::get('/searchByUser', function () {
+        return view('searchByAuthor', array("authors" => User::all()));
+    })->name('searchByUser');
     Route::middleware(['admin'])->group(function () {
 
         Route::post('/cards/{id}/removeValidation', 'CardController@removeValidation')->name('cards.removeValidation');
@@ -48,22 +54,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/users', 'HomeController@indexUsers')->name('ListingUsers');
 
         Route::post('updateRole', 'UserController@updateRole')->name('admin.updateRole');
+
+        Route::get('/addbasicdata', 'LanguageController@index')->name('basicData');
+
     });
 });
-
-
-/**
- * Route to get the view to search all cards from a user.
- */
-Route::get('/searchByUser', function () {
-    return view('searchByAuthor', array("authors" => User::all()));
-})->name('searchByUser');
-
-// /**
-//  * Return the view to display one card
-//  */
-// Route::get("/card/{id}", 'CardController@showCard');
-
-Route::get('/addLanguage', 'LanguageController@importView');
-
-Route::get('/addbasicdata', 'LanguageController@index')->name('basicData');

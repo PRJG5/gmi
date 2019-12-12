@@ -107,20 +107,20 @@ class CardController extends Controller
         }
 
         if(isset($request['definition']) && strlen($request['definition']) > 0){
-            $note = Definition::create([
+            $def = Definition::create([
                 'definition_content' => $request['definition'],
             ]);
-            $note->save();
+            $def->save();
             $request->merge([
-                'definition_id'=> $note->id,
+                'definition_id'=> $def->id,
             ]);
         } else if(isset($request['definitionURL']) && strlen($request['definitionURL']) > 0){
-            $note = Definition::create([
-                'definition_content' => $request['definition'],
+            $def = Definition::create([
+                'definition_content' => $request['definitionURL'],
             ]);
-            $note->save();
+            $def->save();
             $request->merge([
-                'definition_id'=> $note->id,
+                'definition_id'=> $def->id,
             ]);
         }
 
@@ -166,7 +166,8 @@ class CardController extends Controller
         $card = Card::find($card_id);
         return view('card.show', [
             'card'      => $card,
-            'owner' 	=> User::find($card->owner_id)
+            'owner' 	=> User::find($card->owner_id),
+            'hasVote'   => Vote::hasVote(Auth::user()->id,$card_id)
 		]);
     }
 
@@ -345,10 +346,10 @@ class CardController extends Controller
                 $card->delete = 1;
                 $card->save();
             }
+            return redirect()->action('CardController@index');
         } catch(\Exception $exception) {
             echo $exception;
         }
-        return redirect()->action('CardController@index');
     }
 
     /**
